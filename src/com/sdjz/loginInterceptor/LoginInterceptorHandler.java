@@ -35,14 +35,10 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 		}
 		String username = (String) session.getAttribute("username");
 		if(username!=null){
-			
 			return true;
 		}
-		
+		///WEB-INF/jsp/login/login.jsp
 		request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request, response);
 		return false;
 	}
-
-	
-	
 }

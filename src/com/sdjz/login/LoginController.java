@@ -17,6 +17,11 @@ public class LoginController {
 		return null;
 	}
 	
+	@RequestMapping("/hello.html")
+	public void info(){
+		System.out.println("========hello===========");
+	}
+	
 	@RequestMapping("logout")
 	public String logout(){
 		return null;
