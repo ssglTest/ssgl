@@ -25,4 +25,13 @@
 			<property name="prefix" value="/WEB-INF/jsp/"/>
 			<property name="suffix" value=".jsp"/>
 			</bean>
+			
+		<!-- 配置全局拦截器，用于实现登录认证 -->
+		<mvc:interceptors>
+			<mvc:interceptor>
+				<mvc:mapping path="/**"/>
+				<bean class="com.sdjz.loginInterceptor.LoginInterceptorHandler"/>
+			</mvc:interceptor>
+		</mvc:interceptors>
+			
 		</beans>

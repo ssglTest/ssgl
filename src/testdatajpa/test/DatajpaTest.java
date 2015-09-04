@@ -10,17 +10,25 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import testdatajpa.domain.Tutor;
 import testdatajpa.domain.User;
+import testdatajpa.service.RoleService;
+import testdatajpa.service.TutorService;
 import testdatajpa.service.UserService;
 
 public class DatajpaTest {
 	DataSource dataSource;
 	UserService userService;
+	RoleService roleService;
+	TutorService tutorService;
+	
 	@Before
 	public void init(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
 		dataSource =ac.getBean(DataSource.class);
 		userService=(UserService)ac.getBean("userService");
+		roleService=(RoleService)ac.getBean("roleService");
+		tutorService=(TutorService)ac.getBean("tutorService");
 	}
 	@Test
 	public void testDataSource() throws SQLException{
@@ -28,15 +36,12 @@ public class DatajpaTest {
 	}
 	@Test
 	public void save(){
-		User user = new User("杨洋",22);
-		userService.save(user);
+//		User user =new User("201302","201302");
+//		userService.saveUser(user);
+		Tutor tutor=new Tutor();
+		tutor.setName("001");
+		tutor.setNo("001");
+		tutorService.saveTutor(tutor);
 	}
-//	@Test
-//	public void criteria(){
-//		List<User> users=userService.criteria("鏉�%");
-//		for(User user:users){
-//			System.out.println(user.getName());
-//		}
-//	}
 
 }

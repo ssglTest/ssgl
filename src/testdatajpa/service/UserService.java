@@ -24,26 +24,18 @@ import testdatajpa.domain.User;
 public class UserService {
 	@Autowired
 	UserDao userDao;
-	public void save(User user){
+	public void saveUser(User user){
 		userDao.save(user);
 	}
+	public void saveUsers(List<User> users){
+		for(User user:users){
+			userDao.save(user);
+		}
+	}
+	
 	public List<User> findAll(){
 		
 		return userDao.findAll();
 	}
-//	@Transactional
-//	public List<User> criteria(String username){
-//		List<User> user=userDao.findAll(new Specification<User>(){
-//
-//			@Override
-//			public Predicate toPredicate(Root<User> arg0,
-//					CriteriaQuery<?> arg1, CriteriaBuilder arg2) {
-//				// TODO Auto-generated method stub
-//				return null;
-//			}
-//			
-//		});
-//		return user;
-//	}
 
 }
