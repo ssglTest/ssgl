@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,9 +35,9 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 			System.out.println(url);
 			return true;
 		}
-		String username = (String) session.getAttribute("username");
-		System.out.println("username:   "+username);
-		if(username!=null){
+		String user = (String) session.getAttribute("user");
+		System.out.println("username:   "+user);
+		if(user!=null){
 			return true;
 		}
 		

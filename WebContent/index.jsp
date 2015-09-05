@@ -31,7 +31,7 @@
 <body class="div-a">
 
 	<div class="div-b">
-		<form class="form-signin" action="userContro/hello.html">
+		<form class="form-signin" action="userContro/login.html">
 			<h2 class="form-signin-heading">登录</h2>
 
 			<div class="form-group">
@@ -47,8 +47,8 @@
 			<div class="form-group">
 				<label for="usertype">User type</label> <select class="form-control"
 					id="usertype" >
-					<option>硕士生</option>
-					<option>研究生秘书</option>
+					<option>研究生</option>
+					<option>研究生导师</option>
 					<option>导师</option>
 					<option>任课老师</option>
 				</select>

@@ -33,6 +33,10 @@ public class UserService {
 		}
 	}
 	
+	public User findByUserName(String username){
+		return userDao.findByUserName(username);
+	}
+	
 	public List<User> findAll(){
 		
 		return userDao.findAll();
