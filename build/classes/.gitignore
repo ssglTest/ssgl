@@ -1,2 +1,4 @@
+/applicationContext.xml
 /com/
-/testdatajpa/
+/db.properties
+/testdatajpa-servlet.xml

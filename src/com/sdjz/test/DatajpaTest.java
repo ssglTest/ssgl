@@ -55,7 +55,7 @@ public class DatajpaTest {
 	
 		User user =new User(tutor.getNo(),tutor.getNo());
 		user.setActor(tutor);
-		tutor.setUser(user);//璁剧疆tutor_id灏唗utor涓巙ser鍏宠仈
+		tutor.setUser(user);//鐠佸墽鐤唗utor_id鐏忓敆utor娑撳窓ser閸忓疇浠�
 		userService.saveUser(user);
 			
 		User userStudent =new User(student.getNo(),student.getNo());

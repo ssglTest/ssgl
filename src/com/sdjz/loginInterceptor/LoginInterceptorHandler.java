@@ -26,7 +26,7 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("拦截器开始工作。。。。。。。。。。。。。");
+		System.out.println("鎷︽埅鍣ㄥ紑濮嬪伐浣溿�傘�傘�傘�傘�傘�傘�傘�傘�傘�傘�傘�傘��");
 		HttpSession session = request.getSession();
 		String url = request.getRequestURI();
 		System.out.println(url);

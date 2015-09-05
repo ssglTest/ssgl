@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/testdatajpa/test/DatajpaTest.java=UTF-8
+encoding//src/com/sdjz/login/LoginController.java=UTF-8
+encoding//src/com/sdjz/loginInterceptor/LoginInterceptorHandler.java=UTF-8
+encoding//src/com/sdjz/test/DatajpaTest.java=UTF-8

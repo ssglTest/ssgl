@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link type="text/css" href="bootstrap/bootstrap.min.css"
-	rel="stylesheet" />
-<script type="text/javascript" src="bootstrap/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+<link type="text/css" href="../bootstrap/bootstrap.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="../bootstrap/bootstrap.min.js" ></script>
 
 <title>登录界面</title>
 <style>
 .div-a {
-	background: url(img/sky.jpg) no-repeat;
+	background: url(../img/sky.jpg) no-repeat;
 	width: 230px;
 	height: 136px;
 	padding: 10px;
@@ -31,22 +30,22 @@
 <body class="div-a">
 
 	<div class="div-b">
-		<form class="form-signin" action="userContro/login.html">
-			<h2 class="form-signin-heading">登录</h2>
-
+		<form class="form-signin" action="login.html" method="POST">
+			<h2 class="form-signin-heading" >登录</h2>
+				<font size="3" color="red">${message}</font>
 			<div class="form-group">
 				<label for="inputEmail">username</label> <input type="text"
-					id="inputEmail" name="username" class="form-control"
-					placeholder="请输入你的用户名">
+					id="inputEmail" name="username" class="form-control" placeholder="请输入你的用户名"
+					required autofocus>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword">password</label> <input type="password"
-					id="inputPassword" name="password" class="form-control"
-					placeholder="请输入你的密码">
+					id="inputPassword" name="password" class="form-control" placeholder="请输入你的密码"
+					required>
 			</div>
 			<div class="form-group">
 				<label for="usertype">User type</label> <select class="form-control"
-					id="usertype" >
+					id="usertype">
 					<option>研究生</option>
 					<option>研究生导师</option>
 					<option>导师</option>

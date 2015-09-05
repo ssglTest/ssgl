@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link type="text/css" href="../bootstrap/bootstrap.min.css" rel="stylesheet"/>
-<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js" ></script>
-<script type="text/javascript" src="../bootstrap/bootstrap.min.js" ></script>
+<link type="text/css" href="bootstrap/bootstrap.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="bootstrap/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="bootstrap/bootstrap.min.js" ></script>
 
 <title>登录界面</title>
 <style>
 .div-a {
-	background: url(../img/sky.jpg) no-repeat;
+	background: url(img/sky.jpg) no-repeat;
 	width: 230px;
 	height: 136px;
 	padding: 10px;
@@ -30,11 +30,9 @@
 <body class="div-a">
 
 	<div class="div-b">
-		<form class="form-signin" action="userContro/login.html">
+		<form class="form-signin" action="userContro/login.html" method="POST">
 			<h2 class="form-signin-heading" >登录</h2>
-				<!-- <h3>请重新登录</h3> -->
 				<font size="3" color="red">${message}</font>
-
 			<div class="form-group">
 				<label for="inputEmail">username</label> <input type="text"
 					id="inputEmail" name="username" class="form-control" placeholder="请输入你的用户名"
