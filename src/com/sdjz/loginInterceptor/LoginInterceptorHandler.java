@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
 public class LoginInterceptorHandler implements HandlerInterceptor{
 
 	@Override
@@ -28,17 +27,24 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("拦截器开始工作。。。。。。。。。。。。。");
 		HttpSession session = request.getSession();
 		String url = request.getRequestURI();
-		if("login".indexOf(url)>=0){
+		System.out.println(url);
+		System.out.println(url.indexOf("login"));
+		if(url.indexOf("login")>=0){
+			System.out.println(url);
 			return true;
 		}
 		String username = (String) session.getAttribute("username");
+		System.out.println("username:   "+username);
 		if(username!=null){
 			return true;
 		}
+		
 		///WEB-INF/jsp/login/login.jsp
 		request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request, response);
+		//return "redirect:/addFile.action";
 		return false;
 	}
 }
