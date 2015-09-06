@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="bootstrap/bootstrap.min.css" rel="stylesheet"/>
 <script type="text/javascript" src="bootstrap/jquery-1.11.3.min.js" ></script>
 <script type="text/javascript" src="bootstrap/bootstrap.min.js" ></script>
@@ -45,9 +45,9 @@
 			</div>
 			<div class="form-group">
 				<label for="usertype">User type</label> <select class="form-control"
-					id="usertype">
-					<option>研究生</option>
-					<option>研究生导师</option>
+					id="usertype" name="role">
+					<option>student</option>
+					<option>student_Teacher</option>
 					<option>导师</option>
 					<option>任课老师</option>
 				</select>

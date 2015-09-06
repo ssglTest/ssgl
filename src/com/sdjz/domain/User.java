@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class User {
 	private String userName;
 	@Column(length=20)
 	private String password;
-	@ManyToMany(mappedBy="users")
+	@ManyToMany(mappedBy="users" ,fetch=FetchType.EAGER)
 	@Transient
 	private List<Role> roles;
 	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)	

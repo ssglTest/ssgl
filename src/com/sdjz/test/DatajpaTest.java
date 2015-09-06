@@ -1,7 +1,7 @@
 package com.sdjz.test;
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -11,8 +11,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.sdjz.dao.TutorDao;
-import com.sdjz.domain.Actor;
 import com.sdjz.domain.Role;
 import com.sdjz.domain.Student;
 import com.sdjz.domain.Tutor;
@@ -28,7 +26,8 @@ public class DatajpaTest {
 	RoleService roleService;
 	TutorService tutorService;
 	StudentService studentService;
-	RoleService schoolService;
+
+	
 	
 	@Before
 	public void init(){
@@ -38,7 +37,6 @@ public class DatajpaTest {
 		roleService=(RoleService)ac.getBean("roleService");
 		tutorService=(TutorService)ac.getBean("tutorService");
 		studentService=(StudentService)ac.getBean("studentService");
-		//schoolService=(RoleService)ac.getBean("schoolService");
 	}
 	@Test
 	public void testDataSource() throws SQLException{
@@ -47,24 +45,29 @@ public class DatajpaTest {
 	@Test
 	public void save(){
 		
+		
 		Tutor tutor=new Tutor("001","001");
 		
 		Student student =new Student("201301","aa");
 		student.setTutor(tutor);
-		
 	
 		User user =new User(tutor.getNo(),tutor.getNo());
 		user.setActor(tutor);
-		tutor.setUser(user);//鐠佸墽鐤唗utor_id鐏忓敆utor娑撳窓ser閸忓疇浠�
+		tutor.setUser(user);
 		userService.saveUser(user);
 			
 		User userStudent =new User(student.getNo(),student.getNo());
 		userStudent.setActor(student);
 		student.setUser(userStudent);
 		userService.saveUser(userStudent);
-		Role role1=new Role("研究生");
+		List<User> users =new ArrayList<User>();
+		users.add(user);
+		users.add(userStudent);
+		Role role1=new Role("student");
+		role1.setUsers(users);
 		roleService.saveRole(role1);
-		Role role=new Role("研究生导师");
+		Role role=new Role("student_Teacher");
+		role.setUsers(users);
 	    roleService.saveRole(role);
 		
 	}

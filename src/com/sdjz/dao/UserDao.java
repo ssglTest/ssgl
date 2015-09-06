@@ -11,7 +11,9 @@ import com.sdjz.domain.User;
 
 
 public interface UserDao extends JpaRepository<User,Integer> ,JpaSpecificationExecutor<User>{
+	
 	public User findByUserName(String username);
+	
 	
 
 }

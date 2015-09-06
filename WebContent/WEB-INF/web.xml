@@ -32,4 +32,22 @@
   	<servlet-name>testdatajpa</servlet-name>
   	<url-pattern>*.html</url-pattern>
   </servlet-mapping>
+  
+   <!-- <servlet>
+    <servlet-name>CXFService<servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet<servlet-class>
+  <servlet>
+  <servlet-mapping>
+    <servlet-name>CXFService<servlet-name>
+    <url-pattern>/CXFWebService/*</url-pattern>
+  <servlet-mapping>
+   -->
+   <servlet>
+    <servlet-name>CXFService</servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CXFService</servlet-name>
+    <url-pattern>/CXFWebService/*</url-pattern>
+  </servlet-mapping>
   </web-app>

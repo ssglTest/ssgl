@@ -13,6 +13,8 @@
        http://www.springframework.org/schema/data/jpa  
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
        
+       <!-- webService层 -->
+       <import resource="classpath:/ssgl-webservice.xml"/>
        <context:annotation-config/>
        <context:property-placeholder location="classpath:db.properties"/>
        <bean id="dataSource"

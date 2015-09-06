@@ -19,6 +19,9 @@ public class Student extends Actor {
 	@JoinColumn(name="tutor_id")
 	private Tutor tutor;
 	
+	@ManyToOne
+	@JoinColumn(name="school_id")
+	private School school;
 	public Student(){}
 	public Student(String no,String name){
 		super(no,name);
@@ -32,6 +35,12 @@ public class Student extends Actor {
 
 	public void setTutor(Tutor tutor) {
 		this.tutor = tutor;
+	}
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
 	}
 	
 

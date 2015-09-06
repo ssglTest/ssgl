@@ -22,6 +22,12 @@ import com.sdjz.domain.User;
 
 @Service("userService")
 public class UserService {
+
+	public UserService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Autowired
 	UserDao userDao;
 	public void saveUser(User user){
@@ -35,6 +41,9 @@ public class UserService {
 	
 	public User findByUserName(String username){
 		return userDao.findByUserName(username);
+	}
+	public User findById(Integer id){
+		return userDao.findOne(id);
 	}
 	
 	public List<User> findAll(){

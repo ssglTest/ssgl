@@ -28,6 +28,7 @@ public class LoginController {
 	@RequestMapping(value = "/login.html",method=RequestMethod.POST)
 	public String login(HttpSession session, String username, String password, String role, ModelMap modelMap) {
 		User user = userService.findByUserName(username);
+		
 		if (user == null) {
 			modelMap.put("message", "用户名不存在");
 			return "login/relogin";
@@ -39,18 +40,19 @@ public class LoginController {
 			modelMap.put("message", "密码错误");
 			return "login/relogin";
 		}
+		System.out.println("得到的role:"+role);
 		//在取出集合进行遍历前，要先对集合是否为空进行判断
 		List<Role> roles = user.getRoles();
 		System.out.println(roles);
 		for(Role myRole : roles){
 			String userRole = myRole.getDescription();
-			if(userRole == role){
+			System.out.println("====================="+userRole);
+			if(userRole.equals(role)){
 				return "test/success";
 			}
 		}
 		modelMap.put("message", "请选择正确的类型");
 		return "login/relogin";
-		
 	}
 
 	// 鐢ㄤ簬瑙﹀彂鏍囩鍔熻兘
