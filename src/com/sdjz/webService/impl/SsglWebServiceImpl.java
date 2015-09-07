@@ -22,12 +22,15 @@ public class SsglWebServiceImpl implements SsglWebService {
 	public Tutor login(String username, String password) {
 		// TODO Auto-generated method stub
 		User user = userService.findByUserName(username);
+		System.out.println("tutor   =======:"+user);
 		if(user==null){
 			throw new MessageException("用户不存在");
 		}
 		String pd = user.getPassword();
 		if(pd.equals(password)){
-			Tutor tutor = tutorService.findByNo(username);
+			//Tutor tutor = tutorService.findByNo(username);
+			Tutor tutor=(Tutor)user.getActor();
+			System.out.println("tutor***********"+tutor.getNo());
 			return tutor;
 		}else{
 			throw new MessageException("用户名或密码错误");

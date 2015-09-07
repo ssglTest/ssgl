@@ -83,9 +83,13 @@ public class DatajpaTest {
 		List<Role> roles=user.getRoles();
 		for(Role role:roles){
 			System.out.println(role.getDescription());
-		}
+		}	
 		
-		
+	}
+	@Test
+	public void FindTutor(){
+		User user=userService.findById(1);
+		System.out.println(((Tutor)user.getActor()).getNo());
 	}
 
 	
