@@ -45,7 +45,16 @@ public class DatajpaTest {
 	@Test
 	public void save(){
 		
-		
+		Role role1=new Role("student");
+		//role1.setUsers(users);
+		roleService.saveRole(role1);
+		Role role=new Role("student_Teacher");
+		//role.setUsers(users);
+	    roleService.saveRole(role);
+	    List<Role> roles =new ArrayList<Role>();
+	    roles.add(role);
+	    roles.add(role1);
+	    
 		Tutor tutor=new Tutor("001","001");
 		
 		Student student =new Student("201301","aa");
@@ -54,27 +63,28 @@ public class DatajpaTest {
 		User user =new User(tutor.getNo(),tutor.getNo());
 		user.setActor(tutor);
 		tutor.setUser(user);
+		user.setRoles(roles);
 		userService.saveUser(user);
 			
 		User userStudent =new User(student.getNo(),student.getNo());
 		userStudent.setActor(student);
 		student.setUser(userStudent);
+		userStudent.setRoles(roles);
 		userService.saveUser(userStudent);
 		List<User> users =new ArrayList<User>();
 		users.add(user);
 		users.add(userStudent);
-		Role role1=new Role("student");
-		role1.setUsers(users);
-		roleService.saveRole(role1);
-		Role role=new Role("student_Teacher");
-		role.setUsers(users);
-	    roleService.saveRole(role);
+		
 		
 	}
 	@Test
-	public void saveRole(){
+	public void findRole(){
+		User user=userService.findById(1);
+		List<Role> roles=user.getRoles();
+		for(Role role:roles){
+			System.out.println(role.getDescription());
+		}
 		
-		System.out.println("Sudent    "+studentService.findByNo("201301"));
 		
 	}
 

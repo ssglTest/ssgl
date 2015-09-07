@@ -26,6 +26,12 @@ public abstract class Actor implements Serializable {
 	private String no;
 	@Column(length=5)
 	private String name;
+	@Column(length=14)
+	private String email;
+	@Column(length=10)
+	private String mobile;
+	@Column(length=12)
+	private String qq;
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -64,5 +70,24 @@ public abstract class Actor implements Serializable {
 	public void addUser(User user){
 		this.user=user;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+	
 
 }

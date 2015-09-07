@@ -4,6 +4,7 @@ package com.sdjz.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,9 +20,7 @@ public class Role {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String description;
-	@ManyToMany
-	@JoinTable(name="user_role")
-	@Transient
+	@ManyToMany(mappedBy="roles",fetch=FetchType.EAGER)
 	private List<User> users;
 	public Role(){}
 	public Role(String description){

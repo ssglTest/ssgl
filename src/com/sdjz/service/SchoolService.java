@@ -25,6 +25,9 @@ public class SchoolService {
 	public School findByName(String description){
 		return schoolDao.findByDescription(description);
 	}
+	public School findById(Integer id){
+		return schoolDao.findOne(id);
+	}
 	public List<School> findAll(){
 		return schoolDao.findAll();
 	}

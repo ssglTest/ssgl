@@ -21,9 +21,9 @@ public class SecretaryService {
 		secretaryDao.save(secretary);
 		}
 	}
-//	public Secretary findByName(String name){
-//		return secretaryDao.findByName();
-//	}
+	public Secretary findByNo(String no){
+		return secretaryDao.findByNo(no);
+	}
 	public Secretary findById(Integer id){
 		return secretaryDao.findOne(id);
 	}

@@ -6,5 +6,6 @@ import com.sdjz.domain.Secretary;
 
 public interface SecretaryDao extends JpaRepository<Secretary,Integer> {
 	//public Secretary findByName();
+	public Secretary findByNo(String no);
 
 }

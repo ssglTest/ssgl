@@ -24,6 +24,9 @@ public class TutorService {
 	public Tutor findByNo(String no){
 		return tutorDao.findByNo(no);
 	}
+	public Tutor findById(Integer id){
+		return tutorDao.findOne(id);
+	}
 	public List<Tutor> findAll(){
 		return tutorDao.findAll();
 	}

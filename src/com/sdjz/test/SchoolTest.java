@@ -1,5 +1,8 @@
 package com.sdjz.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +21,24 @@ public class SchoolTest {
 	}
 	@Test
 	public void save(){
-		School school=new School("管理学院");
-		schoolService.saveSchool(school);
+		List<School> schools=new ArrayList<School>();
+		schools.add(new School("AA"));
+		schools.add(new School("BB"));
+		schoolService.saveSchools(schools);
+	}
+	@Test
+	public void findById(){
+		System.out.println("School:" +schoolService.findById(1).getDescription());
+	}
+	@Test
+	public void findByName(){
+		System.out.println("schoolByname:"+schoolService.findByName("AA"));
+	}
+	@Test
+	public void findAll(){
+		List<School> schools =schoolService.findAll();
+		for(School school:schools){
+			System.out.println(school.getDescription());
+		}
 	}
 }

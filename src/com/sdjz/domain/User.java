@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,8 +25,8 @@ public class User {
 	private String userName;
 	@Column(length=20)
 	private String password;
-	@ManyToMany(mappedBy="users" ,fetch=FetchType.EAGER)
-	@Transient
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="user_role")
 	private List<Role> roles;
 	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)	
 	private Actor actor;

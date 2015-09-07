@@ -25,6 +25,9 @@ public class StudentService {
 	public Student findByNo(String no){
 		return studentDao.findByNo(no);
 	}
+	public Student findById(Integer id){
+		return studentDao.findOne(id);
+	}
 	public List<Student> findAll(){
 		return studentDao.findAll();
 	}
