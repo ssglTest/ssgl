@@ -46,8 +46,8 @@
 			<div class="form-group">
 				<label for="usertype">User type</label> <select class="form-control"
 					id="usertype" name="role">
-					<option>研究生</option>
-					<option>研究生导师</option>
+					<option>student</option>
+					<option>student_Teacher</option>
 					<option>导师</option>
 					<option>任课老师</option>
 				</select>
