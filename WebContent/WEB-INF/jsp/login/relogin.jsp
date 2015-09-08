@@ -35,7 +35,9 @@
 				<font size="3" color="red">${message}</font>
 			<div class="form-group">
 				<label for="inputEmail">username</label> <input type="text"
-					id="inputEmail" name="username" class="form-control" placeholder="请输入你的用户名"
+					id="inp+
+					63
+					utEmail" name="username" class="form-control" placeholder="请输入你的用户名"
 					required autofocus>
 			</div>
 			<div class="form-group">

@@ -1,7 +1,6 @@
 package com.sdjz.test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -25,6 +24,8 @@ import com.sdjz.service.SecretaryService;
 import com.sdjz.service.StudentService;
 import com.sdjz.service.TutorService;
 import com.sdjz.service.UserService;
+
+
 
 public class DatajpaTest {
 	DataSource dataSource;
