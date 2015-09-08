@@ -30,5 +30,8 @@ public class SecretaryService {
 	public List<Secretary> findAll(){
 		return secretaryDao.findAll();
 	}
+	public void DeleteById(Integer id){
+		secretaryDao.delete(id);
+	}
 
 }

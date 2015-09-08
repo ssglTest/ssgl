@@ -22,5 +22,12 @@ public class Secretary extends Actor{
 	public Secretary(String no,String name){
 		super(no,name);		
 	}
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
+	}
+	
 
 }

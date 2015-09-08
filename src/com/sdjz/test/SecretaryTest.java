@@ -21,5 +21,9 @@ public class SecretaryTest {
 		Secretary secretary =new Secretary("1001","1001");
 		secretaryService.saveSecretary(secretary);
 	}
+	@Test
+	public void delete(){
+		secretaryService.DeleteById(1);
+	}
 
 }

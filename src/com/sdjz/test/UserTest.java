@@ -10,25 +10,29 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sdjz.domain.Role;
+import com.sdjz.domain.Secretary;
 import com.sdjz.domain.User;
+import com.sdjz.service.SecretaryService;
 import com.sdjz.service.UserService;
 
 public class UserTest {
-	private UserService userService;
+	 UserService userService;
+	 SecretaryService secretaryService;
 	
 	@Before
 	public void init(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		userService = (UserService)ac.getBean("userService");
+		secretaryService=(SecretaryService)ac.getBean("secretaryService");
 	}
 	
 	@Test
 	public void getRole(){
-		User user = userService.findById(1);
-		List<Role> roles = user.getRoles();
-		for(Role role : roles){
-			System.out.println("userRole:"+role);
-		}
+		Secretary secretary=secretaryService.findByNo("1001");
+		User user=new User("1001","1001");
+		userService.saveUser(user);
+		secretary.setUser(user);
+		
 	}
 
 }

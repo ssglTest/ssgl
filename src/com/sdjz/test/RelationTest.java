@@ -1,6 +1,5 @@
 package com.sdjz.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -13,27 +12,22 @@ import com.sdjz.domain.School;
 import com.sdjz.service.MajorService;
 import com.sdjz.service.SchoolService;
 
-
-public class MajorTest {
+public class RelationTest {
 	MajorService majorService;
 	SchoolService schoolService;
 	@Before
 	public void init(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
 		majorService=(MajorService)ac.getBean("majorService");
-		schoolService=(SchoolService)ac.getBean("shoolService");
-		
+		schoolService=(SchoolService)ac.getBean("shoolService");		
 	}
 	@Test
-	public void save(){
-		School school=schoolService.findById(1);
-		Major major=new Major("信管");
-		major.setSchool(school);
-		majorService.saveMajor(major);
-		Major major1=new Major("造价");
-		major1.setSchool(school);
-		majorService.saveMajor(major1);
-	
+	public void major_school(){
+		School school=schoolService.findById(2);
+		List<Major> majors= majorService.findAll();
+		for(Major major:majors){
+			major.setSchool(school);
+		}
 	}
 
 }
