@@ -29,6 +29,7 @@ public class LoginController {
 	public String reLogin(){
 		return null;
 	}*/
+	
 	@RequestMapping(value = "/login.html",method=RequestMethod.POST)
 	public String login(HttpSession httpSession, String username, String password, String role, ModelMap modelMap) {
 		User user = userService.findByUserName(username);
@@ -53,6 +54,9 @@ public class LoginController {
 			System.out.println("====================="+userRole);
 			if(userRole.equals(role)){
 				System.out.println("user*****************"+httpSession.getAttribute("user"));
+				if(userRole.equals("student")){
+					return "login/studentSignIn";
+				}
 				return "test/success";
 			}
 		}
@@ -77,6 +81,11 @@ public class LoginController {
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
 		return "login/login";
+	}
+	
+	@RequestMapping("/informationTest")
+	public String informationTest(){
+		return "information/bootstrapStudentTest";
 	}
 
 }
