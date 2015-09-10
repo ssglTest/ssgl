@@ -35,7 +35,9 @@
 				<font size="3" color="red">${message}</font>
 			<div class="form-group">
 				<label for="inputEmail">username</label> <input type="text"
-					id="inputEmail" name="username" class="form-control" placeholder="请输入你的用户名"
+					id="inp+
+					63
+					utEmail" name="username" class="form-control" placeholder="请输入你的用户名"
 					required autofocus>
 			</div>
 			<div class="form-group">
@@ -46,8 +48,8 @@
 			<div class="form-group">
 				<label for="usertype">User type</label> <select class="form-control"
 					id="usertype" name="role">
-					<option>研究生</option>
-					<option>研究生导师</option>
+					<option>student</option>
+					<option>student_Teacher</option>
 					<option>导师</option>
 					<option>任课老师</option>
 				</select>
