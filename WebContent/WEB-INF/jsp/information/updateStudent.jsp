@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>success</h1>
-<a href="queryInfo.html">学生信息查询</a>
+	<form action="updateInfo.html" method="post">
+	    <input type="hidden" value="${student.id} " name="id"/>
+		email:<input type="text" value="${student.email} "/><br/>
+		qq:<input type="text" value="${student.qq}"/><br/>
+		mobile<input type="text" value="${student.mobile}"/><br/>
+		<input type="submit" value="submit"/>
+	</form>
+
 </body>
 </html>

@@ -47,9 +47,9 @@
 				<label for="usertype">User type</label> <select class="form-control"
 					id="usertype" name="role">
 					<option>student</option>
-					<option>student_Teacher</option>
-					<option>导师</option>
-					<option>任课老师</option>
+					<option>tutor</option>
+					<option>teacher</option>
+					<option>secretary</option>
 				</select>
 			</div>
 			<div class="checkbox">

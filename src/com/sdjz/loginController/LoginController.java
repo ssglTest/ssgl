@@ -1,4 +1,4 @@
-package com.sdjz.login;
+package com.sdjz.loginController;
 
 import java.util.List;
 
@@ -10,8 +10,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sdjz.domain.Major;
 import com.sdjz.domain.Role;
+import com.sdjz.domain.School;
 import com.sdjz.domain.User;
+import com.sdjz.service.MajorService;
+import com.sdjz.service.SchoolService;
 import com.sdjz.service.UserService;
 
 @Controller
@@ -26,7 +30,7 @@ public class LoginController {
 		return null;
 	}*/
 	@RequestMapping(value = "/login.html",method=RequestMethod.POST)
-	public String login(HttpSession session, String username, String password, String role, ModelMap modelMap) {
+	public String login(HttpSession httpSession, String username, String password, String role, ModelMap modelMap) {
 		User user = userService.findByUserName(username);
 		
 		if (user == null) {
@@ -34,7 +38,7 @@ public class LoginController {
 			return "login/relogin";
 		}
 		
-		session.setAttribute("user", user);
+		httpSession.setAttribute("user", user);
 		String pd = user.getPassword();
 		if (!password.equals(pd)) {
 			modelMap.put("message", "密码错误");
@@ -48,6 +52,7 @@ public class LoginController {
 			String userRole = myRole.getDescription();
 			System.out.println("====================="+userRole);
 			if(userRole.equals(role)){
+				System.out.println("user*****************"+httpSession.getAttribute("user"));
 				return "test/success";
 			}
 		}
@@ -69,8 +74,8 @@ public class LoginController {
 	}
 
 	@RequestMapping("logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
+	public String logout(HttpSession httpSession) {
+		httpSession.invalidate();
 		return "login/login";
 	}
 

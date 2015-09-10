@@ -24,11 +24,13 @@ public class School {
 	@OneToMany(mappedBy="school")
 	private List<Student> students;
 	@OneToMany(mappedBy="school")
-	private Set<Tutor> tutors;
+	private List<Tutor> tutors;
 	@OneToMany(mappedBy="school")
 	private List<Major> majors;
 	@OneToOne(mappedBy="school")
 	private Secretary secretary;
+	@OneToMany(mappedBy="school")
+	private List<Teacher> teachers;
 	
 	public School(){}
 	public School(String description){
@@ -54,22 +56,15 @@ public class School {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
-//	public List<Tutor> getTutors() {
-//		return tutors;
-//	}
-//	public void setTutors(List<Tutor> tutors) {
-//		this.tutors = tutors;
-//	}
-	
+	public List<Tutor> getTutors() {
+		return tutors;
+	}
+	public void setTutors(List<Tutor> tutors) {
+		this.tutors = tutors;
+	}	
 	
 	public List<Major> getMajors() {
 		return majors;
-	}
-	public Set<Tutor> getTutors() {
-		return tutors;
-	}
-	public void setTutors(Set<Tutor> tutors) {
-		this.tutors = tutors;
 	}
 	public void setMajors(List<Major> majors) {
 		this.majors = majors;
@@ -79,6 +74,12 @@ public class School {
 	}
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
+	}
+	public List<Teacher> getTeachers() {
+		return teachers;
+	}
+	public void setTeachers(List<Teacher> teachers) {
+		this.teachers = teachers;
 	}
 	
 	

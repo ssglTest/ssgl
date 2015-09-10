@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sdjz.domain.User;
+
 public class LoginInterceptorHandler implements HandlerInterceptor{
 
 	@Override
@@ -37,7 +39,7 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 			System.out.println(url);
 			return true;
 		}
-		String user = (String) session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		System.out.println("username:   "+user);
 		if(user!=null){
 			return true;

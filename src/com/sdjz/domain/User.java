@@ -28,7 +28,8 @@ public class User {
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="user_role")
 	private List<Role> roles;
-	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="actor_id")
 	private Actor actor;
 	
 	public User(){}

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sdjz.domain.Tutor;
 import com.sdjz.domain.User;
 import com.sdjz.exception.MessageException;
+import com.sdjz.service.SchoolService;
 import com.sdjz.service.TutorService;
 import com.sdjz.service.UserService;
 import com.sdjz.webService.service.SsglWebService;
@@ -15,6 +16,7 @@ public class SsglWebServiceImpl implements SsglWebService {
 
 	@Autowired
 	private UserService userService;
+	
 	
 	@Autowired
 	private TutorService tutorService;
@@ -30,7 +32,8 @@ public class SsglWebServiceImpl implements SsglWebService {
 		if(pd.equals(password)){
 			//Tutor tutor = tutorService.findByNo(username);
 			Tutor tutor=(Tutor)user.getActor();
-			System.out.println("tutor***********"+tutor.getNo());
+			//System.out.println("tutor***********"+tutor.getNo());
+			
 			return tutor;
 		}else{
 			throw new MessageException("用户名或密码错误");

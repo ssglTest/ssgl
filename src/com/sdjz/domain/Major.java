@@ -29,12 +29,16 @@ public class Major implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School school;
-	@OneToMany(mappedBy="major",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="major")
 	private List<Tutor> tutors;
+	@OneToMany(mappedBy="major")
+	private List<Teacher> teachers;
+	
 	public Major(){}
 	public Major(String description){
 		this.description=description;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -58,6 +62,12 @@ public class Major implements Serializable {
 	}
 	public void setTutors(List<Tutor> tutors) {
 		this.tutors = tutors;
+	}
+	public List<Teacher> getTeachers() {
+		return teachers;
+	}
+	public void setTeachers(List<Teacher> teachers) {
+		this.teachers = teachers;
 	}
 	
 

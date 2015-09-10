@@ -31,6 +31,8 @@ public class StudentService {
 	public List<Student> findAll(){
 		return studentDao.findAll();
 	}
-
+	public Student update(Student student){
+		return studentDao.updateStudent(student);
+	}
 
 }

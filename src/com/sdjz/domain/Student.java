@@ -1,9 +1,14 @@
 package com.sdjz.domain;
 
+import java.util.List;
+
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,6 +26,9 @@ public class Student extends Actor {
 	@ManyToOne
 	@JoinColumn(name = "school_id")
 	private School school;
+	@ManyToMany
+	@JoinTable(name="student_teacher")
+	private List<Teacher> teachers;
 
 	public Student() {
 	}
@@ -44,6 +52,15 @@ public class Student extends Actor {
 	public void setSchool(School school) {
 		this.school = school;
 	}
+
+	public List<Teacher> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(List<Teacher> teachers) {
+		this.teachers = teachers;
+	}
+	
 
 
 }

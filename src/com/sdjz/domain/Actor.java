@@ -32,8 +32,7 @@ public abstract class Actor implements Serializable {
 	private String mobile;
 	@Column(length=12)
 	private String qq;
-	@OneToOne
-	@JoinColumn(name="user_id")
+	@OneToOne(mappedBy="actor")
 	private User user;
 	
 	public Actor(){

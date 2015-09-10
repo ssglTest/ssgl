@@ -1,4 +1,4 @@
-package com.sdjz.test;
+package com.sdjz.testService;
 
 import org.junit.Before;
 import org.junit.Test;

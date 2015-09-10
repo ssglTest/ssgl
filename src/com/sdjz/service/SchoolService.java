@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sdjz.dao.SchoolDao;
 import com.sdjz.domain.School;
 
-@Service("shoolService")
+@Service("schoolService")
 public class SchoolService {
 	@Autowired
 	SchoolDao schoolDao;
