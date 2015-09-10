@@ -19,8 +19,12 @@
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="page-header">
-			<nav class="navbar navbar-default" role="navigation">
+		<div class="jumbotron">
+			<h2>欢迎登录硕士管理系统</h2>
+			<p>山东建筑大学非全日制硕士生管理系统</p>
+		</div>
+		<!-- <div class="page-header">
+			<nav class="navbar navbar-default navbar-lg" role="navigation">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">非全日制硕士生管理系统</a>
 			</div>
@@ -76,7 +80,7 @@
 								<div data-color="rgb(70, 70, 70)" title="Grey 80%" data-class=""></div>
 								<div data-color="rgb(54, 54, 54)" title="Grey 85%" data-class=""></div>
 								<div data-color="rgb(37, 37, 37)" title="Grey 90%" data-class=""></div>
-								<!--div[data-color="#"]*15-->
+								div[data-color="#"]*15
 
 							</li>
 
@@ -84,7 +88,7 @@
 			</div>
 			</nav>
 
-		</div>
+		</div> -->
 		<!-- <div class="banner">
 			<ul>
 				<li>This is a slider</li>

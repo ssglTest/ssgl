@@ -48,7 +48,7 @@ public class LoginController {
 			String userRole = myRole.getDescription();
 			System.out.println("====================="+userRole);
 			if(userRole.equals(role)){
-				return "login/demo";
+				return "login/signIn";
 			}
 		}
 		modelMap.put("message", "请选择正确的类型");
