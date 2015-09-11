@@ -18,6 +18,19 @@
 		});
 	});
 </script>
+<!-- <style type="text/css">
+html, body {
+	margin: 0px 0px;
+	width: 100%;
+	height: 100%;
+}
+
+iframe {
+	margin: 0px 0px;
+	width: 100%;
+	height: 100%;
+}
+</style> -->
 <title>Insert title here</title>
 
 
@@ -49,7 +62,7 @@
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="informationTest.html" target="aaa">查看/修改个人信息</a>
+									<a href="informationTest.html" target="navTab">查看/修改个人信息</a>
 								</button>
 							</div>
 						</div>
@@ -165,34 +178,18 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div>
-					<ul class="nav nav-list bs-docs-sidenav affix-top">
-						<li class="active"><a href="#">iOS</a></li>
-						<li><a href="#">SVN</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"> Java <b class="caret"></b>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">jmeter</a></li>
-								<li><a href="#">EJB</a></li>
-								<li><a href="#">Jasper Report</a></li>
-								<li class="divider"></li>
-								<li><a href="#">分离的链接</a></li>
-								<li class="divider"></li>
-								<li><a href="#">另一个分离的链接</a></li>
-							</ul></li>
-					</ul>
-				</div> --> </nav>
+				</nav>
 			</div>
 			<div class="col-md-9">
-				
+				<iframe name="navTab" height="700px" width="100%" ></iframe>
 			</div>
+
 		</div>
-
-
-
-
+		
 	</div>
-
+	<div class="footer">
+		<h2 align="center" onmouseup="信管13级">信管开发团队</h2>
+		
+	</div>
 </body>
 </html>
