@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -36,7 +37,7 @@ public class Student extends Actor {
 	public Student(String no, String name) {
 		super(no, name);
 	}
-
+	@XmlTransient
 	public Tutor getTutor() {
 		return tutor;
 	}
@@ -52,7 +53,7 @@ public class Student extends Actor {
 	public void setSchool(School school) {
 		this.school = school;
 	}
-
+	@XmlTransient
 	public List<Teacher> getTeachers() {
 		return teachers;
 	}

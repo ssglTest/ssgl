@@ -33,7 +33,6 @@ public class SsglWebServiceImpl implements SsglWebService {
 			//Tutor tutor = tutorService.findByNo(username);
 			Tutor tutor=(Tutor)user.getActor();
 			//System.out.println("tutor***********"+tutor.getNo());
-			
 			return tutor;
 		}else{
 			throw new MessageException("用户名或密码错误");

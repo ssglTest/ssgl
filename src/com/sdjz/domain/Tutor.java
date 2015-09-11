@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -18,6 +19,7 @@ public class Tutor extends Actor{
 	private static final long serialVersionUID = 1L;
 	private String title;//ְ��
 	@OneToMany(mappedBy="tutor")
+	
 	private List<Student> students;
 	@ManyToOne
 	@JoinColumn(name="school_id")
@@ -38,6 +40,7 @@ public class Tutor extends Actor{
 		this.title = title;
 	}
 
+	@XmlTransient
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -45,12 +48,14 @@ public class Tutor extends Actor{
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+	@XmlTransient
 	public School getSchool() {
 		return school;
 	}
 	public void setSchool(School school) {
 		this.school = school;
 	}
+	@XmlTransient
 	public Major getMajor() {
 		return major;
 	}

@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="role")
@@ -38,6 +39,7 @@ public class Role {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@XmlTransient
 	public List<User> getUsers() {
 		return users;
 	}

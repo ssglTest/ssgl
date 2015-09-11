@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name="user")
 public class User {
@@ -43,6 +44,7 @@ public class User {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@XmlTransient
 	public String getUserName() {
 		return userName;
 	}
@@ -55,12 +57,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@XmlTransient
 	public List<Role> getRoles() {
 		return roles;
 	}
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+	@XmlTransient
 	public Actor getActor() {
 		return actor;
 	}

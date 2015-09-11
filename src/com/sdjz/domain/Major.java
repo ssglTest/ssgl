@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="major")
@@ -51,6 +52,7 @@ public class Major implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@XmlTransient
 	public School getSchool() {
 		return school;
 	}
