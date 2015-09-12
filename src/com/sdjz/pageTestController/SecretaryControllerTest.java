@@ -11,4 +11,14 @@ public class SecretaryControllerTest {
 	public String informationTest(){
 		return "secretaryTest/informationTest";
 	}
+	
+	@RequestMapping("/chooseTitleName")
+	public String chooseTitleName(){
+		return "secretaryTest/chooseTitleName";
+	}
+	
+	@RequestMapping("/lookChooseTitle.html")
+	public String lookChooseTitle(){
+		return "secretaryTest/lookChooseTitle";
+	}
 }

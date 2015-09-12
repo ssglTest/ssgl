@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" href="../bootstrap/bootstrap.min.css"
 	rel="stylesheet" />
+<link href="../img/glyphicons-halflings-white.png">
+<link href="../img/glyphicons-halflings.png">
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'
 	rel='stylesheet' type='text/css'>
 <link href="styles/font-awesome.min.css" rel="stylesheet" />
@@ -40,9 +42,14 @@ iframe {
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron masthead" style="background-color: #A4D3EE">
+			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<h2>欢迎登录硕士管理系统</h2>
 			<p>山东建筑大学非全日制硕士生管理系统</p>
+			<div align="right">
+				<!-- <label class="control-label">当前用户：</label> -->
+				<p></p>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3">
@@ -85,7 +92,7 @@ iframe {
 									<a href="#">发布专业课成绩与学分情况</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">发布选题资格名单</a>
+									<a href="secretary/chooseTitleName.html" target="navTab">发布选题资格名单</a>
 								</button>
 							</div>
 						</div>
@@ -119,7 +126,7 @@ iframe {
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传选题报告答辩时间地点</a>
+									<a href="secretary/uploadChooseTitleReportTime.html" target="navTab">上传选题报告答辩时间地点</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">上传论文答辩时间地点</a>
@@ -142,7 +149,7 @@ iframe {
 						<div id="collapseFour" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">审核论文选题申请表</a>
+									<a href="secretary/lookChooseTitle.html" target="navTab">审核论文选题申请表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">审核学位论文答辩申请书</a>
@@ -197,15 +204,15 @@ iframe {
 				</nav>
 			</div>
 			<div class="col-md-9">
-				<iframe name="navTab" height="700px" width="100%" ></iframe>
+				<iframe name="navTab" height="700px" width="100%"></iframe>
 			</div>
 
 		</div>
-		
+
 	</div>
 	<div class="footer">
 		<h2 align="center" onmouseup="信管13级">信管开发团队</h2>
-		
+
 	</div>
 </body>
 </html>
