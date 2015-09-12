@@ -24,7 +24,7 @@ public class SsglWebServiceImpl implements SsglWebService {
 	public Tutor login(String username, String password) {
 		// TODO Auto-generated method stub
 		User user = userService.findByUserName(username);
-		System.out.println("tutor   =======:"+user);
+		System.out.println("user   =======:"+user);
 		if(user==null){
 			throw new MessageException("用户不存在");
 		}
@@ -32,7 +32,7 @@ public class SsglWebServiceImpl implements SsglWebService {
 		if(pd.equals(password)){
 			//Tutor tutor = tutorService.findByNo(username);
 			Tutor tutor=(Tutor)user.getActor();
-			//System.out.println("tutor***********"+tutor.getNo());
+			//System.out.println("tutor===============" + tutor.toString());
 			return tutor;
 		}else{
 			throw new MessageException("用户名或密码错误");

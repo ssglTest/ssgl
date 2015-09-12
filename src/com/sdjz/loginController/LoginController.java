@@ -56,6 +56,10 @@ public class LoginController {
 				System.out.println("user*****************"+httpSession.getAttribute("user"));
 				if(userRole.equals("student")){
 					return "login/studentSignIn";
+				}else if(userRole.equals("student_teacher")){
+					return "login/tutorSignIn";
+				}else if(userRole.equals("secretary")){
+					return "login/secretarySignIn";
 				}
 				return "test/success";
 			}

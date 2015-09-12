@@ -79,10 +79,10 @@ iframe {
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">硕士管理相关规定</a>
+									<a href="test/postGraduateFileRlus.html" target="navTab">硕士管理相关规定</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">需上传的文档模板</a>
+									<a href="test/needUpdateFile.html" target="navTab">需上传的文档模板</a>
 								</button>
 							</div>
 						</div>
@@ -99,7 +99,7 @@ iframe {
 						<div id="collapseFive" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">硕士培养基本流程</a>
+									<a href="test/basicFlow.html" target="navTab">硕士培养基本流程</a>
 								</button>
 							</div>
 						</div>
@@ -116,7 +116,7 @@ iframe {
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">查看公共课程信息</a>
+									<a href="test/publicClassInformation.html" target="navTab">查看公共课程信息</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">查看专业课程信息</a>
@@ -128,7 +128,7 @@ iframe {
 									<a href="#">查看专业课成绩</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">查看选题资格名单</a>
+									<a href="test/chooseTitle.html" target="navTab">查看选题资格名单</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">查看我的导师</a>
@@ -148,32 +148,38 @@ iframe {
 						<div id="collapseFour" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传个人培养计划</a>
+									<a href="test/personalPlan.html" target="navTab">上传个人培养计划</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">论文选题</a>
+									<a href="test/projectChooseTitle.html" target="navTab">提交论文选题申请</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">提交选题报告</a>
+									<a href="test/chooseTitleReport.html" target="navTab">提交选题报告</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">答辩申请</a>
+									<a href="test/chooseTitleAnswer.html" target="navTab">论文选题答辩</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传中期成果</a>
+									<a href="test/checkMiddle" target="navTab">提交中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">上传论文考核记录表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传论文成果</a>
+									<a href="#">提交论文答辩申请书</a>
+								</button>
+								<button class="btn btn-default btn-block" type="button">
+									<a href="#">上传论文电子版</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">查看论文答辩时间地点</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传汇总文档</a>
+									<a href="#">提交授予硕士学位审批表</a>
 								</button>
+								<!-- <button class="btn btn-default btn-block" type="button">
+									<a href="#">上传汇总文档</a>
+								</button> -->
 							</div>
 						</div>
 					</div>
@@ -181,15 +187,59 @@ iframe {
 				</nav>
 			</div>
 			<div class="col-md-9">
-				<iframe name="navTab" height="700px" width="100%" ></iframe>
+				<iframe name="navTab" height="700px" width="100%"></iframe>
 			</div>
 
 		</div>
-		
+
 	</div>
-	<div class="footer">
-		<h2 align="center" onmouseup="信管13级">信管开发团队</h2>
-		
+	<div class="container">
+		<!-- Footer
+    ================================================== -->
+		<!-- 自定义footer css -->
+		<!-- 这个地方是为了兼容加了个bs-docs-social 官网是没有的. -->
+		<!--[if lte IE 9]>
+<div class="bs-docs-social">
+<![endif]-->
+		<!-- <div class="footer"> 内置块css定义
+		<div class="container">
+			一行一排
+			<p>
+				由 <a href="http://twitter.com/mdo" target="_blank">@mdo</a> 和 <a
+					href="http://twitter.com/fat" target="_blank">@fat</a>
+				倾心制作开发,由KingHack学习并注解
+			</p>
+			<p>
+				开源依照 <a href="http://www.apache.org/licenses/LICENSE-2.0"
+					target="_blank">Apache License v2.0</a>, 文档依照 <a
+					href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+			</p>
+			<p>
+				Icons取自<a href="http://glyphicons.com">Glyphicons Free</a> ,授权依照 <a
+					href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+			</p>
+			尾部链接
+			<ul class="footer-links">
+				<li><a href="http://blog.getbootstrap.com">博客</a></li>
+				<li class="muted">&middot;</li>
+				<li><a
+					href="https://github.com/twitter/bootstrap/issues?state=open">问题反馈</a></li>
+				使用内置标准点分割
+				<li class="muted">&middot;</li>
+				<li><a
+					href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">路线图与更新日志</a></li>
+				[if lte IE 9]>
+      
+      <p>不完全支持Internet Explorer,请在360安全浏览器或者是金山猎豹浏览的极速模式中浏览</p>
+      <![endif]
+			</ul>
+		</div>
+		</div> -->
+		<div id="footer">
+      <div class="container">
+        <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+      </div>
+    </div>
 	</div>
 </body>
 </html>
