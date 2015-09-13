@@ -37,18 +37,26 @@ iframe {
 
 
 </head>
-<body style="background:#EEE9E9">
+<body style="background: #EEE9E9">
 	<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 	<div class="container">
 		<div class="jumbotron masthead" style="background-color: #A4D3EE">
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
-			<h2>欢迎登录硕士管理系统</h2>
-			<p>山东建筑大学非全日制硕士生管理系统</p>
+			<div align="left">
+				<div class="row">
+					<div class="col-md-3">
+						<img alt="山东建筑大学图标" src="../img/logo_login.png">
+					</div>
+					<div class="col-md-7">
+						<h2 style="font-family:'微软雅黑'">欢迎登录硕士管理系统</h2>
+						<p>山东建筑大学非全日制硕士生管理系统</p>
+					</div>
+				</div>
+			</div>
 			<div align="right">
 				<!-- <label class="control-label">当前用户：</label> -->
-				<p></p>
 			</div>
 		</div>
 		<div class="row">
@@ -190,6 +198,9 @@ iframe {
 						<div id="collapseSeven" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
+									<a href="#">论文选题工作存档</a>
+								</button>
+								<button class="btn btn-default btn-block" type="button">
 									<a href="#">存档中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
@@ -211,10 +222,12 @@ iframe {
 		</div>
 
 	</div>
-	<div id="footer" style="background: #8B8682" class="navbar-fixed-bottom">
+	<div id="footer" style="background: #8B8682"
+		class="navbar-fixed-bottom">
 		<div class="container" align="center">
 			<p class="muted credit">
-				信管开发团队 and <a href="http://ryanfait.com/sticky-footer/">techjoy</a>.
+				<a href="#">信管开发团队 </a> and <a
+					href="http://ryanfait.com/sticky-footer/">techjoy</a>.
 			</p>
 		</div>
 	</div>
