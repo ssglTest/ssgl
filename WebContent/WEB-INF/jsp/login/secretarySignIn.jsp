@@ -211,7 +211,7 @@ iframe {
 		</div>
 
 	</div>
-	<div id="footer" style="background: #8B8682">
+	<div id="footer" style="background: #8B8682" class="navbar-fixed-bottom">
 		<div class="container" align="center">
 			<p class="muted credit">
 				信管开发团队 and <a href="http://ryanfait.com/sticky-footer/">techjoy</a>.

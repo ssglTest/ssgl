@@ -139,10 +139,10 @@ iframe {
 						<div id="collapseSix" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">查看我的学生</a>
+									<a href="tutor/myStudent.html" target="navTab">查看我的学生</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">查看个人培养计划</a>
+									<a href="tutor/lookPersonalPlan.html" target="navTab">查看个人培养计划</a>
 								</button>
 							</div>
 						</div>
@@ -180,7 +180,7 @@ iframe {
 		</div>
 
 	</div>
-	<div id="footer" style="background: #8B8682">
+	<div id="footer" style="background: #8B8682" class="navbar-fixed-bottom">
 		<div class="container" align="center">
 			<p class="muted credit">
 				信管开发团队 and <a href="http://ryanfait.com/sticky-footer/"> techjoy</a>.
