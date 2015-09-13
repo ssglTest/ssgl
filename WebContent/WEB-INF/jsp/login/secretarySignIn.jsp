@@ -44,19 +44,27 @@ iframe {
 	<div class="container">
 		<div class="jumbotron masthead" style="background-color: #A4D3EE">
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
-			<div align="left">
-				<div class="row">
-					<div class="col-md-3">
-						<img alt="山东建筑大学图标" src="../img/logo_login.png">
-					</div>
-					<div class="col-md-7">
-						<h2 style="font-family:'微软雅黑'">欢迎登录硕士管理系统</h2>
-						<p>山东建筑大学非全日制硕士生管理系统</p>
-					</div>
+			<div class="row">
+				<div class="col-md-2">
+					<img alt="山东建筑大学图标"  src="../img/logo_login.png" width="100" height="100">
+				</div>
+				<div class="col-md-10">
+					<h2 style="font-family: '微软雅黑'">欢迎登录硕士管理系统</h2>
+					<p>山东建筑大学非全日制硕士生管理系统</p>
 				</div>
 			</div>
 			<div align="right">
-				<!-- <label class="control-label">当前用户：</label> -->
+				<%-- <label class="control-lable">当前用户:</label><label
+					class="control-lable">${username}</label>  --%>
+				<div class="row">
+					<div class="col-md-11">
+						<h3>
+							<span class="lable lable-default">当前用户：</span>${username}</h3>
+					</div>
+					<div class="col-md-1">
+						<a href="logout.html"><button class="btn btn-default">退出登录</button></a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row">

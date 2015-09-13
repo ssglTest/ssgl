@@ -33,7 +33,6 @@ public class LoginController {
 	@RequestMapping(value = "/login.html",method=RequestMethod.POST)
 	public String login(HttpSession httpSession, String username, String password, String role, ModelMap modelMap) {
 		User user = userService.findByUserName(username);
-		
 		if (user == null) {
 			modelMap.put("message", "用户名不存在");
 			return "login/relogin";
@@ -47,7 +46,8 @@ public class LoginController {
 		}
 		System.out.println("得到的role:"+role);
 		String savedRole =user.getRole().getDescription();//用户在数据库中已保存的角色
-		System.out.println("用户在数据库中已保存的角色"+savedRole);
+		String name = user.getActor().getName();
+		modelMap.put("username", name);
 		if(savedRole.equals(role) ){
 			if(savedRole.equals("student")){
 				return "login/studentSignIn";
@@ -73,7 +73,7 @@ public class LoginController {
 	@RequestMapping("logout")
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
-		return "login/login";
+		return "login/relogin";
 	}
 	
 	@RequestMapping("/informationTest.html")
