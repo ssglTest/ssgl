@@ -1,7 +1,5 @@
-package com.sdjz.testService;
+package com.sdjz.serviceTest;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +19,7 @@ public class MajorTest {
 	public void init(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
 		majorService=(MajorService)ac.getBean("majorService");
-		schoolService=(SchoolService)ac.getBean("schoolService");
+		schoolService=(SchoolService)ac.getBean("shoolService");
 		
 	}
 	@Test
@@ -29,10 +27,10 @@ public class MajorTest {
 		School school=schoolService.findById(1);
 		Major major=new Major("信管");
 		major.setSchool(school);
-		majorService.saveMajor(major);
+		majorService.save(major);
 		Major major1=new Major("造价");
 		major1.setSchool(school);
-		majorService.saveMajor(major1);
+		majorService.save(major1);
 	
 	}
 

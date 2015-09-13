@@ -45,6 +45,7 @@
        	<tx:annotation-driven transaction-manager="transactionManager"/>
        	<jpa:repositories base-package="com.sdjz.dao"
        		entity-manager-factory-ref="entityManagerFactory" 
+       		factory-class="com.sdjz.jpaRepository.MyRepositoryFactoryBean"
 	 		transaction-manager-ref="transactionManager"/>
        	<!-- <context:component-scan base-package="testdatajpa.dao"/> -->
        	<context:component-scan base-package="com.sdjz.service"/>

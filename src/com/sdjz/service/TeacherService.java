@@ -1,35 +1,28 @@
 package com.sdjz.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sdjz.dao.TutorDao;
 import com.sdjz.dao.TeacherDao;
 import com.sdjz.domain.Teacher;
+import com.sdjz.domain.Tutor;
+import com.sdjz.jpaRepository.MyRepository;
+
 @Service("teacherService")
-public class TeacherService {
+public class TeacherService extends BasicService<Teacher,Integer>{
+	private TeacherDao teacherDao;
+	
 	@Autowired
-	TeacherDao teacherDao;
-	
-	public TeacherService(){}
-	
-	public void saveTeacher(Teacher teacher){
-		teacherDao.save(teacher);
+	@Override
+	public void setDasciDao(MyRepository<Teacher, Integer> basicDao) {
+		// TODO Auto-generated method stub
+		this.basicDao=basicDao;
+		this.teacherDao=(TeacherDao)basicDao;
 	}
-	public void saveTeachers(List<Teacher> teachers){
-		for(Teacher teacher:teachers){
-			teacherDao.save(teacher);
-		}
-	}
-	public Teacher findByNo(String no){
+	public Tutor findByNo(String no){
 		return teacherDao.findByNo(no);
 	}
-	public Teacher findById(Integer id){
-		return teacherDao.findOne(id);
-	}
-	public List<Teacher> findAll(){
-		return teacherDao.findAll();
-	}
-
+	
+	
 }

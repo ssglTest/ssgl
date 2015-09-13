@@ -13,8 +13,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DynamicUpdate(true)
 public abstract class Actor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +27,7 @@ public abstract class Actor implements Serializable {
 	private Integer id;
 	@Column(length=12)
 	private String no;
-	@Column(length=5)
+	@Column(length=12)
 	private String name;
 	@Column(length=14)
 	private String email;

@@ -1,11 +1,11 @@
 package com.sdjz.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
+
 
 import com.sdjz.domain.Secretary;
+import com.sdjz.jpaRepository.MyRepository;
 
-public interface SecretaryDao extends JpaRepository<Secretary,Integer> {
-	//public Secretary findByName();
+public interface SecretaryDao extends MyRepository<Secretary,Integer> {
 	public Secretary findByNo(String no);
-
 }

@@ -1,5 +1,6 @@
 package com.sdjz.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,9 +17,16 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Table(name="user")
-public class User {
+@DynamicUpdate(true)
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -26,9 +34,9 @@ public class User {
 	private String userName;
 	@Column(length=20)
 	private String password;
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="user_role")
-	private List<Role> roles;
+	@OneToOne
+	@JoinColumn(name="role_id")
+	private Role role;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="actor_id")
 	private Actor actor;
@@ -57,12 +65,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@XmlTransient
-	public List<Role> getRoles() {
-		return roles;
+	
+	public Role getRole() {
+		return role;
 	}
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	@XmlTransient
 	public Actor getActor() {

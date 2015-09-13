@@ -1,35 +1,23 @@
 package com.sdjz.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sdjz.dao.SchoolDao;
 import com.sdjz.domain.School;
+import com.sdjz.jpaRepository.MyRepository;
 
-@Service("schoolService")
-public class SchoolService {
+@Service("shoolService")
+public class SchoolService extends BasicService<School,Integer> {
+	@SuppressWarnings("unused")
+	private SchoolDao schoolDao;
 	@Autowired
-	SchoolDao schoolDao;
-	public SchoolService(){}
-	public void saveSchool(School school){
-		schoolDao.save(school);
+	@Override
+	public void setDasciDao(MyRepository<School, Integer> basicDao) {
+		// TODO Auto-generated method stub
+		this.basicDao=basicDao;
+		this.schoolDao=(SchoolDao)basicDao;
+		
 	}
 	
-	public void saveSchools(List<School> schools){
-		for(School school:schools){
-			schoolDao.save(school);
-		}
-	}
-	public School findByName(String description){
-		return schoolDao.findByDescription(description);
-	}
-	public School findById(Integer id){
-		return schoolDao.findOne(id);
-	}
-	public List<School> findAll(){
-		return schoolDao.findAll();
-	}
-
 }

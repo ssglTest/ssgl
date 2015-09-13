@@ -1,16 +1,11 @@
-package com.sdjz.testService;
+package com.sdjz.serviceTest;
 
-
-
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.sdjz.domain.Role;
-import com.sdjz.domain.Secretary;
 import com.sdjz.domain.User;
 import com.sdjz.service.SecretaryService;
 import com.sdjz.service.UserService;
@@ -27,12 +22,9 @@ public class UserTest {
 	}
 	
 	@Test
-	public void getRole(){
-		Secretary secretary=secretaryService.findByNo("1001");
-		User user=new User("1001","1001");
-		userService.saveUser(user);
-		secretary.setUser(user);
-		
+	public void findByUserName(){
+		User user=userService.findByUserName("111");
+		System.out.println("userName========"+user.getUserName());
 	}
 
 }

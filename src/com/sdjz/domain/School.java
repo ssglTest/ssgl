@@ -1,5 +1,6 @@
 package com.sdjz.domain;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -13,9 +14,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="school")
-public class School {
+@DynamicUpdate(true)
+public class School implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;

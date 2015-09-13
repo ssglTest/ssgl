@@ -1,10 +1,9 @@
 package com.sdjz.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.sdjz.domain.Role;
+import com.sdjz.jpaRepository.MyRepository;
 
-public interface RoleDao extends JpaRepository<Role,Integer> {
+public interface RoleDao extends MyRepository<Role,Integer> {
 	public Role findByDescription(String description);
 
 }

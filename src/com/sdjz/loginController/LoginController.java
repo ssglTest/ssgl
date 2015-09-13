@@ -46,34 +46,23 @@ public class LoginController {
 			return "login/relogin";
 		}
 		System.out.println("得到的role:"+role);
-		//在取出集合进行遍历前，要先对集合是否为空进行判断
-		List<Role> roles = user.getRoles();
-		System.out.println(roles);
-		for(Role myRole : roles){
-			String userRole = myRole.getDescription();
-			System.out.println("====================="+userRole);
-			if(userRole.equals(role)){
-				System.out.println("user*****************"+httpSession.getAttribute("user"));
-				if(userRole.equals("student")){
-					return "login/studentSignIn";
-				}else if(userRole.equals("student_teacher")){
-					return "login/tutorSignIn";
-				}else if(userRole.equals("secretary")){
-					return "login/secretarySignIn";
-				}
-				return "test/success";
+		String savedRole =user.getRole().getDescription();//用户在数据库中已保存的角色
+		System.out.println("用户在数据库中已保存的角色"+savedRole);
+		if(savedRole.equals(role) ){
+			if(savedRole.equals("student")){
+				return "login/studentSignIn";
+			}else if(savedRole.equals("tutor")){
+				return "login/tutorSignIn";
+			}else if(savedRole.equals("secretary")){
+				return "login/secretarySignIn";
+			}else if(savedRole.equals("teacher")){
+				return "login/teacherSignIn";
 			}
 		}
-		modelMap.put("message", "请选择正确的类型");
+		modelMap.put("message", "类型错误");
 		return "login/relogin";
+		
 	}
-
-	// 鐢ㄤ簬瑙﹀彂鏍囩鍔熻兘
-	/*@RequestMapping("/reLogin.html")
-	public String reLogin(ModelMap map) {
-		map.put("message", "璇烽噸鏂扮櫥褰�");
-		return "login/login";
-	}*/
 
 	@RequestMapping("/hello.html")
 	public String info() {

@@ -1,6 +1,5 @@
-package com.sdjz.testService;
+package com.sdjz.serviceTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -9,7 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sdjz.domain.Teacher;
-import com.sdjz.service.SchoolService;
+import com.sdjz.domain.Tutor;
+import com.sdjz.service.TutorService;
 import com.sdjz.service.TeacherService;
 
 public class TeacherServiceTest {
@@ -18,22 +18,15 @@ public class TeacherServiceTest {
 	public void init(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
 		teacherService=(TeacherService)ac.getBean("teacherService");
+		
 	}
+	
 	@Test
-	public void save(){
-		List<Teacher> teachers = new ArrayList<Teacher>();
-		teachers.add(new Teacher("0101","0101"));
-		teacherService.saveTeachers(teachers);
+	public void findAll(){
+		List<Teacher> teachers=teacherService.findAll();
+		for(Teacher teacher: teachers){
+			System.out.println(teacher.getName());
 		}
-	@Test
-	public void findById(){
-		Teacher teacher= teacherService.findById(32768);
-		System.out.println("teacher NO" +teacher.getNo());
-	}
-	@Test
-	public void findByNo(){
-		Teacher teacher=teacherService.findByNo("0101");
-		System.out.println("teacher Name"+teacher.getName());
 	}
 
 }

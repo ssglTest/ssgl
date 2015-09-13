@@ -1,10 +1,8 @@
 package com.sdjz.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.sdjz.domain.Major;
+import com.sdjz.jpaRepository.MyRepository;
 
-public interface MajorDao extends JpaRepository<Major,Integer>{
-	public Major findByDescription(String description);
+public interface MajorDao extends MyRepository<Major,Integer>{
 
 }

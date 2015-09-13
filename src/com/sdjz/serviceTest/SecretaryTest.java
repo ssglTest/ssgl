@@ -1,4 +1,6 @@
-package com.sdjz.testService;
+package com.sdjz.serviceTest;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,11 +21,14 @@ public class SecretaryTest {
 	@Test
 	public void save(){
 		Secretary secretary =new Secretary("1001","1001");
-		secretaryService.saveSecretary(secretary);
+		secretaryService.save(secretary);
 	}
 	@Test
-	public void delete(){
-		secretaryService.DeleteById(1);
+	public void findAll(){
+		List<Secretary> secretarys=secretaryService.findAll();
+		for(Secretary secretary:secretarys){
+			System.out.println(secretary.getName());
+		}
 	}
 
 }

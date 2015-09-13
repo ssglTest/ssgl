@@ -15,8 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="major")
+@DynamicUpdate(true)
 public class Major implements Serializable {
 	/**
 	 * 

@@ -1,37 +1,23 @@
 package com.sdjz.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sdjz.dao.SecretaryDao;
 import com.sdjz.domain.Secretary;
+import com.sdjz.jpaRepository.MyRepository;
 
 @Service("secretaryService")
-public class SecretaryService {
+public class SecretaryService extends BasicService<Secretary,Integer> {
+	private SecretaryDao secretaryDao;
 	@Autowired
-	SecretaryDao secretaryDao;
-	public SecretaryService(){}
-	public void saveSecretary(Secretary secretary){
-		secretaryDao.save(secretary);
-	}
-	public void saveSecretaries(List<Secretary> secretaries){
-		for(Secretary secretary:secretaries){
-		secretaryDao.save(secretary);
-		}
+	@Override
+	public void setDasciDao(MyRepository<Secretary, Integer> basicDao) {
+		// TODO Auto-generated method stub
+		this.basicDao=basicDao;
+		this.secretaryDao=(SecretaryDao)basicDao;
 	}
 	public Secretary findByNo(String no){
 		return secretaryDao.findByNo(no);
 	}
-	public Secretary findById(Integer id){
-		return secretaryDao.findOne(id);
-	}
-	public List<Secretary> findAll(){
-		return secretaryDao.findAll();
-	}
-	public void DeleteById(Integer id){
-		secretaryDao.delete(id);
-	}
-
 }

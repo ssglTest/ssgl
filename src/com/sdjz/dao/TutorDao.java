@@ -1,15 +1,10 @@
 package com.sdjz.dao;
 
-import java.util.Set;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import com.sdjz.domain.Tutor;
+import com.sdjz.jpaRepository.MyRepository;
 
-public interface TutorDao extends JpaRepository<Tutor,Integer>,JpaSpecificationExecutor<Tutor>{
+public interface TutorDao extends MyRepository<Tutor,Integer>{
 	public Tutor findByNo(String no);
-	
-	
 
 }

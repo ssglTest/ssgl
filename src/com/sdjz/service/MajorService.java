@@ -1,34 +1,25 @@
 package com.sdjz.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sdjz.dao.MajorDao;
 import com.sdjz.domain.Major;
+import com.sdjz.jpaRepository.MyRepository;
 
 @Service("majorService")
-public class MajorService {
+public class MajorService extends BasicService<Major,Integer>{
+	@SuppressWarnings("unused")
+	private MajorDao majorDao;
 	@Autowired
-	MajorDao majorDao;
-	public MajorService(){}
-	public void saveMajor(Major major){
-		majorDao.save(major);
+	@Override
+	public void setDasciDao(MyRepository<Major, Integer> basicDao) {
+		// TODO Auto-generated method stub
+		this.basicDao=basicDao;
+		this.majorDao=(MajorDao)basicDao;
+		
 	}
-	public void saveMajors(List<Major> majors){
-		for(Major major:majors){
-			majorDao.save(major);
-		}
-	}
-	public Major findByDescription(String description){
-		return majorDao.findByDescription(description);
-	}
-	public Major findById(Integer id){
-		return majorDao.findOne(id);
-	}
-	public List<Major> findAll(){
-		return majorDao.findAll();
-	}
+	
 
 }

@@ -1,9 +1,7 @@
 package com.sdjz.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.sdjz.domain.School;
+import com.sdjz.jpaRepository.MyRepository;
 
-public interface SchoolDao extends JpaRepository<School,Integer> {
-	public School findByDescription(String description);
+public interface SchoolDao extends MyRepository<School,Integer> {
 }

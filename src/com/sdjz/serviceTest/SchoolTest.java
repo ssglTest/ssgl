@@ -1,4 +1,4 @@
-package com.sdjz.testService;
+package com.sdjz.serviceTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class SchoolTest {
 	@Before
 	public void init(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
-		schoolService=(SchoolService)ac.getBean("schoolService");
+		schoolService=(SchoolService)ac.getBean("shoolService");
 		tutorService=(TutorService)ac.getBean("tutorService");
 		studentService=(StudentService)ac.getBean("studentService");
 		
@@ -32,30 +32,6 @@ public class SchoolTest {
 		List<School> schools=new ArrayList<School>();
 		schools.add(new School("AA"));
 		schools.add(new School("BB"));
-		schoolService.saveSchools(schools);
+		schoolService.saves(schools);
 	}
-	@Test
-	public void findById(){
-		System.out.println("School:" +schoolService.findById(1).getDescription());
-	}
-	@Test
-	public void findByName(){
-		System.out.println("schoolByname:"+schoolService.findByName("AA"));
-	}
-	@Test
-	public void findAll(){
-		List<School> schools =schoolService.findAll();
-		for(School school:schools){
-			System.out.println(school.getDescription());
-		}
-	}
-	@Test
-	public void findTutor(){
-		School school=schoolService.findById(1);
-		List<Tutor> tutors=school.getTutors();
-		for(Tutor tutor:tutors){	
-		System.out.println("Tutor No ========"+tutor.getNo());
-		}
-	}
-	
 }

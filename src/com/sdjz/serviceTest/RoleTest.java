@@ -1,4 +1,4 @@
-package com.sdjz.testService;
+package com.sdjz.serviceTest;
 
 
 import java.util.ArrayList;
@@ -26,22 +26,19 @@ public class RoleTest {
 		roles.add(new Role("tutor"));
 		roles.add(new Role("teacher"));
 		roles.add(new Role("secretary"));
-		roleService.saveRoles(roles);
-	}
-	@Test
-	public void findByDescription(){
-		System.out.println("roleByDescription:"+roleService.findByDescription("student").getDescription());
-	}
-	@Test
-	public void findById(){
-		System.out.println("roleById:"+roleService.findById(1).getDescription());
+		roleService.saves(roles);
 	}
 	@Test
 	public void findAll(){
-		List<Role> roles=roleService.findAll();
+		List<Role> roles = roleService.findAll();
 		for(Role role:roles){
-			System.out.println("role:"+role.getDescription());
+		System.out.println(role.getDescription());
 		}
+	}
+	@Test
+	public void findByDescription(){
+		Role role = roleService.findByDescription("student");
+		System.out.println("role Descroiption======"+role.getDescription());
 	}
 
 }
