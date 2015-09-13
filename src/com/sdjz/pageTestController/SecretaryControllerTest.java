@@ -21,4 +21,9 @@ public class SecretaryControllerTest {
 	public String lookChooseTitle(){
 		return "secretaryTest/lookChooseTitle";
 	}
+	
+	@RequestMapping("/uploadChooseTitleReportTime.html")
+	public String uploadChooseTitleReportTime(){
+		return "secretaryTest/uploadChooseTitleReportTime";
+	}
 }

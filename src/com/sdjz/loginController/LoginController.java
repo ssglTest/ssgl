@@ -87,7 +87,7 @@ public class LoginController {
 		return "login/login";
 	}
 	
-	@RequestMapping("/informationTest")
+	@RequestMapping("/informationTest.html")
 	public String informationTest(){
 		return "information/bootstrapStudentTest";
 	}

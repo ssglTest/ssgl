@@ -32,7 +32,7 @@ public class PageTestController {
 		return "information/chooseTitleAnswer";
 	}
 	
-	@RequestMapping("checkMiddle")
+	@RequestMapping("/checkMiddle.html")
 	public String checkMiddle(){
 		return "information/checkMiddle";
 	}
@@ -50,5 +50,18 @@ public class PageTestController {
 	@RequestMapping("/basicFlow.html")
 	public String basicFlow(){
 		return "information/basicFlow";
+	}
+	
+	@RequestMapping("/notpass.html")
+	public String notPass(){
+		if(true){
+			return "information/error";
+		}
+		return null;
+	}
+	
+	@RequestMapping("/updatePaper.html")
+	public String updatePaper(){
+		return "information/updatePaper";
 	}
 }

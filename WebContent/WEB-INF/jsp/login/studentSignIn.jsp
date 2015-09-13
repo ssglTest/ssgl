@@ -35,12 +35,13 @@ iframe {
 
 
 </head>
-<body>
+<body style="background:#EEE9E9">
 	<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron" style="background: #A4D3EE">
+			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<h2>欢迎登录硕士管理系统</h2>
 			<p>山东建筑大学非全日制硕士生管理系统</p>
 		</div>
@@ -160,16 +161,16 @@ iframe {
 									<a href="test/chooseTitleAnswer.html" target="navTab">论文选题答辩</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="test/checkMiddle" target="navTab">提交中期检查表</a>
+									<a href="test/checkMiddle.html" target="navTab">提交中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传论文考核记录表</a>
+									<a href="test/notpass.html" target="navTab">上传论文考核记录表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">提交论文答辩申请书</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传论文电子版</a>
+									<a href="test/updatePaper.html" target="navTab">上传论文电子版</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">查看论文答辩时间地点</a>
@@ -193,7 +194,6 @@ iframe {
 		</div>
 
 	</div>
-	<div class="container">
 		<!-- Footer
     ================================================== -->
 		<!-- 自定义footer css -->
@@ -235,11 +235,12 @@ iframe {
 			</ul>
 		</div>
 		</div> -->
-		<div id="footer">
-      <div class="container">
-        <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
-      </div>
-    </div>
-	</div>
+		<div id="footer" style="background: #8B8682">
+			<div class="container" align="center">
+				<p class="muted credit">
+					信管开发团队 and <a href="http://ryanfait.com/sticky-footer/">  techjoy</a>.
+				</p>
+			</div>
+		</div>
 </body>
 </html>

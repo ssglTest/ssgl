@@ -32,10 +32,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -49,10 +47,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -66,10 +62,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -83,10 +77,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -100,10 +92,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -117,10 +107,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -134,10 +122,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -151,10 +137,8 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td><button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button></td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -168,10 +152,10 @@
 						<td>张三</td>
 						<td>男</td>
 						<td>信息管理</td>
-						<td><select class="form-control">
-								<option>通过</option>
-								<option>不通过</option>
-						</select></td>
+						<td>
+							<button class="btn btn-default" data-toggle="modal"
+								data-target="#updateInformation">审核</button>
+						</td>
 						<td>
 							<button class="btn btn-default">
 								<a href="#">下载</a>
@@ -195,7 +179,50 @@
 					<li><a href="#">&raquo;</a></li>
 				</ul>
 			</div>
-
+			<div class="modal fade" id="updateInformation" tabindex="-1"
+				role="dialog" aria-labelledby="updateInformationLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<!-- 模态框的标题 -->
+							<h4 class="modal-title" id="myModalLable">修改个人信息</h4>
+						</div>
+						<div class="modal-body">
+							<form action="#" role="form" class="form-horizontal">
+								<table class="table table-hover">
+									<tbody>
+										<tr>
+											<td>姓名:</td>
+											<td>张三</td>
+										</tr>
+										<tr>
+											<td>标题:</td>
+											<td>论文选题申请表</td>
+										</tr>
+										<tr>
+											<td>审核</td>
+											<td>
+												<select class="form-control" name="resultOfCheck">
+													<option>通过</option>
+													<option>不通过</option>
+												</select>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">提交更改</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

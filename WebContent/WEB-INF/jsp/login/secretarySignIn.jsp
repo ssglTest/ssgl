@@ -37,7 +37,7 @@ iframe {
 
 
 </head>
-<body>
+<body style="background:#EEE9E9">
 	<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
@@ -126,7 +126,8 @@ iframe {
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="secretary/uploadChooseTitleReportTime.html" target="navTab">上传选题报告答辩时间地点</a>
+									<a href="secretary/uploadChooseTitleReportTime.html"
+										target="navTab">上传选题报告答辩时间地点</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">上传论文答辩时间地点</a>
@@ -210,9 +211,12 @@ iframe {
 		</div>
 
 	</div>
-	<div class="footer">
-		<h2 align="center" onmouseup="信管13级">信管开发团队</h2>
-
+	<div id="footer" style="background: #8B8682">
+		<div class="container" align="center">
+			<p class="muted credit">
+				信管开发团队 and <a href="http://ryanfait.com/sticky-footer/">techjoy</a>.
+			</p>
+		</div>
 	</div>
 </body>
 </html>
