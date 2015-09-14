@@ -40,7 +40,7 @@ iframe {
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron" style="background: #A4D3EE">
 			<div class="row">
 				<div class="col-md-2">
 					<img alt="山东建筑大学图标"  src="../img/logo_login.png" width="100" height="100">
