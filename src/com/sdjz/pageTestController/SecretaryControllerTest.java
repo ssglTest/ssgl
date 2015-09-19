@@ -26,4 +26,9 @@ public class SecretaryControllerTest {
 	public String uploadChooseTitleReportTime(){
 		return "secretaryTest/uploadChooseTitleReportTime";
 	}
+	
+	@RequestMapping("/saveChooseTitle.html")
+	public String saveChooseTitle(){
+		return "secretaryTest/saveChooseTitle";
+	}
 }

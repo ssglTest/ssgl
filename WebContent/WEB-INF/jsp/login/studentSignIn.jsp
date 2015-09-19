@@ -31,7 +31,7 @@ iframe {
 	height: 100%;
 }
 </style> -->
-<title>Insert title here</title>
+<title>硕士管理系统</title>
 
 
 </head>
