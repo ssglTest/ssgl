@@ -31,4 +31,9 @@ public class SecretaryControllerTest {
 	public String saveChooseTitle(){
 		return "secretaryTest/saveChooseTitle";
 	}
+	
+	@RequestMapping("/copyCheck.html")
+	public String copyCheck(){
+		return "secretaryTest/copyCheck";
+	}
 }

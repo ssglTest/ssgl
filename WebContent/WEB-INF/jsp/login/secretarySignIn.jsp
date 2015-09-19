@@ -189,7 +189,7 @@ iframe {
 						<div id="collapseSix" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">复制比检测</a>
+									<a href="secretary/copyCheck.html" target="navTab">复制比检测</a>
 								</button>
 							</div>
 						</div>

@@ -109,7 +109,7 @@
 									<tr>
 										<td>管理工程学院硕士学位论文选题申请表</td>
 										<td><span class="label label-success">已提交</span></td>
-									</tr>
+										</tr>
 									<tr>
 										<td>山东建筑大学硕士学位论文选题报告及论文工作计划</td>
 										<td><span class="label label-warning">未提交</span></td>
