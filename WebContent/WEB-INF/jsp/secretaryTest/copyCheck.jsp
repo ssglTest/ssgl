@@ -35,7 +35,7 @@
 							<button class="btn btn-default">
 								<a href="#">下载</a>
 							</button>
-							<button class="btn btn-default" data-toggle="medal"
+							<button class="btn btn-default" data-toggle="modal"
 								data-target="#copyCheck">复制比</button>
 						</td>
 					</tr>
@@ -47,7 +47,7 @@
 							<button class="btn btn-default">
 								<a href="#">下载</a>
 							</button>
-							<button class="btn btn-default" data-toggle="medal"
+							<button class="btn btn-default" data-toggle="modal"
 								data-target="#copyCheck">复制比</button>
 						</td>
 					</tr>
@@ -59,7 +59,7 @@
 							<button class="btn btn-default">
 								<a href="#">下载</a>
 							</button>
-							<button class="btn btn-default" data-toggle="medal"
+							<button class="btn btn-default" data-toggle="modal"
 								data-target="#copyCheck">复制比</button>
 						</td>
 					</tr>
@@ -71,7 +71,7 @@
 							<button class="btn btn-default">
 								<a href="#">下载</a>
 							</button>
-							<button class="btn btn-default" data-toggle="medal"
+							<button class="btn btn-default" data-toggle="modal"
 								data-target="#copyCheck">复制比</button>
 						</td>
 					</tr>
@@ -83,7 +83,7 @@
 							<button class="btn btn-default">
 								<a href="#">下载</a>
 							</button>
-							<button class="btn btn-default" data-toggle="medal"
+							<button class="btn btn-default" data-toggle="modal"
 								data-target="#copyCheck">复制比</button>
 						</td>
 					</tr>
@@ -95,7 +95,7 @@
 							<button class="btn btn-default">
 								<a href="#">下载</a>
 							</button>
-							<button class="btn btn-default" data-toggle="medal"
+							<button class="btn btn-default" data-toggle="modal"
 								data-target="#copyCheck">复制比</button>
 						</td>
 					</tr>
@@ -114,20 +114,29 @@
 				</tbody>
 			</table>
 			<div class="modal fade" id="copyCheck" role="dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">复制比</h4>
-					</div>
-					<div class="modal-body">
-						测试
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-primary" type="button" data-dismiss="modal">关闭</button>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" type="button" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">复制比</h4>
+						</div>
+						<div class="modal-body">
+
+							<input id="copy" name="copyCheck" type="text"
+								class="form-control" placeholder="请输入复制比">
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" type="button"
+								data-dismiss="modal">关闭</button>
+							<button class="btn btn-primary" type="button"
+								data-dismiss="modal">保存更改</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 </body>
 </html>

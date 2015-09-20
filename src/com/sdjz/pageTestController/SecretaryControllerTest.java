@@ -36,4 +36,6 @@ public class SecretaryControllerTest {
 	public String copyCheck(){
 		return "secretaryTest/copyCheck";
 	}
+	
+	
 }
