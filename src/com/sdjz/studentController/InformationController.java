@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sdjz.domain.Student;
-import com.sdjz.other.CommonHelper;
+import com.sdjz.other.Common;
 
 @Controller
 public class InformationController {
@@ -19,7 +19,7 @@ public class InformationController {
 	@RequestMapping(value="userContro/queryInfo.html")
 	public String  queryInfo(HttpSession httpSession,ModelMap modelMap){
 		//获取当前学生
-		Student student=(Student)CommonHelper.getCurrentActor(httpSession);
+		Student student=(Student)Common.getCurrentActor(httpSession);
 		modelMap.put("student",student);
 		modelMap.put("message","跳转成功");
 		return "information/student";
@@ -27,7 +27,7 @@ public class InformationController {
 	@RequestMapping(value="userContro/updateInfo.html",method=RequestMethod.GET)
 	public String updateInfo(HttpSession httpSession,ModelMap modelMap){
 		//获取当前学生
-		Student student=(Student)CommonHelper.getCurrentActor(httpSession);
+		Student student=(Student)Common.getCurrentActor(httpSession);
 		modelMap.put("student",student);
 		return "information/updateStudent";
 	}

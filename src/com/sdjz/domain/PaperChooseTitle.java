@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -27,6 +29,9 @@ public class PaperChooseTitle implements Serializable{
 	private Integer id;
 	@Column(length = 200)
 	private String url;
+	@OneToOne
+	@JoinColumn(name="student_id")
+	private Student student;
 	@Column(length=100)
 	private Audit auditBySecretary;
 

@@ -7,7 +7,7 @@ import com.sdjz.domain.User;
 import com.sdjz.exception.UserInvalidException;
 
 
-public class CommonHelper {
+public class Common {
 	
 	//每页的记录数
 	public final static Integer NUM_PER_PAGE = 20;

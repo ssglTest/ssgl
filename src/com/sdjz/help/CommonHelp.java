@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.User;
 import com.sdjz.exception.UserInvalidException;
-import com.sdjz.other.CommonHelper;
+import com.sdjz.other.Common;
 
 public class CommonHelp {
 
@@ -86,7 +86,7 @@ public class CommonHelp {
 	 */
 	public static String getUploadPath(HttpSession httpSession) {
 		String rootPath = httpSession.getServletContext().getRealPath("/");
-		String uploadPath = rootPath.substring(0, rootPath.lastIndexOf("\\")) + CommonHelper.UPLOAD_DIR;
+		String uploadPath = rootPath.substring(0, rootPath.lastIndexOf("\\")) + Common.UPLOAD_DIR;
 		return uploadPath;
 	}
 
