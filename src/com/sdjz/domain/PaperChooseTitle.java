@@ -18,7 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "paperChooseTitle")
 @DynamicUpdate(true)
 @DynamicInsert(true)
-public class PaperChooseTitle implements Serializable{
+public class PaperChooseTitle implements Serializable {
 
 	/**
 	 * 
@@ -30,10 +30,28 @@ public class PaperChooseTitle implements Serializable{
 	@Column(length = 200)
 	private String url;
 	@OneToOne
-	@JoinColumn(name="student_id")
+	@JoinColumn(name = "student_id")
 	private Student student;
-	@Column(length=100)
+	@Column(length = 100)
 	private Audit auditBySecretary;
+	@Column(length = 100)
+	private String title;
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public PaperChooseTitle() {
 		super();

@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sdjz.domain.Actor;
 import com.sdjz.domain.User;
 import com.sdjz.exception.UserInvalidException;
 import com.sdjz.other.Common;
@@ -80,7 +81,18 @@ public class CommonHelp {
 			throw new UserInvalidException("请重新登录");
 		return user;
 	}
+	
+	/**
+	 * 得到当前用户对应的actor
+	 * @param session
+	 * @return
+	 */
+	public static Actor getCurrentActor(HttpSession session){
+		User user = getCurrentUser(session);
+		return user.getActor();
+	}
 
+	
 	/*
 	 * 获取上传的路径
 	 */
