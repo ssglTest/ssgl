@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -30,7 +31,9 @@ public class Student extends Actor {
 	@ManyToMany
 	@JoinTable(name="student_teacher")
 	private List<Teacher> teachers;
-
+	@OneToOne(mappedBy="student")
+	private PaperTitleApply paperTitleApply;
+	
 	public Student() {
 	}
 
@@ -60,6 +63,14 @@ public class Student extends Actor {
 
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
+	}
+
+	public PaperTitleApply getPaperTitleApply() {
+		return paperTitleApply;
+	}
+
+	public void setPaperTitleApply(PaperTitleApply paperTitleApply) {
+		this.paperTitleApply = paperTitleApply;
 	}
 	
 

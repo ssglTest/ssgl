@@ -1,4 +1,4 @@
-package com.sdjz.paperChooseTitle;
+package com.sdjz.paperTitleApply;
 
 import java.util.List;
 
@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.Actor;
-import com.sdjz.domain.PaperChooseTitle;
+import com.sdjz.domain.PaperTitleApply;
 import com.sdjz.help.CommonHelp;
-import com.sdjz.service.PaperChooseTitleService;
+import com.sdjz.service.PaperTitleApplyService;
 
 @Controller
 @RequestMapping("userContro/paperChooseTitle")
-public class PaperChooseTitleController {
+public class PaperTitleApplyController {
 
 	@Autowired
-	private PaperChooseTitleService paperChooseTitleService;
+	private PaperTitleApplyService paperChooseTitleService;
 	@RequestMapping("/paperChooseTitleManag.html")
 	public String paperChooseTitleManager(HttpSession session,ModelMap modelMap){
 		//Actor actor = CommonHelp.getCurrentActor(session);
-		List<PaperChooseTitle> paperChooseTitleList = paperChooseTitleService.findAll();
+		List<PaperTitleApply> paperChooseTitleList = paperChooseTitleService.findAll();
 		modelMap.put("paperChooseTitleList", paperChooseTitleList);
 		return null;
 	}
@@ -37,7 +37,7 @@ public class PaperChooseTitleController {
 		//CommonHelp.upload(paperChooseTitleFile, session, "paperChooseTitle", "");
 		Actor actor = CommonHelp.getCurrentActor(session);
 		//paperChooseTitleService.findByNo(actor);
-		PaperChooseTitle paperChooseTitle = null;
+		PaperTitleApply paperChooseTitle = null;
 		return null;
 	}
 
