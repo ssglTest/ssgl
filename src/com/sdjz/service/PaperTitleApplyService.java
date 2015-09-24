@@ -8,7 +8,7 @@ import com.sdjz.domain.PaperTitleApply;
 import com.sdjz.domain.Student;
 import com.sdjz.jpaRepository.MyRepository;
 
-@Service("paperChooseTitleService")
+@Service("paperTitleApplyService")
 public class PaperTitleApplyService extends BasicService<PaperTitleApply, Integer>{
 
 	private PaperTitleApplyDao paperChooseTitleDao;

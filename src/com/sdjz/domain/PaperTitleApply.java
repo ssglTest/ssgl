@@ -40,6 +40,11 @@ public class PaperTitleApply implements Serializable {
 	private Audit audit;
 	
 	public PaperTitleApply(){}
+	
+	public PaperTitleApply(String url,String title){
+		this.url=url;
+		this.title=title;
+	}
 
 	public Integer getId() {
 		return id;
