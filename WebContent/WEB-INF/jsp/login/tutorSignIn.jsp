@@ -82,7 +82,7 @@ iframe {
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="informationTest.html" target="navTab">查看/修改个人信息</a>
+									<a href="tutorInfo.html" target="navTab">查看/修改个人信息</a>
 								</button>
 							</div>
 						</div>

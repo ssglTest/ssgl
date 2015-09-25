@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>success</h1>
+<h1>${student.email}</h1>
 <a href="queryInfo.html">学生信息查询</a>
 </body>
 </html>

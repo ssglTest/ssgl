@@ -16,10 +16,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name="role")
+@DynamicInsert(true)
 @DynamicUpdate(true)
 public class Role implements Serializable {
 	/**

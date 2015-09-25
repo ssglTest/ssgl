@@ -76,9 +76,9 @@ public class LoginController {
 		return "login/relogin";
 	}
 	
-	@RequestMapping("/informationTest.html")
+	/*@RequestMapping("/informationTest.html")
 	public String informationTest(){
 		return "information/bootstrapStudentTest";
-	}
+	}*/
 
 }
