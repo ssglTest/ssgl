@@ -172,7 +172,7 @@ iframe {
 									<a href="test/personalPlan.html" target="navTab">上传个人培养计划</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="test/projectChooseTitle.html" target="navTab">提交论文选题申请</a>
+									<a href="paperTitleApply/getPaperTitleApplyByStudent.html" target="navTab">提交论文选题申请</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="test/chooseTitleReport.html" target="navTab">提交选题报告</a>

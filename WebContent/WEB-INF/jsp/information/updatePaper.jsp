@@ -20,12 +20,12 @@
 			<div class="container">
 				<div class="page-header">
 					<form action="#" class="form-inline" role="form">
-						<div class="form-grounp">
+						<div class="form-group">
 							<label for="inputFile">文件上传</label> <input type="file"
 								id="inputFile">
 							<p class="help-block">请选择需要上传的论文电子版</p>
 						</div>
-						<div class="form-grounp">
+						<div class="form-group">
 							<button class="btn btn-default" type="submit">提交</button>
 						</div>
 					</form>
