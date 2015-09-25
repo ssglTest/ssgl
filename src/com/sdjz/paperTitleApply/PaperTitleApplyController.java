@@ -18,17 +18,23 @@ import com.sdjz.help.CommonHelp;
 import com.sdjz.service.PaperTitleApplyService;
 
 @Controller
-@RequestMapping("userContro/paperChooseTitle")
+@RequestMapping("userContro/paperTitleApply")
 public class PaperTitleApplyController {
 
 	@Autowired
-	private PaperTitleApplyService paperChooseTitleService;
-	@RequestMapping("/paperChooseTitleManag.html")
-	public String paperChooseTitleManager(HttpSession session,ModelMap modelMap){
+	private PaperTitleApplyService paperTitleApplyService;
+	@RequestMapping("/paperTitleApplyManage.html")
+	/**
+	 * 列出所有的论文选题申请表
+	 * @param session
+	 * @param modelMap
+	 * @return
+	 */
+	public String paperTitleApplyManager(HttpSession session,ModelMap modelMap){
 		//Actor actor = CommonHelp.getCurrentActor(session);
-		List<PaperTitleApply> paperChooseTitleList = paperChooseTitleService.findAll();
-		modelMap.put("paperChooseTitleList", paperChooseTitleList);
-		return null;
+		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.findAll();
+		modelMap.put("paperTitleApplyList", paperTitleApplyList);
+		return "paperTitleApply/paperTitleApplyList";
 	}
 	
 	@RequestMapping("/paperChooseTitleUpload.html")
