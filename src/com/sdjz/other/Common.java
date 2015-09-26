@@ -13,7 +13,7 @@ public class Common {
 	public final static Integer NUM_PER_PAGE = 20;
 	
 	//项目文件所在文件夹
-	public final static String UPLOAD_DIR = "\\projectFile\\";
+	public final static String UPLOAD_DIR = "\\update\\";
 	
 	public final static String ASC = "asc";
 	public final static String DESC = "desc";

@@ -98,7 +98,9 @@ public class CommonHelp {
 	 */
 	public static String getUploadPath(HttpSession httpSession) {
 		String rootPath = httpSession.getServletContext().getRealPath("/");
+		System.out.println("===============rootPath==========="+rootPath);
 		String uploadPath = rootPath.substring(0, rootPath.lastIndexOf("\\")) + Common.UPLOAD_DIR;
+		System.out.println("===============upload==============="+uploadPath);
 		return uploadPath;
 	}
 
@@ -127,6 +129,15 @@ public class CommonHelp {
 		Pattern p = Pattern.compile("^\\d{5,}$");
 		Matcher m = p.matcher(qq);
 		return m.matches();
+	}
+	
+	/**
+	 * 得到文件的名字
+	 * @param file
+	 * @return
+	 */
+	public static String getFileName(MultipartFile file){
+		return file.getName();
 	}
 
 	/**
@@ -163,6 +174,10 @@ public class CommonHelp {
 			}
 		}
 		return name;
+	}
+	
+	public static String upload(MultipartFile file,HttpSession httpSession,String folderName,Integer id){
+		return upload(file, httpSession, folderName, id.toString());
 	}
 
 	/**

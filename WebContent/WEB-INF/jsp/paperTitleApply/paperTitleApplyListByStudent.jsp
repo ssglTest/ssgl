@@ -20,11 +20,13 @@
 		</div>
 		<div class="panel-body">
 			<div class="page-header">
-				<form action="#" role="form" class="form-inline">
+				<form action="paperTitleApplyUpload.html" method="post"
+					enctype="multipart/form-data" role="form" class="form-inline">
 					<!-- 把标签和控件放在一个带有 class .form-group 的 <div> 中。这是获取最佳间距所必需的 -->
 					<div class="form-group">
 						<label for="fileUpdate">上传文件</label> <input type="file"
-							id="fileUpdate" class="form-control" name="paperTitleApply">
+							id="paperTitleApplyUpdate" class="form-control"
+							name="paperTitleApplyUpdate" /> <label class="label label-info">${info}</label>
 						<p class="help-block">请选择需要上传的论文选题申请表</p>
 						<button class="btn btn-default" type="submit">上传</button>
 					</div>
@@ -46,7 +48,8 @@
 						<td>${paperTitleApply.student.no}</td>
 						<td>${paperTitleApply.title}</td>
 						<td>
-							<span class="label label-success">已通过</span>
+							<!-- label标签的外观有sucess default primary warning danger --> <span
+							class="label label-success">已通过</span>
 						</td>
 						<td>
 							<button class="btn btn-default">
