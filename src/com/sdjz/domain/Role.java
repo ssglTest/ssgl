@@ -50,6 +50,7 @@ public class Role implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@XmlTransient
 	public User getUser() {
 		return user;
 	}

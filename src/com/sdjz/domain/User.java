@@ -67,7 +67,7 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	@XmlTransient
 	public Role getRole() {
 		return role;
 	}
