@@ -43,7 +43,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr >
 						<td>${paperTitleApply.student.name}</td>
 						<td>${paperTitleApply.student.no}</td>
 						<td>${paperTitleApply.title}</td>
@@ -56,7 +56,7 @@
 								<a href="#">查看</a>
 							</button>
 							<button class="btn btn-default">
-								<a href="#">下载</a>
+								<a href="downPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}">下载</a>
 							</button>
 						</td>
 					</tr>
