@@ -11,6 +11,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.sdjz.jpaRepository.MyRepository;
@@ -67,5 +69,6 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 	public long countAll(){
 		return basicDao.count();
 	}
+	
 
 }

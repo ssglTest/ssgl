@@ -1,9 +1,12 @@
 package com.sdjz.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -20,6 +23,9 @@ public class Secretary extends Actor{
 	@JoinColumn(name="school_id")
 	private School school;
 	
+	@OneToMany(mappedBy="secretary")
+	private List<PaperTitleApply> paperTitleApplies;
+	
 	public Secretary(){}
 	public Secretary(String no,String name){
 		super(no,name);		
@@ -29,6 +35,12 @@ public class Secretary extends Actor{
 	}
 	public void setSchool(School school) {
 		this.school = school;
+	}
+	public List<PaperTitleApply> getPaperTitleApplies() {
+		return paperTitleApplies;
+	}
+	public void setPaperTitleApplies(List<PaperTitleApply> paperTitleApplies) {
+		this.paperTitleApplies = paperTitleApplies;
 	}
 	
 

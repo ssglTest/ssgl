@@ -6,6 +6,7 @@ import java.lang.reflect.Type;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
@@ -37,7 +38,6 @@ public void merge(T entiry) {
 	entityManager.merge(entiry);
 	
 }
-
  
 
 }

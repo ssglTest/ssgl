@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +39,9 @@ public class PaperTitleApply implements Serializable {
 	@OneToOne
 	@JoinColumn(name="audit_id")
 	private Audit audit;
+	@ManyToOne
+	@JoinColumn(name="secretary_id")
+	private Secretary secretary;
 	
 	public PaperTitleApply(){}
 	
@@ -84,6 +88,14 @@ public class PaperTitleApply implements Serializable {
 
 	public void setAudit(Audit audit) {
 		this.audit = audit;
+	}
+
+	public Secretary getSecretary() {
+		return secretary;
+	}
+
+	public void setSecretary(Secretary secretary) {
+		this.secretary = secretary;
 	}
 	
 	
