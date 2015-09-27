@@ -46,7 +46,8 @@ iframe {
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
-					<img alt="山东建筑大学图标"  src="../img/logo_login.png" width="100" height="100">
+					<img alt="山东建筑大学图标" src="../img/logo_login.png" width="100"
+						height="100">
 				</div>
 				<div class="col-md-10">
 					<h2 style="font-family: '微软雅黑'">欢迎登录硕士管理系统</h2>
@@ -142,14 +143,14 @@ iframe {
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="secretary/uploadChooseTitleReportTime.html"
+									<a href="paperTitleReply/paperTitleReplyList.html"
 										target="navTab">上传选题报告答辩时间地点</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传论文答辩时间地点</a>
+									<a href="paperReplyTime/updatePaperReply.html" target="navTab">上传论文答辩时间地点</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传答辩成绩</a>
+									<a href="replyGrade/updateReplyGrade.html" target="navTab">上传答辩成绩</a>
 								</button>
 							</div>
 						</div>
@@ -166,7 +167,8 @@ iframe {
 						<div id="collapseFour" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleApply/paperTitleApplyManage.html" target="navTab">审核论文选题申请表</a>
+									<a href="paperTitleApply/paperTitleApplyManage.html"
+										target="navTab">审核论文选题申请表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">审核学位论文答辩申请书</a>

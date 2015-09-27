@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,6 +37,7 @@ public class Audit implements Serializable {
 	private Calendar auditDate;
 	
 	@OneToOne(mappedBy="audit")
+	@JoinColumn(name="paperTitleApply_id")
 	private PaperTitleApply paperTitleApply;
 	
 	public Audit() {

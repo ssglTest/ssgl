@@ -69,7 +69,6 @@ public class PaperTitleApplyController {
 			HttpSession httpSession, @RequestParam("paperTitleApplyUpdate") MultipartFile paperTitleApplyUpdate,
 			ModelMap modelMap) {
 		PaperTitleApply paperTitleApply = null;
-		Audit audit = null;
 		//判断点击提交时是否已经选择了文件
 		if (paperTitleApplyUpdate == null) {
 			modelMap.put("info", "请选择文件！");
@@ -82,10 +81,11 @@ public class PaperTitleApplyController {
 		if (paperTitleApply == null) {
 			// 创建一个新的论文选题申请
 			paperTitleApply = new PaperTitleApply();
-			audit = new Audit();
+			Audit audit = new Audit();
+			auditService.save(audit);
 			// 关联关系
+			paperTitleApply.setAudit(audit);
 			student.setPaperTitleApply(paperTitleApply);
-			//paperTitleApply.setAudit(audit);
 			// 保存
 			paperTitleApply.setStudent(student);
 
@@ -93,7 +93,6 @@ public class PaperTitleApplyController {
 
 			// 删除论文选题申请
 			CommonHelp.delete(httpSession, paperTitleApply.getUrl());
-			audit = new Audit();
 			//paperTitleApply.setAudit(audit);
 			// paperTitleApplyService.save(paperTitleApply);
 		}
@@ -103,8 +102,8 @@ public class PaperTitleApplyController {
 		//获取文件名
 		String title = paperTitleApplyUpdate.getOriginalFilename();
 		//audit.setPaperTitleApply(paperTitleApply);
-		audit.setAuditDate(CommonHelp.getNow());
-		auditService.save(audit);
+		//audit.setAuditDate(CommonHelp.getNow());
+		
 		paperTitleApply.setUrl(url);
 		paperTitleApply.setTitle(title);
 		//paperTitleApply.setAudit(audit);
@@ -129,6 +128,7 @@ public class PaperTitleApplyController {
 	@RequestMapping("/downPaperTitleApply.html")
 	public ResponseEntity<byte[]> downPaperTitleApply(HttpSession httpSession,Integer paperTitleApplyId) throws IOException{
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
+		System.out.println("downUrl========="+paperTitleApply.getUrl());
 		String name = "论文选题申请表";
 		return CommonHelp.download(httpSession, paperTitleApply.getUrl(), name);
 	}

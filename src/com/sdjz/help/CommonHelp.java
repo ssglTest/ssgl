@@ -98,9 +98,7 @@ public class CommonHelp {
 	 */
 	public static String getUploadPath(HttpSession httpSession) {
 		String rootPath = httpSession.getServletContext().getRealPath("/");
-		System.out.println("===============rootPath==========="+rootPath);
 		String uploadPath = rootPath.substring(0, rootPath.lastIndexOf("\\")) + Common.UPLOAD_DIR;
-		System.out.println("===============upload==============="+uploadPath);
 		return uploadPath;
 	}
 
@@ -230,7 +228,7 @@ public class CommonHelp {
 		if (!file.exists()) {
 			throw new FileNotFoundException();
 		}
-		String nameFile = name + "." + url.split("\\")[1];
+		String nameFile = name + "." + url.split("\\\\")[0];
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		headers.setContentDispositionFormData("attachment",
