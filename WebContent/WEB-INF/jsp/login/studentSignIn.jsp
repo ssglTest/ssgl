@@ -178,7 +178,7 @@ iframe {
 									<a href="test/chooseTitleReport.html" target="navTab">提交选题报告</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="test/chooseTitleAnswer.html" target="navTab">论文选题答辩</a>
+									<a href="paperTitleReply/paperTitleReplyListByStudent.html" target="navTab">论文选题答辩</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="test/checkMiddle.html" target="navTab">提交中期检查表</a>

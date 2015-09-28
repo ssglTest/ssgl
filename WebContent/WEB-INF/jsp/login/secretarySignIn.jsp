@@ -208,7 +208,7 @@ iframe {
 						<div id="collapseSeven" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="secretary/saveChooseTitle.html" target="navTab">论文选题工作存档</a>
+									<a href="paperTitleKeepDoc/paperTitleDocList.html" target="navTab">论文选题工作存档</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">存档中期检查表</a>

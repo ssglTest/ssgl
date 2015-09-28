@@ -33,7 +33,7 @@ public class PaperTitleReply implements Serializable {
 	@Column(length = 100)
 	private String title;
 	@Column(length = 200)
-	private Calendar updateDate;
+	private String updateDate;
 
 	public PaperTitleReply() {
 		super();
@@ -64,12 +64,12 @@ public class PaperTitleReply implements Serializable {
 		this.title = title;
 	}
 
-	public Calendar getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Calendar updateDate) {
-		this.updateDate = updateDate;
+	public void setUpdateDate(String date) {
+		this.updateDate = date;
 	}
 
 }

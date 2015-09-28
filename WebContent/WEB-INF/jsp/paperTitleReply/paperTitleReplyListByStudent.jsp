@@ -15,28 +15,14 @@
 <body>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<div class="panel-title">
-				<h3>学位论文选题报告</h3>
-			</div>
+			<h3 class="panel-title">选题报告答辩时间</h3>
 		</div>
 		<div class="panel-body">
-			<div class="page-header">
-				<form action="paperTitleApplyUpload.html" method="post"
-					enctype="multipart/form-data" role="form" class="form-inline">
-					<div class="form-group">
-						<label for="#fileUpdate">上传文件</label> <input type="file"
-							class="form-control" name="paperTitleReplyFile" id="fileUpdate">
-						<label class="label label-info">${info}</label>
-						<p class="help-block">请选择需要上传的学位论文选题报告</p>
-						<button class="btn btn-default" type="submit">提交</button>
-					</div>
-				</form>
-			</div>
-			<table class="table table-hover">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>编号</th>
-						<th>标题</th>
+						<th>题目</th>
 						<th>上传日期</th>
 						<th>操作</th>
 					</tr>
@@ -45,30 +31,21 @@
 					<c:forEach items="${paperTitleReplyList}" var="paperTitleReply">
 						<tr>
 							<td>${paperTitleReply.id}</td>
-							<td>${paperTitleReply.title }</td>
+							<td>${paperTitleReply.title}</td>
 							<td>${paperTitleReply.updateDate}</td>
 							<td>
 								<button class="btn btn-default">
 									<a href="#">查看</a>
 								</button>
 								<button class="btn btn-default">
-									<a href="downloadPaperTitleReply.html?paperTitleReplyId=${paperTitleReply.id}">下载</a>
+									<a
+										href="downloadPaperTitleReply.html?paperTitleReplyId=${paperTitleReply.id}">下载</a>
 								</button>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<div align="center">
-				<ul class="pagination">
-					<li><a href="#">&laquo</a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">&raquo</a></li>
-				</ul>
-			</div>
-
 		</div>
 	</div>
 </body>
