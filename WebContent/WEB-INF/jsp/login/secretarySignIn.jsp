@@ -42,7 +42,7 @@ iframe {
 	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="jumbotron masthead" style="background-color: #A4D3EE">
+		<div class="jumbotron masthead" style="background-color: #337ab7">
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
@@ -50,8 +50,8 @@ iframe {
 						height="100">
 				</div>
 				<div class="col-md-10">
-					<h2 style="font-family: '微软雅黑'">欢迎登录硕士管理系统</h2>
-					<p>山东建筑大学非全日制硕士生管理系统</p>
+					<h2 style="font-family: '楷体'"><font color="white">硕士管理系统</font></h2>
+					<p><font color="white">山东建筑大学非全日制硕士生管理系统</font></p>
 				</div>
 			</div>
 			<div align="right">

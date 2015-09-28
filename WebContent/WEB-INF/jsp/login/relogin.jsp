@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link type="text/css" href="../bootstrap/bootstrap.min.css" rel="stylesheet"/>
-<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js" ></script>
-<script type="text/javascript" src="../bootstrap/bootstrap.min.js" ></script>
+<link type="text/css" href="../bootstrap/bootstrap.min.css"
+	rel="stylesheet" />
+<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 
 <title>登录界面</title>
 <style>
@@ -21,46 +22,63 @@
 	width: 300px;
 	height: 350px;
 	padding: 5px;
-	margin-top: 200px;
-	margin-left: 900px;
+	margin-top: 150px;
+	margin-left: 800px;
+}
+
+.img {
+	width: 550px;
+	height: 410px;
+	margin-top: 150px;
+	margin-left: 100px;
 }
 </style>
 
 </head>
 <body class="div-a">
-
-	<div class="div-b">
-		<form class="form-signin" action="login.html" method="POST">
-			<h2 class="form-signin-heading" >登录</h2>
-				<font size="3" color="red">${message}</font>
-			<div class="form-group">
-				<label for="inputEmail">username</label> <input type="text"
-					id="inp+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="img">
+				<img alt="山东建筑大学" src="../img/jianzhu.jpg" class="img-circle">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="div-b">
+				<form class="form-signin" action="login.html" method="POST">
+					<h1 style="font-family: '楷体'">硕士管理系统</h1>
+					<font size="3" color="red">${message}</font>
+					<div class="form-group">
+						<label for="inputEmail">username</label> <input type="text"
+							id="inp+
 					63
-					utEmail" name="username" class="form-control" placeholder="请输入你的用户名"
-					required autofocus>
+					utEmail" name="username"
+							class="form-control" placeholder="请输入你的用户名" required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword">password</label> <input type="password"
+							id="inputPassword" name="password" class="form-control"
+							placeholder="请输入你的密码" required>
+					</div>
+					<div class="form-group">
+						<label for="usertype">User type</label> <select
+							class="form-control" id="usertype" name="role">
+							<option>student</option>
+							<option>tutor</option>
+							<option>teacher</option>
+							<option>secretary</option>
+						</select>
+					</div>
+					<div class="checkbox">
+						<label> <input type="checkbox" value="remember-me">
+							记住密码
+						</label>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="inputPassword">password</label> <input type="password"
-					id="inputPassword" name="password" class="form-control" placeholder="请输入你的密码"
-					required>
-			</div>
-			<div class="form-group">
-				<label for="usertype">User type</label> <select class="form-control"
-					id="usertype" name="role">
-					<option>student</option>
-					<option>tutor</option>
-					<option>teacher</option>
-					<option>secretary</option>
-				</select>
-			</div>
-			<div class="checkbox">
-				<label> <input type="checkbox" value="remember-me">
-					记住密码
-				</label>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-		</form>
+		</div>
 	</div>
+
+
 </body>
 </html>
