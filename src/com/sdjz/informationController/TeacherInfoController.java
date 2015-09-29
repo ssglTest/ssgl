@@ -18,21 +18,26 @@ import com.sdjz.service.TeacherService;
 public class TeacherInfoController {
 	@Autowired
 	TeacherService teacherService;
-	
-	@RequestMapping(value="/teacherInfo.html")
-	public String queryInfo(HttpSession httpSession,ModelMap modelMap){
-		Teacher teacher=(Teacher)CommonHelp.getCurrentActor(httpSession);
-		modelMap.put("teacher", teacher);
+
+	@RequestMapping(value = "/teacherInfo.html")
+	public String queryInfo(HttpSession httpSession, ModelMap modelMap) {
+		Teacher teacher = (Teacher) CommonHelp.getCurrentActor(httpSession);
+		// 通过当前用户的id，在数据库中重新获取数据，这样可以避免重新点击链接，数据又恢复到原来的数据
+		modelMap.put("teacher", teacherService.findById(teacher.getId()));
 		return "userInformation/teacherInfo";
 	}
-	@RequestMapping(value="/updateTeacherInfo.html",method=RequestMethod.POST)
-	public String updateInfo(ModelMap modelMap,@RequestParam("email")String email,@RequestParam("mobile")String mobile,@RequestParam("qq")String qq,@RequestParam("teacherId")Integer id){
-		Teacher teacher=teacherService.findById(id);
+
+	@RequestMapping(value = "/updateTeacherInfo.html", method = RequestMethod.POST)
+	public String updateInfo(ModelMap modelMap, @RequestParam("email") String email,
+			@RequestParam("mobile") String mobile, @RequestParam("qq") String qq,
+			@RequestParam("teacherId") Integer id) {
+		Teacher teacher = teacherService.findById(id);
 		teacher.setEmail(email);
 		teacher.setMobile(mobile);
 		teacher.setQq(qq);
 		teacherService.update(teacher);
-		modelMap.put("teacher",teacher);
+		teacherService.save(teacher);
+		modelMap.put("teacher", teacher);
 		return "userInformation/teacherInfo";
 	}
 

@@ -18,23 +18,27 @@ import com.sdjz.service.SecretaryService;
 public class SecretaryInfoController {
 	@Autowired
 	SecretaryService secretaryService;
-	
-	@RequestMapping(value="/secretaryInfo.html")
-	public String queryInfo(HttpSession httpSession,ModelMap modelMap){
-		Secretary secretary=(Secretary)CommonHelp.getCurrentActor(httpSession);
-		modelMap.put("secretary",secretary);
+
+	@RequestMapping(value = "/secretaryInfo.html")
+	public String queryInfo(HttpSession httpSession, ModelMap modelMap) {
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		// 通过当前用户的id，在数据库中重新获取数据，这样可以避免重新点击链接，数据又恢复到原来的数据
+		modelMap.put("secretary", secretaryService.findById(secretary.getId()));
 		return "userInformation/secretaryInfo";
 	}
-	@RequestMapping(value="/updateSecretaryInfo.html",method=RequestMethod.POST)
-	public String updateInfo(ModelMap modelMap,@RequestParam("email")String email,@RequestParam("mobile")String mobile,@RequestParam("qq")String qq,@RequestParam("secretaryId")Integer id){
-		Secretary secretary=secretaryService.findById(id);
+
+	@RequestMapping(value = "/updateSecretaryInfo.html", method = RequestMethod.POST)
+	public String updateInfo(ModelMap modelMap, @RequestParam("email") String email,
+			@RequestParam("mobile") String mobile, @RequestParam("qq") String qq,
+			@RequestParam("secretaryId") Integer id) {
+		Secretary secretary = secretaryService.findById(id);
 		secretary.setEmail(email);
 		secretary.setMobile(mobile);
 		secretary.setQq(qq);
 		secretaryService.update(secretary);
-		modelMap.put("secretary",secretary);
-		return "userInformation/secretaryInfo";	
+		secretaryService.save(secretary);
+		modelMap.put("secretary", secretary);
+		return "userInformation/secretaryInfo";
 	}
-	
 
 }

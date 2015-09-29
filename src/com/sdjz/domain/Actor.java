@@ -29,13 +29,13 @@ public abstract class Actor implements Serializable {
 	private Integer id;
 	@Column(length=12)
 	private String no;
-	@Column(length=12)
+	@Column(length=15)
 	private String name;
-	@Column(length=14)
+	@Column(length=40)
 	private String email;
-	@Column(length=10)
+	@Column(length=20)
 	private String mobile;
-	@Column(length=12)
+	@Column(length=24)
 	private String qq;
 	@OneToOne(mappedBy="actor")
 	private User user;

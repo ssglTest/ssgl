@@ -18,22 +18,25 @@ import com.sdjz.service.TutorService;
 public class TutorInfoController {
 	@Autowired
 	TutorService tutorService;
-	
-	@RequestMapping(value="/tutorInfo.html")
-	public String queryInfo(HttpSession httpSession,ModelMap modelMap){
-		//获取当前用户：研究生导师
-		Tutor tutor=(Tutor)CommonHelp.getCurrentActor(httpSession);
-		modelMap.put("tutor",tutor);
+
+	@RequestMapping(value = "/tutorInfo.html")
+	public String queryInfo(HttpSession httpSession, ModelMap modelMap) {
+		// 获取当前用户：研究生导师
+		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
+		// 通过当前用户的id，在数据库中重新获取数据，这样可以避免重新点击链接，数据又恢复到原来的数据
+		modelMap.put("tutor", tutorService.findById(tutor.getId()));
 		return "userInformation/tutorInfo";
 	}
-	
-	@RequestMapping(value="/updateTutorInfo.html",method=RequestMethod.POST)
-	public String updateInfo(ModelMap modelMap,@RequestParam("email")String email,@RequestParam("mobile")String mobile,@RequestParam("qq")String qq,@RequestParam("tutorId")Integer id){
-		Tutor tutor=tutorService.findById(id);
+
+	@RequestMapping(value = "/updateTutorInfo.html", method = RequestMethod.POST)
+	public String updateInfo(ModelMap modelMap, @RequestParam("email") String email,
+			@RequestParam("mobile") String mobile, @RequestParam("qq") String qq, @RequestParam("tutorId") Integer id) {
+		Tutor tutor = tutorService.findById(id);
 		tutor.setEmail(email);
 		tutor.setMobile(mobile);
 		tutor.setQq(qq);
 		tutorService.update(tutor);
+		tutorService.save(tutor);
 		modelMap.put("tutor", tutor);
 		return "userInformation/tutorInfo";
 	}
