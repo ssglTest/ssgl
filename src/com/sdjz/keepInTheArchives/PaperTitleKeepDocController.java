@@ -22,4 +22,10 @@ public class PaperTitleKeepDocController {
 		modelMap.put("studentList", studentList);
 		return "keepInTheArchives/paperTitleKeepDoc";
 	}
+	
+	@RequestMapping("/listPaperTitleDocByStudent.html")
+	public String listPaperTitleDocByStudent(ModelMap modelMap,Integer studentId){
+		System.out.println("studentId======="+studentId);
+		return "keepInTheArchives/listPaperTitleDocByStudent";
+	}
 }

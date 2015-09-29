@@ -33,7 +33,8 @@ public class Student extends Actor {
 	private List<Teacher> teachers;
 	@OneToOne(mappedBy="student")
 	private PaperTitleApply paperTitleApply;
-	
+	@OneToOne(mappedBy="student")
+	private PaperTitleReport paperTitleReport;
 	public Student() {
 	}
 
@@ -72,6 +73,15 @@ public class Student extends Actor {
 	public void setPaperTitleApply(PaperTitleApply paperTitleApply) {
 		this.paperTitleApply = paperTitleApply;
 	}
+
+	public PaperTitleReport getPaperTitleReport() {
+		return paperTitleReport;
+	}
+
+	public void setPaperTitleReport(PaperTitleReport paperTitleReport) {
+		this.paperTitleReport = paperTitleReport;
+	}
+	
 	
 
 

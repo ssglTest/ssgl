@@ -175,7 +175,7 @@ iframe {
 									<a href="paperTitleApply/getPaperTitleApplyByStudent.html" target="navTab">提交论文选题申请</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="test/chooseTitleReport.html" target="navTab">提交选题报告</a>
+									<a href="paperTitleReport/getPaperTitleReportByStudent.html" target="navTab">提交选题报告</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="paperTitleReply/paperTitleReplyListByStudent.html" target="navTab">论文选题答辩</a>

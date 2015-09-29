@@ -81,10 +81,10 @@ public class PaperTitleApplyController {
 		if (paperTitleApply == null) {
 			// 创建一个新的论文选题申请
 			paperTitleApply = new PaperTitleApply();
-			Audit audit = new Audit();
-			auditService.save(audit);
+			/*Audit audit = new Audit();
+			auditService.save(audit);*/
 			// 关联关系
-			paperTitleApply.setAudit(audit);
+			//paperTitleApply.setAudit(audit);
 			student.setPaperTitleApply(paperTitleApply);
 			// 保存
 			paperTitleApply.setStudent(student);

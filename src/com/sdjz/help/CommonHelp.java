@@ -69,6 +69,13 @@ public class CommonHelp {
 		return day;
 	}
 
+	public static String getCurrentDate(){
+		Integer day = getDay();
+		Integer month = getMonth();
+		Integer year = getYear();
+		String currentDate = day+"/"+month+"/"+year;
+		return currentDate;
+	}
 	/**
 	 * 得到当前的用户
 	 * 

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,37 +12,15 @@
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">学位论文选题存档</h3>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title">
+			<h3>存档</h3>
 		</div>
-		<div class="panel-body">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>学号</th>
-						<th>姓名</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${studentList}" var="student">
-						<tr>
-							<td>${student.no}</td>
-							<td>${student.name}</td>
-							<td>
-								<!-- <button class="btn btn-default" data-toggle="modal"
-									data-target="#saveFiles">存档文件</button> -->
-								<button class="btn btn-default">
-									<a href="listPaperTitleDocByStudent.html?studentId=${student.id}">存档文件</a>
-								</button>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<div class="modal fade" id="saveFiles" tabindex="-1"
-				role="dialog" aria-labelledby="updateInformationLabel"
+	</div>
+	<div class="panel-body">
+		<div class="modal fade" id="saveFiles" tabindex="-1"
+				role="navTab" aria-labelledby="updateInformationLabel"
 				aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -54,7 +31,9 @@
 							<h4 class="modal-title" id="myModalLable">修改个人信息</h4>
 						</div>
 						<div class="modal-body">
-							
+							<form action="#" role="form" class="form-horizontal">
+								<h1>Hello World!</h1>
+							</form>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -64,7 +43,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
+</div>
 </body>
 </html>
