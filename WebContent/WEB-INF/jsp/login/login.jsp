@@ -14,7 +14,6 @@
 .div-a {
 	background: url(img/sky.jpg) no-repeat;
 	width: 230px;
-	height: 136px;
 	padding: 10px;
 }
 
@@ -40,6 +39,7 @@
 		<div class="col-md-6">
 			<div class="img">
 				<img alt="山东建筑大学" src="img/jianzhu.jpg" class="img-circle">
+				<a href="http://rj.baidu.com/soft/detail/14744.html?ald" target="dialog"><font color="red">推荐使用chrome浏览器(点此下载)</font></a>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -77,7 +77,11 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- <div class="row">
+		<div class="col-md-6 col-md-offset-4">
+			<a href="#"><font color="red">推荐使用chrome浏览器(点此下载)</font></a>
+		</div>
+	</div> -->
 
 
 </body>

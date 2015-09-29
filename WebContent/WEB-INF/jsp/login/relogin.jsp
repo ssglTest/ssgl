@@ -40,6 +40,7 @@
 		<div class="col-md-6">
 			<div class="img">
 				<img alt="山东建筑大学" src="../img/jianzhu.jpg" class="img-circle">
+				<a href="http://rj.baidu.com/soft/detail/14744.html?ald" target="dialog"><font color="red">推荐使用chrome浏览器(点此下载)</font></a>
 			</div>
 		</div>
 		<div class="col-md-6">
