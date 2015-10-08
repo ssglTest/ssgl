@@ -1,14 +1,13 @@
 package com.sdjz.domain;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -18,6 +17,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "paperTitleReply")
 @DynamicInsert(true)
 @DynamicUpdate(true)
+//论文选题答辩
 public class PaperTitleReply implements Serializable {
 
 	/**
@@ -32,8 +32,16 @@ public class PaperTitleReply implements Serializable {
 	private String url;
 	@Column(length = 100)
 	private String title;
-	@Column(length = 200)
-	private String updateDate;
+	@Column(length =10)//审核状态
+	private String approve;
+	@Column(length=100)
+	private String date;
+	@OneToOne
+	@JoinColumn(name="student_id")
+	private Student student;
+	@OneToOne
+	@JoinColumn(name="secretary_id")
+	private Secretary secretary;
 
 	public PaperTitleReply() {
 		super();
@@ -64,12 +72,37 @@ public class PaperTitleReply implements Serializable {
 		this.title = title;
 	}
 
-	public String getUpdateDate() {
-		return updateDate;
+	public String getApprove() {
+		return approve;
 	}
 
-	public void setUpdateDate(String date) {
-		this.updateDate = date;
+	public void setApprove(String approve) {
+		this.approve = approve;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Secretary getSecretary() {
+		return secretary;
+	}
+
+	public void setSecretary(Secretary secretary) {
+		this.secretary = secretary;
+	}
+
+	
 }

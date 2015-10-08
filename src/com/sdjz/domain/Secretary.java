@@ -26,6 +26,9 @@ public class Secretary extends Actor{
 	@OneToMany(mappedBy="secretary")
 	private List<PaperTitleApply> paperTitleApplies;
 	
+	@OneToMany(mappedBy="secretary")
+	private List<PaperTitleReply> paperTitleReplies;
+	
 	public Secretary(){}
 	public Secretary(String no,String name){
 		super(no,name);		
@@ -42,6 +45,13 @@ public class Secretary extends Actor{
 	public void setPaperTitleApplies(List<PaperTitleApply> paperTitleApplies) {
 		this.paperTitleApplies = paperTitleApplies;
 	}
+	public List<PaperTitleReply> getPaperTitleReplies() {
+		return paperTitleReplies;
+	}
+	public void setPaperTitleReplies(List<PaperTitleReply> paperTitleReplies) {
+		this.paperTitleReplies = paperTitleReplies;
+	}
+	
 	
 
 }

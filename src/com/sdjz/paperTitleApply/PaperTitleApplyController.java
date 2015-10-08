@@ -1,6 +1,7 @@
 package com.sdjz.paperTitleApply;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sdjz.domain.Audit;
+
 import com.sdjz.domain.PaperTitleApply;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
-import com.sdjz.service.AuditService;
+
 import com.sdjz.service.PaperTitleApplyService;
 
 @Controller
@@ -29,8 +30,6 @@ public class PaperTitleApplyController {
 
 	@Autowired
 	private PaperTitleApplyService paperTitleApplyService;
-	@Autowired
-	private AuditService auditService;
 
 	/**
 	 * 根据当前学生获取提交的论文选题申请表

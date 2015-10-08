@@ -1,7 +1,6 @@
 package com.sdjz.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,13 +35,14 @@ public class PaperTitleApply implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
-	@OneToOne
-	@JoinColumn(name="audit_id")
-	private Audit audit;
+		
 	@ManyToOne
 	@JoinColumn(name="secretary_id")
 	private Secretary secretary;
-	
+	@Column(length =10)//审核状态
+	private String approve;
+	@Column(length=100)
+	private String date;
 	public PaperTitleApply(){}
 	
 	public PaperTitleApply(String url,String title){
@@ -73,6 +73,23 @@ public class PaperTitleApply implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+
+	public String getApprove() {
+		return approve;
+	}
+
+	public void setApprove(String approve) {
+		this.approve = approve;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public Student getStudent() {
 		return student;
@@ -82,13 +99,6 @@ public class PaperTitleApply implements Serializable {
 		this.student = student;
 	}
 
-	public Audit getAudit() {
-		return audit;
-	}
-
-	public void setAudit(Audit audit) {
-		this.audit = audit;
-	}
 
 	public Secretary getSecretary() {
 		return secretary;
