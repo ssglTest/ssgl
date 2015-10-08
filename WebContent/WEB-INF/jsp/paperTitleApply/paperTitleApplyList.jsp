@@ -45,9 +45,8 @@
 										审核<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#"><span class="label label-success">通过</span></a></li>
-										<br/>
-										<li><a href="#"><span class="label label-danger">不通过</span></a></li>
+										<li><a href="#"><h3><span class="label label-success">通过</span></h3></a></li>
+										<li><a href="#"><h3><span class="label label-danger">不通过</span></h3></a></li>
 									</ul>
 								</div>
 							</td>
