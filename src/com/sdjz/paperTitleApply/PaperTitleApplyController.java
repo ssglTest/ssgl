@@ -109,7 +109,7 @@ public class PaperTitleApplyController {
 		//paperTitleApply.setAudit(audit);
 		
 		paperTitleApplyService.update(paperTitleApply);
-		paperTitleApplyService.save(paperTitleApply);
+		//paperTitleApplyService.save(paperTitleApply);
 		// 重新获取论文选题申请表
 		PaperTitleApply paper = student.getPaperTitleApply();
 		modelMap.put("info", "文件上传成功");

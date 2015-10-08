@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
-<!-- bootstrap中的面板 -->
+	<!-- bootstrap中的面板 -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h4 class="panel-title">论文选题申请</h4>
@@ -32,16 +32,29 @@
 				<tbody>
 					<c:forEach items="${paperTitleApplyList}" var="paperTitleApply">
 						<tr>
-							<td>${paperTitleApply.student.no}</td>
-							<td>${paperTitleApply.student.name}</td>
+							<td id="no">${paperTitleApply.student.no}</td>
+							<td id="name">${paperTitleApply.student.name}</td>
 							<td>${paperTitleApply.title}</td>
 							<td>
-								<button class="btn btn-default" data-toggle="modal"
-									data-target="#paperTitleApply">审核</button>
+								<%-- <button class="btn btn-default" data-toggle="modal" id="${paperTitleApply.id}" 
+									data-target="#paperTitleApply">审核</button> --%>
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary dropdown-toggle"
+										data-toggle="dropdown">
+										<!-- 使用 <span class="caret"></span> 来指示按钮作为下拉菜单。 -->
+										审核<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#"><span class="label label-success">通过</span></a></li>
+										<br/>
+										<li><a href="#"><span class="label label-danger">不通过</span></a></li>
+									</ul>
+								</div>
 							</td>
 							<td>
 								<button class="btn btn-default">
-									<a href="#">下载</a>
+									<a
+										href="downPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}">下载</a>
 								</button>
 								<button class="btn btn-default">
 									<a href="#">查看</a>
@@ -51,6 +64,32 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<!-- <div class="modal fade" id="paperTitleApply" tabindex="-1"
+				role="dialog" aria-labelledby="updateInformationLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							模态框的标题
+							<h4 class="modal-title" id="myModalLable">审核论文选题申请</h4>
+						</div>
+						<div class="modal-body">
+							<form  action="#" class="form-horizontal" role="form">
+								<div class="form-group">
+									<h3><span class="label label-default">姓名：</span></h3>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">提交更改</button>
+						</div>
+					</div>
+				</div>
+			</div> -->
 		</div>
 	</div>
 </body>
