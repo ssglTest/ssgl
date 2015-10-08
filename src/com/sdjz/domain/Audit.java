@@ -29,9 +29,11 @@ public class Audit implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	//审核是否通过
-	@Column(length=10)
-	private boolean approved;
+	//审核状态位通过
+	@Column(length=4)
+	private String pass;
+	@Column(length=4)
+	private String notPass;
 	//审核日期
 	@Column(length=20)
 	private Calendar auditDate;
@@ -43,12 +45,15 @@ public class Audit implements Serializable {
 	public Audit() {
 		super();
 	}
-
-	public Audit(boolean approved, Calendar auditDate) {
-		super();
-		this.approved = approved;
-		this.auditDate = auditDate;
+	public Audit(Calendar auditDate){
+		this.auditDate=auditDate;
 	}
+	public Audit(String pass,String notPass){
+		this.pass=pass;
+		this.notPass=notPass;
+	}
+
+	
 	public Integer getId() {
 		return id;
 	}
@@ -57,22 +62,35 @@ public class Audit implements Serializable {
 		this.id = id;
 	}
 
-	public boolean isApproved() {
-		return approved;
+
+	public String getPass() {
+		return pass;
 	}
 
-	public void setApproved(boolean approved) {
-		this.approved = approved;
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
+
+
+	public String getNotPass() {
+		return notPass;
+	}
+
+
+	public void setNotPass(String notPass) {
+		this.notPass = notPass;
+	}
+
 
 	public Calendar getAuditDate() {
 		return auditDate;
 	}
 
+
 	public void setAuditDate(Calendar auditDate) {
 		this.auditDate = auditDate;
 	}
-
 
 
 	public PaperTitleApply getPaperTitleApply() {
