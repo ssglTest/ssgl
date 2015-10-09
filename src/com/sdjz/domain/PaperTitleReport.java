@@ -18,6 +18,11 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert(true)
 @DynamicUpdate(true)
 @Table(name="paperTitleReport")
+/**
+ * 论文选题报告的实体类
+ * @author zhan
+ *
+ */
 public class PaperTitleReport implements Serializable{
 
 	/**

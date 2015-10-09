@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sdjz.domain.PaperTitleApply;
 import com.sdjz.domain.PaperTitleReport;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
@@ -27,6 +28,10 @@ public class PaperTitleReportController {
 	@RequestMapping("/getPaperTitleReportByStudent.html")
 	public String getPaperTitleReportByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
+		PaperTitleApply paperTitleApply =student.getPaperTitleApply();
+		String approve = paperTitleApply.getApprove();
+		if(approve.equals("notApproved"))
+			return "warning/error";
 		PaperTitleReport paperTitleReport = paperTitleReportService.findById(student.getId());
 		modelMap.put("paperTitleReport", paperTitleReport);
 		return "paperTitleReport/paperTitleReportByStudent";

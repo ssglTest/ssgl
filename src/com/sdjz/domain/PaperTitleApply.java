@@ -18,7 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "paperTitleApply")
 @DynamicUpdate(true)
 @DynamicInsert(true)
-//论文选题申请
+// 论文选题申请
 public class PaperTitleApply implements Serializable {
 
 	/**
@@ -35,19 +35,23 @@ public class PaperTitleApply implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
-		
+
 	@ManyToOne
-	@JoinColumn(name="secretary_id")
+	@JoinColumn(name = "secretary_id")
 	private Secretary secretary;
-	@Column(length =10)//审核状态
+	@Column(length = 15) // 审核状态
 	private String approve;
-	@Column(length=100)
-	private String date;
-	public PaperTitleApply(){}
-	
-	public PaperTitleApply(String url,String title){
-		this.url=url;
-		this.title=title;
+	@Column(length = 100)
+	private String updateDate;
+	@Column(length = 100)
+	private String auditDate;
+
+	public PaperTitleApply() {
+	}
+
+	public PaperTitleApply(String url, String title) {
+		this.url = url;
+		this.title = title;
 	}
 
 	public Integer getId() {
@@ -73,7 +77,6 @@ public class PaperTitleApply implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
 
 	public String getApprove() {
 		return approve;
@@ -83,12 +86,20 @@ public class PaperTitleApply implements Serializable {
 		this.approve = approve;
 	}
 
-	public String getDate() {
-		return date;
+	public String getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getAuditDate() {
+		return auditDate;
+	}
+
+	public void setAuditDate(String auditDate) {
+		this.auditDate = auditDate;
 	}
 
 	public Student getStudent() {
@@ -99,7 +110,6 @@ public class PaperTitleApply implements Serializable {
 		this.student = student;
 	}
 
-
 	public Secretary getSecretary() {
 		return secretary;
 	}
@@ -107,7 +117,5 @@ public class PaperTitleApply implements Serializable {
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
 	}
-	
-	
-	
+
 }

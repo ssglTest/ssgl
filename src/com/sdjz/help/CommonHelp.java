@@ -71,7 +71,7 @@ public class CommonHelp {
 
 	public static String getCurrentDate(){
 		Integer day = getDay();
-		Integer month = getMonth();
+		Integer month = getMonth()+1;
 		Integer year = getYear();
 		String currentDate = day+"/"+month+"/"+year;
 		return currentDate;

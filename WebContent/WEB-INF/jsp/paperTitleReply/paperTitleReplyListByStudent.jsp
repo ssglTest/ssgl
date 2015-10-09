@@ -22,7 +22,7 @@
 				<thead>
 					<tr>
 						<th>编号</th>
-						<th>题目</th>
+						<th>标题</th>
 						<th>上传日期</th>
 						<th>操作</th>
 					</tr>
@@ -30,7 +30,10 @@
 				<tbody>
 					<c:forEach items="${paperTitleReplyList}" var="paperTitleReply">
 						<tr>
-							<td>${paperTitleReply.id}</td>
+
+							<td><c:if test="${empty paperTitleReply.title}">
+									<span class="label label-info">研究生秘书还未上传论文选题答辩的相关文件，请耐心等待</span>
+								</c:if>${paperTitleReply.id}</td>
 							<td>${paperTitleReply.title}</td>
 							<td>${paperTitleReply.updateDate}</td>
 							<td>

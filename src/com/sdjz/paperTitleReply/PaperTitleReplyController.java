@@ -62,7 +62,7 @@ public class PaperTitleReplyController {
 		String date = day+"/"+month+"/"+year;
 		paperTitleReply.setTitle(title);
 		paperTitleReply.setUrl(url);
-		paperTitleReply.setDate(date);
+		paperTitleReply.setUpdateDate(date);
 		paperTitleReplyService.save(paperTitleReply);
 		//重新获取
 		List<PaperTitleReply> listPaperTitleReply = paperTitleReplyService.findAll();
