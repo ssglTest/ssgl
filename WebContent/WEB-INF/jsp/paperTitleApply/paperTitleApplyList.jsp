@@ -19,6 +19,11 @@
 			<h4 class="panel-title">论文选题申请</h4>
 		</div>
 		<div class="panel-body">
+			<div class="form-group">
+				<button class="btn btn-success">已通过</button>
+				<button class="btn btn-warning">未通过</button>
+				<button class="btn btn-info">所有学生</button>
+			</div>
 			<table class="table table-hover">
 				<thead>
 					<tr>

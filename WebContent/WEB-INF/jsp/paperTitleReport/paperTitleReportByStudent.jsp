@@ -44,18 +44,23 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>${paperTitleReport.student.no}</td>
-							<td>${paperTitleReport.student.name}</td>
-							<td>${paperTitleReport.title}</td>
-							<td>${paperTitleReport.date}</td>
-							<td><c:if test="${not empty paperTitleReport.student.no}">
-									<button class="btn btn-default">
-										<a href="#">查看</a>
-									</button>
-									<button class="btn btn-default">
-										<a href="paperTitleReportDownload.html?paperTitleReportId=${paperTitleReport.id}">下载</a>
-									</button>
-								</c:if></td>
+							
+								<td>${paperTitleReport.student.no}</td>
+								<td>${paperTitleReport.student.name}</td>
+								<td>${paperTitleReport.title}</td>
+								<td>${paperTitleReport.updateDate}</td>
+								<td><c:if test="${not empty paperTitleReport.student.no}">
+										<button class="btn btn-default">
+											<a href="#">查看</a>
+										</button>
+										<button class="btn btn-default">
+											<a
+												href="paperTitleReportDownload.html?paperTitleReportId=${paperTitleReport.id}">下载</a>
+										</button>
+									</c:if></td>
+							<c:if test="${empty paperTitleReport.student.no }">
+								<h4><span class="label label-info">未上传论文选题报告</span></h4>
+							</c:if>
 						</tr>
 					</tbody>
 				</table>

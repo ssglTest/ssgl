@@ -171,10 +171,13 @@ iframe {
 										target="navTab">审核论文选题申请表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
+									<a href="paperTitleReport/paperTitleReportList.html" target="navTab">上传选题报告答辩成绩</a>
+								</button>
+								<button class="btn btn-default btn-block" type="button">
 									<a href="#">审核学位论文答辩申请书</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传答辩成绩</a>
+									<a href="#">上传学位论文答辩成绩</a>
 								</button>
 							</div>
 						</div>
