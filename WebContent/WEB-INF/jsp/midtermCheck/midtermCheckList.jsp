@@ -20,9 +20,10 @@
 			</div>
 		</div> -->
 		<div class="panel panel-heading">
-			<div class="panel panel-title">
-				<h3>中期检查表</h3>
-			</div>
+			<!-- <div class="panel panel-title">
+				<h4>中期检查表</h4>
+			</div> -->
+			<h4>中期检查表</h4>
 		</div>
 		<div class="panel panel-body">
 			<div class="form-group">
