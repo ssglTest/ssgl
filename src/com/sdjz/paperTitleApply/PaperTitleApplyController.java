@@ -64,7 +64,7 @@ public class PaperTitleApplyController {
 
 	@RequestMapping(value = "/paperTitleApplyUpload.html", method = RequestMethod.POST)
 	public String paperChooseTitleUpload(HttpServletRequest request, HttpServletResponse response,
-			HttpSession httpSession, @RequestParam("paperTitleApplyUpdate") MultipartFile paperTitleApplyUpdate,
+			HttpSession httpSession, @RequestParam(value="paperTitleApplyUpdate",required=false) MultipartFile paperTitleApplyUpdate,
 			ModelMap modelMap) {
 		PaperTitleApply paperTitleApply = null;
 		// 判断点击提交时是否已经选择了文件

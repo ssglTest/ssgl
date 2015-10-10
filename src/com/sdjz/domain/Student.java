@@ -35,12 +35,23 @@ public class Student extends Actor {
 	private PaperTitleApply paperTitleApply;
 	@OneToOne(mappedBy="student")
 	private PaperTitleReport paperTitleReport;
+	@OneToOne(mappedBy="student")
+	private MidtermCheck midtermCheck;
 	public Student() {
 	}
 
 	public Student(String no, String name) {
 		super(no, name);
 	}
+	
+	public MidtermCheck getMidtermCheck() {
+		return midtermCheck;
+	}
+
+	public void setMidtermCheck(MidtermCheck midtermCheck) {
+		this.midtermCheck = midtermCheck;
+	}
+
 	@XmlTransient
 	public Tutor getTutor() {
 		return tutor;

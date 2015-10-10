@@ -214,7 +214,7 @@ iframe {
 									<a href="paperTitleKeepDoc/paperTitleDocList.html" target="navTab">论文选题工作存档</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">存档中期检查表</a>
+									<a href="midtermCheck/midtermCheckList.html" target="navTab">存档中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">存档学位论文考核记录表</a>

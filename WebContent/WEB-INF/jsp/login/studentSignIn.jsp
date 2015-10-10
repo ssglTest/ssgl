@@ -184,7 +184,7 @@ iframe {
 									<a href="paperTitleReply/paperTitleReplyGrade.html" target="navTab">论文选题答辩成绩</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="test/checkMiddle.html" target="navTab">提交中期检查表</a>
+									<a href="midtermCheck/midtermCheckListByStudent.html" target="navTab">提交中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="test/notpass.html" target="navTab">上传论文考核记录表</a>

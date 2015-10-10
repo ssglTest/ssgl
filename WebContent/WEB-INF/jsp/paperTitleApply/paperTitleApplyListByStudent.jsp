@@ -81,7 +81,7 @@
 							</td>
 						</c:if>
 						<c:if test="${empty paperTitleApply.student.no }">
-							<h4><span class="label label-info">请上传论文选题申请表</span></h4>
+							<h4><span class="label label-info">未上传论文选题申请表</span></h4>
 						</c:if>
 					</tr>
 				</tbody>
