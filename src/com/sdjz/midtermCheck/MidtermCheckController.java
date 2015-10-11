@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.MidtermCheck;
+import com.sdjz.domain.PaperTitleReport;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.MidtermCheckService;
@@ -42,6 +43,10 @@ public class MidtermCheckController {
 	@RequestMapping("/midtermCheckListByStudent.html")
 	public String midtermCheckListByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
+		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
+		String approve = paperTitleReport.getApprove();
+		if(approve.equals("notApproved"))
+			return "warning/error";
 		MidtermCheck midtermCheck = student.getMidtermCheck();
 		modelMap.put("midtermCheck", midtermCheck);
 		return "midtermCheck/midtermCheckListByStudent";

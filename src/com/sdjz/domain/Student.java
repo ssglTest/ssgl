@@ -37,6 +37,8 @@ public class Student extends Actor {
 	private PaperTitleReport paperTitleReport;
 	@OneToOne(mappedBy="student")
 	private MidtermCheck midtermCheck;
+	@OneToOne(mappedBy="student")
+	private SciencePaperCheck sciencePaperCheck;
 	public Student() {
 	}
 
@@ -91,6 +93,14 @@ public class Student extends Actor {
 
 	public void setPaperTitleReport(PaperTitleReport paperTitleReport) {
 		this.paperTitleReport = paperTitleReport;
+	}
+
+	public SciencePaperCheck getSciencePaperCheck() {
+		return sciencePaperCheck;
+	}
+
+	public void setSciencePaperCheck(SciencePaperCheck sciencePaperCheck) {
+		this.sciencePaperCheck = sciencePaperCheck;
 	}
 	
 	
