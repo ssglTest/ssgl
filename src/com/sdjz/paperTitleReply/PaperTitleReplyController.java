@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.PaperTitleReply;
+import com.sdjz.domain.PaperTitleReport;
+import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.PaperTitleReplyService;
+import com.sdjz.service.PaperTitleReportService;
 
 @Controller
 // paperTitleReplyTime/paperTitleReplyTimeList
@@ -25,6 +28,8 @@ public class PaperTitleReplyController {
 
 	@Autowired
 	private PaperTitleReplyService paperTitleReplyService;
+	@Autowired
+	private PaperTitleReportService paperTitleReportService;
 
 	@RequestMapping("/paperTitleReplyList.html")
 	public String paperTitleReplyList(ModelMap modelMap) {
@@ -62,7 +67,7 @@ public class PaperTitleReplyController {
 		String date = day+"/"+month+"/"+year;
 		paperTitleReply.setTitle(title);
 		paperTitleReply.setUrl(url);
-		paperTitleReply.setDate(date);
+		paperTitleReply.setUpdateDate(date);
 		paperTitleReplyService.save(paperTitleReply);
 		//重新获取
 		List<PaperTitleReply> listPaperTitleReply = paperTitleReplyService.findAll();
@@ -77,6 +82,14 @@ public class PaperTitleReplyController {
 		PaperTitleReply paperTitleReply = paperTitleReplyService.findById(paperTitleReplyId);
 		String name = "学位论文选题报告";
 		return CommonHelp.download(httpSession, paperTitleReply.getUrl(), name);
+	}
+	
+	@RequestMapping("/paperTitleReplyGrade.html")
+	public String paperTitleReplyGrade(ModelMap modelMap,HttpSession httpSession){
+		Student student = (Student)CommonHelp.getCurrentActor(httpSession);
+		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
+		modelMap.put("paperTitleReport", paperTitleReport);
+		return "paperTitleReply/paperTitleReplyGrade";
 	}
 
 }

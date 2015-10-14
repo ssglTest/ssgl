@@ -16,19 +16,19 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<div class="panel-title">
-				<h3>学位论文选题报告</h3>
+				<h4>学术论文检查</h4>
 			</div>
 		</div>
-		<div class="panel-body">
+		<div class="body">
 			<div class="page-header">
 				<form action="paperTitleReportUpdate.html" class="form-inline"
 					role="form" enctype="multipart/form-data" method="post">
 					<!-- 将标签和控件放在.form-gropu中，这是获得最佳间距的方法 -->
 					<div class="form-group">
 						<label for="fileUpdate">上传文件</label> <input type="file"
-							name="paperTitleReportFile" id="fileUpdate" class="form-control">
-						<label class="label label-info">${info}</label>
-						<p class="help-block">请选择需要上传的学位论文选题报告</p>
+							name="sciencePaperCheckUploadFile" id="fileUpdate"
+							class="form-control"> <label class="label label-info">${info}</label>
+						<p class="help-block">请选择需要上传的学术论文检查表</p>
 						<button type="submit" class="btn btn-default">上传文件</button>
 					</div>
 				</form>
@@ -39,28 +39,36 @@
 							<th>姓名</th>
 							<th>标题</th>
 							<th>上传日期</th>
+							<th>审核状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							
-								<td>${paperTitleReport.student.no}</td>
-								<td>${paperTitleReport.student.name}</td>
-								<td>${paperTitleReport.title}</td>
-								<td>${paperTitleReport.updateDate}</td>
-								<td><c:if test="${not empty paperTitleReport.student.no}">
-										<button class="btn btn-default">
-											<a href="#">查看</a>
-										</button>
-										<button class="btn btn-default">
-											<a
-												href="paperTitleReportDownload.html?paperTitleReportId=${paperTitleReport.id}">下载</a>
-										</button>
-									</c:if></td>
-							<c:if test="${empty paperTitleReport.student.no }">
-								<h4><span class="label label-info">未上传论文选题报告</span></h4>
-							</c:if>
+							<td>${sciencePaperCheck.student.no }</td>
+							<td>${sciencePaperCheck.student.name }</td>
+							<td>${sciencePaperCheck.title }</td>
+							<td>${sciencePaperCheck.updateDate }</td>
+							<td><c:if test="${empty sciencePaperCheck.approve }">
+									<span class="label label-info">未审核</span>
+								</c:if> <c:if test="${sciencePaperCheck.approve=='excellent' }">
+									<span class="label label-success">优</span>
+								</c:if> <c:if test="${sciencePaperCheck.approve=='good' }">
+									<span class="label label-success">良</span>
+								</c:if> <c:if test="${sciencePaperCheck.approve=='fair' }">
+									<span class="label label-info">中</span>
+								</c:if> <c:if test="${sciencePaperCheck.approve=='poor' }">
+									<span class="label label-warning">差</span>
+								</c:if></td>
+							<td>
+								<button type="button" class="btn btn-default">
+									<a href="#">查看</a>
+								</button>
+								<button type="button" class="btn btn-default">
+									<a
+										href="sciencePaperCheckDownload.html?sciencePaperCheckId=${sciencePaperCheck.id}">下载</a>
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>

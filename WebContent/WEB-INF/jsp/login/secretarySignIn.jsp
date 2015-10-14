@@ -171,10 +171,13 @@ iframe {
 										target="navTab">审核论文选题申请表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
+									<a href="paperTitleReport/paperTitleReportList.html" target="navTab">上传选题报告答辩成绩</a>
+								</button>
+								<button class="btn btn-default btn-block" type="button">
 									<a href="#">审核学位论文答辩申请书</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传答辩成绩</a>
+									<a href="#">上传学位论文答辩成绩</a>
 								</button>
 							</div>
 						</div>
@@ -211,7 +214,7 @@ iframe {
 									<a href="paperTitleKeepDoc/paperTitleDocList.html" target="navTab">论文选题工作存档</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">存档中期检查表</a>
+									<a href="midtermCheck/midtermCheckList.html" target="navTab">存档中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">存档学位论文考核记录表</a>

@@ -1,25 +1,28 @@
 package com.sdjz.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-
+/**
+ * 中期检查表的实体类
+ * @author zhan
+ *
+ */
 @Entity
-@Table(name = "paperTitleApply")
-@DynamicUpdate(true)
+@Table(name = "midtermCheck")
 @DynamicInsert(true)
-// 论文选题申请
-public class PaperTitleApply implements Serializable {
+@DynamicUpdate(true)
+public class MidtermCheck implements Serializable {
 
 	/**
 	 * 
@@ -28,30 +31,35 @@ public class PaperTitleApply implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(length = 200)
-	private String url;
-	@Column(length = 100)
+	@Column(length = 50)
 	private String title;
-	@OneToOne
-	@JoinColumn(name = "student_id")
-	private Student student;
-
-	@ManyToOne
-	@JoinColumn(name = "secretary_id")
-	private Secretary secretary;
-	@Column(length = 15) // 审核状态
+	@Column(length = 15)
 	private String approve;
 	@Column(length = 100)
 	private String updateDate;
 	@Column(length = 100)
 	private String auditDate;
+	@Column(length=100)
+	private String url;
+	@OneToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
 
-	public PaperTitleApply() {
+	public MidtermCheck() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public PaperTitleApply(String url, String title) {
-		this.url = url;
+	public MidtermCheck(Integer id, String title, String approve, String updateDate, String auditDate, String url,
+			Student student) {
+		super();
+		this.id = id;
 		this.title = title;
+		this.approve = approve;
+		this.updateDate = updateDate;
+		this.auditDate = auditDate;
+		this.url = url;
+		this.student = student;
 	}
 
 	public Integer getId() {
@@ -60,14 +68,6 @@ public class PaperTitleApply implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
 	}
 
 	public String getTitle() {
@@ -102,6 +102,14 @@ public class PaperTitleApply implements Serializable {
 		this.auditDate = auditDate;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public Student getStudent() {
 		return student;
 	}
@@ -110,12 +118,6 @@ public class PaperTitleApply implements Serializable {
 		this.student = student;
 	}
 
-	public Secretary getSecretary() {
-		return secretary;
-	}
-
-	public void setSecretary(Secretary secretary) {
-		this.secretary = secretary;
-	}
-
+	
+	
 }

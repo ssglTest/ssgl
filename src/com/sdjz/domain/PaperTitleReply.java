@@ -17,7 +17,11 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "paperTitleReply")
 @DynamicInsert(true)
 @DynamicUpdate(true)
-//论文选题答辩
+/**
+ * 论文选题答辩的实体类
+ * @author zhan
+ *
+ */
 public class PaperTitleReply implements Serializable {
 
 	/**
@@ -32,10 +36,10 @@ public class PaperTitleReply implements Serializable {
 	private String url;
 	@Column(length = 100)
 	private String title;
-	@Column(length =10)//审核状态
+	@Column(length =15)//审核状态
 	private String approve;
 	@Column(length=100)
-	private String date;
+	private String updateDate;
 	@OneToOne
 	@JoinColumn(name="student_id")
 	private Student student;
@@ -80,12 +84,12 @@ public class PaperTitleReply implements Serializable {
 		this.approve = approve;
 	}
 
-	public String getDate() {
-		return date;
+	public String getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public Student getStudent() {

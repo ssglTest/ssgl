@@ -38,12 +38,25 @@ public class Student extends Actor {
 	private PaperTitleApply paperTitleApply;
 	@OneToOne(mappedBy="student")
 	private PaperTitleReport paperTitleReport;
+	@OneToOne(mappedBy="student")
+	private MidtermCheck midtermCheck;
+	@OneToOne(mappedBy="student")
+	private SciencePaperCheck sciencePaperCheck;
 	public Student() {
 	}
 
 	public Student(String no, String name) {
 		super(no, name);
 	}
+	
+	public MidtermCheck getMidtermCheck() {
+		return midtermCheck;
+	}
+
+	public void setMidtermCheck(MidtermCheck midtermCheck) {
+		this.midtermCheck = midtermCheck;
+	}
+
 	@XmlTransient
 	public Tutor getTutor() {
 		return tutor;
@@ -92,6 +105,14 @@ public class Student extends Actor {
 
 	public void setPaperTitleReport(PaperTitleReport paperTitleReport) {
 		this.paperTitleReport = paperTitleReport;
+	}
+
+	public SciencePaperCheck getSciencePaperCheck() {
+		return sciencePaperCheck;
+	}
+
+	public void setSciencePaperCheck(SciencePaperCheck sciencePaperCheck) {
+		this.sciencePaperCheck = sciencePaperCheck;
 	}
 	
 	

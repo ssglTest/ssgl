@@ -8,61 +8,77 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@Entity
-@DynamicInsert(true)
-@DynamicUpdate(true)
-@Table(name = "paperTitleReport")
+import com.oracle.webservices.internal.api.databinding.DatabindingMode;
+
 /**
- * 论文选题报告的实体类
+ * 学术论文考核记录表
  * 
  * @author zhan
  *
  */
-public class PaperTitleReport implements Serializable {
+@Entity
+@Table(name = "sciencePaperCheck")
+@DynamicInsert(true)
+@DynamicUpdate(true)
+public class SciencePaperCheck implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(length = 100)
+	private String title;
+	@Column(length = 50)
+	private String updataDate;
+	@Column(length = 50)
+	private String auditDate;
+	@Column(length = 100)
 	private String url;
 	@Column(length = 20)
-	private String title;
-	@Column(length = 30)
-	private String updateDate;
-	@Column(length = 15)
 	private String approve;
-	@Column(length = 15)
-	private String auditDate;
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	@ManyToOne
+	@JoinColumn(name = "tutor_id")
+	private Tutor tutor;
 
-	public PaperTitleReport() {
+	public SciencePaperCheck() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PaperTitleReport(Integer id, String url, String title, String updateDate, String approve, String auditDate,
-			Student student) {
+	public SciencePaperCheck(Integer id, String title, String updataDate, String auditDate, String url, String approve,
+			Student student,Tutor tutor) {
 		super();
 		this.id = id;
-		this.url = url;
 		this.title = title;
-		this.updateDate = updateDate;
-		this.approve = approve;
+		this.updataDate = updataDate;
 		this.auditDate = auditDate;
+		this.url = url;
+		this.approve = approve;
 		this.student = student;
+		this.tutor = tutor;
+	}
+
+	@XmlTransient
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
 	public Integer getId() {
@@ -73,14 +89,6 @@ public class PaperTitleReport implements Serializable {
 		this.id = id;
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -89,12 +97,12 @@ public class PaperTitleReport implements Serializable {
 		this.title = title;
 	}
 
-	public String getUpdateDate() {
-		return updateDate;
+	public String getUpdataDate() {
+		return updataDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
-		this.updateDate = updateDate;
+	public void setUpdataDate(String updataDate) {
+		this.updataDate = updataDate;
 	}
 
 	public String getAuditDate() {
@@ -103,6 +111,14 @@ public class PaperTitleReport implements Serializable {
 
 	public void setAuditDate(String auditDate) {
 		this.auditDate = auditDate;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public Student getStudent() {

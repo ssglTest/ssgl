@@ -71,7 +71,7 @@ public class CommonHelp {
 
 	public static String getCurrentDate(){
 		Integer day = getDay();
-		Integer month = getMonth();
+		Integer month = getMonth()+1;
 		Integer year = getYear();
 		String currentDate = day+"/"+month+"/"+year;
 		return currentDate;
@@ -164,7 +164,6 @@ public class CommonHelp {
 		String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),
 				file.getOriginalFilename().length());
 		String name = folderName + "/" + fileName + extension;
-		System.out.println("name============================="+name);
 		// 上传文件
 		if (!file.isEmpty()) {
 			try {
