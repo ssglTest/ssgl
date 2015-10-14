@@ -8,11 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 
 /**
  * 学术论文考核记录表
@@ -46,6 +50,9 @@ public class SciencePaperCheck implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	@ManyToOne
+	@JoinColumn(name = "tutor_id")
+	private Tutor tutor;
 
 	public SciencePaperCheck() {
 		super();
@@ -53,7 +60,7 @@ public class SciencePaperCheck implements Serializable {
 	}
 
 	public SciencePaperCheck(Integer id, String title, String updataDate, String auditDate, String url, String approve,
-			Student student) {
+			Student student,Tutor tutor) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -62,6 +69,16 @@ public class SciencePaperCheck implements Serializable {
 		this.url = url;
 		this.approve = approve;
 		this.student = student;
+		this.tutor = tutor;
+	}
+
+	@XmlTransient
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
 	public Integer getId() {

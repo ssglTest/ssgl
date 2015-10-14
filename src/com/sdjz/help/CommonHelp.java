@@ -164,7 +164,6 @@ public class CommonHelp {
 		String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."),
 				file.getOriginalFilename().length());
 		String name = folderName + "/" + fileName + extension;
-		System.out.println("name============================="+name);
 		// 上传文件
 		if (!file.isEmpty()) {
 			try {

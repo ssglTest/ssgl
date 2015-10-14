@@ -15,8 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.SciencePaperCheck;
 import com.sdjz.domain.Student;
+import com.sdjz.domain.Tutor;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.SciencePaperCheckService;
+import com.sdjz.service.StudentService;
 
 @Controller
 @RequestMapping("userContro/sciencePaperCheck")
@@ -24,6 +26,8 @@ public class SciencePaperCheckController {
 
 	@Autowired
 	private SciencePaperCheckService sciencePaperCheckService;
+	@Autowired
+	private StudentService studentService;
 
 	/**
 	 * 列出所有的学术论文检查表
@@ -32,8 +36,9 @@ public class SciencePaperCheckController {
 	 * @return
 	 */
 	@RequestMapping("/sciencePaperCheckList.html")
-	public String sciencePaperCheckList(ModelMap modelMap) {
-		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
+	public String sciencePaperCheckList(ModelMap modelMap,HttpSession httpSession) {
+		Tutor tutor = (Tutor)CommonHelp.getCurrentActor(httpSession);
+		List<SciencePaperCheck> sciencePaperCheckList = tutor.getSciencePaperCheck();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
 		return "sciencePaperCheck/sciencePaperCheckList";
 	}
@@ -62,7 +67,7 @@ public class SciencePaperCheckController {
 	 */
 	@RequestMapping("/sciencePaperCheckUpload.html")
 	public String sciencePaperCheckUpload(
-			@RequestParam(value = "sciencePaperCheckUpload", required = false) MultipartFile sciencePaperCheckUploadFile,
+			@RequestParam(value = "sciencePaperCheckUploadFile", required = false) MultipartFile sciencePaperCheckUploadFile,
 			HttpSession httpSession, ModelMap modelMap) {
 		SciencePaperCheck sciencePaperCheck = null;
 		if (sciencePaperCheckUploadFile == null) {
@@ -86,6 +91,8 @@ public class SciencePaperCheckController {
 		sciencePaperCheck.setTitle(title);
 		sciencePaperCheck.setUpdataDate(date);
 		sciencePaperCheck.setUrl(url);
+		Tutor tutor = student.getTutor();
+		sciencePaperCheck.setTutor(tutor);
 		sciencePaperCheckService.update(sciencePaperCheck);
 		SciencePaperCheck spc = student.getSciencePaperCheck();
 		modelMap.put("sciencePaperCheck", spc);
