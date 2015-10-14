@@ -32,9 +32,13 @@ public class Major implements Serializable {
 	private Integer id;
 	@Column(length=20)
 	private String description;
+	@Column(length=10)
+	private String no;
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School school;
+	@OneToMany(mappedBy="major")
+	private List<Student> students;
 	@OneToMany(mappedBy="major")
 	private List<Tutor> tutors;
 	@OneToMany(mappedBy="major")
@@ -43,6 +47,10 @@ public class Major implements Serializable {
 	public Major(){}
 	public Major(String description){
 		this.description=description;
+	}
+	public Major(String description,String no){
+		this.description=description;
+		this.no=no;
 	}
 	
 	public Integer getId() {
@@ -54,6 +62,13 @@ public class Major implements Serializable {
 	public String getDescription() {
 		return description;
 	}
+	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -63,6 +78,13 @@ public class Major implements Serializable {
 	}
 	public void setSchool(School school) {
 		this.school = school;
+	}
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 	public List<Tutor> getTutors() {
 		return tutors;

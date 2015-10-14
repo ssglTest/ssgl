@@ -260,6 +260,14 @@ public class CommonHelp {
 			file.delete();
 		}
 	}
+	/**
+	 * 
+	 *@param str 改变的字符
+	 * @return 首字母小写
+	 */
+	public static String initialToLowerCase(String str){
+    	return str.substring(0, 1).toLowerCase() + str.substring(1,str.length());
+    }
 	
 	
 }
