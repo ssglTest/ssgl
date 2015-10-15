@@ -50,8 +50,12 @@ iframe {
 						height="100">
 				</div>
 				<div class="col-md-10">
-					<h2 style="font-family: '楷体'"><font color="white">硕士管理系统</font></h2>
-					<p><font color="white">山东建筑大学非全日制硕士生管理系统</font></p>
+					<h2 style="font-family: '楷体'">
+						<font color="white">硕士管理系统</font>
+					</h2>
+					<p>
+						<font color="white">山东建筑大学非全日制硕士生管理系统</font>
+					</p>
 				</div>
 			</div>
 			<div align="right">
@@ -171,7 +175,8 @@ iframe {
 										target="navTab">审核论文选题申请表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleReport/paperTitleReportList.html" target="navTab">上传选题报告答辩成绩</a>
+									<a href="paperTitleReport/paperTitleReportList.html"
+										target="navTab">上传选题报告答辩成绩</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">审核学位论文答辩申请书</a>
@@ -211,13 +216,15 @@ iframe {
 						<div id="collapseSeven" class="panel-collapse collapse">
 							<div class="panel-body">
 								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleKeepDoc/paperTitleDocList.html" target="navTab">论文选题工作存档</a>
+									<a href="paperTitleKeepDoc/paperTitleDocList.html"
+										target="navTab">论文选题工作存档</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="midtermCheck/midtermCheckList.html" target="navTab">存档中期检查表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
-									<a href="#">存档学位论文考核记录表</a>
+									<a href="sciencePaperCheck/saveSciencePaperCheck.html"
+										target="navTab">存档学位论文考核记录表</a>
 								</button>
 								<button class="btn btn-default btn-block" type="button">
 									<a href="#">汇总文档</a>

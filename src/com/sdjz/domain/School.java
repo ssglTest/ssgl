@@ -18,7 +18,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name="school")
+@Table(name = "school")
 @DynamicInsert(true)
 @DynamicUpdate(true)
 public class School implements Serializable {
@@ -27,72 +27,92 @@ public class School implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(length=20)
+	@Column(length = 20)
 	private String description;
-	@OneToMany(mappedBy="school")
+	@OneToMany(mappedBy = "school")
 	private List<Student> students;
-	@OneToMany(mappedBy="school")
+	@OneToMany(mappedBy = "school")
 	private List<Tutor> tutors;
-	@OneToMany(mappedBy="school")
+	@OneToMany(mappedBy = "school")
 	private List<Major> majors;
-	@OneToOne(mappedBy="school")
+	@OneToOne(mappedBy = "school")
 	private Secretary secretary;
-	@OneToMany(mappedBy="school")
+	@OneToMany(mappedBy = "school")
 	private List<Teacher> teachers;
-	public School(){}
-	public School(String description){
-		this.description=description;
+	@OneToMany(mappedBy = "school")
+	private List<SciencePaperCheck> sciencePaperCheck;
+
+	public School() {
 	}
-	
+
+	public School(String description) {
+		this.description = description;
+	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public List<SciencePaperCheck> getSciencePaperCheck() {
+		return sciencePaperCheck;
+	}
+
+	public void setSciencePaperCheck(List<SciencePaperCheck> sciencePaperCheck) {
+		this.sciencePaperCheck = sciencePaperCheck;
+	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public List<Student> getStudents() {
 		return students;
 	}
+
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+
 	public List<Tutor> getTutors() {
 		return tutors;
 	}
+
 	public void setTutors(List<Tutor> tutors) {
 		this.tutors = tutors;
-	}	
-	
+	}
+
 	public List<Major> getMajors() {
 		return majors;
 	}
+
 	public void setMajors(List<Major> majors) {
 		this.majors = majors;
 	}
+
 	public Secretary getSecretary() {
 		return secretary;
 	}
+
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
 	}
+
 	public List<Teacher> getTeachers() {
 		return teachers;
 	}
+
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
 	}
-	
-	
-	
-	
 
 }

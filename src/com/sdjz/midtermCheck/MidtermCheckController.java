@@ -44,6 +44,8 @@ public class MidtermCheckController {
 	public String midtermCheckListByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
+		if(paperTitleReport==null)
+			return "warning/error";
 		String approve = paperTitleReport.getApprove();
 		if(approve.equals("notApproved"))
 			return "warning/error";

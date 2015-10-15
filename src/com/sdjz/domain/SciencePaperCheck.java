@@ -53,6 +53,9 @@ public class SciencePaperCheck implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "tutor_id")
 	private Tutor tutor;
+	@ManyToOne
+	@JoinColumn(name = "school_id")
+	private School school;
 
 	public SciencePaperCheck() {
 		super();
@@ -60,7 +63,7 @@ public class SciencePaperCheck implements Serializable {
 	}
 
 	public SciencePaperCheck(Integer id, String title, String updataDate, String auditDate, String url, String approve,
-			Student student,Tutor tutor) {
+			Student student, Tutor tutor, School school) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -70,6 +73,7 @@ public class SciencePaperCheck implements Serializable {
 		this.approve = approve;
 		this.student = student;
 		this.tutor = tutor;
+		this.school = school;
 	}
 
 	@XmlTransient
@@ -79,6 +83,15 @@ public class SciencePaperCheck implements Serializable {
 
 	public void setTutor(Tutor tutor) {
 		this.tutor = tutor;
+	}
+
+	@XmlTransient
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
 	}
 
 	public Integer getId() {

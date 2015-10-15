@@ -36,6 +36,8 @@ public class PaperTitleReportController {
 	public String getPaperTitleReportByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		PaperTitleApply paperTitleApply =student.getPaperTitleApply();
+		if(paperTitleApply==null)
+			return "warning/error";
 		String approve = paperTitleApply.getApprove();
 		if(approve.equals("notApproved"))
 			return "warning/error";
