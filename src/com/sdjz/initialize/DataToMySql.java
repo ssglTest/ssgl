@@ -54,30 +54,24 @@ public class DataToMySql extends TestBaseService{
 		this.saveUser();
 	}
 	
+	
 	private void saveUser() throws Exception{
-		//Role role=null;
 		Actor actor=null;
+		Role role=null;
 		List<User> users=XlsDataSetBeanFactory.createBeans(this.getClass(),excelFile,"user",User.class);
 		List<UserWithFK> userWithFKs=XlsDataSetBeanFactory.createBeans(this.getClass(), excelFile, "user", UserWithFK.class);
 		for(User user:users){
 			for(UserWithFK userWithFK:userWithFKs){
 				if(user.getPassword().equals(userWithFK.getPassword())){
-					//role=roleService.findById(userWithFK.getRoleId());
 					actor=actorService.findById(userWithFK.getActorId());
-					//user.setRole(role);
+					role=roleService.findById(userWithFK.getRoleId());
 					user.setActor(actor);
+					user.setRole(role);
 					userService.save(user);
 				}
 			}
 		}
-		Integer index=0;
-		List<User> savedusers=userService.findAll();
-		for(User saveduser:savedusers){
-			Integer roleId=userWithFKs.get(index++).getRoleId();
-			saveduser.setRole(roleService.findById(roleId));
-			userService.update(saveduser);
-			userService.save(saveduser);
-		}
+		
 		
 	}
 	

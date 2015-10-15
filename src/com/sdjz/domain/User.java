@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -36,13 +37,12 @@ public class User implements Serializable {
 	private String userName;
 	@Column(length=20)
 	private String password;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="role_id")
 	private Role role;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="actor_id")
 	private Actor actor;
-	
 	public User(){}
 	public User(String userName,String password){
 		this.userName=userName;
@@ -67,7 +67,8 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@XmlTransient
+	
+	
 	public Role getRole() {
 		return role;
 	}
@@ -81,6 +82,7 @@ public class User implements Serializable {
 	public void setActor(Actor actor) {
 		this.actor = actor;
 	}
+	
 	
 	
 

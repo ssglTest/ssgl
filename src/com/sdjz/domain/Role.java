@@ -9,8 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -31,11 +34,16 @@ public class Role implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	private String no;
 	private String description;
-	@OneToOne(mappedBy="role")
-	private User user;
+	@OneToMany(mappedBy="role")
+	private List<User> users;
 	public Role(){}
 	public Role(String description){
+		this.description=description;
+	}
+	public Role(String no,String description){
+		this.no=no;
 		this.description=description;
 	}
 	public Integer getId() {
@@ -44,6 +52,13 @@ public class Role implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -51,12 +66,14 @@ public class Role implements Serializable {
 		this.description = description;
 	}
 	@XmlTransient
-	public User getUser() {
-		return user;
+	public List<User> getUsers() {
+		return users;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
+	
+	
 	
 	
 

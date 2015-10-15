@@ -11,6 +11,7 @@ public class UserWithFK implements Serializable{
 	private String password;
 	private Integer roleId;
 	private Integer actorId;
+	
 	public UserWithFK(){
 		super();
 	}

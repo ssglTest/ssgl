@@ -41,7 +41,6 @@ public class School implements Serializable {
 	private Secretary secretary;
 	@OneToMany(mappedBy="school")
 	private List<Teacher> teachers;
-	
 	public School(){}
 	public School(String description){
 		this.description=description;
@@ -91,6 +90,7 @@ public class School implements Serializable {
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
 	}
+	
 	
 	
 	
