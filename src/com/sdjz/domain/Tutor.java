@@ -17,9 +17,8 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Tutor extends Actor {
 
 	private static final long serialVersionUID = 1L;
-	private String title;// ְ��
+	private String title;
 	@OneToMany(mappedBy = "tutor")
-
 	private List<Student> students;
 	@ManyToOne
 	@JoinColumn(name = "school_id")
@@ -27,7 +26,8 @@ public class Tutor extends Actor {
 	@ManyToOne
 	@JoinColumn(name = "major_id")
 	private Major major;
-	@OneToMany(mappedBy = "tutor")
+	
+	@OneToMany(mappedBy ="tutor")//学术论文考核记录
 	private List<SciencePaperCheck> sciencePaperCheck;
 
 	public Tutor() {
@@ -79,5 +79,6 @@ public class Tutor extends Actor {
 	public void setMajor(Major major) {
 		this.major = major;
 	}
+	
 
 }

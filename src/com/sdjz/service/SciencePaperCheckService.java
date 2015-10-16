@@ -11,7 +11,6 @@ import com.sdjz.jpaRepository.MyRepository;
 public class SciencePaperCheckService extends BasicService<SciencePaperCheck, Integer> {
 
 	@SuppressWarnings("unused")
-	@Autowired
 	private SciencePaperCheckDao sciencePaperCheckDao;
 
 	@Autowired

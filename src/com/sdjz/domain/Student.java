@@ -34,14 +34,16 @@ public class Student extends Actor {
 	@ManyToMany
 	@JoinTable(name="student_teacher")
 	private List<Teacher> teachers;
-	@OneToOne(mappedBy="student")
+	@OneToOne(mappedBy="student")//论文选题申请
 	private PaperTitleApply paperTitleApply;
-	@OneToOne(mappedBy="student")
+	@OneToOne(mappedBy="student")//论文选题答辩
+	private PaperTitleReply paperTitleReply;
+	@OneToOne(mappedBy="student")//论文选题报告
 	private PaperTitleReport paperTitleReport;
-	@OneToOne(mappedBy="student")
-	private MidtermCheck midtermCheck;
-	@OneToOne(mappedBy="student")
+	@OneToOne(mappedBy="student")//学术论文考核记录
 	private SciencePaperCheck sciencePaperCheck;
+	@OneToOne(mappedBy="student")//中期检查表
+	private MidtermCheck midtermCheck;
 	public Student() {
 	}
 
@@ -49,13 +51,6 @@ public class Student extends Actor {
 		super(no, name);
 	}
 	
-	public MidtermCheck getMidtermCheck() {
-		return midtermCheck;
-	}
-
-	public void setMidtermCheck(MidtermCheck midtermCheck) {
-		this.midtermCheck = midtermCheck;
-	}
 
 	@XmlTransient
 	public Tutor getTutor() {
@@ -99,6 +94,14 @@ public class Student extends Actor {
 		this.paperTitleApply = paperTitleApply;
 	}
 
+	public PaperTitleReply getPaperTitleReply() {
+		return paperTitleReply;
+	}
+
+	public void setPaperTitleReply(PaperTitleReply paperTitleReply) {
+		this.paperTitleReply = paperTitleReply;
+	}
+
 	public PaperTitleReport getPaperTitleReport() {
 		return paperTitleReport;
 	}
@@ -113,6 +116,14 @@ public class Student extends Actor {
 
 	public void setSciencePaperCheck(SciencePaperCheck sciencePaperCheck) {
 		this.sciencePaperCheck = sciencePaperCheck;
+	}
+
+	public MidtermCheck getMidtermCheck() {
+		return midtermCheck;
+	}
+
+	public void setMidtermCheck(MidtermCheck midtermCheck) {
+		this.midtermCheck = midtermCheck;
 	}
 	
 	

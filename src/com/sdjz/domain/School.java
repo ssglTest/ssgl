@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -41,9 +42,15 @@ public class School implements Serializable {
 	private Secretary secretary;
 	@OneToMany(mappedBy = "school")
 	private List<Teacher> teachers;
-	@OneToMany(mappedBy = "school")
-	private List<SciencePaperCheck> sciencePaperCheck;
-
+	
+	@OneToMany(mappedBy="school")//论文选题申请
+	private List<PaperTitleApply> paperTitleApplies;
+	@OneToMany(mappedBy="school")//论文选题答辩
+	private List<PaperTitleReply> paperTitleReplies;
+	@OneToMany(mappedBy="school")//论文选题报告
+	private List<PaperTitleReport> paperTitleReports;
+	@OneToMany(mappedBy="school")//学术论文考核记录
+	private List<SciencePaperCheck> sciencePaperChecks;
 	public School() {
 	}
 
@@ -59,13 +66,6 @@ public class School implements Serializable {
 		this.id = id;
 	}
 
-	public List<SciencePaperCheck> getSciencePaperCheck() {
-		return sciencePaperCheck;
-	}
-
-	public void setSciencePaperCheck(List<SciencePaperCheck> sciencePaperCheck) {
-		this.sciencePaperCheck = sciencePaperCheck;
-	}
 
 	public String getDescription() {
 		return description;
@@ -74,7 +74,7 @@ public class School implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	@XmlTransient
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -82,7 +82,7 @@ public class School implements Serializable {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
-
+	@XmlTransient
 	public List<Tutor> getTutors() {
 		return tutors;
 	}
@@ -90,7 +90,7 @@ public class School implements Serializable {
 	public void setTutors(List<Tutor> tutors) {
 		this.tutors = tutors;
 	}
-
+	@XmlTransient
 	public List<Major> getMajors() {
 		return majors;
 	}
@@ -106,7 +106,7 @@ public class School implements Serializable {
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
 	}
-
+	@XmlTransient
 	public List<Teacher> getTeachers() {
 		return teachers;
 	}
@@ -114,5 +114,39 @@ public class School implements Serializable {
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
 	}
+	@XmlTransient
+	public List<PaperTitleApply> getPaperTitleApplies() {
+		return paperTitleApplies;
+	}
+
+	public void setPaperTitleApplies(List<PaperTitleApply> paperTitleApplies) {
+		this.paperTitleApplies = paperTitleApplies;
+	}
+	@XmlTransient
+	public List<PaperTitleReply> getPaperTitleReplies() {
+		return paperTitleReplies;
+	}
+
+	public void setPaperTitleReplies(List<PaperTitleReply> paperTitleReplies) {
+		this.paperTitleReplies = paperTitleReplies;
+	}
+	@XmlTransient
+	public List<PaperTitleReport> getPaperTitleReports() {
+		return paperTitleReports;
+	}
+
+	public void setPaperTitleReports(List<PaperTitleReport> paperTitleReports) {
+		this.paperTitleReports = paperTitleReports;
+	}
+	@XmlTransient
+	public List<SciencePaperCheck> getSciencePaperChecks() {
+		return sciencePaperChecks;
+	}
+
+	public void setSciencePaperChecks(List<SciencePaperCheck> sciencePaperChecks) {
+		this.sciencePaperChecks = sciencePaperChecks;
+	}
+	
+	
 
 }

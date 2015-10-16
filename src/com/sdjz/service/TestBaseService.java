@@ -22,7 +22,7 @@ public class TestBaseService{
 	public void initialize(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
 		actorService=(ActorService)ac.getBean("actorService");
-		schoolService=(SchoolService)ac.getBean("shoolService");
+		schoolService=(SchoolService)ac.getBean("schoolService");
 		roleService=(RoleService)ac.getBean("roleService");
 		majorService=(MajorService)ac.getBean("majorService");
 		secretaryService=(SecretaryService)ac.getBean("secretaryService");

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,13 +44,20 @@ public class PaperTitleReply implements Serializable {
 	@OneToOne
 	@JoinColumn(name="student_id")
 	private Student student;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="secretary_id")
 	private Secretary secretary;
+	@ManyToOne
+	@JoinColumn(name="school_id")
+	private School school;
 
 	public PaperTitleReply() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public PaperTitleReply(String url,String title){
+		this.url=url;
+		this.title=title;
 	}
 
 	public Integer getId() {
@@ -107,6 +115,21 @@ public class PaperTitleReply implements Serializable {
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
 	}
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+	@Override
+	public String toString() {
+		return "PaperTitleReply [id=" + id + ", url=" + url + ", title=" + title + ", student=" + student
+				+ ", secretary=" + secretary + ", school=" + school + "]";
+	}
+	
 
 	
 }

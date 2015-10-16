@@ -32,13 +32,16 @@ public class PaperTitleApply implements Serializable {
 	private String url;
 	@Column(length = 100)
 	private String title;
+	@ManyToOne
+	@JoinColumn(name="school_id")
+	private School school;	
 	@OneToOne
-	@JoinColumn(name = "student_id")
+	@JoinColumn(name="student_id")
 	private Student student;
-
 	@ManyToOne
 	@JoinColumn(name = "secretary_id")
 	private Secretary secretary;
+	
 	@Column(length = 15) // 审核状态
 	private String approve;
 	@Column(length = 100)
@@ -109,6 +112,15 @@ public class PaperTitleApply implements Serializable {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
 
 	public Secretary getSecretary() {
 		return secretary;
@@ -117,5 +129,12 @@ public class PaperTitleApply implements Serializable {
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
 	}
+
+	@Override
+	public String toString() {
+		return "PaperTitleApply [id=" + id + ", url=" + url + ", title=" + title + ", school=" + school + ", student="
+				+ student + ", secretary=" + secretary + "]";
+	}
+	
 
 }

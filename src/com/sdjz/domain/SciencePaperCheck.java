@@ -56,10 +56,17 @@ public class SciencePaperCheck implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "school_id")
 	private School school;
+	@ManyToOne
+	@JoinColumn(name="secretary_id")
+	private Secretary secretary;
 
 	public SciencePaperCheck() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public SciencePaperCheck(String url,String title){
+		this.url=url;
+		this.title=title;
 	}
 
 	public SciencePaperCheck(Integer id, String title, String updataDate, String auditDate, String url, String approve,
@@ -149,5 +156,12 @@ public class SciencePaperCheck implements Serializable {
 	public void setApprove(String approve) {
 		this.approve = approve;
 	}
+	public Secretary getSecretary() {
+		return secretary;
+	}
+	public void setSecretary(Secretary secretary) {
+		this.secretary = secretary;
+	}
+	
 
 }

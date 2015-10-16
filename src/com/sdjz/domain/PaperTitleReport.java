@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,13 +45,24 @@ public class PaperTitleReport implements Serializable {
 	private String approve;
 	@Column(length = 15)
 	private String auditDate;
+	
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	@ManyToOne
+	@JoinColumn(name="secretary_id")
+	private Secretary secretary;
+	@ManyToOne
+	@JoinColumn(name="school_id")
+	private School school;
 
 	public PaperTitleReport() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public PaperTitleReport(String url,String title){
+		this.url=url;
+		this.title=title;
 	}
 
 	public PaperTitleReport(Integer id, String url, String title, String updateDate, String approve, String auditDate,
@@ -120,5 +132,18 @@ public class PaperTitleReport implements Serializable {
 	public void setApprove(String approve) {
 		this.approve = approve;
 	}
+	public Secretary getSecretary() {
+		return secretary;
+	}
+	public void setSecretary(Secretary secretary) {
+		this.secretary = secretary;
+	}
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
+	}
+	
 
 }

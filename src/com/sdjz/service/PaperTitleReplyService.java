@@ -11,7 +11,6 @@ import com.sdjz.jpaRepository.MyRepository;
 public class PaperTitleReplyService extends BasicService<PaperTitleReply, Integer>{
 
 	@SuppressWarnings("unused")
-	@Autowired
 	private PaperTitleReplyDao paperTitleReplyDao;
 	@Override
 	@Autowired
