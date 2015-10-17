@@ -58,7 +58,7 @@ public class SciencePaperCheckController {
 		// 得到当前的用户
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckList = secretary.getSchool().getSciencePaperCheck();
+		List<SciencePaperCheck> sciencePaperCheckList = secretary.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
 		return "";
