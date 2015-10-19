@@ -20,21 +20,76 @@
 		});
 	});
 </script>
-<!-- <style type="text/css">
-html, body {
-	margin: 0px 0px;
-	width: 100%;
-	height: 100%;
-}
+<script type="text/javascript">
+	function updateInfo() {
+		window.open("secretaryInfo.html", "navTab");
+	}
 
-iframe {
-	margin: 0px 0px;
-	width: 100%;
-	height: 100%;
-}
-</style> -->
+	function sendpublicgrade() {
+		window.open("#", "navTab");
+	}
+
+	function sendmajorgrade() {
+		window.open("#", "navTab");
+	}
+
+	function sendchoosetitlepepol() {
+		window.open("secretary/chooseTitleName.html", "navTab");
+	}
+	
+	function baseprocess() {
+		window.open("#", "navTab");
+	}
+
+	function updatepapertitleapply() {
+		window.open("paperTitleReply/paperTitleReplyList.html", "navTab");
+	}
+
+	function updatepapertitlereply() {
+		window.open("paperReplyTime/updatePaperReply.html", "navTab");
+	}
+
+	function updatereplygrade() {
+		window.open("replyGrade/updateReplyGrade.html", "navTab");
+	}
+
+	function auditpapertitleapply() {
+		window.open("paperTitleApply/paperTitleApplyManage.html", "navTab");
+	}
+
+	function updatepapertitlereportgrade() {
+		window.open("paperTitleReport/paperTitleReportList.html", "navTab");
+	}
+
+	function auditpaperreplyapply() {
+		window.open("#", "navTab");
+	}
+
+	function updategrade() {
+		window.open("#", "navTab");
+	}
+
+	function copycheck() {
+		window.open("secretary/copyCheck.html", "navTab");
+	}
+
+	function savepapertitle() {
+		window.open("paperTitleKeepDoc/paperTitleDocList.html", "navTab");
+	}
+
+	function savemidtermcheck() {
+		window.open("midtermCheck/midtermCheckList.html", "navTab");
+	}
+
+	function savesciencepapercheck() {
+		window.open("sciencePaperCheck/saveSciencePaperCheck.html", "navTab");
+	}
+
+	function savealldoc() {
+		window.open("#", "navTab");
+	}
+</script>
 <title>硕士管理系统</title>
-
 
 </head>
 <body style="background: #EEE9E9">
@@ -89,9 +144,8 @@ iframe {
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="secretaryInfo.html" target="navTab">查看/修改个人信息</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updateInfo()">查看/修改个人信息</button>
 							</div>
 						</div>
 					</div>
@@ -106,15 +160,12 @@ iframe {
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">发布公共课成绩与学分情况</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">发布专业课成绩与学分情况</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="secretary/chooseTitleName.html" target="navTab">发布选题资格名单</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="sendpublicgrade()">发布公共课成绩与学分情况</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="sendmajorgrade()">发布专业课成绩与学分情况</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="sendchoosetitlepepol()">发布选题资格名单</button>
 							</div>
 						</div>
 					</div>
@@ -129,9 +180,8 @@ iframe {
 						</div>
 						<div id="collapseFive" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">硕士培养基本流程</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="baseprocess()">硕士培养基本流程</button>
 							</div>
 						</div>
 					</div>
@@ -146,16 +196,12 @@ iframe {
 						</div>
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleReply/paperTitleReplyList.html"
-										target="navTab">上传选题报告答辩时间地点</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="paperReplyTime/updatePaperReply.html" target="navTab">上传论文答辩时间地点</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="replyGrade/updateReplyGrade.html" target="navTab">上传答辩成绩</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepapertitleapply()">上传选题报告答辩时间地点</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepapertitlereply()">上传论文答辩时间地点</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatereplygrade()">上传答辩成绩</button>
 							</div>
 						</div>
 					</div>
@@ -170,20 +216,14 @@ iframe {
 						</div>
 						<div id="collapseFour" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleApply/paperTitleApplyManage.html"
-										target="navTab">审核论文选题申请表</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleReport/paperTitleReportList.html"
-										target="navTab">上传选题报告答辩成绩</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">审核学位论文答辩申请书</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">上传学位论文答辩成绩</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="auditpapertitleapply()">审核论文选题申请表</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepapertitlereportgrade()">上传选题报告答辩成绩</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="auditpaperreplyapply()">审核学位论文答辩申请书</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updategrade()">上传学位论文答辩成绩</button>
 							</div>
 						</div>
 					</div>
@@ -198,9 +238,8 @@ iframe {
 						</div>
 						<div id="collapseSix" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="secretary/copyCheck.html" target="navTab">复制比检测</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="copycheck()">复制比检测</button>
 							</div>
 						</div>
 					</div>
@@ -215,20 +254,14 @@ iframe {
 						</div>
 						<div id="collapseSeven" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button">
-									<a href="paperTitleKeepDoc/paperTitleDocList.html"
-										target="navTab">论文选题工作存档</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="midtermCheck/midtermCheckList.html" target="navTab">存档中期检查表</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="sciencePaperCheck/saveSciencePaperCheck.html"
-										target="navTab">存档学位论文考核记录表</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">汇总文档</a>
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="savepapertitle()">论文选题工作存档</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="savemidtermcheck()">存档中期检查表</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="savesciencepapercheck()">存档学位论文考核记录表</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="savealldoc()">汇总文档</button>
 							</div>
 						</div>
 					</div>

@@ -2,11 +2,9 @@ package com.sdjz.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,15 +40,26 @@ public class School implements Serializable {
 	private Secretary secretary;
 	@OneToMany(mappedBy = "school")
 	private List<Teacher> teachers;
-	
-	@OneToMany(mappedBy="school")//论文选题申请
+
+	@OneToMany(mappedBy = "school") // 论文选题申请
 	private List<PaperTitleApply> paperTitleApplies;
-	@OneToMany(mappedBy="school")//论文选题答辩
+	@OneToMany(mappedBy = "school") // 论文选题答辩
 	private List<PaperTitleReply> paperTitleReplies;
-	@OneToMany(mappedBy="school")//论文选题报告
+	@OneToMany(mappedBy = "school") // 论文选题报告
 	private List<PaperTitleReport> paperTitleReports;
-	@OneToMany(mappedBy="school")//学术论文考核记录
+	@OneToMany(mappedBy = "school") // 学术论文考核记录
 	private List<SciencePaperCheck> sciencePaperChecks;
+	@OneToMany(mappedBy = "school") // 学位论文答辩申请书
+	private List<PaperReplyApply> paperReplyApply;
+	@OneToMany(mappedBy = "school") // 学位论文电子版
+	private List<PaperElectronicEdition> paperElectronicEdition;
+	@OneToMany(mappedBy = "school") // 学位论文答辩时间地点
+	private List<PaperReplyNotifiCation> paperReplyNotifiCation;
+	@OneToMany(mappedBy = "school") // 学位论文答辩成绩
+	private List<PaperReplyGrade> paperReplyGrade;
+	@OneToMany(mappedBy = "school") // 硕士学位审批表
+	private List<MasterDegreeAudit> masterDegreeAudit;
+
 	public School() {
 	}
 
@@ -66,7 +75,6 @@ public class School implements Serializable {
 		this.id = id;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
@@ -74,6 +82,7 @@ public class School implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	@XmlTransient
 	public List<Student> getStudents() {
 		return students;
@@ -82,6 +91,7 @@ public class School implements Serializable {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+
 	@XmlTransient
 	public List<Tutor> getTutors() {
 		return tutors;
@@ -90,6 +100,7 @@ public class School implements Serializable {
 	public void setTutors(List<Tutor> tutors) {
 		this.tutors = tutors;
 	}
+
 	@XmlTransient
 	public List<Major> getMajors() {
 		return majors;
@@ -106,6 +117,7 @@ public class School implements Serializable {
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
 	}
+
 	@XmlTransient
 	public List<Teacher> getTeachers() {
 		return teachers;
@@ -114,6 +126,7 @@ public class School implements Serializable {
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
 	}
+
 	@XmlTransient
 	public List<PaperTitleApply> getPaperTitleApplies() {
 		return paperTitleApplies;
@@ -122,6 +135,7 @@ public class School implements Serializable {
 	public void setPaperTitleApplies(List<PaperTitleApply> paperTitleApplies) {
 		this.paperTitleApplies = paperTitleApplies;
 	}
+
 	@XmlTransient
 	public List<PaperTitleReply> getPaperTitleReplies() {
 		return paperTitleReplies;
@@ -130,6 +144,7 @@ public class School implements Serializable {
 	public void setPaperTitleReplies(List<PaperTitleReply> paperTitleReplies) {
 		this.paperTitleReplies = paperTitleReplies;
 	}
+
 	@XmlTransient
 	public List<PaperTitleReport> getPaperTitleReports() {
 		return paperTitleReports;
@@ -138,6 +153,7 @@ public class School implements Serializable {
 	public void setPaperTitleReports(List<PaperTitleReport> paperTitleReports) {
 		this.paperTitleReports = paperTitleReports;
 	}
+
 	@XmlTransient
 	public List<SciencePaperCheck> getSciencePaperChecks() {
 		return sciencePaperChecks;
@@ -146,7 +162,50 @@ public class School implements Serializable {
 	public void setSciencePaperChecks(List<SciencePaperCheck> sciencePaperChecks) {
 		this.sciencePaperChecks = sciencePaperChecks;
 	}
-	
-	
+
+	@XmlTransient
+	public List<PaperReplyApply> getPaperReplyApply() {
+		return paperReplyApply;
+	}
+
+	public void setPaperReplyApply(List<PaperReplyApply> paperReplyApply) {
+		this.paperReplyApply = paperReplyApply;
+	}
+
+	@XmlTransient
+	public List<PaperElectronicEdition> getPaperElectronicEdition() {
+		return paperElectronicEdition;
+	}
+
+	public void setPaperElectronicEdition(List<PaperElectronicEdition> paperElectronicEdition) {
+		this.paperElectronicEdition = paperElectronicEdition;
+	}
+
+	@XmlTransient
+	public List<PaperReplyNotifiCation> getPaperReplyNotifiCation() {
+		return paperReplyNotifiCation;
+	}
+
+	public void setPaperReplyNotifiCation(List<PaperReplyNotifiCation> paperReplyNotifiCation) {
+		this.paperReplyNotifiCation = paperReplyNotifiCation;
+	}
+
+	@XmlTransient
+	public List<PaperReplyGrade> getPaperReplyGrade() {
+		return paperReplyGrade;
+	}
+
+	public void setPaperReplyGrade(List<PaperReplyGrade> paperReplyGrade) {
+		this.paperReplyGrade = paperReplyGrade;
+	}
+
+	@XmlTransient
+	public List<MasterDegreeAudit> getMasterDegreeAudit() {
+		return masterDegreeAudit;
+	}
+
+	public void setMasterDegreeAudit(List<MasterDegreeAudit> masterDegreeAudit) {
+		this.masterDegreeAudit = masterDegreeAudit;
+	}
 
 }

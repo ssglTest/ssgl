@@ -61,7 +61,7 @@ public class SciencePaperCheckController {
 		List<SciencePaperCheck> sciencePaperCheckList = secretary.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		return "";
+		return "keepInTheArchives/sciencePaperCheckDoc";
 	}
 
 	/**

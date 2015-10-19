@@ -119,7 +119,6 @@ public class PaperTitleApplyController {
 	public ResponseEntity<byte[]> downPaperTitleApply(HttpSession httpSession, Integer paperTitleApplyId)
 			throws IOException {
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
-		System.out.println("downUrl=========" + paperTitleApply.getUrl());
 		String name = "论文选题申请表";
 		return CommonHelp.download(httpSession, paperTitleApply.getUrl(), name);
 	}

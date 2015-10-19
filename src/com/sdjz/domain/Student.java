@@ -2,7 +2,6 @@ package com.sdjz.domain;
 
 import java.util.List;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -29,28 +28,36 @@ public class Student extends Actor {
 	@JoinColumn(name = "school_id")
 	private School school;
 	@ManyToOne
-	@JoinColumn(name="major_id")
+	@JoinColumn(name = "major_id")
 	private Major major;
 	@ManyToMany
-	@JoinTable(name="student_teacher")
+	@JoinTable(name = "student_teacher")
 	private List<Teacher> teachers;
-	@OneToOne(mappedBy="student")//论文选题申请
+	@OneToOne(mappedBy = "student") // 论文选题申请
 	private PaperTitleApply paperTitleApply;
-	@OneToOne(mappedBy="student")//论文选题答辩
+	@OneToOne(mappedBy = "student") // 论文选题答辩
 	private PaperTitleReply paperTitleReply;
-	@OneToOne(mappedBy="student")//论文选题报告
+	@OneToOne(mappedBy = "student") // 论文选题报告
 	private PaperTitleReport paperTitleReport;
-	@OneToOne(mappedBy="student")//学术论文考核记录
+	@OneToOne(mappedBy = "student") // 学术论文考核记录
 	private SciencePaperCheck sciencePaperCheck;
-	@OneToOne(mappedBy="student")//中期检查表
+	@OneToOne(mappedBy = "student") // 中期检查表
 	private MidtermCheck midtermCheck;
+	@OneToOne(mappedBy = "student") // 学位论文答辩申请书
+	private PaperReplyApply paperReplyApply;
+	@OneToOne(mappedBy = "student") // 学位论文电子版
+	private PaperElectronicEdition paperElectronicEdition;
+	@OneToOne(mappedBy = "student") // 学位论文答辩成绩
+	private PaperReplyGrade paperReplyGrade;
+	@OneToOne(mappedBy = "student") // 硕士学位审批表
+	private MasterDegreeAudit masterDegreeAudit;
+
 	public Student() {
 	}
 
 	public Student(String no, String name) {
 		super(no, name);
 	}
-	
 
 	@XmlTransient
 	public Tutor getTutor() {
@@ -68,7 +75,7 @@ public class Student extends Actor {
 	public void setSchool(School school) {
 		this.school = school;
 	}
-	
+
 	public Major getMajor() {
 		return major;
 	}
@@ -125,8 +132,37 @@ public class Student extends Actor {
 	public void setMidtermCheck(MidtermCheck midtermCheck) {
 		this.midtermCheck = midtermCheck;
 	}
-	
-	
 
+	public PaperReplyApply getPaperReplyApply() {
+		return paperReplyApply;
+	}
+
+	public void setPaperReplyApply(PaperReplyApply paperReplyApply) {
+		this.paperReplyApply = paperReplyApply;
+	}
+
+	public PaperElectronicEdition getPaperElectronicEdition() {
+		return paperElectronicEdition;
+	}
+
+	public void setPaperElectronicEdition(PaperElectronicEdition paperElectronicEdition) {
+		this.paperElectronicEdition = paperElectronicEdition;
+	}
+
+	public PaperReplyGrade getPaperReplyGrade() {
+		return paperReplyGrade;
+	}
+
+	public void setPaperReplyGrade(PaperReplyGrade paperReplyGrade) {
+		this.paperReplyGrade = paperReplyGrade;
+	}
+
+	public MasterDegreeAudit getMasterDegreeAudit() {
+		return masterDegreeAudit;
+	}
+
+	public void setMasterDegreeAudit(MasterDegreeAudit masterDegreeAudit) {
+		this.masterDegreeAudit = masterDegreeAudit;
+	}
 
 }
