@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.sdjz.domain.Secretary;
 import com.sdjz.service.SecretaryService;
 
-public class SecretaryTest {
+public class SecretaryServiceTest {
 	SecretaryService secretaryService;
 
 	@Before

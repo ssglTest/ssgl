@@ -33,6 +33,7 @@ public class Student extends Actor {
 	@ManyToMany
 	@JoinTable(name = "student_teacher")
 	private List<Teacher> teachers;
+	
 	@OneToOne(mappedBy = "student") // 论文选题申请
 	private PaperTitleApply paperTitleApply;
 	@OneToOne(mappedBy = "student") // 论文选题答辩
@@ -41,17 +42,19 @@ public class Student extends Actor {
 	private PaperTitleReport paperTitleReport;
 	@OneToOne(mappedBy = "student") // 学术论文考核记录
 	private SciencePaperCheck sciencePaperCheck;
-	@OneToOne(mappedBy = "student") // 中期检查表
-	private MidtermCheck midtermCheck;
-	@OneToOne(mappedBy = "student") // 学位论文答辩申请书
+	@OneToOne(mappedBy="student")//学位论文答辩申请书
 	private PaperReplyApply paperReplyApply;
-	@OneToOne(mappedBy = "student") // 学位论文电子版
+	@OneToOne(mappedBy="student")//论文电子版
 	private PaperElectronicEdition paperElectronicEdition;
-	@OneToOne(mappedBy = "student") // 学位论文答辩成绩
+	@OneToOne(mappedBy="student")//硕士学位审批表
+	private MasterDegreeAudit masterDegredAudit;
+	@OneToOne(mappedBy="student")//期中检查表
+	private MidtermCheck midtermCheck;
+	@OneToOne(mappedBy="student")//学位论文答辩通知
+	private PaperReplyNotifiCation paperReplyNotifiCation;
+	@OneToOne(mappedBy="student")//学位论文答辩成绩
 	private PaperReplyGrade paperReplyGrade;
-	@OneToOne(mappedBy = "student") // 硕士学位审批表
-	private MasterDegreeAudit masterDegreeAudit;
-
+	
 	public Student() {
 	}
 
@@ -125,14 +128,6 @@ public class Student extends Actor {
 		this.sciencePaperCheck = sciencePaperCheck;
 	}
 
-	public MidtermCheck getMidtermCheck() {
-		return midtermCheck;
-	}
-
-	public void setMidtermCheck(MidtermCheck midtermCheck) {
-		this.midtermCheck = midtermCheck;
-	}
-
 	public PaperReplyApply getPaperReplyApply() {
 		return paperReplyApply;
 	}
@@ -149,6 +144,30 @@ public class Student extends Actor {
 		this.paperElectronicEdition = paperElectronicEdition;
 	}
 
+	public MasterDegreeAudit getMasterDegredAudit() {
+		return masterDegredAudit;
+	}
+
+	public void setMasterDegredAudit(MasterDegreeAudit masterDegredAudit) {
+		this.masterDegredAudit = masterDegredAudit;
+	}
+
+	public MidtermCheck getMidtermCheck() {
+		return midtermCheck;
+	}
+
+	public void setMidtermCheck(MidtermCheck midtermCheck) {
+		this.midtermCheck = midtermCheck;
+	}
+
+	public PaperReplyNotifiCation getPaperReplyNotifiCation() {
+		return paperReplyNotifiCation;
+	}
+
+	public void setPaperReplyNotifiCation(PaperReplyNotifiCation paperReplyNotifiCation) {
+		this.paperReplyNotifiCation = paperReplyNotifiCation;
+	}
+
 	public PaperReplyGrade getPaperReplyGrade() {
 		return paperReplyGrade;
 	}
@@ -157,12 +176,7 @@ public class Student extends Actor {
 		this.paperReplyGrade = paperReplyGrade;
 	}
 
-	public MasterDegreeAudit getMasterDegreeAudit() {
-		return masterDegreeAudit;
-	}
-
-	public void setMasterDegreeAudit(MasterDegreeAudit masterDegreeAudit) {
-		this.masterDegreeAudit = masterDegreeAudit;
-	}
-
+	
+	
+	
 }

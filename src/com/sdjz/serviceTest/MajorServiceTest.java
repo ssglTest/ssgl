@@ -12,7 +12,7 @@ import com.sdjz.service.MajorService;
 import com.sdjz.service.SchoolService;
 
 
-public class MajorTest {
+public class MajorServiceTest {
 	MajorService majorService;
 	SchoolService schoolService;
 	@Before

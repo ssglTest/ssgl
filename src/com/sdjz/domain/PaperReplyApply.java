@@ -42,6 +42,9 @@ public class PaperReplyApply implements Serializable {
 	private String title;
 	@Column(length = 100)
 	private String url;
+	@Column(length = 50)
+	private String approve;// 审核状态
+	
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
@@ -51,12 +54,15 @@ public class PaperReplyApply implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "secretary_id")
 	private Secretary secretary;
-	@Column(length = 50)
-	private String approve;// 审核状态
+	
 
 	public PaperReplyApply() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public PaperReplyApply(String title,String url){
+		this.title=title;
+		this.url=url;
 	}
 
 	public PaperReplyApply(Integer id, String updateDate, String auditDate, String title, String url, Student student,

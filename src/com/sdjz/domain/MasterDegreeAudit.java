@@ -42,6 +42,9 @@ public class MasterDegreeAudit implements Serializable {
 	private String auditDate;
 	@Column(length = 50)
 	private String approve;
+	@Column(length = 100)
+	private String url;
+	
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
@@ -51,12 +54,15 @@ public class MasterDegreeAudit implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "secretary_id")
 	private Secretary secretary;
-	@Column(length = 100)
-	private String url;
+	
 
 	public MasterDegreeAudit() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public MasterDegreeAudit(String url,String title){
+		this.url=url;
+		this.title=title;
 	}
 
 	public MasterDegreeAudit(Integer id, String title, String updateDate, String auditDate, String approve,

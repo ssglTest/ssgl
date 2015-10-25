@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.sdjz.domain.Role;
 import com.sdjz.service.RoleService;
 
-public class RoleTest {
+public class RoleServiceTest {
 	RoleService roleService;
 	@Before
 	public void init(){

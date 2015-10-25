@@ -20,6 +20,7 @@ import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.PaperReplyApplyService;
+import com.sdjz.service.SecretaryService;
 
 @Controller
 @RequestMapping("userContro/paperReplyApply")
@@ -27,14 +28,17 @@ public class PaperReplyApplyController {
 
 	@Autowired
 	private PaperReplyApplyService paperReplyApplyService;
+	@Autowired
+	private SecretaryService secretaryService;
 	/*
 	 * 研究生秘书获取学位论文答辩申请书
 	 */
 	@RequestMapping("/paperReplyApplyList.html")
 	private String paperReplyApplyList(ModelMap modelMap, HttpSession httpSession) {
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
 		School school = secretary.getSchool();
-		List<PaperReplyApply> paperReplyApplyList = school.getPaperReplyApply();
+		List<PaperReplyApply> paperReplyApplyList = school.getPaperReplyApplies();
 		modelMap.put("paperReplyApplyList", paperReplyApplyList);
 		return "paperReplyApply/paperReplyApplyList";
 	}

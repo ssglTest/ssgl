@@ -10,7 +10,7 @@ import com.sdjz.domain.User;
 import com.sdjz.service.SecretaryService;
 import com.sdjz.service.UserService;
 
-public class UserTest {
+public class UserServiceTest {
 	 UserService userService;
 	 SecretaryService secretaryService;
 	

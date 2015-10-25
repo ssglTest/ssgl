@@ -16,7 +16,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 /**
- * 学位论文答辩时间地点
+ * 学位论文答辩时间地点(答辩通知)
  * 
  * @author zhan
  *
@@ -40,6 +40,10 @@ public class PaperReplyNotifiCation implements Serializable {
 	private String updateDate;
 	@Column(length = 100)
 	private String url;
+	
+	@OneToOne
+	@JoinColumn(name="student_id")
+	private Student student;
 	@ManyToOne
 	@JoinColumn(name = "school_id")
 	private School school;
@@ -51,7 +55,11 @@ public class PaperReplyNotifiCation implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public PaperReplyNotifiCation(String url,String title){
+		this.url=url;
+		this.title=title;
+	}
 	public PaperReplyNotifiCation(Integer id, String title, String updateDate, String url, School school,
 			Secretary secretary) {
 		super();
@@ -109,6 +117,14 @@ public class PaperReplyNotifiCation implements Serializable {
 
 	public void setSecretary(Secretary secretary) {
 		this.secretary = secretary;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 }

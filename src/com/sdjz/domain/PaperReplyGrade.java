@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -39,10 +41,17 @@ public class PaperReplyGrade implements Serializable {
 	private String grade;
 	@Column(length = 100)
 	private String url;
+	
+	@OneToOne
+	@JoinColumn(name="student_id")
+	private Student student;
 
 	public PaperReplyGrade() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public PaperReplyGrade(String url){
+		this.url=url;
 	}
 
 	public PaperReplyGrade(Integer id, String name, String no, String grade, String url) {
@@ -93,5 +102,14 @@ public class PaperReplyGrade implements Serializable {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
 
 }

@@ -58,6 +58,10 @@ public class PaperElectronicEdition implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public PaperElectronicEdition(String url,String title){
+		this.url=url;
+		this.title=title;
+	}
 
 	public PaperElectronicEdition(Integer id, String title, String updateDate, String auditDate, String url,
 			String approve, Student student, School school, Secretary secretary) {

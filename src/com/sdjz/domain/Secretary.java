@@ -32,17 +32,17 @@ public class Secretary extends Actor {
 	private List<PaperTitleReport> paperTitleReports;
 	@OneToMany(mappedBy = "secretary") // 学术论文考核记录
 	private List<SciencePaperCheck> sciencePaperChecks;
-	@OneToMany(mappedBy = "secretary") // 学位论文答辩申请书
-	private List<PaperReplyApply> paperReplyApply;
-	@OneToMany(mappedBy = "secretary") // 学位论文电子版
-	private List<PaperElectronicEdition> paperElectronicEdition;
-	@OneToMany(mappedBy = "secretary") // 学位论文答辩时间地点
-	private List<PaperReplyNotifiCation> paperReplyNotifiCation;
-	@OneToMany(mappedBy = "secretary") // 学位论文答辩成绩
-	private List<PaperReplyGrade> paperReplyGrade;
-	@OneToMany(mappedBy = "secretary") // 硕士学位审批表
-	private List<MasterDegreeAudit> masterDegreeAudit;
-
+	@OneToMany(mappedBy="secretary")//学位论文答辩申请
+	private List<PaperReplyApply> paperReplyApplies;
+	@OneToMany(mappedBy="secretary")//论文电子版
+	private List<PaperElectronicEdition> paperElectronicEditions;
+	@OneToMany(mappedBy="secretary")//硕士学位审批表
+	private List<MasterDegreeAudit> masterDegreeAudits;
+	@OneToMany(mappedBy="secretary")//期中检查表
+	private List<MidtermCheck> midtermChecks;
+	@OneToMany(mappedBy="secretary")//学位论文答辩通知
+	private List<PaperReplyNotifiCation> paperReplyNotifiCations;
+	
 	public Secretary() {
 	}
 
@@ -93,50 +93,47 @@ public class Secretary extends Actor {
 	public void setSciencePaperChecks(List<SciencePaperCheck> sciencePaperChecks) {
 		this.sciencePaperChecks = sciencePaperChecks;
 	}
-
 	@XmlTransient
-	public List<PaperReplyApply> getPaperReplyApply() {
-		return paperReplyApply;
+	public List<PaperReplyApply> getPaperReplyApplies() {
+		return paperReplyApplies;
 	}
 
-	public void setPaperReplyApply(List<PaperReplyApply> paperReplyApply) {
-		this.paperReplyApply = paperReplyApply;
+	public void setPaperReplyApplies(List<PaperReplyApply> paperReplyApplies) {
+		this.paperReplyApplies = paperReplyApplies;
 	}
-
 	@XmlTransient
-	public List<PaperElectronicEdition> getPaperElectronicEdition() {
-		return paperElectronicEdition;
+	public List<PaperElectronicEdition> getPaperElectronicEditions() {
+		return paperElectronicEditions;
 	}
 
-	public void setPaperElectronicEdition(List<PaperElectronicEdition> paperElectronicEdition) {
-		this.paperElectronicEdition = paperElectronicEdition;
+	public void setPaperElectronicEditions(List<PaperElectronicEdition> paperElectronicEditions) {
+		this.paperElectronicEditions = paperElectronicEditions;
 	}
-
 	@XmlTransient
-	public List<PaperReplyNotifiCation> getPaperReplyNotifiCation() {
-		return paperReplyNotifiCation;
+	public List<MasterDegreeAudit> getMasterDegreeAudits() {
+		return masterDegreeAudits;
 	}
 
-	public void setPaperReplyNotifiCation(List<PaperReplyNotifiCation> paperReplyNotifiCation) {
-		this.paperReplyNotifiCation = paperReplyNotifiCation;
+	public void setMasterDegreeAudits(List<MasterDegreeAudit> masterDegreeAudits) {
+		this.masterDegreeAudits = masterDegreeAudits;
 	}
-
 	@XmlTransient
-	public List<PaperReplyGrade> getPaperReplyGrade() {
-		return paperReplyGrade;
+	public List<MidtermCheck> getMidtermChecks() {
+		return midtermChecks;
 	}
 
-	public void setPaperReplyGrade(List<PaperReplyGrade> paperReplyGrade) {
-		this.paperReplyGrade = paperReplyGrade;
+	public void setMidtermChecks(List<MidtermCheck> midtermChecks) {
+		this.midtermChecks = midtermChecks;
 	}
-
 	@XmlTransient
-	public List<MasterDegreeAudit> getMasterDegreeAudit() {
-		return masterDegreeAudit;
+	public List<PaperReplyNotifiCation> getPaperReplyNotifiCations() {
+		return paperReplyNotifiCations;
 	}
 
-	public void setMasterDegreeAudit(List<MasterDegreeAudit> masterDegreeAudit) {
-		this.masterDegreeAudit = masterDegreeAudit;
+	public void setPaperReplyNotifiCations(List<PaperReplyNotifiCation> paperReplyNotifiCations) {
+		this.paperReplyNotifiCations = paperReplyNotifiCations;
 	}
-
+	
+	
+	
 }

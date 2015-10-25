@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,13 +42,25 @@ public class MidtermCheck implements Serializable {
 	private String auditDate;
 	@Column(length=100)
 	private String url;
+	
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	@ManyToOne
+	@JoinColumn(name="secretary_id")
+	private Secretary secretary;	
+	@ManyToOne
+	@JoinColumn(name="school_id")
+	private School school;
 
 	public MidtermCheck() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public MidtermCheck(String url,String title){
+		this.url=url;
+		this.title=title;
 	}
 
 	public MidtermCheck(Integer id, String title, String approve, String updateDate, String auditDate, String url,
@@ -116,6 +129,18 @@ public class MidtermCheck implements Serializable {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+	public Secretary getSecretary() {
+		return secretary;
+	}
+	public void setSecretary(Secretary secretary) {
+		this.secretary = secretary;
+	}
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
 	}
 
 	

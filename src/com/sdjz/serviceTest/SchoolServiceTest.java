@@ -15,7 +15,7 @@ import com.sdjz.service.SchoolService;
 import com.sdjz.service.StudentService;
 import com.sdjz.service.TutorService;
 
-public class SchoolTest {
+public class SchoolServiceTest {
 	SchoolService schoolService;
 	TutorService tutorService;
 	StudentService studentService;
