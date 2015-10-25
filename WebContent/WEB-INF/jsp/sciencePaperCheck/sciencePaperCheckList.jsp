@@ -75,7 +75,7 @@
 									</ul>
 								</div>
 							</td>
-							<td>${sciencePaperCheck.updateDate }</td>
+							<td>${sciencePaperCheck.updataDate }</td>
 							<td>
 								<button type="button" class="btn btn-default">
 									<a href="#">查看</a>

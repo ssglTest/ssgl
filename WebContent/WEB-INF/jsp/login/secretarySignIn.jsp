@@ -62,7 +62,7 @@
 	}
 
 	function auditpaperreplyapply() {
-		window.open("#", "navTab");
+		window.open("paperReplyApply/paperReplyApplyList.html", "navTab");
 	}
 
 	function updategrade() {

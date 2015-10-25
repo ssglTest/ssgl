@@ -90,7 +90,7 @@
 	}
 	
 	function updatepaperreplyapply(){
-		window.open("#","navTab");
+		window.open("paperReplyApply/paperReplyApplyListByStudent.html","navTab");
 	}
 	
 	function updatepaper(){
