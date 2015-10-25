@@ -57,6 +57,7 @@ public class PaperTitleApplyController {
 	 * @return
 	 */
 	public String paperTitleApplyManager(HttpSession session, ModelMap modelMap) {
+		
 		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.findAll();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		return "paperTitleApply/paperTitleApplyList";

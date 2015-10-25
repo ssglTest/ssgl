@@ -51,7 +51,7 @@ public class PaperReplyApplyController {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		SciencePaperCheck sciencePaperCheck = student.getSciencePaperCheck();
 		// 判断学术论文考核记录表是否通过
-		if (sciencePaperCheck.getApprove() == "notApproved" || sciencePaperCheck.getApprove().isEmpty())
+		if (sciencePaperCheck.getApprove() == "notApproved" || sciencePaperCheck.getApprove()==null)
 			return "warning/error";
 		PaperReplyApply paperReplyApply = student.getPaperReplyApply();
 		modelMap.put("paperReplyApply", paperReplyApply);
@@ -61,17 +61,18 @@ public class PaperReplyApplyController {
 	@RequestMapping("/updatePaperReplyApply.html")
 	private String updatePaperReplyApply(ModelMap modelMap, HttpSession httpSession,
 			@RequestParam(value = "paperReplyApplyFile", required = false) MultipartFile paperReplyApplyFile) {
-		if(paperReplyApplyFile.isEmpty()){
+		if(paperReplyApplyFile==null){
 			modelMap.put("info", "请选择文件！");
 			return "paperReplyApply/paperReplyApplyListByStudent";
 		}
 		PaperReplyApply paperReplyApply = null;
 		Student student = (Student)CommonHelp.getCurrentActor(httpSession);
 		paperReplyApply = student.getPaperReplyApply();
-		if(paperReplyApply!=null){
+		if(paperReplyApply==null){
+			paperReplyApply = new PaperReplyApply();
+		}else{
 			CommonHelp.delete(httpSession, paperReplyApply.getUrl());
 		}
-		paperReplyApply = new PaperReplyApply();
 		String folderName = "paperReplyApply";
 		String fileName = "学位论文答辩申请书";
 		String url = CommonHelp.upload(paperReplyApplyFile, httpSession, folderName, fileName);
@@ -84,14 +85,15 @@ public class PaperReplyApplyController {
 		paperReplyApplyService.update(paperReplyApply);
 		PaperReplyApply pra = student.getPaperReplyApply();
 		modelMap.put("paperReplyApply", pra);
+		modelMap.put("info", "文件上传成功！");
 		return "paperReplyApply/paperReplyApplyListByStudent";
 	}
 	
 	/*
 	 * 审核通过
 	 */
-	@RequestMapping("/approved.html")
-	public String approved(ModelMap modelMap,Integer paperReplyApplyId){
+	@RequestMapping("/approvedPaperReplyApply.html")
+	public String approvedPaperReplyApply(ModelMap modelMap,Integer paperReplyApplyId){
 		PaperReplyApply paperReplyApply = paperReplyApplyService.findById(paperReplyApplyId);
 		paperReplyApply.setApprove("approved");
 		paperReplyApply.setAuditDate(CommonHelp.getCurrentDate());
@@ -105,8 +107,8 @@ public class PaperReplyApplyController {
 	/*
 	 * 审核不通过
 	 */
-	@RequestMapping("/notApproved.html")
-	public String notApproved(ModelMap modelMap,Integer paperReplyApplyId){
+	@RequestMapping("/notApprovedPaperReplyApply.html")
+	public String notApprovedPaperReplyApply(ModelMap modelMap,Integer paperReplyApplyId){
 		PaperReplyApply paperReplyApply = paperReplyApplyService.findById(paperReplyApplyId);
 		paperReplyApply.setApprove("notApproved");
 		paperReplyApply.setAuditDate(CommonHelp.getCurrentDate());

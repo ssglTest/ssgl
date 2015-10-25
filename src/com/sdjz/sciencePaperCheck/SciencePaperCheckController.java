@@ -21,6 +21,7 @@ import com.sdjz.help.CommonHelp;
 import com.sdjz.service.SciencePaperCheckService;
 import com.sdjz.service.SecretaryService;
 import com.sdjz.service.StudentService;
+import com.sdjz.service.TutorService;
 
 @Controller
 @RequestMapping("userContro/sciencePaperCheck")
@@ -32,6 +33,8 @@ public class SciencePaperCheckController {
 	private StudentService studentService;
 	@Autowired
 	private SecretaryService secretaryService;
+	@Autowired
+	private TutorService tutorService;
 
 	/**
 	 * 列出所有的学术论文检查表
@@ -42,6 +45,8 @@ public class SciencePaperCheckController {
 	@RequestMapping("/sciencePaperCheckList.html")
 	public String sciencePaperCheckList(ModelMap modelMap, HttpSession httpSession) {
 		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
+		//解决懒加载的问题
+		tutor = tutorService.findByNo(tutor.getNo());
 		List<SciencePaperCheck> sciencePaperCheckList = tutor.getSciencePaperCheck();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
 		return "sciencePaperCheck/sciencePaperCheckList";
@@ -57,6 +62,7 @@ public class SciencePaperCheckController {
 	public String saveSciencePaperCheck(ModelMap modelMap, HttpSession httpSession) {
 		// 得到当前的用户
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
 		//获取研究生秘书所在学院的所有的学术论文考核记录表
 		List<SciencePaperCheck> sciencePaperCheckList = secretary.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
@@ -74,6 +80,7 @@ public class SciencePaperCheckController {
 	@RequestMapping("/sciencePaperCheckListByStudent.html")
 	public String sciencePaperCheckListByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
+		student = studentService.findByNo(student.getNo());
 		SciencePaperCheck sciencePaperCheck = student.getSciencePaperCheck();
 		modelMap.put("sciencePaperCheck", sciencePaperCheck);
 		return "sciencePaperCheck/sciencePaperCheckListByStudent";
