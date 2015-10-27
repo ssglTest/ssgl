@@ -33,6 +33,9 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:if test="${empty sciencePaperCheckList}">
+						<h2><span class="label label-default">未有学生上传学术论文检查记录表，请耐心等待。</span></h2>
+					</c:if>
 					<c:forEach items="${sciencePaperCheckList}" var="sciencePaperCheck">
 						<tr>
 							<td>${sciencePaperCheck.student.name }</td>

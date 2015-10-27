@@ -37,6 +37,10 @@
 					</tr>
 				</thead>
 				<tbody>
+				<h5><span class="label label-info">这里有一个问题，上传的成绩是对学生进行单个的录入还是直接上传一个excel表？</span></h5>
+					<c:if test="${empty paperTitleReportList }">
+						<h2><span class="label label-default">未有学生上传，请耐心等待。</span></h2>
+					</c:if>
 					<c:forEach items="${paperTitleReportList}" var="paperTitleReport">
 						<tr>
 							<td>${paperTitleReport.student.no}</td>

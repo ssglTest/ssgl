@@ -27,7 +27,7 @@
 						<label for="#fileUpdate">上传文件</label> <input type="file"
 							class="form-control" name="paperTitleReplyFile" id="fileUpdate">
 						<label class="label label-info">${info}</label>
-						<p class="help-block">请选择需要上传的学位论文选题报告</p>
+						<p class="help-block">请选择需要上传的学位论文选题报告答辩的时间地点</p>
 						<button class="btn btn-default" type="submit">提交</button>
 					</div>
 				</form>
@@ -42,6 +42,9 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:if test="${empty paperTitleReplyList }">
+					<h4><span class="label label-default">还没有上传论文选题答辩的时间地点</span></h4>
+				</c:if>
 					<c:forEach items="${paperTitleReplyList}" var="paperTitleReply">
 						<tr>
 							<td>${paperTitleReply.id}</td>
@@ -52,14 +55,15 @@
 									<a href="#">查看</a>
 								</button>
 								<button class="btn btn-default">
-									<a href="downloadPaperTitleReply.html?paperTitleReplyId=${paperTitleReply.id}">下载</a>
+									<a
+										href="downloadPaperTitleReply.html?paperTitleReplyId=${paperTitleReply.id}">下载</a>
 								</button>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<div align="center">
+			<!-- <div align="center">
 				<ul class="pagination">
 					<li><a href="#">&laquo</a></li>
 					<li class="active"><a href="#">1</a></li>
@@ -67,8 +71,7 @@
 					<li><a href="#">3</a></li>
 					<li><a href="#">&raquo</a></li>
 				</ul>
-			</div>
-
+			</div> -->
 		</div>
 	</div>
 </body>

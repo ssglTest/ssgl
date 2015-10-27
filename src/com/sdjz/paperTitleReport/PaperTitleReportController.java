@@ -41,10 +41,14 @@ public class PaperTitleReportController {
 	public String getPaperTitleReportByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		PaperTitleApply paperTitleApply = student.getPaperTitleApply();
-		if (paperTitleApply == null)
-			return "warning/error";
-		String approve = paperTitleApply.getApprove();
-		if (approve.equals("notApproved"))
+		/*
+		 * if (paperTitleApply == null) return "warning/error"; String approve =
+		 * paperTitleApply.getApprove(); if (approve.equals("notApproved"))
+		 * return "warning/error";
+		 */
+
+		if (paperTitleApply == null || paperTitleApply.getApprove() == null
+				|| paperTitleApply.getApprove().equals("notApproved"))
 			return "warning/error";
 		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
 		modelMap.put("paperTitleReport", paperTitleReport);
@@ -103,6 +107,7 @@ public class PaperTitleReportController {
 		paperTitleReport.setUrl(url);
 		paperTitleReport.setTitle(title);
 		paperTitleReport.setStudent(student);
+		paperTitleReport.setSchool(student.getSchool());
 		paperTitleReportService.save(paperTitleReport);
 		paperTitleReport = paperTitleReportService.findById(student.getId());
 		String info = "文件上传成功";
@@ -137,7 +142,7 @@ public class PaperTitleReportController {
 	 * @return
 	 */
 	@RequestMapping("/approvedPaperTitleReport.html")
-	public String approvedPaperTitleReport(HttpSession httpSession,Integer paperTitleReportId, ModelMap modelMap) {
+	public String approvedPaperTitleReport(HttpSession httpSession, Integer paperTitleReportId, ModelMap modelMap) {
 		PaperTitleReport paperTitleReport = paperTitleReportService.findById(paperTitleReportId);
 		paperTitleReport.setApprove("approved");
 		String date = CommonHelp.getCurrentDate();
@@ -162,7 +167,7 @@ public class PaperTitleReportController {
 	 * @return
 	 */
 	@RequestMapping("/notApprovedPaperTitleReport.html")
-	public String notApprovedPaperTitleReport(HttpSession httpSession,Integer paperTitleReportId, ModelMap modelMap) {
+	public String notApprovedPaperTitleReport(HttpSession httpSession, Integer paperTitleReportId, ModelMap modelMap) {
 		PaperTitleReport paperTitleReport = paperTitleReportService.findById(paperTitleReportId);
 		paperTitleReport.setApprove("notApproved");
 		String date = CommonHelp.getCurrentDate();

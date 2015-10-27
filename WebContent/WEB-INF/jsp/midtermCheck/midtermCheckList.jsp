@@ -44,6 +44,9 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:if test="${empty midtermCheckList }">
+						<h2><span class="label label-default">未有学生上传中期检查表，请耐心等待。</span></h2>
+					</c:if>
 					<c:forEach items="${midtermCheckList}" var="midtermCheck">
 						<tr>
 							<td>${midtermCheck.student.no }</td>

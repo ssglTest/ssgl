@@ -20,7 +20,24 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<table class="table">
+			<c:if test="${empty paperTitleReport.approve }">
+				<h1>
+					<span class="label label-default">成绩未出，请耐心等待。</span>
+				</h1>
+			</c:if>
+			<c:if test="${not empty paperTitleReport.approve }">
+				<c:if test="${paperTitleReport.approve=='approved'}">
+					<h1>
+						<span class="label label-success">恭喜，${paperTitleReport.student.name}同学，你已通过了论文选题答辩。</span>
+					</h1>
+				</c:if>
+				<c:if test="${paperTitleReport.approve=='notApproved'}">
+					<h1>
+						<span class="label label-warning">很遗憾，${paperTitleReport.student.name}同学，你没有通过本次答辩，请下次努力！</span>
+					</h1>
+				</c:if>
+			</c:if>
+			<%-- <table class="table">
 				<thead>
 					<tr>
 						<th>学号</th>
@@ -45,7 +62,7 @@
 						</td>
 					</tr>
 				</tbody>
-			</table>
+			</table> --%>
 		</div>
 	</div>
 </body>

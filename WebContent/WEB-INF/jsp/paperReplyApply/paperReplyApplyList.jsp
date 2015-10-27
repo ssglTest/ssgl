@@ -36,6 +36,9 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:if test="${empty paperReplyApplyList}">
+						<h2><span class="label label-default">未有学生上传学位论文答辩申请，请耐心等待。</span></h2>
+					</c:if>
 					<c:forEach items="${paperReplyApplyList}" var="paperReplyApply">
 						<tr>
 							<td>${paperReplyApply.student.no}</td>

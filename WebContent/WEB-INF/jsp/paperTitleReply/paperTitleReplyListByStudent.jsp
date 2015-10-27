@@ -28,25 +28,25 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:if test="${empty paperTitleReplyList}">
+						<h2>
+							<span class="label label-default">研究生秘书还未上传论文选题答辩的时间地点，请耐心等待</span>
+						</h2>
+					</c:if>
 					<c:forEach items="${paperTitleReplyList}" var="paperTitleReply">
 						<tr>
-							<c:if test="${not empty paperTitleReply.title}">
-								<td>${paperTitleReply.id}</td>
-								<td>${paperTitleReply.title}</td>
-								<td>${paperTitleReply.updateDate}</td>
-								<td>
-									<button class="btn btn-default">
-										<a href="#">查看</a>
-									</button>
-									<button class="btn btn-default">
-										<a
-											href="downloadPaperTitleReply.html?paperTitleReplyId=${paperTitleReply.id}">下载</a>
-									</button>
-								</td>
-							</c:if>
-							<c:if test="${empty paperTitleReply.title }">
-								<span class="label label-info">研究生秘书还未上传论文选题答辩的相关文件，请耐心等待</span>
-							</c:if>
+							<td>${paperTitleReply.id}</td>
+							<td>${paperTitleReply.title}</td>
+							<td>${paperTitleReply.updateDate}</td>
+							<td>
+								<button class="btn btn-default">
+									<a href="#">查看</a>
+								</button>
+								<button class="btn btn-default">
+									<a
+										href="downloadPaperTitleReply.html?paperTitleReplyId=${paperTitleReply.id}">下载</a>
+								</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

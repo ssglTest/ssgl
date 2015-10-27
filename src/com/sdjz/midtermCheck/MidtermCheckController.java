@@ -36,6 +36,7 @@ public class MidtermCheckController {
 	private MidtermCheckService midtermCheckService;
 	@Autowired
 	private SecretaryService secretaryService;
+
 	/**
 	 * 获得当前学生的中期检查表
 	 * 
@@ -47,10 +48,13 @@ public class MidtermCheckController {
 	public String midtermCheckListByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
-		if(paperTitleReport==null)
-			return "warning/error";
-		String approve = paperTitleReport.getApprove();
-		if(approve.equals("notApproved"))
+		/*
+		 * if(paperTitleReport==null) return "warning/error"; String approve =
+		 * paperTitleReport.getApprove(); if(approve.equals("notApproved"))
+		 * return "warning/error";
+		 */
+		if (paperTitleReport == null || paperTitleReport.getApprove() == null
+				|| paperTitleReport.getApprove().equals("approved"))
 			return "warning/error";
 		MidtermCheck midtermCheck = student.getMidtermCheck();
 		modelMap.put("midtermCheck", midtermCheck);
@@ -58,18 +62,20 @@ public class MidtermCheckController {
 	}
 
 	/**
-	 * 研究生秘书获取中期检查表
+	 * 研究生秘书根据所在的学院获取中期检查表
+	 * 
 	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping("/midtermCheckList.html")
-	public String midtermCheckList(ModelMap modelMap,HttpSession httpSession){
+	public String midtermCheckList(ModelMap modelMap, HttpSession httpSession) {
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
 		List<MidtermCheck> midtermCheckList = secretary.getSchool().getMidtermChecks();
 		modelMap.put("midtermCheckList", midtermCheckList);
 		return "midtermCheck/midtermCheckList";
 	}
+
 	/**
 	 * 上传中期检查表
 	 * 
@@ -105,6 +111,7 @@ public class MidtermCheckController {
 		midtermCheck.setUpdateDate(date);
 		midtermCheck.setTitle(title);
 		midtermCheck.setUrl(url);
+		midtermCheck.setSchool(student.getSchool());
 		midtermCheckService.update(midtermCheck);
 		// 重新获取
 		MidtermCheck mid = student.getMidtermCheck();
@@ -127,41 +134,47 @@ public class MidtermCheckController {
 		String name = "中期检查表";
 		return CommonHelp.download(httpSession, midtermCheck.getUrl(), name);
 	}
-	
+
 	/**
 	 * 审核通过
+	 * 
 	 * @param modelMap
 	 * @param midtermCheckId
 	 * @return
 	 */
 	@RequestMapping("/midtermCheckApproved.html")
-	public String midtermCheckApproved(ModelMap modelMap,Integer midtermCheckId){
+	public String midtermCheckApproved(HttpSession httpSession, ModelMap modelMap, Integer midtermCheckId) {
 		MidtermCheck midtermCheck = midtermCheckService.findById(midtermCheckId);
 		midtermCheck.setApprove("approved");
 		String date = CommonHelp.getCurrentDate();
 		midtermCheck.setAuditDate(date);
 		midtermCheckService.update(midtermCheck);
 		midtermCheckService.save(midtermCheck);
-		List<MidtermCheck> midtermCheckList = midtermCheckService.findAll();
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<MidtermCheck> midtermCheckList = secretary.getSchool().getMidtermChecks();
 		modelMap.put("midtermCheckList", midtermCheckList);
 		return "midtermCheck/midtermCheckList";
 	}
-	
+
 	/**
 	 * 审核不通过
+	 * 
 	 * @param modelMap
 	 * @param midtermCheckId
 	 * @return
 	 */
 	@RequestMapping("/midtermCheckNotApproved.html")
-	public String midtermCheckNotApproved(ModelMap modelMap,Integer midtermCheckId){
+	public String midtermCheckNotApproved(HttpSession httpSession, ModelMap modelMap, Integer midtermCheckId) {
 		MidtermCheck midtermCheck = midtermCheckService.findById(midtermCheckId);
 		midtermCheck.setApprove("notApproved");
 		String date = CommonHelp.getCurrentDate();
 		midtermCheck.setAuditDate(date);
 		midtermCheckService.update(midtermCheck);
 		midtermCheckService.save(midtermCheck);
-		List<MidtermCheck> midtermCheckList = midtermCheckService.findAll();
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<MidtermCheck> midtermCheckList = secretary.getSchool().getMidtermChecks();
 		modelMap.put("midtermCheckList", midtermCheckList);
 		return "midtermCheck/midtermCheckList";
 	}

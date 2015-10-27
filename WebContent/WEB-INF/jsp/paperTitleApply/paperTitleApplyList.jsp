@@ -36,6 +36,9 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:if test="${empty paperTitleApplyList }">
+						<h1><span class="label label-default">未有学生提交，请耐心等待。</span></h1>
+					</c:if>
 					<c:forEach items="${paperTitleApplyList}" var="paperTitleApply">
 						<tr>
 							<td>${paperTitleApply.student.no}</td>
@@ -67,7 +70,8 @@
 											href="approvedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}"><h3>
 													<span class="label label-success">通过</span>
 												</h3></a></li>
-										<li><a href="notApprovedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}"><h3>
+										<li><a
+											href="notApprovedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}"><h3>
 													<span class="label label-danger">不通过</span>
 												</h3></a></li>
 									</ul>

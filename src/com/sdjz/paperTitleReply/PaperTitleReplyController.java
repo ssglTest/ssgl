@@ -21,6 +21,7 @@ import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.PaperTitleReplyService;
 import com.sdjz.service.SecretaryService;
+import com.sdjz.service.StudentService;
 
 @Controller
 // paperTitleReplyTime/paperTitleReplyTimeList
@@ -31,6 +32,8 @@ public class PaperTitleReplyController {
 	private PaperTitleReplyService paperTitleReplyService;
 	@Autowired
 	private SecretaryService secretaryService;
+	@Autowired
+	private StudentService studentService;
 
 	@RequestMapping("/paperTitleReplyList.html")
 	public String paperTitleReplyList(ModelMap modelMap, HttpSession httpSession) {
@@ -42,15 +45,26 @@ public class PaperTitleReplyController {
 	}
 
 	@RequestMapping("/paperTitleReplyListByStudent.html")
-	public String paperTitleReplyListByStudent(ModelMap modelMap) {
-		List<PaperTitleReply> paperTitleReplyListByStudent = paperTitleReplyService.findAll();
+	public String paperTitleReplyListByStudent(HttpSession httpSession, ModelMap modelMap) {
+		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
+		student = studentService.findByNo(student.getNo());
+		List<PaperTitleReply> paperTitleReplyListByStudent = student.getSchool().getPaperTitleReplies();
 		modelMap.put("paperTitleReplyList", paperTitleReplyListByStudent);
 		return "paperTitleReply/paperTitleReplyListByStudent";
 	}
 
+	/**
+	 * 研究生秘书上传学位论文选题报告的答辩时间地点 上传之后的文件允许有多个
+	 * 
+	 * @param httpSession
+	 * @param modelMap
+	 * @param paperTitleReplyFile
+	 * @return
+	 */
 	@RequestMapping(value = "/paperTitleApplyUpload.html", method = RequestMethod.POST)
 	public String updatePaperTitleReplyTime(HttpSession httpSession, ModelMap modelMap,
 			@RequestParam(value = "paperTitleReplyFile") MultipartFile paperTitleReplyFile) {
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		if (paperTitleReplyFile == null) {
 			String info = "请选择文件！";
 			modelMap.put("info", info);
@@ -72,11 +86,13 @@ public class PaperTitleReplyController {
 		paperTitleReply.setTitle(title);
 		paperTitleReply.setUrl(url);
 		paperTitleReply.setUpdateDate(date);
-		paperTitleReplyService.save(paperTitleReply);
+		paperTitleReply.setSchool(secretary.getSchool());
+		paperTitleReplyService.update(paperTitleReply);
 		// 重新获取
-		List<PaperTitleReply> listPaperTitleReply = paperTitleReplyService.findAll();
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleReply> paperPaperTitleReply = secretary.getSchool().getPaperTitleReplies();
 		String info = "上传成功！";
-		modelMap.put("paperTitleReplyList", listPaperTitleReply);
+		modelMap.put("paperTitleReplyList", paperPaperTitleReply);
 		modelMap.put("info", info);
 		return "paperTitleReply/paperTitleReplyList";
 	}
