@@ -69,59 +69,57 @@
 							<form action="updateTeacherInfo.html" role="form"
 								class="form-horizontal" method="post">
 								<input type="hidden" value="${teacher.id}" name=teacherId>
-								<div class="form-grounp">
+								<div class="form-group">
 									<label class="col-sm-2 control-lable" for="name">姓名</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="name"
 											placeholder="${teacher.name }" disabled>
 									</div>
 								</div>
-								<div class="form-grounp">
+								<div class="form-group">
 									<label class="col-sm-2 control-lable" for="sex">性别</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="disabledInput"
 											placeholder="男" disabled>
 									</div>
 								</div>
-								<br>
-								<div class="form-grounp">
+								<div class="form-group">
 									<label class="col-sm-2 control-lable" for="age">年龄</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="disabledInput"
 											placeholder="20" disabled>
 									</div>
 								</div>
-								<br>
-								<div class="form-grounp">
+								<div class="form-group">
 									<label class="col-sm-2 control-lable" for="email">邮箱</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="email"
-											name="email" placeholder="${teacher.email }">
+											name="email" placeholder="${teacher.email }" required
+											pattern="^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$"
+											title="邮箱正确格式：xxx@xxx.xxx">
 									</div>
 								</div>
-								<br>
-								<div class="form-grounp">
+								<div class="form-group">
 									<label class="col-sm-2 control-lable" for="phone">手机</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="phone" name=mobile
-											placeholder="${teacher.mobile }">
+											required pattern="^1[3,5]{1}[0-9]{1}[0-9]{8}$"
+											title="请输入正确的手机号！" placeholder="${teacher.mobile }">
 									</div>
 								</div>
-								<br>
-								<div class="form-grounp">
+								<div class="form-group">
 									<label class="col-sm-2 control-lable" for="qq">QQ</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="qq" name=qq
+											required pattern="^\d{5,10}$" title="长度应在5到10位之间"
 											placeholder="${teacher.qq }">
 									</div>
 								</div>
-								<br>
 								<div align="right">
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">关闭</button>
 									<button type="submit" class="btn btn-primary">提交更改</button>
 								</div>
-
 							</form>
 						</div>
 						<div class="modal-footer">
