@@ -22,7 +22,7 @@ public class SchoolServiceTest {
 	@Before
 	public void init(){
 		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
-		schoolService=(SchoolService)ac.getBean("shoolService");
+		schoolService=(SchoolService)ac.getBean("schoolService");
 		tutorService=(TutorService)ac.getBean("tutorService");
 		studentService=(StudentService)ac.getBean("studentService");
 		
@@ -33,5 +33,17 @@ public class SchoolServiceTest {
 		schools.add(new School("AA"));
 		schools.add(new School("BB"));
 		schoolService.saves(schools);
+	}
+	@Test
+	public void getResult(){
+		School school=schoolService.getResult(School.class,"description","123");		
+			System.out.println(school.getDescription());		
+	}
+	@Test
+	public void likeQuery(){
+		List<School> schools=schoolService.likeQuery(School.class,"description"," ");
+		for(School school:schools){
+			System.out.println(school.getDescription());
+		}
 	}
 }

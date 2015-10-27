@@ -22,20 +22,20 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 		
 	MyRepository<T, PK> basicDao;
 	// 泛型反射类
-	Class<T> entityClass;
+	//Class<T> entityClass;
 	public abstract void setDasciDao(MyRepository<T,PK> basicDao);
 	
 	// 通过反射获取子类确定的泛型类
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Class<T> getGeneric() {
+	/*@SuppressWarnings({ "rawtypes", "unchecked" })
+	public BasicService() {
 		// getGenericSuperclass() 通过反射获取当前类表示的实体（类，接口，基本类型或void）的直接父类的Type
 		Type genType = getClass().getGenericSuperclass();
 		//getActualTypeArguments()返回参数数组
 		Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
-		return entityClass = (Class) params[0];
+		entityClass = (Class) params[0];
 		
 	}
-	
+	*/
 	public void save(T entity){
 		basicDao.save(entity);
 	}
@@ -68,6 +68,14 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 	}
 	public long countAll(){
 		return basicDao.count();
+	}
+	public T getResult(Class<T> entityClass,String propertyName,Object propertyValue){
+		
+		return basicDao.getResult(entityClass, propertyName,propertyValue);
+		
+	}
+	public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propertyValue){
+		return basicDao.likeQuery(entityClass, propertyName, propertyValue);
 	}
 	
 
