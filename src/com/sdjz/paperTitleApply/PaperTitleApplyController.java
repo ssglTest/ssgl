@@ -1,7 +1,6 @@
 package com.sdjz.paperTitleApply;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.PaperTitleApply;
+import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
-
 import com.sdjz.service.PaperTitleApplyService;
+import com.sdjz.service.SecretaryService;
 
 @Controller
 @RequestMapping("userContro/paperTitleApply")
@@ -29,6 +29,8 @@ public class PaperTitleApplyController {
 
 	@Autowired
 	private PaperTitleApplyService paperTitleApplyService;
+	@Autowired
+	private SecretaryService secretaryService;
 
 	/**
 	 * 根据当前学生获取提交的论文选题申请表
@@ -48,7 +50,7 @@ public class PaperTitleApplyController {
 		return "paperTitleApply/paperTitleApplyListByStudent";
 	}
 
-	@RequestMapping("/paperTitleApplyManage.html")
+	@RequestMapping(value = "/paperTitleApplyManage.html")
 	/**
 	 * 列出所有的论文选题申请表
 	 * 
@@ -56,16 +58,18 @@ public class PaperTitleApplyController {
 	 * @param modelMap
 	 * @return
 	 */
-	public String paperTitleApplyManager(HttpSession session, ModelMap modelMap) {
-		
-		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.findAll();
+	public String paperTitleApplyManager(HttpSession httpSession, ModelMap modelMap) {
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		return "paperTitleApply/paperTitleApplyList";
 	}
 
 	@RequestMapping(value = "/paperTitleApplyUpload.html", method = RequestMethod.POST)
 	public String paperChooseTitleUpload(HttpServletRequest request, HttpServletResponse response,
-			HttpSession httpSession, @RequestParam(value="paperTitleApplyUpdate",required=false) MultipartFile paperTitleApplyUpdate,
+			HttpSession httpSession,
+			@RequestParam(value = "paperTitleApplyUpdate", required = false) MultipartFile paperTitleApplyUpdate,
 			ModelMap modelMap) {
 		PaperTitleApply paperTitleApply = null;
 		// 判断点击提交时是否已经选择了文件
@@ -97,6 +101,7 @@ public class PaperTitleApplyController {
 		String date = CommonHelp.getCurrentDate();
 
 		paperTitleApply.setUrl(url);
+		paperTitleApply.setSchool(student.getSchool());
 		paperTitleApply.setTitle(title);
 		paperTitleApply.setUpdateDate(date);
 
@@ -133,7 +138,7 @@ public class PaperTitleApplyController {
 	 * @return
 	 */
 	@RequestMapping("/approvedPaperTitleApply.html")
-	public String approvedPaperTitleApply(ModelMap modelMap, Integer paperTitleApplyId) {
+	public String approvedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId) {
 		// 通过id找到当前的论文选题申请表
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
 		paperTitleApply.setApprove("approved");
@@ -143,8 +148,15 @@ public class PaperTitleApplyController {
 		// 更新数据库
 		paperTitleApplyService.update(paperTitleApply);
 		paperTitleApplyService.save(paperTitleApply);
-		// 列出所有的选题申请表，重新刷新，这会影响性能！
-		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.findAll();
+		/*
+		 * // 列出所有的选题申请表，重新刷新，这会影响性能！ List<PaperTitleApply> paperTitleApplyList
+		 * = paperTitleApplyService.findAll();
+		 * modelMap.put("paperTitleApplyList", paperTitleApplyList);
+		 */
+		// return "paperTitleApply/paperTitleApplyList";
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		return "paperTitleApply/paperTitleApplyList";
 	}
@@ -157,7 +169,7 @@ public class PaperTitleApplyController {
 	 * @return
 	 */
 	@RequestMapping("/notApprovedPaperTitleApply.html")
-	public String notApprovedPaperTitleApply(ModelMap modelMap, Integer paperTitleApplyId) {
+	public String notApprovedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId) {
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
 		paperTitleApply.setApprove("notApproved");
 		// 获取当前时间
@@ -167,7 +179,9 @@ public class PaperTitleApplyController {
 		paperTitleApplyService.update(paperTitleApply);
 		paperTitleApplyService.save(paperTitleApply);
 		// 列出所有的选题申请表，重新刷新，这会影响性能！
-		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.findAll();
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		return "paperTitleApply/paperTitleApplyList";
 	}

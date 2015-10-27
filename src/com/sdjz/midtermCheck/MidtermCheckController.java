@@ -16,9 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.MidtermCheck;
 import com.sdjz.domain.PaperTitleReport;
+import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.MidtermCheckService;
+import com.sdjz.service.SecretaryService;
 
 /**
  * 中期检查表的controller
@@ -32,7 +34,8 @@ public class MidtermCheckController {
 
 	@Autowired
 	private MidtermCheckService midtermCheckService;
-
+	@Autowired
+	private SecretaryService secretaryService;
 	/**
 	 * 获得当前学生的中期检查表
 	 * 
@@ -60,8 +63,10 @@ public class MidtermCheckController {
 	 * @return
 	 */
 	@RequestMapping("/midtermCheckList.html")
-	public String midtermCheckList(ModelMap modelMap){
-		List<MidtermCheck> midtermCheckList = midtermCheckService.findAll();
+	public String midtermCheckList(ModelMap modelMap,HttpSession httpSession){
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<MidtermCheck> midtermCheckList = secretary.getSchool().getMidtermChecks();
 		modelMap.put("midtermCheckList", midtermCheckList);
 		return "midtermCheck/midtermCheckList";
 	}

@@ -16,10 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.PaperTitleReply;
 import com.sdjz.domain.PaperTitleReport;
+import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.PaperTitleReplyService;
-import com.sdjz.service.PaperTitleReportService;
+import com.sdjz.service.SecretaryService;
 
 @Controller
 // paperTitleReplyTime/paperTitleReplyTimeList
@@ -29,17 +30,19 @@ public class PaperTitleReplyController {
 	@Autowired
 	private PaperTitleReplyService paperTitleReplyService;
 	@Autowired
-	private PaperTitleReportService paperTitleReportService;
+	private SecretaryService secretaryService;
 
 	@RequestMapping("/paperTitleReplyList.html")
-	public String paperTitleReplyList(ModelMap modelMap) {
-		List<PaperTitleReply> paperTitleReplyList = paperTitleReplyService.findAll();
+	public String paperTitleReplyList(ModelMap modelMap, HttpSession httpSession) {
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleReply> paperTitleReplyList = secretary.getSchool().getPaperTitleReplies();
 		modelMap.put("paperTitleReplyList", paperTitleReplyList);
 		return "paperTitleReply/paperTitleReplyList";
 	}
-	
+
 	@RequestMapping("/paperTitleReplyListByStudent.html")
-	public String paperTitleReplyListByStudent(ModelMap modelMap){
+	public String paperTitleReplyListByStudent(ModelMap modelMap) {
 		List<PaperTitleReply> paperTitleReplyListByStudent = paperTitleReplyService.findAll();
 		modelMap.put("paperTitleReplyList", paperTitleReplyListByStudent);
 		return "paperTitleReply/paperTitleReplyListByStudent";
@@ -53,40 +56,42 @@ public class PaperTitleReplyController {
 			modelMap.put("info", info);
 			return "paperTitleReply/paperTitleReplyList";
 		}
-		//List<PaperTitleReply> paperTitleReplyList = paperTitleReplyService.findAll();
-		//if (paperTitleReplyList.isEmpty()) {
+		// List<PaperTitleReply> paperTitleReplyList =
+		// paperTitleReplyService.findAll();
+		// if (paperTitleReplyList.isEmpty()) {
 		PaperTitleReply paperTitleReply = new PaperTitleReply();
-		//}
+		// }
 		String folder = "paperTitleReplyDoc";
 		String url = CommonHelp.upload(paperTitleReplyFile, httpSession, folder);
 		String title = paperTitleReplyFile.getOriginalFilename();
-		//Calendar date = CommonHelp.getNow();
+		// Calendar date = CommonHelp.getNow();
 		Integer day = CommonHelp.getDay();
-		Integer month = CommonHelp.getMonth()+1;
+		Integer month = CommonHelp.getMonth() + 1;
 		Integer year = CommonHelp.getYear();
-		String date = day+"/"+month+"/"+year;
+		String date = day + "/" + month + "/" + year;
 		paperTitleReply.setTitle(title);
 		paperTitleReply.setUrl(url);
 		paperTitleReply.setUpdateDate(date);
 		paperTitleReplyService.save(paperTitleReply);
-		//重新获取
+		// 重新获取
 		List<PaperTitleReply> listPaperTitleReply = paperTitleReplyService.findAll();
-		String info="上传成功！";
+		String info = "上传成功！";
 		modelMap.put("paperTitleReplyList", listPaperTitleReply);
 		modelMap.put("info", info);
 		return "paperTitleReply/paperTitleReplyList";
 	}
 
 	@RequestMapping("/downloadPaperTitleReply.html")
-	public ResponseEntity<byte[]> downloadPaperTitleReply(HttpSession httpSession,Integer paperTitleReplyId) throws IOException {
+	public ResponseEntity<byte[]> downloadPaperTitleReply(HttpSession httpSession, Integer paperTitleReplyId)
+			throws IOException {
 		PaperTitleReply paperTitleReply = paperTitleReplyService.findById(paperTitleReplyId);
 		String name = "学位论文选题报告";
 		return CommonHelp.download(httpSession, paperTitleReply.getUrl(), name);
 	}
-	
+
 	@RequestMapping("/paperTitleReplyGrade.html")
-	public String paperTitleReplyGrade(ModelMap modelMap,HttpSession httpSession){
-		Student student = (Student)CommonHelp.getCurrentActor(httpSession);
+	public String paperTitleReplyGrade(ModelMap modelMap, HttpSession httpSession) {
+		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
 		modelMap.put("paperTitleReport", paperTitleReport);
 		return "paperTitleReply/paperTitleReplyGrade";

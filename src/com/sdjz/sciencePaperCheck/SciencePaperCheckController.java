@@ -157,7 +157,7 @@ public class SciencePaperCheckController {
 	 * @return
 	 */
 	@RequestMapping("/excellentSciencePaperCheck.html")
-	public String auditSciencePaperCheckExcellent(ModelMap modelMap, Integer sciencePaperCheckId) {
+	public String auditSciencePaperCheckExcellent(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
@@ -166,7 +166,13 @@ public class SciencePaperCheckController {
 		sciencePaperCheckService.save(sciencePaperCheck);
 		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		//获取研究生秘书所在学院的所有的学术论文考核记录表
+		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		//添加到Map集合中
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
+		return "keepInTheArchives/sciencePaperCheckDoc";
 	}
 
 	/**
@@ -177,7 +183,7 @@ public class SciencePaperCheckController {
 	 * @return
 	 */
 	@RequestMapping("/goodSciencePaperCheck.html")
-	public String auditSciencePaperCheckGood(ModelMap modelMap, Integer sciencePaperCheckId) {
+	public String auditSciencePaperCheckGood(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
@@ -186,7 +192,13 @@ public class SciencePaperCheckController {
 		sciencePaperCheckService.save(sciencePaperCheck);
 		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		//获取研究生秘书所在学院的所有的学术论文考核记录表
+		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		//添加到Map集合中
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
+		return "keepInTheArchives/sciencePaperCheckDoc";
 	}
 
 	/**
@@ -197,7 +209,7 @@ public class SciencePaperCheckController {
 	 * @return
 	 */
 	@RequestMapping("/fairSciencePaperCheck.html")
-	public String auditSciencePaperCheckFair(ModelMap modelMap, Integer sciencePaperCheckId) {
+	public String auditSciencePaperCheckFair(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
@@ -206,7 +218,13 @@ public class SciencePaperCheckController {
 		sciencePaperCheckService.save(sciencePaperCheck);
 		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		//获取研究生秘书所在学院的所有的学术论文考核记录表
+		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		//添加到Map集合中
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
+		return "keepInTheArchives/sciencePaperCheckDoc";
 	}
 
 	/**
@@ -217,7 +235,7 @@ public class SciencePaperCheckController {
 	 * @return
 	 */
 	@RequestMapping("/poorSciencePaperCheck.html")
-	public String auditSciencePaperCheckPoor(ModelMap modelMap, Integer sciencePaperCheckId) {
+	public String auditSciencePaperCheckPoor(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
@@ -226,7 +244,13 @@ public class SciencePaperCheckController {
 		sciencePaperCheckService.save(sciencePaperCheck);
 		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		//获取研究生秘书所在学院的所有的学术论文考核记录表
+		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		//添加到Map集合中
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
+		return "keepInTheArchives/sciencePaperCheckDoc";
 	}
 
 }

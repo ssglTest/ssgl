@@ -30,6 +30,7 @@ public class PaperReplyApplyController {
 	private PaperReplyApplyService paperReplyApplyService;
 	@Autowired
 	private SecretaryService secretaryService;
+
 	/*
 	 * 研究生秘书获取学位论文答辩申请书
 	 */
@@ -51,7 +52,8 @@ public class PaperReplyApplyController {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		SciencePaperCheck sciencePaperCheck = student.getSciencePaperCheck();
 		// 判断学术论文考核记录表是否通过
-		if (sciencePaperCheck.getApprove() == "notApproved" || sciencePaperCheck.getApprove()==null)
+		if (sciencePaperCheck == null || sciencePaperCheck.getApprove() == "notApproved"
+				|| sciencePaperCheck.getApprove() == null)
 			return "warning/error";
 		PaperReplyApply paperReplyApply = student.getPaperReplyApply();
 		modelMap.put("paperReplyApply", paperReplyApply);
@@ -61,16 +63,16 @@ public class PaperReplyApplyController {
 	@RequestMapping("/updatePaperReplyApply.html")
 	private String updatePaperReplyApply(ModelMap modelMap, HttpSession httpSession,
 			@RequestParam(value = "paperReplyApplyFile", required = false) MultipartFile paperReplyApplyFile) {
-		if(paperReplyApplyFile==null){
+		if (paperReplyApplyFile == null) {
 			modelMap.put("info", "请选择文件！");
 			return "paperReplyApply/paperReplyApplyListByStudent";
 		}
 		PaperReplyApply paperReplyApply = null;
-		Student student = (Student)CommonHelp.getCurrentActor(httpSession);
+		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		paperReplyApply = student.getPaperReplyApply();
-		if(paperReplyApply==null){
+		if (paperReplyApply == null) {
 			paperReplyApply = new PaperReplyApply();
-		}else{
+		} else {
 			CommonHelp.delete(httpSession, paperReplyApply.getUrl());
 		}
 		String folderName = "paperReplyApply";
@@ -88,12 +90,12 @@ public class PaperReplyApplyController {
 		modelMap.put("info", "文件上传成功！");
 		return "paperReplyApply/paperReplyApplyListByStudent";
 	}
-	
+
 	/*
 	 * 审核通过
 	 */
 	@RequestMapping("/approvedPaperReplyApply.html")
-	public String approvedPaperReplyApply(ModelMap modelMap,Integer paperReplyApplyId){
+	public String approvedPaperReplyApply(ModelMap modelMap, Integer paperReplyApplyId) {
 		PaperReplyApply paperReplyApply = paperReplyApplyService.findById(paperReplyApplyId);
 		paperReplyApply.setApprove("approved");
 		paperReplyApply.setAuditDate(CommonHelp.getCurrentDate());
@@ -103,12 +105,12 @@ public class PaperReplyApplyController {
 		modelMap.put("paperReplyApplyList", pra);
 		return "paperReplyApply/paperReplyApplyList";
 	}
-	
+
 	/*
 	 * 审核不通过
 	 */
 	@RequestMapping("/notApprovedPaperReplyApply.html")
-	public String notApprovedPaperReplyApply(ModelMap modelMap,Integer paperReplyApplyId){
+	public String notApprovedPaperReplyApply(ModelMap modelMap, Integer paperReplyApplyId) {
 		PaperReplyApply paperReplyApply = paperReplyApplyService.findById(paperReplyApplyId);
 		paperReplyApply.setApprove("notApproved");
 		paperReplyApply.setAuditDate(CommonHelp.getCurrentDate());
@@ -118,7 +120,7 @@ public class PaperReplyApplyController {
 		modelMap.put("paperReplyApplyList", pra);
 		return "paperReplyApply/paperReplyApplyList";
 	}
-	
+
 	/*
 	 * 下载
 	 */
@@ -129,6 +131,5 @@ public class PaperReplyApplyController {
 		String name = "论文选题申请表";
 		return CommonHelp.download(httpSession, paperReplyApply.getUrl(), name);
 	}
-	
 
 }

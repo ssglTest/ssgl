@@ -15,9 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sdjz.domain.PaperTitleApply;
 import com.sdjz.domain.PaperTitleReport;
+import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.service.PaperTitleReportService;
+import com.sdjz.service.SecretaryService;
 
 @Controller
 @RequestMapping("userContro/paperTitleReport")
@@ -25,9 +27,12 @@ public class PaperTitleReportController {
 
 	@Autowired
 	private PaperTitleReportService paperTitleReportService;
+	@Autowired
+	private SecretaryService secretaryService;
 
 	/**
 	 * 得到当前学生的论文选题报告和工作计划
+	 * 
 	 * @param modelMap
 	 * @param httpSession
 	 * @return
@@ -35,11 +40,11 @@ public class PaperTitleReportController {
 	@RequestMapping("/getPaperTitleReportByStudent.html")
 	public String getPaperTitleReportByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
-		PaperTitleApply paperTitleApply =student.getPaperTitleApply();
-		if(paperTitleApply==null)
+		PaperTitleApply paperTitleApply = student.getPaperTitleApply();
+		if (paperTitleApply == null)
 			return "warning/error";
 		String approve = paperTitleApply.getApprove();
-		if(approve.equals("notApproved"))
+		if (approve.equals("notApproved"))
 			return "warning/error";
 		PaperTitleReport paperTitleReport = student.getPaperTitleReport();
 		modelMap.put("paperTitleReport", paperTitleReport);
@@ -48,18 +53,22 @@ public class PaperTitleReportController {
 
 	/**
 	 * 根据研究生秘书，列出所有学生的论文选题报告和工作计划
+	 * 
 	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping("/paperTitleReportList.html")
-	public String paperTitleReportList(ModelMap modelMap){
-		List<PaperTitleReport> paperTitleReportList = paperTitleReportService.findAll();
+	public String paperTitleReportList(ModelMap modelMap, HttpSession httpSession) {
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleReport> paperTitleReportList = secretary.getSchool().getPaperTitleReports();
 		modelMap.put("paperTitleReportList", paperTitleReportList);
 		return "paperTitleReport/paperTitleReportListBySecretary";
 	}
-	
+
 	/**
 	 * 学生上传论文选题报告和工作计划
+	 * 
 	 * @param paperTitleReportFile
 	 * @param httpSession
 	 * @param modelMap
@@ -105,6 +114,7 @@ public class PaperTitleReportController {
 
 	/**
 	 * 下载论文选题报告和工作计划
+	 * 
 	 * @param httpSession
 	 * @param paperTitleReportId
 	 * @return
@@ -117,15 +127,17 @@ public class PaperTitleReportController {
 		String name = "论文选题报告";
 		return CommonHelp.download(httpSession, paperTitleReport.getUrl(), name);
 	}
-	
+
 	/**
 	 * 审核通过的controller
-	 * @param paperTitleReportId jsp页面中传过来的论文选题报告的id
+	 * 
+	 * @param paperTitleReportId
+	 *            jsp页面中传过来的论文选题报告的id
 	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping("/approvedPaperTitleReport.html")
-	public String approvedPaperTitleReport(Integer paperTitleReportId,ModelMap modelMap){
+	public String approvedPaperTitleReport(HttpSession httpSession,Integer paperTitleReportId, ModelMap modelMap) {
 		PaperTitleReport paperTitleReport = paperTitleReportService.findById(paperTitleReportId);
 		paperTitleReport.setApprove("approved");
 		String date = CommonHelp.getCurrentDate();
@@ -134,16 +146,23 @@ public class PaperTitleReportController {
 		paperTitleReportService.save(paperTitleReport);
 		List<PaperTitleReport> paperTitleReportList = paperTitleReportService.findAll();
 		modelMap.put("paperTitleReportList", paperTitleReportList);
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleReport> ptr = secretary.getSchool().getPaperTitleReports();
+		modelMap.put("paperTitleReportList", ptr);
 		return "paperTitleReport/paperTitleReportListBySecretary";
 	}
+
 	/**
 	 * 审核未通过的controller
-	 * @param paperTitleReportId jsp页面传过来的论文选题报告的id
+	 * 
+	 * @param paperTitleReportId
+	 *            jsp页面传过来的论文选题报告的id
 	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping("/notApprovedPaperTitleReport.html")
-	public String notApprovedPaperTitleReport(Integer paperTitleReportId,ModelMap modelMap){
+	public String notApprovedPaperTitleReport(HttpSession httpSession,Integer paperTitleReportId, ModelMap modelMap) {
 		PaperTitleReport paperTitleReport = paperTitleReportService.findById(paperTitleReportId);
 		paperTitleReport.setApprove("notApproved");
 		String date = CommonHelp.getCurrentDate();
@@ -152,6 +171,10 @@ public class PaperTitleReportController {
 		paperTitleReportService.save(paperTitleReport);
 		List<PaperTitleReport> paperTitleReportList = paperTitleReportService.findAll();
 		modelMap.put("paperTitleReportList", paperTitleReportList);
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleReport> ptr = secretary.getSchool().getPaperTitleReports();
+		modelMap.put("paperTitleReportList", ptr);
 		return "paperTitleReport/paperTitleReportListBySecretary";
 	}
 }
