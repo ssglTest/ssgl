@@ -59,4 +59,9 @@ public class PaperElectronicEditionController {
 		modelMap.put("info", "文件上传成功！");
 		return "paperElectronicEdition/paperElectronicEditionListByStudent";
 	}
+	
+	@RequestMapping("/downloadPaperElectronicEdition.html") 
+	public void down(){
+		
+	}
 }

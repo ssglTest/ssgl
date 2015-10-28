@@ -164,15 +164,15 @@ public class SciencePaperCheckController {
 		sciencePaperCheck.setApprove("excellent");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
-		secretary = secretaryService.findByNo(secretary.getNo());
+		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
+		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
+		tutor = tutorService.findByNo(tutor.getNo());
 		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "keepInTheArchives/sciencePaperCheckDoc";
+		return "sciencePaperCheck/sciencePaperCheckList";
 	}
 
 	/**
@@ -190,15 +190,15 @@ public class SciencePaperCheckController {
 		sciencePaperCheck.setApprove("good");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
-		secretary = secretaryService.findByNo(secretary.getNo());
+		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
+		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
+		tutor = tutorService.findByNo(tutor.getNo());
 		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "keepInTheArchives/sciencePaperCheckDoc";
+		return "sciencePaperCheck/sciencePaperCheckList";
 	}
 
 	/**
@@ -216,15 +216,15 @@ public class SciencePaperCheckController {
 		sciencePaperCheck.setApprove("fair");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
-		secretary = secretaryService.findByNo(secretary.getNo());
+		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
+		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
+		tutor = tutorService.findByNo(tutor.getNo());
 		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "keepInTheArchives/sciencePaperCheckDoc";
+		return "sciencePaperCheck/sciencePaperCheckList";
 	}
 
 	/**
@@ -242,15 +242,15 @@ public class SciencePaperCheckController {
 		sciencePaperCheck.setApprove("poor");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
-		secretary = secretaryService.findByNo(secretary.getNo());
+		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
+		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
+		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
+		tutor = tutorService.findByNo(tutor.getNo());
 		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = secretary.getSchool().getSciencePaperChecks();
+		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
 		//添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "keepInTheArchives/sciencePaperCheckDoc";
+		return "sciencePaperCheck/sciencePaperCheckList";
 	}
 
 }

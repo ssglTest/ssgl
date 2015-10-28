@@ -94,7 +94,7 @@
 	}
 	
 	function updatepaper(){
-		window.open("test/updatePaper.html","navTab");
+		window.open("paperElectronicEdition/paperElectronicEditionListByStudent.html","navTab");
 	}
 	
 	function queryreplyplace(){
