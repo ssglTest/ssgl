@@ -58,7 +58,7 @@
 	}
 	
 	function myteacher(){
-		window.open("#","navTab");
+		window.open("studentTeacher/getStudentTeacher.html","navTab");
 	}
 	
 	function personalplan(){

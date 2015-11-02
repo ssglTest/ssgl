@@ -11,6 +11,12 @@
 <script type="text/javascript"
 	src="../../bootstrap/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
+
+<!-- <script type="text/javascript">
+	function getApproved(){
+		window.open("getApproved.html", navTab);
+	} -->
+</script>
 </head>
 <body>
 	<!-- bootstrap中的面板 -->
@@ -20,9 +26,9 @@
 		</div>
 		<div class="panel-body">
 			<div class="form-group">
-				<button class="btn btn-success">已通过</button>
-				<button class="btn btn-warning">未通过</button>
-				<button class="btn btn-info">所有学生</button>
+				<button class="btn btn-success"><a href="getApproved.html">已通过</a></button>
+				<button class="btn btn-warning"><a href="getNotApproved.html">未通过</a></button>
+				<button class="btn btn-info"><a href="paperTitleApplyManage.html">所有学生</a></button>
 			</div>
 			<table class="table table-hover">
 				<thead>

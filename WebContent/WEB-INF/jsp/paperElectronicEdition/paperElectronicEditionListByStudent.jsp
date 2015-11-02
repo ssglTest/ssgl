@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,11 +19,11 @@
 		</div>
 		<div class="panel-body">
 			<div class="page-header">
-				<form action="midtermCheckUpload.html" enctype="multipart/form-data"
+				<form action="updatePaperElectronicEdition.html" enctype="multipart/form-data"
 					method="post" role="form" class="form-inline">
 					<div class="form-group">
-						<label for="midtermCheckUpdate">文件上传</label><input type="file"
-							id="midtermCheckUpdate" name="midtermCheckUpdate"
+						<label for="paperElectronicEditionFile">文件上传</label><input type="file"
+							id="paperElectronicEditionFile" name="paperElectronicEditionFile"
 							class="form-control"><label class="label label-info">${info}</label>
 						<p class="help-block">请选择需要上传的论文电子版</p>
 						<button type="submit" class="btn btn-default">上传</button>
@@ -36,7 +37,7 @@
 						<th>姓名</th>
 						<th>标题</th>
 						<th>上传日期</th>
-						<th>审核状态</th>
+						<th>审核状态</th>	
 						<th>复制比</th>
 						<th>操作</th>
 					</tr>
@@ -48,7 +49,7 @@
 							<td>${paperElectronicEdition.student.name}</td>
 							<td>${paperElectronicEdition.title }</td>
 							<td>${paperElectronicEdition.updateDate}</td>
-							<td>
+							<td>审核中
 								<%-- <c:if test="${empty midtermCheck.approve}">
 									<span class="label label-info">审核中</span>
 								</c:if> <c:if test="${midtermCheck.approve=='approved' }">
@@ -57,20 +58,19 @@
 									<span class="label label-warning">未通过</span>
 								</c:if> --%>
 							</td>
+							<td>10%</td>
 							<td>
-							<td></td>
-							<td>
-							<button class="btn btn-default">
-								<a
-									href="downloadPaperElectronicEdition.html?paperElectronicEditionId=${paperElectronicEdition.id }">下载</a>
-							</button>
-							<button class="btn btn-default">
-								<a href="#">查看</a>
-							</button>
+								<button class="btn btn-default">
+									<a
+										href="downloadPaperElectronicEdition.html?paperElectronicEditionId=${paperElectronicEdition.id }">下载</a>
+								</button>
+								<button class="btn btn-default">
+									<a href="#">查看</a>
+								</button>
 							</td>
 						</c:if>
 						<c:if test="${empty paperElectronicEdition.student.no }">
-							<span class="label label-info">未上传论文电子版</span>
+							<h3><span class="label label-default">未上传论文电子版</span></h3>
 						</c:if>
 					</tr>
 				</tbody>

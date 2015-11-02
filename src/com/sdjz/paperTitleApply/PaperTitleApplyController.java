@@ -25,7 +25,7 @@ import com.sdjz.service.SecretaryService;
 
 @Controller
 @RequestMapping("userContro/paperTitleApply")
-public class PaperTitleApplyController {
+public class PaperTitleApplyController{
 
 	@Autowired
 	private PaperTitleApplyService paperTitleApplyService;
@@ -184,6 +184,23 @@ public class PaperTitleApplyController {
 		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		return "paperTitleApply/paperTitleApplyList";
+	}
+	
+	@RequestMapping("/getApproved.html")
+	public String getApproved(HttpSession httpSession,ModelMap modelMap){
+		System.out.println("======================================================");
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.likeQuery(PaperTitleApply.class, "approve", "notApproved");
+		System.out.println("paperTitleApplyList==========="+paperTitleApplyList.toString());
+		modelMap.put("paperTitleApplyList", paperTitleApplyList);
+		return "paperTitleApply/paperTitleApplyList";
+	}
+	
+	@RequestMapping("/getNotApproved.html")
+	public String getNotApproved(HttpSession httpSession,ModelMap modelmap){
+		
+		return null;
 	}
 
 }
