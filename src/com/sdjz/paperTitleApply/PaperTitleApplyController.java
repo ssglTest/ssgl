@@ -139,6 +139,7 @@ public class PaperTitleApplyController{
 	 */
 	@RequestMapping("/approvedPaperTitleApply.html")
 	public String approvedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId) {
+		System.out.println("已跳转到这个controller=============================");
 		// 通过id找到当前的论文选题申请表
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
 		paperTitleApply.setApprove("approved");
