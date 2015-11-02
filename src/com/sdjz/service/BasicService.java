@@ -74,9 +74,34 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 		return basicDao.getResult(entityClass, propertyName,propertyValue);
 		
 	}
+	public List<T> getResults(Class<T> entityClass,String propertyName,Object propertyValue) {
+		return basicDao.getResults(entityClass, propertyName, propertyValue);
+	}
+	
+	
+	public List<T> getResults(Class<T> entityClass,String propertyName1,String propertyValue1,String propertyName2,String propertyValue2){
+		return basicDao.getResult(entityClass, propertyName1, propertyValue1, propertyName2, propertyValue2);
+	}
+	
 	public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propertyValue){
 		return basicDao.likeQuery(entityClass, propertyName, propertyValue);
 	}
-	
+	/*public T specification(Class<T> entityClass){
+			T result=basicDao.findOne(new Specification<T>(){
 
+			@Override
+			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+				// TODO Auto-generated method stub
+				root=cq.from(entityClass);
+				Path<String> nameExp=root.get("no");
+				
+				return cb.equal(nameExp,"001");
+			}
+			
+		});
+		return result;
+		
+	}*/
+	
+	
 }

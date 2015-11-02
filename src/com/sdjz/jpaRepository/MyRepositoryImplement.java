@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 
@@ -57,6 +58,15 @@ public T getResult(Class<T> entityClass,String propertyName,Object propertyValue
 	criteriaQuery.where(criteriaBuilder.equal(model.get(Model_.getSingularAttribute(propertyName,String.class)), propertyValue));
 	return entityManager.createQuery(criteriaQuery).getSingleResult();
 }
+@Override
+public List<T> getResults(Class<T> entityClass, String propertyName, Object propertyValue) {
+	// TODO Auto-generated method stub
+	this.entityClass=entityClass;	
+	this.initilize();
+	criteriaQuery.where(criteriaBuilder.equal(model.get(Model_.getSingularAttribute(propertyName,String.class)), propertyValue));
+	return entityManager.createQuery(criteriaQuery).getResultList();
+}
+
 
 @Override
 public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propertyValue) {
@@ -67,13 +77,19 @@ public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propert
 	return entityManager.createQuery(criteriaQuery).getResultList();
 }
 
-@Override
-public List<T> pageQuery(Class<T> entityClass, String propertyName, Object propertyValue) {
-	// TODO Auto-generated method stub
-	
-	return null;
-}
 
+@Override
+public List<T> getResult(Class<T> entityClass, String propertyName1, Object propertyValue1, String propertyName2,
+		Object propertyValue2) {
+	// TODO Auto-generated method stub
+	this.entityClass=entityClass;
+	this.initilize();
+	Predicate condition=criteriaBuilder.and(
+			criteriaBuilder.like(model.get(Model_.getSingularAttribute(propertyName1,String.class)), "%"+propertyValue1+"%"),
+			criteriaBuilder.equal(model.get(Model_.getSingularAttribute(propertyName2,String.class)),propertyValue2));
+	
+	return entityManager.createQuery(criteriaQuery.where(condition)).getResultList();
+}
 public void init(){
 	 criteriaBuilder =entityManager.getCriteriaBuilder();
 	 criteriaQuery=criteriaBuilder.createQuery(entityClass);
@@ -85,6 +101,8 @@ public void initilize(){
 		this.init();
 	}
 }
+
+
 
 
  
