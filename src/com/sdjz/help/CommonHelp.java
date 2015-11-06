@@ -3,12 +3,14 @@ package com.sdjz.help;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -75,6 +77,31 @@ public class CommonHelp {
 		Integer year = getYear();
 		String currentDate = day+"/"+month+"/"+year;
 		return currentDate;
+	}
+	
+	/**
+	 * 返回一个含有message信息的json数据，其message为status
+	 * @param response
+	 * @param message
+	 */
+	public static void buildSimpleJson(HttpServletResponse response,String message){
+		String result = "{\"status\":\"" + message + "\"}";
+		PrintWriter out = null;
+		response.setContentType("application/json");
+		try {
+			out = response.getWriter();
+			out.write(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 返回一个含有status:""的json数据
+	 * @param response
+	 */
+	public static void buildSimpleJson(HttpServletResponse response){
+		CommonHelp.buildSimpleJson(response,"");
 	}
 	/**
 	 * 得到当前的用户

@@ -22,8 +22,9 @@
 					data:{"paperTitleApplyId":paperTitleApplyId},
 					dataType:'json',
 					type:'POST',
+					async:'false',
 					success:function(data){
-						window.correct("审核成功！");
+						window.cofirm("审核成功！");
 						return true;
 					},
 					error:function(msg){
