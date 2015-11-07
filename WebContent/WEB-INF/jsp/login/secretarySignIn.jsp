@@ -88,6 +88,14 @@
 	function savealldoc() {
 		window.open("#", "navTab");
 	}
+	
+	function importStudent(){
+		window.open("importUser/importStudent.html","navTab");
+	}
+	
+	function importTeacher(){
+		window.open("importUser/importTeacher.html","navTab");
+	}
 </script>
 <title>硕士管理系统</title>
 
@@ -262,6 +270,28 @@
 									onclick="savesciencepapercheck()">存档学位论文考核记录表</button>
 								<button class="btn btn-default btn-block" type="button"
 									onclick="savealldoc()">汇总文档</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseNine">
+									<button class="btn btn-primary btn-block">导入用户</button>
+								</a>
+							</h4>
+						</div>
+						<div id="collapseNine" class="panel-collapse collapse">
+							<div class="panel-body">
+								<button class="btn btn-default btn-block" type="button"
+									onclick="importStudent()">导入学生</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="importTeacher()">导入老师</button>
+							<!-- 	<button class="btn btn-default btn-block" type="button"
+									onclick="savesciencepapercheck()">存档学位论文考核记录表</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="savealldoc()">汇总文档</button> -->
 							</div>
 						</div>
 					</div>
