@@ -140,7 +140,6 @@ public class PaperTitleApplyController {
 	@RequestMapping(value = "/approvedPaperTitleApply.html", method = RequestMethod.POST)
 	public void approvedPaperTitleApply(HttpSession httpSession, ModelMap modelMap, Integer paperTitleApplyId,
 			HttpServletResponse response) {
-		System.out.println("已跳转到这个controller=============================");
 		// 通过id找到当前的论文选题申请表
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
 		paperTitleApply.setApprove("approved");
@@ -150,20 +149,22 @@ public class PaperTitleApplyController {
 		// 更新数据库
 		paperTitleApplyService.update(paperTitleApply);
 		paperTitleApplyService.save(paperTitleApply);
-		/*
-		 * // 列出所有的选题申请表，重新刷新，这会影响性能！ List<PaperTitleApply> paperTitleApplyList
-		 * = paperTitleApplyService.findAll();
-		 * modelMap.put("paperTitleApplyList", paperTitleApplyList);
-		 */
-		// return "paperTitleApply/paperTitleApplyList";
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
-		secretary = secretaryService.findByNo(secretary.getNo());
-		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
-		// modelMap.put("paperTitleApplyList", paperTitleApplyList);
+		System.out.println("============已经处理了这个业务逻辑============");
 		CommonHelp.buildSimpleJson(response);
-		// return "paperTitleApply/paperTitleApplyList";
+		
 	}
 
+	/*
+	 * // 列出所有的选题申请表，重新刷新，这会影响性能！ List<PaperTitleApply> paperTitleApplyList
+	 * = paperTitleApplyService.findAll();
+	 * modelMap.put("paperTitleApplyList", paperTitleApplyList);
+	 */
+	// return "paperTitleApply/paperTitleApplyList";
+	/*Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+	secretary = secretaryService.findByNo(secretary.getNo());
+	List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();*/
+	// modelMap.put("paperTitleApplyList", paperTitleApplyList);
+	// return "paperTitleApply/paperTitleApplyList";
 	/**
 	 * 审核没有通过后的controller
 	 * 

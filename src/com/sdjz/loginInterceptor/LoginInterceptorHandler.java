@@ -8,6 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sdjz.domain.User;
+import com.sdjz.help.CommonHelp;
 
 public class LoginInterceptorHandler implements HandlerInterceptor{
 
@@ -33,8 +34,9 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String url = request.getRequestURI();
-		System.out.println(url);
-		System.out.println(url.indexOf("login"));
+		//System.out.println("请求的URL: "+url.toString());
+		System.err.println("请求的URL: "+url.toString());
+		//CommonHelp.setColor(15, 1);
 		if(url.indexOf("login")>=0){
 			System.out.println(url);
 			return true;

@@ -12,9 +12,35 @@
 <script type="text/javascript"
 	src="../../bootstrap/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
-
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <script type="text/javascript" language="javascript">
 	function approved(paperTitleApplyId){
+		var approve = window.confirm("确认通过？");
+		if(approve==true){
+			$.ajax({
+				url:"approvedPaperTitleApply.html",
+				data:{"paperTitleApplyId":paperTitleApplyId},
+				dataType:'json',
+				type:'POST',
+				async:'false',
+				success:function(data){
+					window.cofirm("审核成功！");
+					$("#approve").html("通过");
+					$("#notApproved").html("通过");
+					return true;
+				},
+				error:function(msg){
+					window.error("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+	function aqpproved(paperTitleApplyId){
 		window.confirm("确认通过?",{
 			okCall:function(){
 				$.ajax({
@@ -25,6 +51,8 @@
 					async:'false',
 					success:function(data){
 						window.cofirm("审核成功！");
+						$("#approve").html("通过");
+						$("#notApproved").html("通过");
 						return true;
 					},
 					error:function(msg){
@@ -36,9 +64,9 @@
 		});
 	}
 	
-	function test(){
+	/* function test(){
 		window.confirm("这是一个测试 ")
-	}
+	} */
 </script>
 </head>
 <body>
@@ -83,13 +111,13 @@
 							<td>${paperTitleApply.title}</td>
 							<td>
 								<!-- 判断是否审核 --> <c:if test="${empty paperTitleApply.approve }">
-									<span class="label label-info">未审核</span>
+									<span id="approve" class="label label-info">未审核</span>
 								</c:if> <c:if test="${not empty paperTitleApply.approve }">
 									<c:if test="${paperTitleApply.approve=='approved'}">
-										<span class="label label-success">通过</span>
+										<span id="approved" class="label label-success">通过</span>
 									</c:if>
 									<c:if test="${paperTitleApply.approve=='notApproved' }">
-										<span class="label label-warning">未通过</span>
+										<span id="notApproved" class="label label-warning">未通过</span>
 									</c:if>
 								</c:if>
 							</td>
