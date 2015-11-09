@@ -10,16 +10,7 @@
 <link href="../img/glyphicons-halflings.png">
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'
 	rel='stylesheet' type='text/css'>
-<link href="styles/font-awesome.min.css" rel="stylesheet" />
-<script>
-	$(function() {
-		$(".btn").click(function() {
-			$(this).button('loading').delay(1000).queue(function() {
-				// $(this).button('reset');
-			});
-		});
-	});
-</script>
+
 <script type="text/javascript">
 	function updateInfo() {
 		window.open("secretaryInfo.html", "navTab");

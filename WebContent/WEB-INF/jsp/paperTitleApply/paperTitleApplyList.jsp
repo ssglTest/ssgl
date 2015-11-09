@@ -9,8 +9,7 @@
 <title>Insert title here</title>
 <link type="text/css" href="../../bootstrap/bootstrap.min.css"
 	rel="stylesheet" />
-<script type="text/javascript"
-	src="../../bootstrap/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../../bootstrap/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
 <%
 	String path = request.getContextPath();
@@ -26,11 +25,21 @@
 				data:{"paperTitleApplyId":paperTitleApplyId},
 				dataType:'json',
 				type:'POST',
-				async:'false',
 				success:function(data){
-					window.cofirm("审核成功！");
-					$("#approve").html("通过");
-					$("#notApproved").html("通过");
+					alert("审核通过");
+				/* 	$(".paperTitleApplyShow").each(function(){
+						var tem = $(this).children().eq(3);
+						var btn = tem.children();
+						btn.bind("click",function(){ 
+							var id=btn.parent().parent().children("td").get(0).innerHTML; 
+							var name=btn.parent().parent().children("td").get(1).innerHTML; 
+							var age=btn.parent().parent().children("td").get(2).innerHTML; 
+							alert("id="+no+" name="+name+" age="+title); 
+
+							}); 
+						
+					}); */
+					
 					return true;
 				},
 				error:function(msg){
@@ -40,30 +49,28 @@
 			});
 		}
 	}
-	function aqpproved(paperTitleApplyId){
-		window.confirm("确认通过?",{
-			okCall:function(){
-				$.ajax({
-					url:"approvedPaperTitleApply.html",
-					data:{"paperTitleApplyId":paperTitleApplyId},
-					dataType:'json',
-					type:'POST',
-					async:'false',
-					success:function(data){
-						window.cofirm("审核成功！");
-						$("#approve").html("通过");
-						$("#notApproved").html("通过");
-						return true;
-					},
-					error:function(msg){
-						window.error("网络故障，请检查后重新审核");
-						return false;
-					}
-				});
-			}
-		});
-	}
 	
+	function notApproved(paperTitleApplyId){
+		var approve = window.confirm("确认不通过？");
+		if(approve==true){
+			$.ajax({
+				url:"notApprovedPaperTitleApply.html",
+				data:{"paperTitleApplyId":paperTitleApplyId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核未通过");
+					/* $("#approve").html("未通过");
+					$("#notApproved").html("未通过"); */
+					return true;
+				},
+				error:function(msg){
+					window.error("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
 	/* function test(){
 		window.confirm("这是一个测试 ")
 	} */
@@ -105,25 +112,23 @@
 						</h1>
 					</c:if>
 					<c:forEach items="${paperTitleApplyList}" var="paperTitleApply">
-						<tr>
+						<tr class="paperTitleApplyShow">
 							<td>${paperTitleApply.student.no}</td>
 							<td>${paperTitleApply.student.name}</td>
 							<td>${paperTitleApply.title}</td>
 							<td>
 								<!-- 判断是否审核 --> <c:if test="${empty paperTitleApply.approve }">
-									<span id="approve" class="label label-info">未审核</span>
+									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${not empty paperTitleApply.approve }">
 									<c:if test="${paperTitleApply.approve=='approved'}">
-										<span id="approved" class="label label-success">通过</span>
+										<span class="label label-success">通过</span>
 									</c:if>
 									<c:if test="${paperTitleApply.approve=='notApproved' }">
-										<span id="notApproved" class="label label-warning">未通过</span>
+										<span class="label label-warning">未通过</span>
 									</c:if>
 								</c:if>
 							</td>
 							<td>
-								<%-- <button class="btn btn-default" data-toggle="modal" id="${paperTitleApply.id}" 
-									data-target="#paperTitleApply">审核</button> --%>
 								<div class="btn-group">
 									<button type="button" class="btn btn-primary dropdown-toggle"
 										data-toggle="dropdown">
@@ -131,17 +136,12 @@
 										审核<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li>
-											<%-- <a
-											href="approvedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}"><h3>
-													<span class="label label-success">通过</span>
-												</h3></a> --%> <a class="btn btn-success"
+										<li><a class="btn btn-success"
 											onclick="approved(${paperTitleApply.id})"
-											id="approvedPaperTitleApply">通过</a>
-										</li>
+											id="approvedPaperTitleApply">通过</a></li>
 										<li><a class="btn btn-warning"
-											href="notApprovedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}">
-												不通过 </a></li>
+											onclick="notApproved(${paperTitleApply.id})"
+											id="notApprovedPaperTitleApply">不通过</a></li>
 									</ul>
 								</div>
 							</td>
@@ -158,32 +158,6 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<!-- <div class="modal fade" id="paperTitleApply" tabindex="-1"
-				role="dialog" aria-labelledby="updateInformationLabel"
-				aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							模态框的标题
-							<h4 class="modal-title" id="myModalLable">审核论文选题申请</h4>
-						</div>
-						<div class="modal-body">
-							<form  action="#" class="form-horizontal" role="form">
-								<div class="form-group">
-									<h3><span class="label label-default">姓名：</span></h3>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary">提交更改</button>
-						</div>
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</div>
 </body>
