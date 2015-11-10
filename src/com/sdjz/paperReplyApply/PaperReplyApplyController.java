@@ -3,6 +3,7 @@ package com.sdjz.paperReplyApply;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -94,31 +96,37 @@ public class PaperReplyApplyController {
 	/*
 	 * 审核通过
 	 */
-	@RequestMapping("/approvedPaperReplyApply.html")
-	public String approvedPaperReplyApply(ModelMap modelMap, Integer paperReplyApplyId) {
+	@RequestMapping(value = "/approvedPaperReplyApply.html", method = RequestMethod.POST)
+	public void approvedPaperReplyApply(ModelMap modelMap, Integer paperReplyApplyId, HttpServletResponse response) {
 		PaperReplyApply paperReplyApply = paperReplyApplyService.findById(paperReplyApplyId);
 		paperReplyApply.setApprove("approved");
 		paperReplyApply.setAuditDate(CommonHelp.getCurrentDate());
 		paperReplyApplyService.update(paperReplyApply);
 		paperReplyApplyService.save(paperReplyApply);
-		List<PaperReplyApply> pra = paperReplyApplyService.findAll();
-		modelMap.put("paperReplyApplyList", pra);
-		return "paperReplyApply/paperReplyApplyList";
+		CommonHelp.buildSimpleJson(response);
+		/*
+		 * List<PaperReplyApply> pra = paperReplyApplyService.findAll();
+		 * modelMap.put("paperReplyApplyList", pra);
+		 */
+		// return "paperReplyApply/paperReplyApplyList";
 	}
 
 	/*
 	 * 审核不通过
 	 */
-	@RequestMapping("/notApprovedPaperReplyApply.html")
-	public String notApprovedPaperReplyApply(ModelMap modelMap, Integer paperReplyApplyId) {
+	@RequestMapping(value = "/notApprovedPaperReplyApply.html", method = RequestMethod.POST)
+	public void notApprovedPaperReplyApply(ModelMap modelMap, Integer paperReplyApplyId, HttpServletResponse response) {
 		PaperReplyApply paperReplyApply = paperReplyApplyService.findById(paperReplyApplyId);
 		paperReplyApply.setApprove("notApproved");
 		paperReplyApply.setAuditDate(CommonHelp.getCurrentDate());
 		paperReplyApplyService.update(paperReplyApply);
 		paperReplyApplyService.save(paperReplyApply);
-		List<PaperReplyApply> pra = paperReplyApplyService.findAll();
-		modelMap.put("paperReplyApplyList", pra);
-		return "paperReplyApply/paperReplyApplyList";
+		CommonHelp.buildSimpleJson(response);
+		/*
+		 * List<PaperReplyApply> pra = paperReplyApplyService.findAll();
+		 * modelMap.put("paperReplyApplyList", pra); return
+		 * "paperReplyApply/paperReplyApplyList";
+		 */
 	}
 
 	/*

@@ -11,6 +11,101 @@
 <script type="text/javascript"
 	src="../../bootstrap/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function approveExcellet(sciencePaperCheckId) {
+		var confirmed = window.confirm("确认审核？");
+		if (confirmed == true) {
+			$.ajax({
+				url : "excellentSciencePaperCheck.html",
+				data : {
+					"sciencePaperCheckId" : sciencePaperCheckId
+				},
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					alert("审核成功!");
+					$(".sciencePaperCheckaudit"+sciencePaperCheckId).html("<span class='label label-success'>优</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+	
+	function approveGood(sciencePaperCheckId) {
+		var confirmed = window.confirm("确认审核？");
+		if (confirmed == true) {
+			$.ajax({
+				url : "goodSciencePaperCheck.html",
+				data : {
+					"sciencePaperCheckId" : sciencePaperCheckId
+				},
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					alert("审核成功!");
+					$(".sciencePaperCheckaudit"+sciencePaperCheckId).html("<span class='label label-success'>良</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+	
+	
+	function approveFair(sciencePaperCheckId) {
+		var confirmed = window.confirm("确认审核？");
+		if (confirmed == true) {
+			$.ajax({
+				url : "fairSciencePaperCheck.html",
+				data : {
+					"sciencePaperCheckId" : sciencePaperCheckId
+				},
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					alert("审核成功!");
+					$(".sciencePaperCheckaudit"+sciencePaperCheckId).html("<span class='label label-info'>中</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+	
+	
+	function approvePoor(sciencePaperCheckId) {
+		var confirmed = window.confirm("确认审核？");
+		if (confirmed == true) {
+			$.ajax({
+				url : "poorSciencePaperCheck.html",
+				data : {
+					"sciencePaperCheckId" : sciencePaperCheckId
+				},
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					alert("审核成功!");
+					$(".sciencePaperCheckaudit"+sciencePaperCheckId).html("<span class='label label-warning'>差</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="panel panel-primary">
@@ -34,14 +129,17 @@
 				</thead>
 				<tbody>
 					<c:if test="${empty sciencePaperCheckList}">
-						<h2><span class="label label-default">未有学生上传学术论文检查记录表，请耐心等待。</span></h2>
+						<h2>
+							<span class="label label-default">未有学生上传学术论文检查记录表，请耐心等待。</span>
+						</h2>
 					</c:if>
 					<c:forEach items="${sciencePaperCheckList}" var="sciencePaperCheck">
-						<tr>
-							<td>${sciencePaperCheck.student.name }</td>
-							<td>${sciencePaperCheck.student.no }</td>
-							<td>${sciencePaperCheck.title }</td>
-							<td><c:if test="${empty sciencePaperCheck.student.no }">
+						<tr class="sciencePaperCheck${sciencePaperCheck.id }">
+							<td class="sciencePaperCheckno${sciencePaperCheck.id }">${sciencePaperCheck.student.name }</td>
+							<td class="sciencePaperCheckno${sciencePaperCheck.id }">${sciencePaperCheck.student.no }</td>
+							<td class="sciencePaperChecktitle${sciencePaperCheck.id }">${sciencePaperCheck.title }</td>
+							<td class="sciencePaperCheckaudit${sciencePaperCheck.id }">
+								<c:if test="${empty sciencePaperCheck.student.no }">
 									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${sciencePaperCheck.approve=='excellent' }">
 									<span class="label label-success">优</span>
@@ -51,7 +149,8 @@
 									<span class="label label-info">中</span>
 								</c:if> <c:if test="${sciencePaperCheck.approve=='poor' }">
 									<span class="label label-warning">差</span>
-								</c:if></td>
+								</c:if>
+							</td>
 							<td>
 								<div class="btn-group">
 									<button class="btn btn-primary dropdown-toggle" type="button"
@@ -59,22 +158,34 @@
 										审核<span class="carent"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a
+										<li>
+											<%-- <a
 											href="excellentSciencePaperCheck.html?sciencePaperCheckId=${sciencePaperCheck.id}"><h4>
 													<span class="label label-success">优</span>
-												</h4></a></li>
-										<li><a
+												</h4></a> --%> <a class="btn btn-success"
+											onclick="approveExcellet(${sciencePaperCheck.id})">优</a>
+										</li>
+										<li>
+											<%-- <a
 											href="goodSciencePaperCheck.html?sciencePaperCheckId=${sciencePaperCheck.id}"><h4>
 													<span class="label label-success">良</span>
-												</h4></a></li>
-										<li><a
+												</h4></a> --%> <a class="btn btn-success"
+											onclick="approveGood(${sciencePaperCheck.id})">良</a>
+										</li>
+										<li>
+											<%-- <a
 											href="fairSciencePaperCheck.html?sciencePaperCheckId=${sciencePaperCheck.id}"><h4>
 													<span class="label label-info">中</span>
-												</h4></a></li>
-										<li><a
+												</h4></a> --%> <a class="btn btn-info"
+											onclick="approveFair(${sciencePaperCheck.id})">中</a>
+										</li>
+										<li>
+											<%-- <a
 											href="poorSciencePaperCheck.html?sciencePaperCheckId=${sciencePaperCheck.id}"><h4>
 													<span class="label label-warning">差</span>
-												</h4></a></li>
+												</h4></a> --%> <a class="btn btn-warning"
+											onclick="approvePoor(${sciencePaperCheck.id})">差</a>
+										</li>
 									</ul>
 								</div>
 							</td>

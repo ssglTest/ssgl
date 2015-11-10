@@ -3,6 +3,7 @@ package com.sdjz.sciencePaperCheck;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,7 +47,7 @@ public class SciencePaperCheckController {
 	@RequestMapping("/sciencePaperCheckList.html")
 	public String sciencePaperCheckList(ModelMap modelMap, HttpSession httpSession) {
 		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
-		//解决懒加载的问题
+		// 解决懒加载的问题
 		tutor = tutorService.findByNo(tutor.getNo());
 		List<SciencePaperCheck> sciencePaperCheckList = tutor.getSciencePaperCheck();
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
@@ -63,9 +65,9 @@ public class SciencePaperCheckController {
 		// 得到当前的用户
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
-		//获取研究生秘书所在学院的所有的学术论文考核记录表
+		// 获取研究生秘书所在学院的所有的学术论文考核记录表
 		List<SciencePaperCheck> sciencePaperCheckList = secretary.getSchool().getSciencePaperChecks();
-		//添加到Map集合中
+		// 添加到Map集合中
 		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
 		return "keepInTheArchives/sciencePaperCheckDoc";
 	}
@@ -156,23 +158,27 @@ public class SciencePaperCheckController {
 	 * @param sciencePaperCheckId
 	 * @return
 	 */
-	@RequestMapping("/excellentSciencePaperCheck.html")
-	public String auditSciencePaperCheckExcellent(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
+	@RequestMapping(value = "/excellentSciencePaperCheck.html", method = RequestMethod.POST)
+	public void auditSciencePaperCheckExcellent(HttpSession httpSession, ModelMap modelMap, Integer sciencePaperCheckId,
+			HttpServletResponse response) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
 		sciencePaperCheck.setApprove("excellent");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
-		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
-		tutor = tutorService.findByNo(tutor.getNo());
-		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
-		//添加到Map集合中
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		CommonHelp.buildSimpleJson(response);
+		/*
+		 * List<SciencePaperCheck> sciencePaperCheckList =
+		 * sciencePaperCheckService.findAll();
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckList); Tutor
+		 * tutor = (Tutor) CommonHelp.getCurrentActor(httpSession); tutor =
+		 * tutorService.findByNo(tutor.getNo()); //获取研究生秘书所在学院的所有的学术论文考核记录表
+		 * List<SciencePaperCheck> sciencePaperCheckLis =
+		 * tutor.getSchool().getSciencePaperChecks(); //添加到Map集合中
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckLis); return
+		 * "sciencePaperCheck/sciencePaperCheckList";
+		 */
 	}
 
 	/**
@@ -182,23 +188,29 @@ public class SciencePaperCheckController {
 	 * @param sciencePaperCheckId
 	 * @return
 	 */
-	@RequestMapping("/goodSciencePaperCheck.html")
-	public String auditSciencePaperCheckGood(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
+	@RequestMapping(value = "/goodSciencePaperCheck.html", method = RequestMethod.POST)
+	public void auditSciencePaperCheckGood(HttpSession httpSession, ModelMap modelMap, Integer sciencePaperCheckId,
+			HttpServletResponse response) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
 		sciencePaperCheck.setApprove("good");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
-		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
-		tutor = tutorService.findByNo(tutor.getNo());
-		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
-		//添加到Map集合中
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		CommonHelp.buildSimpleJson(response);
+		/*
+		 * List<SciencePaperCheck> sciencePaperCheckList =
+		 * sciencePaperCheckService.findAll();
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
+		 */
+		/*
+		 * Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession); tutor
+		 * = tutorService.findByNo(tutor.getNo()); //获取研究生秘书所在学院的所有的学术论文考核记录表
+		 * List<SciencePaperCheck> sciencePaperCheckLis =
+		 * tutor.getSchool().getSciencePaperChecks(); //添加到Map集合中
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckLis); return
+		 * "sciencePaperCheck/sciencePaperCheckList";
+		 */
 	}
 
 	/**
@@ -208,23 +220,29 @@ public class SciencePaperCheckController {
 	 * @param sciencePaperCheckId
 	 * @return
 	 */
-	@RequestMapping("/fairSciencePaperCheck.html")
-	public String auditSciencePaperCheckFair(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
+	@RequestMapping(value = "/fairSciencePaperCheck.html", method = RequestMethod.POST)
+	public void auditSciencePaperCheckFair(HttpSession httpSession, ModelMap modelMap, Integer sciencePaperCheckId,
+			HttpServletResponse response) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
 		sciencePaperCheck.setApprove("fair");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
-		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
-		tutor = tutorService.findByNo(tutor.getNo());
-		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
-		//添加到Map集合中
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		CommonHelp.buildSimpleJson(response);
+		/*
+		 * List<SciencePaperCheck> sciencePaperCheckList =
+		 * sciencePaperCheckService.findAll();
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
+		 */
+		/*
+		 * Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession); tutor
+		 * = tutorService.findByNo(tutor.getNo()); //获取研究生秘书所在学院的所有的学术论文考核记录表
+		 * List<SciencePaperCheck> sciencePaperCheckLis =
+		 * tutor.getSchool().getSciencePaperChecks(); //添加到Map集合中
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckLis); return
+		 * "sciencePaperCheck/sciencePaperCheckList";
+		 */
 	}
 
 	/**
@@ -234,23 +252,29 @@ public class SciencePaperCheckController {
 	 * @param sciencePaperCheckId
 	 * @return
 	 */
-	@RequestMapping("/poorSciencePaperCheck.html")
-	public String auditSciencePaperCheckPoor(HttpSession httpSession,ModelMap modelMap, Integer sciencePaperCheckId) {
+	@RequestMapping(value = "/poorSciencePaperCheck.html", method = RequestMethod.POST)
+	public void auditSciencePaperCheckPoor(HttpSession httpSession, ModelMap modelMap, Integer sciencePaperCheckId,
+			HttpServletResponse response) {
 		SciencePaperCheck sciencePaperCheck = sciencePaperCheckService.findById(sciencePaperCheckId);
 		String auditDate = CommonHelp.getCurrentDate();
 		sciencePaperCheck.setAuditDate(auditDate);
 		sciencePaperCheck.setApprove("poor");
 		sciencePaperCheckService.update(sciencePaperCheck);
 		sciencePaperCheckService.save(sciencePaperCheck);
-		/*List<SciencePaperCheck> sciencePaperCheckList = sciencePaperCheckService.findAll();
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckList);*/
-		Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession);
-		tutor = tutorService.findByNo(tutor.getNo());
-		//获取研究生秘书所在学院的所有的学术论文考核记录表
-		List<SciencePaperCheck> sciencePaperCheckLis = tutor.getSchool().getSciencePaperChecks();
-		//添加到Map集合中
-		modelMap.put("sciencePaperCheckList", sciencePaperCheckLis);
-		return "sciencePaperCheck/sciencePaperCheckList";
+		CommonHelp.buildSimpleJson(response);
+		/*
+		 * List<SciencePaperCheck> sciencePaperCheckList =
+		 * sciencePaperCheckService.findAll();
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckList);
+		 */
+		/*
+		 * Tutor tutor = (Tutor) CommonHelp.getCurrentActor(httpSession); tutor
+		 * = tutorService.findByNo(tutor.getNo()); //获取研究生秘书所在学院的所有的学术论文考核记录表
+		 * List<SciencePaperCheck> sciencePaperCheckLis =
+		 * tutor.getSchool().getSciencePaperChecks(); //添加到Map集合中
+		 * modelMap.put("sciencePaperCheckList", sciencePaperCheckLis); return
+		 * "sciencePaperCheck/sciencePaperCheckList";
+		 */
 	}
 
 }

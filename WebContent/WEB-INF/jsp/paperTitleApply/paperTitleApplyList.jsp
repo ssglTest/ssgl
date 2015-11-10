@@ -27,23 +27,11 @@
 				type:'POST',
 				success:function(data){
 					alert("审核通过");
-				/* 	$(".paperTitleApplyShow").each(function(){
-						var tem = $(this).children().eq(3);
-						var btn = tem.children();
-						btn.bind("click",function(){ 
-							var id=btn.parent().parent().children("td").get(0).innerHTML; 
-							var name=btn.parent().parent().children("td").get(1).innerHTML; 
-							var age=btn.parent().parent().children("td").get(2).innerHTML; 
-							alert("id="+no+" name="+name+" age="+title); 
-
-							}); 
-						
-					}); */
-					
+					$(".paperTitleApplyaudit"+paperTitleApplyId).html("<span class='label label-success'>通过</span>");
 					return true;
 				},
 				error:function(msg){
-					window.error("网络故障，请检查后重新审核");
+					alert("网络故障，请检查后重新审核");
 					return false;
 				}
 			});
@@ -60,8 +48,7 @@
 				type:'POST',
 				success:function(data){
 					alert("审核未通过");
-					/* $("#approve").html("未通过");
-					$("#notApproved").html("未通过"); */
+					$(".paperTitleApplyaudit"+paperTitleApplyId).html("<span class='label label-warning'>未通过</span>");
 					return true;
 				},
 				error:function(msg){
@@ -112,11 +99,11 @@
 						</h1>
 					</c:if>
 					<c:forEach items="${paperTitleApplyList}" var="paperTitleApply">
-						<tr class="paperTitleApplyShow">
-							<td>${paperTitleApply.student.no}</td>
-							<td>${paperTitleApply.student.name}</td>
-							<td>${paperTitleApply.title}</td>
-							<td>
+						<tr class="paperTitleApply${paperTitleApply.id}">
+							<td class="paperTitleApplyno${paperTitleApply.id }">${paperTitleApply.student.no}</td>
+							<td class="paperTitleApplyname${paperTitleApply.id}">${paperTitleApply.student.name}</td>
+							<td class="paperTitleApplytitle${paperTitleApply.id}">${paperTitleApply.title}</td>
+							<td class="paperTitleApplyaudit${paperTitleApply.id}">
 								<!-- 判断是否审核 --> <c:if test="${empty paperTitleApply.approve }">
 									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${not empty paperTitleApply.approve }">
