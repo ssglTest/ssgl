@@ -2,6 +2,7 @@ package com.sdjz.domain;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,6 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 
 /**
  * 学术论文考核记录表

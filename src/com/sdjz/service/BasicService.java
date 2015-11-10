@@ -1,21 +1,11 @@
 package com.sdjz.service;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
-
 import com.sdjz.jpaRepository.MyRepository;
+
+
 
 
 public abstract class BasicService<T extends java.io.Serializable, PK extends java.io.Serializable> {
@@ -86,22 +76,7 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 	public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propertyValue){
 		return basicDao.likeQuery(entityClass, propertyName, propertyValue);
 	}
-	/*public T specification(Class<T> entityClass){
-			T result=basicDao.findOne(new Specification<T>(){
 
-			@Override
-			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-				// TODO Auto-generated method stub
-				root=cq.from(entityClass);
-				Path<String> nameExp=root.get("no");
-				
-				return cb.equal(nameExp,"001");
-			}
-			
-		});
-		return result;
-		
-	}*/
 	
 	
 }

@@ -52,18 +52,11 @@ public class RoleServiceTest {
 			System.out.println(role.getDescription());
 		}
 	}
-	/*@Test
+	@Test
 	public void specification(){
-		Role roles=roleService.specification(Role.class);
+		Role roles=roleService.specification();
 		
 		System.out.println(roles.getDescription());
-	}*/
-	@Test
-	public void getResult(){
-		List<Role> roles=roleService.getResults(Role.class, "no","001", "description", "teacher");
-		for(Role role:roles){
-		System.out.println(role.getId());
-		}
 	}
 
 }

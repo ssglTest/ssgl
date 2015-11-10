@@ -1,8 +1,13 @@
 package com.sdjz.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.sdjz.dao.RoleDao;
@@ -20,5 +25,19 @@ public class RoleService extends BasicService<Role,Integer>{
 	}
 	public Role findByDescription(String description){
 		return roleDao.findByDescription(description);
+	}
+	public Role specification(){
+		Role list=roleDao.findOne(new Specification<Role>(){
+
+			@Override
+			public Predicate toPredicate(Root<Role> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				// TODO Auto-generated method stub
+				Predicate p1=cb.equal(root.get("no").as(String.class),"001");
+				query.where(p1);
+				return query.getRestriction();
+			}
+			
+		});
+		return list;
 	}
 }
