@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sdjz.domain.MidtermCheck;
 import com.sdjz.domain.SciencePaperCheck;
 import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
@@ -83,6 +84,9 @@ public class SciencePaperCheckController {
 	public String sciencePaperCheckListByStudent(ModelMap modelMap, HttpSession httpSession) {
 		Student student = (Student) CommonHelp.getCurrentActor(httpSession);
 		student = studentService.findByNo(student.getNo());
+		MidtermCheck midtermCheck = student.getMidtermCheck();
+		if(midtermCheck==null||midtermCheck.getApprove()==null||midtermCheck.getApprove().equals("notApproved"))
+			return "warning/error";
 		SciencePaperCheck sciencePaperCheck = student.getSciencePaperCheck();
 		modelMap.put("sciencePaperCheck", sciencePaperCheck);
 		return "sciencePaperCheck/sciencePaperCheckListByStudent";

@@ -55,7 +55,7 @@
 								<td>${sciencePaperCheck.student.name }</td>
 								<td>${sciencePaperCheck.title }</td>
 								<td>${sciencePaperCheck.updataDate }</td>
-								<td><c:if test="${empty sciencePaperCheck.approve }">
+								<td><c:if test="${empty sciencePaperCheck.approve}">
 										<span class="label label-info">未审核</span>
 									</c:if> <c:if test="${sciencePaperCheck.approve=='excellent' }">
 										<span class="label label-success">优</span>

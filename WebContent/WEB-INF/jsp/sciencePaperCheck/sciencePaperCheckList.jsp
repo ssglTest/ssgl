@@ -139,7 +139,7 @@
 							<td class="sciencePaperCheckno${sciencePaperCheck.id }">${sciencePaperCheck.student.no }</td>
 							<td class="sciencePaperChecktitle${sciencePaperCheck.id }">${sciencePaperCheck.title }</td>
 							<td class="sciencePaperCheckaudit${sciencePaperCheck.id }">
-								<c:if test="${empty sciencePaperCheck.student.no }">
+								<c:if test="${empty sciencePaperCheck.approve}">
 									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${sciencePaperCheck.approve=='excellent' }">
 									<span class="label label-success">优</span>
