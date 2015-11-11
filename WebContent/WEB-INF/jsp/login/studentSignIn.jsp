@@ -18,91 +18,108 @@
 		});
 	});
 </script>
-
 <script type="text/javascript">
-
-	function updateinfo(){
-		window.open("studentInfo.html","navTab");
+	function iFrameHeight() {
+		var ifm = document.getElementById("iframepage");
+		var subWeb = document.frames ? document.frames["iframepage"].document
+				: ifm.contentDocument;
+		if (ifm != null && subWeb != null) {
+			ifm.height = subWeb.body.scrollHeight;
+			ifm.width = subWeb.body.scrollWidth;
+		}
+	}
+</script>
+<script type="text/javascript">
+	function updateinfo() {
+		window.open("studentInfo.html", "navTab");
 	}
 
-	function gradudatefile(){
-		window.open("test/postGraduateFileRlus.html","navTab");
+	function gradudatefile() {
+		window.open("test/postGraduateFileRlus.html", "navTab");
 	}
-	
-	function updatefile(){
-		window.open("test/needUpdateFile.html","navTab");
+
+	function updatefile() {
+		window.open("test/needUpdateFile.html", "navTab");
 	}
-	
-	function basicflow(){
-		window.open("test/basicFlow.html","navTab");
+
+	function basicflow() {
+		window.open("test/basicFlow.html", "navTab");
 	}
-	
-	function publicclassinfo(){
-		window.open("test/publicClassInformation.html","navTab");
+
+	function publicclassinfo() {
+		window.open("test/publicClassInformation.html", "navTab");
 	}
-	
-	function majorinfo(){
-		window.open("#","navTab");
+
+	function majorinfo() {
+		window.open("#", "navTab");
 	}
-	
-	function publiclassgrade(){
-		window.open("#","navTab");
+
+	function publiclassgrade() {
+		window.open("#", "navTab");
 	}
-	
-	function majorclassgrade(){
-		window.open("#","navTab");
+
+	function majorclassgrade() {
+		window.open("#", "navTab");
 	}
-	
-	function choosetitle(){
-		window.open("test/chooseTitle.html","navTab");
+
+	function choosetitle() {
+		window.open("test/chooseTitle.html", "navTab");
 	}
-	
-	function myteacher(){
-		window.open("studentTeacher/getStudentTeacher.html","navTab");
+
+	function myteacher() {
+		window.open("studentTeacher/getStudentTeacher.html", "navTab");
 	}
-	
-	function personalplan(){
-		window.open("test/personalPlan.html","navTab");
+
+	function personalplan() {
+		window.open("test/personalPlan.html", "navTab");
 	}
-	
-	function updatepapertitleapply(){
-		window.open("paperTitleApply/getPaperTitleApplyByStudent.html","navTab");
+
+	function updatepapertitleapply() {
+		window.open("paperTitleApply/getPaperTitleApplyByStudent.html",
+				"navTab");
 	}
-	
-	function updatepapertitlereport(){
-		window.open("paperTitleReport/getPaperTitleReportByStudent.html","navTab");
+
+	function updatepapertitlereport() {
+		window.open("paperTitleReport/getPaperTitleReportByStudent.html",
+				"navTab");
 	}
-	
-	function papertitlereplyinfo(){
-		window.open("paperTitleReply/paperTitleReplyListByStudent.html","navTab");
+
+	function papertitlereplyinfo() {
+		window.open("paperTitleReply/paperTitleReplyListByStudent.html",
+				"navTab");
 	}
-	
-	function papertitlereplygrade(){
-		window.open("paperTitleReply/paperTitleReplyGrade.html","navTab");
+
+	function papertitlereplygrade() {
+		window.open("paperTitleReply/paperTitleReplyGrade.html", "navTab");
 	}
-	
-	function updatemidtermcheck(){
-		window.open("midtermCheck/midtermCheckListByStudent.html","navTab");
+
+	function updatemidtermcheck() {
+		window.open("midtermCheck/midtermCheckListByStudent.html", "navTab");
 	}
-	
-	function updatesciencepapercheck(){
-		window.open("sciencePaperCheck/sciencePaperCheckListByStudent.html","navTab");
+
+	function updatesciencepapercheck() {
+		window.open("sciencePaperCheck/sciencePaperCheckListByStudent.html",
+				"navTab");
 	}
-	
-	function updatepaperreplyapply(){
-		window.open("paperReplyApply/paperReplyApplyListByStudent.html","navTab");
+
+	function updatepaperreplyapply() {
+		window.open("paperReplyApply/paperReplyApplyListByStudent.html",
+				"navTab");
 	}
-	
-	function updatepaper(){
-		window.open("paperElectronicEdition/paperElectronicEditionListByStudent.html","navTab");
+
+	function updatepaper() {
+		window
+				.open(
+						"paperElectronicEdition/paperElectronicEditionListByStudent.html",
+						"navTab");
 	}
-	
-	function queryreplyplace(){
-		window.open("#","navTab");
+
+	function queryreplyplace() {
+		window.open("#", "navTab");
 	}
-	
-	function updatepaperapprove(){
-		window.open("#","navTab");
+
+	function updatepaperapprove() {
+		window.open("#", "navTab");
 	}
 </script>
 <title>硕士管理系统</title>
@@ -118,11 +135,16 @@
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
-					<img alt="山东建筑大学图标"  src="../img/logo_login.png" width="100" height="100">
+					<img alt="山东建筑大学图标" src="../img/logo_login.png" width="100"
+						height="100">
 				</div>
 				<div class="col-md-10">
-					<h2 style="font-family: '楷体'"><font color="white">硕士管理系统</font></h2>
-					<p><font color="white">山东建筑大学非全日制硕士生管理系统</font></p>
+					<h2 style="font-family: '楷体'">
+						<font color="white">硕士管理系统</font>
+					</h2>
+					<p>
+						<font color="white">山东建筑大学非全日制硕士生管理系统</font>
+					</p>
 				</div>
 			</div>
 			<div align="right">
@@ -154,9 +176,8 @@
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button" onclick="updateinfo()">
-									查看/修改个人信息
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updateinfo()">查看/修改个人信息</button>
 							</div>
 						</div>
 					</div>
@@ -171,12 +192,10 @@
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button" onclick="gradudatefile()">
-									硕士管理相关规定
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatefile()">
-									需上传的文档模板
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="gradudatefile()">硕士管理相关规定</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatefile()">需上传的文档模板</button>
 							</div>
 						</div>
 					</div>
@@ -191,9 +210,8 @@
 						</div>
 						<div id="collapseFive" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button" onclick="basicflow()">
-									硕士培养基本流程
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="basicflow()">硕士培养基本流程</button>
 							</div>
 						</div>
 					</div>
@@ -208,24 +226,18 @@
 						</div>
 						<div id="collapseThree" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button" onclick="publicclassinfo()">
-								查看公共课程信息
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="majorinfo()">
-									查看专业课程信息
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="publiclassgrade()">
-									查看公共课成绩
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="majorclassgrade()">
-									查看专业课成绩
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="choosetitle()">
-									查看选题资格名单
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="myteacher()">
-									查看我的导师
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="publicclassinfo()">查看公共课程信息</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="majorinfo()">查看专业课程信息</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="publiclassgrade()">查看公共课成绩</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="majorclassgrade()">查看专业课成绩</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="choosetitle()">查看选题资格名单</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="myteacher()">查看我的导师</button>
 							</div>
 						</div>
 					</div>
@@ -240,39 +252,28 @@
 						</div>
 						<div id="collapseFour" class="panel-collapse collapse">
 							<div class="panel-body">
-								<button class="btn btn-default btn-block" type="button" onclick="personalplan()"> 
-									上传个人培养计划
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatepapertitleapply()">
-									提交论文选题申请
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatepapertitlereport()">
-									提交选题报告
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="papertitlereplyinfo()">
-									论文选题答辩通知
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="papertitlereplygrade()">
-									论文选题答辩成绩
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatemidtermcheck()">
-									提交中期检查表
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatesciencepapercheck()">
-								上传论文考核记录表
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatepaperreplyapply()">
-									提交论文答辩申请书
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatepaper()">
-									上传论文电子版
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="queryreplyplace()">
-								查看论文答辩时间地点
-								</button>
-								<button class="btn btn-default btn-block" type="button" onclick="updatepaperapprove()">
-									提交授予硕士学位审批表
-								</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="personalplan()">上传个人培养计划</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepapertitleapply()">提交论文选题申请</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepapertitlereport()">提交选题报告</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="papertitlereplyinfo()">论文选题答辩通知</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="papertitlereplygrade()">论文选题答辩成绩</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatemidtermcheck()">提交中期检查表</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatesciencepapercheck()">上传论文考核记录表</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepaperreplyapply()">提交论文答辩申请书</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepaper()">上传论文电子版</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="queryreplyplace()">查看论文答辩时间地点</button>
+								<button class="btn btn-default btn-block" type="button"
+									onclick="updatepaperapprove()">提交授予硕士学位审批表</button>
 								<!-- <button class="btn btn-default btn-block" type="button">
 									<a href="#">上传汇总文档</a>
 								</button> -->
@@ -283,7 +284,8 @@
 				</nav>
 			</div>
 			<div class="col-md-9">
-				<iframe name="navTab" height="600px" width="100%"></iframe>
+				<iframe id="iframepage" height="600px"
+					name="navTab" width="100%"></iframe>
 			</div>
 
 		</div>

@@ -11,6 +11,49 @@
 <script type="text/javascript"
 	src="../../bootstrap/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function approve(midtermCheckId){
+		var confirmed = confirm("确认通过？");
+		if(confirmed==true){
+			$.ajax({
+				url:"midtermCheckApproved.html",
+				data:{"midtermCheckId":midtermCheckId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核成功");
+					$(".midtermCheckaudit"+midtermCheckId).html("<span class='label label-success'>通过</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+	
+	function notApprove(midtermCheckId){
+		var confirmed = confirm("确认不通过？");
+		if(confirmed==true){
+			$.ajax({
+				url:"midtermCheckNotApproved.html",
+				data:{"midtermCheckId":midtermCheckId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核成功");
+					$(".midtermCheckaudit"+midtermCheckId).html("<span class='label label-warning'>未通过</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="panel panel-primary">
@@ -45,15 +88,18 @@
 				</thead>
 				<tbody>
 					<c:if test="${empty midtermCheckList }">
-						<h2><span class="label label-default">未有学生上传中期检查表，请耐心等待。</span></h2>
+						<h2>
+							<span class="label label-default">未有学生上传中期检查表，请耐心等待。</span>
+						</h2>
 					</c:if>
 					<c:forEach items="${midtermCheckList}" var="midtermCheck">
-						<tr>
-							<td>${midtermCheck.student.no }</td>
-							<td>${midtermCheck.student.name }</td>
-							<td>${midtermCheck.title }</td>
-							<td>${midtermCheck.updateDate }</td>
-							<td><c:if test="${empty midtermCheck.approve }">
+						<tr class="midtermCheck${midtermCheck.id }">
+							<td class="midtermCheckno${midtermCheck.id }">${midtermCheck.student.no }</td>
+							<td class="midtermCheckname${midtermCheck.id }">${midtermCheck.student.name }</td>
+							<td class="midtermChecktitle${midtermCheck.id }">${midtermCheck.title }</td>
+							<td class="midtermCheckdata${midtermCheck.id }">${midtermCheck.updateDate }</td>
+							<td class="midtermCheckaudit${midtermCheck.id }"><c:if
+									test="${empty midtermCheck.approve }">
 									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${midtermCheck.approve=='approved' }">
 									<span class="label label-success">已通过</span>
@@ -67,14 +113,20 @@
 										审核<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a
+										<li>
+											<%-- <a
 											href="midtermCheckApproved.html?midtermCheckId=${midtermCheck.id }"><h4>
 													<span class="label label-success">通过</span>
-												</h4> </a></li>
-										<li><a
+												</h4> </a> --%> <a class="btn btn-success"
+											onclick="approve(${midtermCheck.id})">通过</a>
+										</li>
+										<li>
+											<%-- <a
 											href="midtermCheckNotApproved.html?midtermCheckId=${midtermCheck.id }"><h4>
 													<span class="label label-warning">未通过</span>
-												</h4> </a></li>
+												</h4> </a> --%> <a class="btn btn-warning"
+											onclick="notApprove(${midtermCheck.id})">不通过</a>
+										</li>
 									</ul>
 								</div> <%-- <div class="btn-group">
 									<button type="button" class="btn btn-primary dropdown-toggle"

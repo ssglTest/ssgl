@@ -10,7 +10,6 @@
 <link href="../img/glyphicons-halflings.png">
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'
 	rel='stylesheet' type='text/css'>
-
 <script type="text/javascript">
 	function updateInfo() {
 		window.open("secretaryInfo.html", "navTab");
@@ -27,7 +26,7 @@
 	function sendchoosetitlepepol() {
 		window.open("secretary/chooseTitleName.html", "navTab");
 	}
-	
+
 	function baseprocess() {
 		window.open("#", "navTab");
 	}
@@ -69,6 +68,10 @@
 	}
 
 	function savemidtermcheck() {
+		window.open("midtermCheck/midtermCheckList.html", "navTab");
+	}
+
+	function auditmidtermcheck() {
 		window.open("midtermCheck/midtermCheckList.html", "navTab");
 	}
 
@@ -212,6 +215,8 @@
 								<button class="btn btn-default btn-block" type="button"
 									onclick="updatepapertitlereportgrade()">上传选题报告答辩成绩</button>
 								<button class="btn btn-default btn-block" type="button"
+									onclick="auditmidtermcheck()">审核中期检查表</button>
+								<button class="btn btn-default btn-block" type="button"
 									onclick="auditpaperreplyapply()">审核学位论文答辩申请书</button>
 								<button class="btn btn-default btn-block" type="button"
 									onclick="updategrade()">上传学位论文答辩成绩</button>
@@ -260,7 +265,7 @@
 				</nav>
 			</div>
 			<div class="col-md-9">
-				<iframe name="navTab" height="700px" width="100%"></iframe>
+				<iframe name="navTab" height="500px" width="100%"></iframe>
 			</div>
 
 		</div>

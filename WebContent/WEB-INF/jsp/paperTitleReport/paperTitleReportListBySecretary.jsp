@@ -44,7 +44,7 @@
 				type:'POST',
 				success:function(data){
 					alert("审核成功！");
-					$(".paperTitleReportaudit"+paperTitleReport.id).html("<span class='label label-warning'>不通过</span>");
+					$(".paperTitleReportaudit"+paperTitleReportId).html("<span class='label label-warning'>不通过</span>");
 					return true;
 				},
 				error:function(data){

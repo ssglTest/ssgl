@@ -11,7 +11,7 @@
 <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="panel panel-primary">
+	<div class="panel panel-primary"	>
 		<div class="panel-heading">
 			<h3 class="panel-title">个人信息</h3>
 		</div>

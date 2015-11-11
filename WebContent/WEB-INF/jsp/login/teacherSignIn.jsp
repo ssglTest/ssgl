@@ -9,31 +9,7 @@
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'
 	rel='stylesheet' type='text/css'>
 <link href="styles/font-awesome.min.css" rel="stylesheet" />
-<script>
-	$(function() {
-		$(".btn").click(function() {
-			$(this).button('loading').delay(1000).queue(function() {
-				// $(this).button('reset');
-			});
-		});
-	});
-</script>
-<!-- <style type="text/css">
-html, body {
-	margin: 0px 0px;
-	width: 100%;
-	height: 100%;
-}
-
-iframe {
-	margin: 0px 0px;
-	width: 100%;
-	height: 100%;
-}
-</style> -->
 <title>硕士管理系统</title>
-
-
 </head>
 <body style="background: #EEE9E9">
 	<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js"></script>
@@ -44,16 +20,19 @@ iframe {
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
-					<img alt="山东建筑大学图标"  src="../img/logo_login.png" width="100" height="100">
+					<img alt="山东建筑大学图标" src="../img/logo_login.png" width="100"
+						height="100">
 				</div>
 				<div class="col-md-10">
-					<h2 style="font-family: '楷体'"><font color="white">硕士管理系统</font></h2>
-					<p><font color="white">山东建筑大学非全日制硕士生管理系统</font></p>
+					<h2 style="font-family: '楷体'">
+						<font color="white">硕士管理系统</font>
+					</h2>
+					<p>
+						<font color="white">山东建筑大学非全日制硕士生管理系统</font>
+					</p>
 				</div>
 			</div>
 			<div align="right">
-				<%-- <label class="control-lable">当前用户:</label><label
-					class="control-lable">${username}</label>  --%>
 				<div class="row">
 					<div class="col-md-11">
 						<h3>
@@ -67,9 +46,6 @@ iframe {
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<nav class="navbar navbar-default" role="navigation"> <!-- <div class="navbar-header">
-					<a class="navbar-brand" href="#">硕士生管理系统</a>
-				</div> -->
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -151,9 +127,6 @@ iframe {
 								<button class="btn btn-default btn-block" type="button">
 									<a href="test/chooseTitle.html" target="navTab">查看选题资格名单</a>
 								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">查看我的导师</a>
-								</button>
 							</div>
 						</div>
 					</div>
@@ -171,36 +144,6 @@ iframe {
 								<button class="btn btn-default btn-block" type="button">
 									<a href="test/personalPlan.html" target="navTab">上传个人培养计划</a>
 								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="test/projectChooseTitle.html" target="navTab">提交论文选题申请</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="test/chooseTitleReport.html" target="navTab">提交选题报告</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="test/chooseTitleAnswer.html" target="navTab">论文选题答辩</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="test/checkMiddle.html" target="navTab">提交中期检查表</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="test/notpass.html" target="navTab">上传论文考核记录表</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">提交论文答辩申请书</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="test/updatePaper.html" target="navTab">上传论文电子版</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">查看论文答辩时间地点</a>
-								</button>
-								<button class="btn btn-default btn-block" type="button">
-									<a href="#">提交授予硕士学位审批表</a>
-								</button>
-								<!-- <button class="btn btn-default btn-block" type="button">
-									<a href="#">上传汇总文档</a>
-								</button> -->
 							</div>
 						</div>
 					</div>
@@ -210,51 +153,8 @@ iframe {
 			<div class="col-md-9">
 				<iframe name="navTab" height="600px" width="100%"></iframe>
 			</div>
-
 		</div>
-
 	</div>
-	<!-- Footer
-    ================================================== -->
-	<!-- 自定义footer css -->
-	<!-- 这个地方是为了兼容加了个bs-docs-social 官网是没有的. -->
-	<!--[if lte IE 9]>
-<div class="bs-docs-social">
-<![endif]-->
-	<!-- <div class="footer"> 内置块css定义
-		<div class="container">
-			一行一排
-			<p>
-				由 <a href="http://twitter.com/mdo" target="_blank">@mdo</a> 和 <a
-					href="http://twitter.com/fat" target="_blank">@fat</a>
-				倾心制作开发,由KingHack学习并注解
-			</p>
-			<p>
-				开源依照 <a href="http://www.apache.org/licenses/LICENSE-2.0"
-					target="_blank">Apache License v2.0</a>, 文档依照 <a
-					href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-			</p>
-			<p>
-				Icons取自<a href="http://glyphicons.com">Glyphicons Free</a> ,授权依照 <a
-					href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-			</p>
-			尾部链接
-			<ul class="footer-links">
-				<li><a href="http://blog.getbootstrap.com">博客</a></li>
-				<li class="muted">&middot;</li>
-				<li><a
-					href="https://github.com/twitter/bootstrap/issues?state=open">问题反馈</a></li>
-				使用内置标准点分割
-				<li class="muted">&middot;</li>
-				<li><a
-					href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">路线图与更新日志</a></li>
-				[if lte IE 9]>
-      
-      <p>不完全支持Internet Explorer,请在360安全浏览器或者是金山猎豹浏览的极速模式中浏览</p>
-      <![endif]
-			</ul>
-		</div>
-		</div> -->
 	<div id="footer" style="background: #8B8682"
 		class="navbar-fixed-bottom">
 		<div class="container" align="center">
