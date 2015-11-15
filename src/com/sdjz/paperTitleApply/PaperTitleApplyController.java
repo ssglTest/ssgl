@@ -209,20 +209,24 @@ public class PaperTitleApplyController {
 
 	@RequestMapping("/getApproved.html")
 	public String getApproved(HttpSession httpSession, ModelMap modelMap) {
-		System.out.println("======================================================");
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
-		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.likeQuery(PaperTitleApply.class, "approve",
-				"notApproved");
-		System.out.println("paperTitleApplyList===========" + paperTitleApplyList.toString());
+		/*List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.likeQuery(PaperTitleApply.class, "approve",
+				"notApproved");*/
+		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.getResults(PaperTitleApply.class, "approve", "approved");
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		return "paperTitleApply/paperTitleApplyList";
 	}
 
 	@RequestMapping("/getNotApproved.html")
-	public String getNotApproved(HttpSession httpSession, ModelMap modelmap) {
-
-		return null;
+	public String getNotApproved(HttpSession httpSession, ModelMap modelMap) {
+		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		secretary = secretaryService.findByNo(secretary.getNo());
+		/*List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.likeQuery(PaperTitleApply.class, "approve",
+				"notApproved");*/
+		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.getResults(PaperTitleApply.class, "approve", "notApproved");
+		modelMap.put("paperTitleApplyList", paperTitleApplyList);
+		return "paperTitleApply/paperTitleApplyList";
 	}
 
 }
