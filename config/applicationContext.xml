@@ -12,7 +12,9 @@
        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        http://www.springframework.org/schema/data/jpa  
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-
+	<!-- webService层 -->
+	<import resource="classpath:/ssgl-webservice.xml"/>
+	<context:annotation-config/>
 	<context:component-scan base-package="com.sdjz.service"/>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName"><value>com.mysql.jdbc.Driver</value></property>
@@ -20,7 +22,7 @@
 			<value>jdbc:mysql://localhost:3306/ssgl?useUnicode=true&amp;characterEncoding=UTF-8</value>
 		</property>
 		<property name="username"> <value>root</value> </property>
-		<property name="password"><value>1234</value></property>
+		<property name="password"><value>totoro</value></property>
 	</bean>
 		
 	<bean id="entityManagerFactory"
