@@ -1,0 +1,104 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context 
+       	   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!-- 扫描类包，应用spring注解配置 -->
+	<context:component-scan base-package="com.sdjz.security" />
+
+	<!-- 配置不过滤的资源（静态资源及登录相关） -->
+	<http pattern="/**/*.css" security="none"></http>
+	<http pattern="/**/*.jpg" security="none"></http>
+	<http pattern="/**/*.jpeg" security="none"></http>
+	<http pattern="/**/*.gif" security="none"></http>
+	<http pattern="/**/*.png" security="none"></http>
+	<http pattern="/js/*.js" security="none"></http>
+	<!-- <http pattern="/kaptcha/getKaptchaImage.html" security="none" /> --><!-- 不过滤验证码 -->
+
+	<http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
+
+		<!-- 单用户登陆 -->
+		<session-management>
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
+
+		<!-- 尝试访问没有权限的页面时跳转的页面 -->
+		<access-denied-handler error-page="/403.jsp" />
+
+		<custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER" />
+
+		<custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+
+		<!-- 检测失效的sessionId,session超时时，定位到另外一个URL -->
+		<!-- <session-management invalid-session-url="/reLogin.html" /> -->
+	</http>
+
+	<!-- 未登录的切入点 -->
+	<beans:bean id="authenticationProcessingFilterEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:property name="loginFormUrl" value="/login.html"></beans:property>
+	</beans:bean>
+
+	<!-- 登录验证器 -->
+	<beans:bean id="loginFilter"
+		class="com.techjoy.bysj.security.login.MyUsernamePasswordAuthenticationFilter">
+		<!-- 登录地址 -->
+		<beans:property name="filterProcessesUrl" value="/login.html"></beans:property>
+		<!-- 验证成功后的处理 -->
+		<beans:property name="authenticationSuccessHandler"
+			ref="loginLogAuthenticationSuccessHandler"></beans:property>
+		<!-- 验证失败后的处理 -->
+		<beans:property name="authenticationFailureHandler"
+			ref="simpleUrlAuthenticationFailureHandler"></beans:property>
+		<beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+	</beans:bean>
+
+	<!-- 登录成功的操作 -->
+	<beans:bean id="loginLogAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/index.html"></beans:property>
+	</beans:bean>
+
+	<!-- 登录失败的操作 -->
+	<beans:bean id="simpleUrlAuthenticationFailureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<!-- 可以配置相应的跳转方式。属性forwardToDestination为true采用forward false为sendRedirect -->
+		<beans:property name="defaultFailureUrl" value="/login.html"></beans:property>
+	</beans:bean>
+
+	<!-- Spring Security 提供的用户登录验证 -->
+	<authentication-manager alias="authenticationManager">
+		<!--userDetailServiceImpl 获取登录的用户、用户权限 -->
+		<authentication-provider user-service-ref="userDetailServiceImpl" />
+	</authentication-manager>
+
+	<!-- 获取登录的用户、用户权限 -->
+	<beans:bean id="userDetailServiceImpl"
+		class="com.sdjz.security.DefaultUserDetailsService">
+	</beans:bean>
+
+	<!-- 认证过滤器 -->
+	<beans:bean id="myFilter"
+		class="com.sdjz.security.MyFilterSecurityInterceptor">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="accessDecisionManager" ref="myAccessDecisionManagerBean" />
+		<beans:property name="securityMetadataSource" ref="mySecurityMetadataSource" />
+	</beans:bean>
+
+	<!-- 判断是否有权限访问请求的url页面 -->
+	<beans:bean id="myAccessDecisionManagerBean"
+		class="com.sdjz.security.MyAccessDecisionManager">
+	</beans:bean>
+
+	<!-- 获取数据库中所有的url资源，读出url资源与权限的对应关系 -->
+	<beans:bean id="mySecurityMetadataSource"
+		class="comsdjz.security.MySecurityMetadataSource">
+	</beans:bean>
+</beans:beans> 
