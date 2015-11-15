@@ -47,6 +47,7 @@ public MyRepositoryImplement(final JpaEntityInformation<T, ?> entityInformation,
 public void merge(T entiry) {
 	// TODO Auto-generated method stub
 	entityManager.merge(entiry);
+	entityManager.getTransaction().commit();
 	
 }
 

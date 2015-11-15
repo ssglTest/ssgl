@@ -9,6 +9,7 @@ public class TestBaseService{
 	protected ActorService actorService;
 	protected SchoolService schoolService;
 	protected RoleService roleService;
+	protected ResourceService resourceService;
 	protected MajorService majorService;
 	protected SecretaryService secretaryService;
 	protected TeacherService teacherService;
@@ -24,6 +25,7 @@ public class TestBaseService{
 		actorService=(ActorService)ac.getBean("actorService");
 		schoolService=(SchoolService)ac.getBean("schoolService");
 		roleService=(RoleService)ac.getBean("roleService");
+		resourceService=(ResourceService)ac.getBean("resourceService");
 		majorService=(MajorService)ac.getBean("majorService");
 		secretaryService=(SecretaryService)ac.getBean("secretaryService");
 		teacherService=(TeacherService)ac.getBean("teacherService");

@@ -2,6 +2,7 @@ package com.sdjz.domain;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -36,8 +37,12 @@ public class Role implements Serializable {
 	private Integer id;
 	private String no;
 	private String description;
-	@OneToMany(mappedBy="role")
+
+	@ManyToMany(mappedBy="roles")
 	private List<User> users;
+	@ManyToMany(mappedBy="roles")
+	private List<Resource> resources=new ArrayList<Resource>();
+	
 	public Role(){}
 	public Role(String description){
 		this.description=description;
@@ -72,8 +77,22 @@ public class Role implements Serializable {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	@XmlTransient
+	public List<Resource> getResources() {
+		return resources;
+	}
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
+	}
 	
-	
+	public void addResource(Resource resource){
+		this.resources.addAll(resources);
+	}
+	public void removeResource(Resource resource){
+		if(this.resources.contains(resource)){
+		this.resources.remove(resource);
+		}
+	}
 	
 	
 

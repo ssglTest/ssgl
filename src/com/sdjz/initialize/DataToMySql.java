@@ -66,7 +66,7 @@ public class DataToMySql extends TestBaseService{
 					actor=actorService.findById(userWithFK.getActorId());
 					role=roleService.findById(userWithFK.getRoleId());
 					user.setActor(actor);
-					user.setRole(role);
+					user.addRole(role);
 					userService.save(user);
 				}
 			}

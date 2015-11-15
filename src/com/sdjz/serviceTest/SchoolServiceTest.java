@@ -35,6 +35,13 @@ public class SchoolServiceTest {
 		schoolService.saves(schools);
 	}
 	@Test
+	public void update(){
+		School school=schoolService.findById(1);
+		school.setDescription("管院");
+		System.out.println(school.getDescription());
+		schoolService.update(school);
+	}
+	@Test
 	public void getResult(){
 		School school=schoolService.getResult(School.class,"description","123");		
 			System.out.println(school.getDescription());		
@@ -46,4 +53,5 @@ public class SchoolServiceTest {
 			System.out.println(school.getDescription());
 		}
 	}
+	
 }

@@ -1,6 +1,7 @@
 package com.sdjz.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,12 +38,14 @@ public class User implements Serializable {
 	private String userName;
 	@Column(length=20)
 	private String password;
-	@ManyToOne
-	@JoinColumn(name="role_id")
-	private Role role;
+	
+	@ManyToMany
+	@JoinTable(name="user_role")
+	private List<Role> roles=new ArrayList<Role>();
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="actor_id")
 	private Actor actor;
+	
 	public User(){}
 	public User(String userName,String password){
 		this.userName=userName;
@@ -67,13 +70,12 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	public Role getRole() {
-		return role;
+	@XmlTransient
+	public List<Role> getRoles() {
+		return roles;
 	}
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	@XmlTransient
 	public Actor getActor() {
@@ -83,6 +85,14 @@ public class User implements Serializable {
 		this.actor = actor;
 	}
 	
+	public void addRole(Role role){
+		this.roles.add(role);
+	}
+	public void removeRole(Role role){
+		if(this.roles.contains(role)){
+			this.roles.remove(role);
+		}
+	}
 	
 	
 
