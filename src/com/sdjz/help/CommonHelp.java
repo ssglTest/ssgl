@@ -3,7 +3,9 @@ package com.sdjz.help;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -38,6 +40,28 @@ public class CommonHelp {
 		return value != null && value.length() > 0;
 	}
 
+	/**
+	 * @param password
+	 *            明文
+	 * @return md5密文
+	 */
+	public static String makeMD5(String password) {
+		MessageDigest md;
+		try {
+			// 生成一个MD5加密计算摘要
+			md = MessageDigest.getInstance("MD5");
+			// 计算md5函数
+			md.update(password.getBytes());
+			// digest()最后确定返回md5 hash值，返回值为8为字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+			// BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+			String pwd = new BigInteger(1, md.digest()).toString(16);
+			return pwd;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return password;
+	}
+
 	public static Calendar getNow() {
 		Calendar ca = Calendar.getInstance();
 		ca.setTime(new Date());
@@ -69,13 +93,14 @@ public class CommonHelp {
 		return day;
 	}
 
-	public static String getCurrentDate(){
+	public static String getCurrentDate() {
 		Integer day = getDay();
-		Integer month = getMonth()+1;
+		Integer month = getMonth() + 1;
 		Integer year = getYear();
-		String currentDate = day+"/"+month+"/"+year;
+		String currentDate = day + "/" + month + "/" + year;
 		return currentDate;
 	}
+
 	/**
 	 * 得到当前的用户
 	 * 
@@ -88,18 +113,18 @@ public class CommonHelp {
 			throw new UserInvalidException("请重新登录");
 		return user;
 	}
-	
+
 	/**
 	 * 得到当前用户对应的actor
+	 * 
 	 * @param session
 	 * @return
 	 */
-	public static Actor getCurrentActor(HttpSession session){
+	public static Actor getCurrentActor(HttpSession session) {
 		User user = getCurrentUser(session);
 		return user.getActor();
 	}
 
-	
 	/*
 	 * 获取上传的路径
 	 */
@@ -135,13 +160,14 @@ public class CommonHelp {
 		Matcher m = p.matcher(qq);
 		return m.matches();
 	}
-	
+
 	/**
 	 * 得到文件的名字
+	 * 
 	 * @param file
 	 * @return
 	 */
-	public static String getFileName(MultipartFile file){
+	public static String getFileName(MultipartFile file) {
 		return file.getName();
 	}
 
@@ -180,8 +206,8 @@ public class CommonHelp {
 		}
 		return name;
 	}
-	
-	public static String upload(MultipartFile file,HttpSession httpSession,String folderName,Integer id){
+
+	public static String upload(MultipartFile file, HttpSession httpSession, String folderName, Integer id) {
 		return upload(file, httpSession, folderName, id.toString());
 	}
 
@@ -248,6 +274,7 @@ public class CommonHelp {
 
 	/**
 	 * 删除文件
+	 * 
 	 * @param httpSession
 	 * @param url
 	 */
@@ -259,14 +286,31 @@ public class CommonHelp {
 			file.delete();
 		}
 	}
+
 	/**
 	 * 
-	 *@param str 改变的字符
+	 * @param str
+	 *            改变的字符
 	 * @return 首字母小写
 	 */
-	public static String initialToLowerCase(String str){
-    	return str.substring(0, 1).toLowerCase() + str.substring(1,str.length());
-    }
-	
-	
+	public static String initialToLowerCase(String str) {
+		return str.substring(0, 1).toLowerCase() + str.substring(1, str.length());
+	}
+
+	/**
+	 * 用于比较两个路径是否相等
+	 * 
+	 * @param url
+	 *            用户请求的路径
+	 * @param resUrl
+	 *            数据库中的路径
+	 * @return
+	 */
+	public static boolean PathMatchesUrl(String url, String resUrl) {
+		if (url.equals(resUrl)) {
+			return true;
+		}
+		return false;
+	}
+
 }
