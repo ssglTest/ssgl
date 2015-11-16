@@ -29,17 +29,21 @@ public class SchoolServiceTest {
 	}
 	@Test
 	public void save(){
-		List<School> schools=new ArrayList<School>();
+		School school=new School("aa");
+		/*List<School> schools=new ArrayList<School>();
 		schools.add(new School("AA"));
-		schools.add(new School("BB"));
-		schoolService.saves(schools);
+		schools.add(new School("BB"));*/
+		School school1=schoolService.findById(6);
+		System.out.println(school1.getDescription());
 	}
 	@Test
-	public void update(){
+	public void update1(){
 		School school=schoolService.findById(1);
-		school.setDescription("管院");
+		school.setDescription("管理");
 		System.out.println(school.getDescription());
 		schoolService.update(school);
+		schoolService.save(school);
+		System.out.println(schoolService.findById(1).getDescription());
 	}
 	@Test
 	public void getResult(){

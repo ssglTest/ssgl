@@ -37,6 +37,7 @@ public class Role implements Serializable {
 	private Integer id;
 	private String no;
 	private String description;
+	private String roleName;
 
 	@ManyToMany(mappedBy="roles")
 	private List<User> users;
@@ -63,6 +64,13 @@ public class Role implements Serializable {
 	}
 	public void setNo(String no) {
 		this.no = no;
+	}
+	
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 	public String getDescription() {
 		return description;

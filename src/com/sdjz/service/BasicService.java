@@ -6,8 +6,6 @@ import java.util.List;
 import com.sdjz.jpaRepository.MyRepository;
 
 
-
-
 public abstract class BasicService<T extends java.io.Serializable, PK extends java.io.Serializable> {
 		
 	MyRepository<T, PK> basicDao;
@@ -76,7 +74,5 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 	public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propertyValue){
 		return basicDao.likeQuery(entityClass, propertyName, propertyValue);
 	}
-
-	
 	
 }

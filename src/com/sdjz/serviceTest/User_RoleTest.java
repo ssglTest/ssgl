@@ -25,6 +25,7 @@ public class User_RoleTest {
 		Role role=roleService.findById(2);
 		user.addRole(role);
 		userService.update(user);
+		userService.save(user);
 	}
 	@Test
 	public void removeRole(){

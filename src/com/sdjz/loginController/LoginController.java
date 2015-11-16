@@ -45,10 +45,10 @@ public class LoginController {
 			return "login/relogin";
 		}
 		System.out.println("得到的role:"+role);
-		String savedRole =user.getRole().getDescription();//用户在数据库中已保存的角色
-		String name = user.getActor().getName();
+		/*String savedRole =user.getRole().getDescription();//用户在数据库中已保存的角色
+*/		String name = user.getActor().getName();
 		modelMap.put("username", name);
-		if(savedRole.equals(role) ){
+		/*if(savedRole.equals(role) ){
 			if(savedRole.equals("student")){
 				return "login/studentSignIn";
 			}else if(savedRole.equals("tutor")){
@@ -58,7 +58,7 @@ public class LoginController {
 			}else if(savedRole.equals("teacher")){
 				return "login/teacherSignIn";
 			}
-		}
+		}*/
 		modelMap.put("message", "类型错误");
 		return "login/relogin";
 		
