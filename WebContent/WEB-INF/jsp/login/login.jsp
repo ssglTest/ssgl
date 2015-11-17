@@ -58,7 +58,7 @@
 							id="inputPassword" name="password" class="form-control"
 							placeholder="请输入你的密码" required>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="usertype">User type</label> <select
 							class="form-control" id="usertype" name="role">
 							<option>student</option>
@@ -66,12 +66,12 @@
 							<option>teacher</option>
 							<option>secretary</option>
 						</select>
-					</div>
-					<div class="checkbox">
+					</div> -->
+					<!-- <div class="checkbox">
 						<label> <input type="checkbox" value="remember-me">
 							记住密码
 						</label>
-					</div>
+					</div> -->
 					<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
 				</form>
 			</div>
