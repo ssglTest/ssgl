@@ -2,26 +2,22 @@ package com.sdjz.domain;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
+
 
 @Entity
 @Table(name="role")
@@ -38,11 +34,12 @@ public class Role implements Serializable {
 	private String no;
 	private String description;
 	private String roleName;
+	
+	@OneToMany(mappedBy = "role",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	private List<UserRole> userRoles;
+	@OneToMany(mappedBy = "role",cascade = CascadeType.REFRESH)
+	private Collection<RoleResource> roleResources;
 
-	@ManyToMany(mappedBy="roles")
-	private List<User> users;
-	@ManyToMany(mappedBy="roles")
-	private List<Resource> resources=new ArrayList<Resource>();
 	
 	public Role(){}
 	public Role(String description){
@@ -79,28 +76,19 @@ public class Role implements Serializable {
 		this.description = description;
 	}
 	@XmlTransient
-	public List<User> getUsers() {
-		return users;
+	public List<UserRole> getUserRoles() {
+		return userRoles;
 	}
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
-	@XmlTransient
-	public List<Resource> getResources() {
-		return resources;
+	public Collection<RoleResource> getRoleResources() {
+		return roleResources;
 	}
-	public void setResources(List<Resource> resources) {
-		this.resources = resources;
+	public void setRoleResources(Collection<RoleResource> roleResources) {
+		this.roleResources = roleResources;
 	}
 	
-	public void addResource(Resource resource){
-		this.resources.addAll(resources);
-	}
-	public void removeResource(Resource resource){
-		if(this.resources.contains(resource)){
-		this.resources.remove(resource);
-		}
-	}
 	
 	
 

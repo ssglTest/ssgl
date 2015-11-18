@@ -1,6 +1,9 @@
 package com.sdjz.initialize;
 
 import java.util.ArrayList;
+
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import javax.persistence.EntityManager;
 import org.junit.Before;
@@ -8,22 +11,31 @@ import org.junit.Test;
 
 import com.sdjz.domain.Actor;
 import com.sdjz.domain.Major;
+import com.sdjz.domain.Resource;
 import com.sdjz.domain.Role;
+import com.sdjz.domain.RoleResource;
 import com.sdjz.domain.School;
 import com.sdjz.domain.Secretary;
 import com.sdjz.domain.Student;
 import com.sdjz.domain.Teacher;
 import com.sdjz.domain.Tutor;
 import com.sdjz.domain.User;
+import com.sdjz.domain.UserRole;
 import com.sdjz.help.CommonHelp;
 import com.sdjz.initialize.domain.MajorWithFK;
+import com.sdjz.initialize.domain.ResourceWithFk;
+import com.sdjz.initialize.domain.Role2Resource;
+import com.sdjz.initialize.domain.RoleRes2Resource;
 import com.sdjz.initialize.domain.SecretaryWithFK;
 import com.sdjz.initialize.domain.StudentWithFK;
 import com.sdjz.initialize.domain.TeacherWithFK;
 import com.sdjz.initialize.domain.TutorWithFK;
+import com.sdjz.initialize.domain.User2Role;
 import com.sdjz.initialize.domain.UserWithFK;
 import com.sdjz.initialize.excel.XlsDataSetBeanFactory;
 import com.sdjz.service.TestBaseService;
+
+
 
 /**
  *使用本程序之前需要将已经存在的数据库删除
@@ -41,7 +53,7 @@ public class DataToMySql extends TestBaseService{
 	@Test
 	public void save() throws Exception{
 		//先保存不需要关联的数据
-		Class[] entityWithOutFKs={School.class,Role.class};
+		Class[] entityWithOutFKs={School.class,Role.class,Resource.class};
 		for(Class clazz:entityWithOutFKs){
 			this.saveEntity(clazz);
 		}
@@ -51,9 +63,99 @@ public class DataToMySql extends TestBaseService{
 		this.saveTutor();
 		this.saveTeacher();
 		this.saveStudent();
+		this.setResourceParent();
+		this.setResourceChild();
 		this.saveUser();
+		this.saveUserRole();
+		this.saveRoleResource();
+		
 	}
-	
+	private void saveRoleResource() throws Exception{
+		List<Role2Resource> role2Resources = XlsDataSetBeanFactory.createBeans(this.getClass(), excelFile, "role_resc", Role2Resource.class);	
+		List<Role> roles = roleService.findAll();
+		List<RoleResource> roleResources = null;
+		RoleResource roleResource = null;
+		Resource resource = null;
+		for(Role role:roles){
+			roleResources = new ArrayList<RoleResource>();
+			for(Role2Resource role2Resource:role2Resources){
+				//System.out.println(role.getId().equals(role2Resource.getRole()));
+				if(role.getId().equals(role2Resource.getRole())){
+					resource = resourceService.findById(role2Resource.getResource());
+					roleResource = new RoleResource();
+					roleResource.setRole(role);
+					roleResource.setResource(resource);
+					roleResources.add(roleResource);
+					roleResourceService.save(roleResource);
+				}
+			}
+			role.setRoleResources(roleResources);
+			
+		}
+		
+	}
+	private void setResourceChild() throws Exception{
+		List<RoleRes2Resource> roleRes2Resources = XlsDataSetBeanFactory.createBeans(this.getClass(), excelFile, "resc_childs", RoleRes2Resource.class);
+		List<Resource> childs = null;
+		Resource resource = null;
+		Resource childResource = null;
+		for(int i = 1;i<=resourceService.countAll();i++){
+			resource = resourceService.findById(i);
+			childs = new ArrayList<Resource>();
+			for(RoleRes2Resource res2Resource:roleRes2Resources){
+				if (res2Resource.getResourceId().equals(i)) {
+					childResource = resourceService.findById(res2Resource.getChildId());
+					childs.add(childResource);
+				}
+			}
+			if(childs != null){
+				resource.setChild(childs);
+			}
+		}
+		
+	}
+	private void setResourceParent() throws Exception{
+		List<ResourceWithFk> resourcesWithFk=XlsDataSetBeanFactory.createBeans(this.getClass(), excelFile, "resource", ResourceWithFk.class);
+		List<Resource> resources=resourceService.findAll();
+		int index=0;
+		for(Resource resource:resources){
+			System.out.println(resource.getDescription());
+			ResourceWithFk resourceWithFk = resourcesWithFk.get(index++);
+			Integer parent_id = resourceWithFk.getParentId();
+			if(parent_id!=null){
+				resource.setParent(resourceService.findById(parent_id));			
+			}
+			resourceService.update(resource);
+			resourceService.save(resource);
+		}
+	}
+	private void saveUserRole()throws Exception{
+		List<User2Role> user2Roles = XlsDataSetBeanFactory.createBeans(this.getClass(), excelFile, "user_role", User2Role.class);	
+		List<User> users = userService.findAll();
+		List<UserRole> userRoles = null;
+		UserRole userRole = null;
+		Role role = null;
+		for(User user:users){
+			userRoles = new ArrayList<UserRole>();
+			for(User2Role user2Role:user2Roles){
+				//System.out.println(user.getId()+" "+(user2Role.getRole()));
+				if (user.getId().equals(user2Role.getUser())) {
+
+					role = roleService.findById(user2Role.getRole());
+					userRole = new UserRole();
+					userRole.setUser(user);
+					userRole.setRole(role);
+					userRoles.add(userRole);
+					
+					userRoleService.save(userRole);
+				}
+				user.setUserRoles(userRoles);
+				
+			}
+			
+		}
+
+	}
 	
 	private void saveUser() throws Exception{
 		Actor actor=null;
@@ -65,8 +167,9 @@ public class DataToMySql extends TestBaseService{
 				if(user.getPassword().equals(userWithFK.getPassword())){
 					actor=actorService.findById(userWithFK.getActorId());
 					role=roleService.findById(userWithFK.getRoleId());
+					
 					user.setActor(actor);
-					user.addRole(role);
+					//user.addRole(role);
 					userService.save(user);
 				}
 			}

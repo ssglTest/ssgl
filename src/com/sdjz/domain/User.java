@@ -1,7 +1,9 @@
 package com.sdjz.domain;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -22,6 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="user")
 @DynamicInsert(true)
@@ -39,9 +43,9 @@ public class User implements Serializable {
 	@Column(length=20)
 	private String password;
 	
-	@ManyToMany
-	@JoinTable(name="user_role")
-	private List<Role> roles=new ArrayList<Role>();
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private List<UserRole> userRoles;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="actor_id")
 	private Actor actor;
@@ -70,13 +74,7 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@XmlTransient
-	public List<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+	
 	@XmlTransient
 	public Actor getActor() {
 		return actor;
@@ -84,15 +82,16 @@ public class User implements Serializable {
 	public void setActor(Actor actor) {
 		this.actor = actor;
 	}
+	public List<UserRole> getUserRoles() {
+		return userRoles;
+	}
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
 	
-	public void addRole(Role role){
-		this.roles.add(role);
-	}
-	public void removeRole(Role role){
-		if(this.roles.contains(role)){
-			this.roles.remove(role);
-		}
-	}
+	
+	
+	
 	
 	
 

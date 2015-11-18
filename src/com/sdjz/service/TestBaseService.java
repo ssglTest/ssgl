@@ -16,6 +16,8 @@ public class TestBaseService{
 	protected TutorService tutorService;
 	protected StudentService studentService;
 	protected UserService userService;
+	protected UserRoleService userRoleService;
+	protected RoleResourceService roleResourceService;
 	protected PaperTitleApplyService paperTitleApplyService;
 	protected EntityManagerFactory entityManagerFactory;
 	
@@ -32,7 +34,8 @@ public class TestBaseService{
 		tutorService=(TutorService)ac.getBean("tutorService");
 		studentService=(StudentService)ac.getBean("studentService");
 		userService=(UserService)ac.getBean("userService");
-		
+		userRoleService=(UserRoleService)ac.getBean("userRoleService");
+		roleResourceService=(RoleResourceService)ac.getBean("roleResourceService");
 		paperTitleApplyService=(PaperTitleApplyService)ac.getBean("paperTitleApplyService");
 		entityManagerFactory=(EntityManagerFactory)ac.getBean("entityManagerFactory");
 	}

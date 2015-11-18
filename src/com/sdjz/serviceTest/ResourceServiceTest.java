@@ -17,8 +17,7 @@ public class ResourceServiceTest {
 	}
 	@Test
 	public void save(){
-		Resource resource =new Resource("aaaaa.html");
-		resourceService.save(resource);
+		
 	}
 
 }
