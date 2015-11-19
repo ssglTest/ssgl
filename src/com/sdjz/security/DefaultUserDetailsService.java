@@ -34,9 +34,9 @@ public class DefaultUserDetailsService implements UserDetailsService {
 			throw new AccessControlException("用户不存在");
 		// 获取当前用户对应的所有的角色名字
 		// List<Role> roles = user.getRoles();
-		for (Role userRole : user.getRoles()) {
+	/*	for (Role userRole : user.getRoles()) {
 			// String roleName = userRole.g
-		}
+		}*/
 		boolean enabled = true;
 		boolean accountNonExpired = true;
 		boolean credentialsNonExpired = true;

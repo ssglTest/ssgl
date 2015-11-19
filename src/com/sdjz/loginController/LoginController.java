@@ -37,11 +37,11 @@ public class LoginController {
 	public String index(ModelMap modelMap,HttpSession httpSession){
 		User storedUser = userService.findById(CommonHelp.getCurrentUser(httpSession).getId());
 		Set<Resource> parentResources = new HashSet<Resource>();
-		for(Role role : storedUser.getRoles()){
+		/*for(Role role : storedUser.getRoles()){
 			for(Resource resource : role.getResources()){
 				parentResources.add(resource);
 			}
-		}
+		}*/
 		return null;
 	}
 }
