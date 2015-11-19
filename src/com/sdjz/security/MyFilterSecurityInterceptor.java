@@ -15,6 +15,9 @@ import org.springframework.security.access.intercept.InterceptorStatusToken;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 
+/*
+ * 自定义的过滤器
+ */
 public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 
 	private FilterInvocationSecurityMetadataSource securityMetadataSource;
@@ -47,6 +50,7 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
 	public void invoke(FilterInvocation fi) throws IOException, ServletException {
 		InterceptorStatusToken token = super.beforeInvocation(fi);
 		try {
+			//将请求转发给过滤器链了下一个对象
 			fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
 		} finally {
 			super.afterInvocation(token, null);

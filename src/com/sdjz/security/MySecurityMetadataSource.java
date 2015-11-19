@@ -18,6 +18,10 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 
 import com.sdjz.help.CommonHelp;
 
+/*
+ * 执行构造函数中的loadResourceDefine
+ * 取出所有的url资源，并取出url对应的权限集合，然后用户登录，执行DefaultUserDetail中的loadUserByUsername方法
+ */
 //1、2、3、4为服务器启动时调用的顺序
 public class MySecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
@@ -59,6 +63,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 		List<String> roleNames = getAllRoleName();
 		resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
 		for (String roleName : roleNames) {
+			//用来装载用户的权限
 			ConfigAttribute configAttribute = new SecurityConfig(roleName);
 			// 查找出对应的角色资源
 			List<String> resources = getURLsByRoleName(roleName);
@@ -144,7 +149,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 				return resourceMap.get(resUrl);
 			}
 		}
-		// 如果不匹配，则不执行decide方法，表示不允许访问？
+		// 如果不匹配，表示没有定义任何权限，可以直接访问
 		return null;
 	}
 
