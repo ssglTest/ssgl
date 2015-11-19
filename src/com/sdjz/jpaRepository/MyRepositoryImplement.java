@@ -22,11 +22,6 @@ extends SimpleJpaRepository<T, ID> implements MyRepository<T, ID> {
 
 	
 private final EntityManager entityManager;
-private CriteriaBuilder criteriaBuilder;
-private CriteriaQuery<T> criteriaQuery;
-private Root<T> model;
-private Class<T> entityClass;
-private EntityType<T> Model_;
 
 
 public MyRepositoryImplement(Class<T> domainClass, EntityManager em) {
@@ -51,56 +46,23 @@ public void merge(T entity) {
 	
 }
 
-@Override
-public T getResult(Class<T> entityClass,String propertyName,Object propertyValue) {
-	// TODO Auto-generated method stub
-	this.entityClass=entityClass;	
-	this.initilize();
-	criteriaQuery.where(criteriaBuilder.equal(model.get(Model_.getSingularAttribute(propertyName,String.class)), propertyValue));
-	return entityManager.createQuery(criteriaQuery).getSingleResult();
-}
-@Override
-public List<T> getResults(Class<T> entityClass, String propertyName, Object propertyValue) {
-	// TODO Auto-generated method stub
-	this.entityClass=entityClass;	
-	this.initilize();
-	criteriaQuery.where(criteriaBuilder.equal(model.get(Model_.getSingularAttribute(propertyName,String.class)), propertyValue));
-	return entityManager.createQuery(criteriaQuery).getResultList();
-}
+
+
+
+
+
 
 
 @Override
-public List<T> likeQuery(Class<T> entityClass,String propertyName,Object propertyValue) {
+public int countAll(Class<T> entityClass) {
 	// TODO Auto-generated method stub
-	this.entityClass=entityClass;
-	this.initilize();
-	criteriaQuery.where(criteriaBuilder.like(model.get(Model_.getSingularAttribute(propertyName,String.class)), "%"+propertyValue+"%"));
-	return entityManager.createQuery(criteriaQuery).getResultList();
-}
-
-
-@Override
-public List<T> getResult(Class<T> entityClass, String propertyName1, Object propertyValue1, String propertyName2,
-		Object propertyValue2) {
-	// TODO Auto-generated method stub
-	this.entityClass=entityClass;
-	this.initilize();
-	Predicate condition=criteriaBuilder.and(
-			criteriaBuilder.like(model.get(Model_.getSingularAttribute(propertyName1,String.class)), "%"+propertyValue1+"%"),
-			criteriaBuilder.equal(model.get(Model_.getSingularAttribute(propertyName2,String.class)),propertyValue2));
-	
-	return entityManager.createQuery(criteriaQuery.where(condition)).getResultList();
-}
-public void init(){
-	 criteriaBuilder =entityManager.getCriteriaBuilder();
-	 criteriaQuery=criteriaBuilder.createQuery(entityClass);
-	 model=criteriaQuery.from(entityClass);
-	 Model_=model.getModel();
-}
-public void initilize(){
-	if(criteriaBuilder==null){
-		this.init();
-	}
+	CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();  
+	CriteriaQuery<Long> critQuery = criteriaBuilder.createQuery(Long.class);  
+	Root<T> root = critQuery.from(entityClass);  
+	  
+	critQuery.select(criteriaBuilder.countDistinct(root));  
+	int count = entityManager.createQuery(critQuery).getSingleResult().intValue();  
+	return count;
 }
 
 

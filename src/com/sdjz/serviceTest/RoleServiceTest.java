@@ -40,18 +40,7 @@ public class RoleServiceTest {
 		Role role = roleService.findByDescription("student");
 		System.out.println("role Descroiption======"+role.getDescription());
 	}
-	@Test
-	public void criteria(){
-		Role role=roleService.getResult(Role.class, "no","001");		
-			System.out.println(role.getDescription());
-	}
-	@Test
-	public void likeQuery(){
-		List<Role> roles=roleService.likeQuery(Role.class, "no", "00");
-		for(Role role:roles){
-			System.out.println(role.getDescription());
-		}
-	}
+
 	@Test
 	public void specification(){
 		Role roles=roleService.specification();

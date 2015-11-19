@@ -57,9 +57,6 @@ public class PaperTitleApplyServiceTest {
 			System.out.println(paper.getUrl());
 		}
 	}
-	@Test
-	public void likeQuery(){
-		List<PaperTitleApply> results=paperTitleApplyService.likeQuery(PaperTitleApply.class, "approve","approved");
-	}
+	
 
 }

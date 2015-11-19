@@ -99,7 +99,7 @@ public class DataToMySql extends TestBaseService{
 		List<Resource> childs = null;
 		Resource resource = null;
 		Resource childResource = null;
-		for(int i = 1;i<=resourceService.countAll();i++){
+		for(int i = 1;i<=resourceService.countAll(Resource.class);i++){
 			resource = resourceService.findById(i);
 			childs = new ArrayList<Resource>();
 			for(RoleRes2Resource res2Resource:roleRes2Resources){

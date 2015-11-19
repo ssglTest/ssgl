@@ -46,16 +46,9 @@ public class SchoolServiceTest {
 		System.out.println(schoolService.findById(1).getDescription());
 	}
 	@Test
-	public void getResult(){
-		School school=schoolService.getResult(School.class,"description","123");		
-			System.out.println(school.getDescription());		
+	public void countAll(){
+		System.out.println("count==========="+schoolService.countAll(School.class));
 	}
-	@Test
-	public void likeQuery(){
-		List<School> schools=schoolService.likeQuery(School.class,"description"," ");
-		for(School school:schools){
-			System.out.println(school.getDescription());
-		}
-	}
+
 	
 }

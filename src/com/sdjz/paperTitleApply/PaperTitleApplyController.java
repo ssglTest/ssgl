@@ -192,9 +192,7 @@ public class PaperTitleApplyController{
 		System.out.println("======================================================");
 		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
-		List<PaperTitleApply> paperTitleApplyList = paperTitleApplyService.likeQuery(PaperTitleApply.class, "approve", "notApproved");
-		System.out.println("paperTitleApplyList==========="+paperTitleApplyList.toString());
-		modelMap.put("paperTitleApplyList", paperTitleApplyList);
+		
 		return "paperTitleApply/paperTitleApplyList";
 	}
 	
