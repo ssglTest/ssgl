@@ -25,6 +25,7 @@ import com.sdjz.help.CommonHelp;
 //1、2、3、4为服务器启动时调用的顺序
 public class MySecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
+	//驱动程序名
 	private String driver = "com.mysql.jdbc.Driver";
 	// 访问数据库的用户名
 	private String username;
@@ -87,9 +88,10 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 	public List<String> getAllRoleName() {
 		List<String> roleNames = new ArrayList<String>();
 		try {
+			//加载驱动程序
 			Class.forName(driver);
-
 			// Connection是java.sql中的
+			//连接数据库
 			Connection conn = DriverManager.getConnection(url, username, password);
 			// Statement是java.sql中的
 			Statement statement = conn.createStatement();

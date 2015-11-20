@@ -48,7 +48,7 @@
 
 	<!-- 登录验证器 -->
 	<beans:bean id="loginFilter"
-		class="com.techjoy.bysj.security.login.MyUsernamePasswordAuthenticationFilter">
+		class="com.sdjz.security.login.MyUsernamePasswordAuthenticationFilter">
 		<!-- 登录地址 -->
 		<beans:property name="filterProcessesUrl" value="/login.html"></beans:property>
 		<!-- 验证成功后的处理 -->
@@ -99,6 +99,6 @@
 
 	<!-- 获取数据库中所有的url资源，读出url资源与权限的对应关系 -->
 	<beans:bean id="mySecurityMetadataSource"
-		class="comsdjz.security.MySecurityMetadataSource">
+		class="com.sdjz.security.MySecurityMetadataSource">
 	</beans:bean>
 </beans:beans> 

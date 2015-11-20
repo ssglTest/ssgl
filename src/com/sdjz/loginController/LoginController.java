@@ -39,6 +39,7 @@ public class LoginController {
 
 	@RequestMapping("/index.html")
 	public String index(ModelMap modelMap,HttpSession httpSession){
+		System.out.println("=======================已执行index.html的controller=======");
 		User storedUser = userService.findById(CommonHelp.getCurrentUser(httpSession).getId());
 		Set<Resource> parentResources = new HashSet<Resource>();
 		for(UserRole userRole : storedUser.getUserRoles()){
