@@ -111,7 +111,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 	public List<String> getURLsByRoleName(String roleName) {
 		List<String> urls = new ArrayList<String>();
 		try {
-			Class.forName("dirver");
+			Class.forName(driver);
 			Connection conn = DriverManager.getConnection(url, username, password);
 			Statement statement = conn.createStatement();
 			String hql = "SELECT DISTINCT resource.id, role.id, resource.url FROM resource left join role_resource on resource.id = role_resource.resource_id left join role on role.id = role_resource.role_id where parent_id is not null and role.roleName = '"
