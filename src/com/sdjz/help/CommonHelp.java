@@ -107,8 +107,8 @@ public class CommonHelp {
 	 * @param session
 	 * @return
 	 */
-	public static User getCurrentUser(HttpSession session) {
-		User user = (User) session.getAttribute("user");
+	public static User getCurrentUser(HttpSession httpSession) {
+		User user = (User) httpSession.getAttribute("user");
 		if (user == null)
 			throw new UserInvalidException("请重新登录");
 		return user;

@@ -33,9 +33,11 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String url = request.getRequestURI();
-		System.out.println(url);
-		System.out.println(url.indexOf("login"));
-		if(url.indexOf("login")>=0){
+		System.err.println("请求的URL:  "+url);
+		return true;
+		/*System.out.println(url);
+		System.out.println(url.indexOf("login"));*/
+		/*if(url.indexOf("login")>=0){
 			System.out.println(url);
 			return true;
 		}
@@ -48,6 +50,6 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 		///WEB-INF/jsp/login/login.jsp
 		request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request, response);
 		//return "redirect:/addFile.action";
-		return false;
+		return false;*/
 	}
 }
