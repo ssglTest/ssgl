@@ -33,6 +33,7 @@ public class Resource implements Serializable {
 	private Integer id;
 	private String no;
 	private String rel;
+	private String url;
 	private String description;
 	
 	@OneToMany(mappedBy = "resource", cascade = CascadeType.ALL)
@@ -67,6 +68,14 @@ public class Resource implements Serializable {
 
 	public void setRel(String rel) {
 		this.rel = rel;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getDescription() {
