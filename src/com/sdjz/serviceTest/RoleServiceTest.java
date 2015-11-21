@@ -35,17 +35,26 @@ public class RoleServiceTest {
 		System.out.println(role.getDescription());
 		}
 	}
-	@Test
-	public void findByDescription(){
-		Role role = roleService.findByDescription("student");
-		System.out.println("role Descroiption======"+role.getDescription());
-	}
 
 	@Test
 	public void specification(){
-		Role roles=roleService.specification();
+		Role roles=roleService.findOne("no","001");
 		
 		System.out.println(roles.getDescription());
+	}
+	@Test
+	public void likeQuery(){
+		List<Role> roles=roleService.likeQuery("no","00");
+		for(Role role:roles){
+		System.out.println(role.getDescription());
+		}
+	}
+	@Test
+	public void pageQuery(){
+		List<Role> roles=roleService.pageQuery("no","00");
+		for(Role role:roles){
+			System.out.println(role.getDescription());
+			}
 	}
 
 }

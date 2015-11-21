@@ -1,13 +1,11 @@
 package com.sdjz.service;
 
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.sdjz.dao.RoleDao;
@@ -23,21 +21,27 @@ public class RoleService extends BasicService<Role,Integer>{
 		this.basicDao=basicDao;
 		this.roleDao=(RoleDao)basicDao;		
 	}
-	public Role findByDescription(String description){
-		return roleDao.findByDescription(description);
+	
+	public Role findOne(String propertyName,String propertyValue){
+		Role role=roleDao.findOne(this.get(propertyName, propertyValue));
+		return role;
 	}
-	public Role specification(){
-		Role list=roleDao.findOne(new Specification<Role>(){
-
-			@Override
-			public Predicate toPredicate(Root<Role> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				// TODO Auto-generated method stub
-				Predicate p1=cb.equal(root.get("no").as(String.class),"001");
-				query.where(p1);
-				return query.getRestriction();
-			}
-			
-		});
-		return list;
+	public List<Role> getAll(String propertyName,String propertyValue){
+		List<Role> result=roleDao.findAll(this.get(propertyName, propertyValue));
+		return result;
+	}
+	public List<Role> likeQuery(String propertyName,String propertyValue){
+		List<Role> result=roleDao.findAll(this.likequery(propertyName, propertyValue));
+		return result;
+	}
+	public List<Role> pageQuery(String propertyName,String propertyValue){
+		Page<Role> result=roleDao.findAll(this.get(propertyName, propertyValue),
+				new PageRequest(0,10));
+		return result.getContent();
+	}
+	public List<Role> pageLikeQuery(String propertyName,String propertyValue){
+		Page<Role> result=roleDao.findAll(this.likequery(propertyName, propertyValue),
+										new PageRequest(0,10));
+		return result.getContent();
 	}
 }

@@ -3,6 +3,15 @@ package com.sdjz.service;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.SetJoin;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+
 import com.sdjz.jpaRepository.MyRepository;
 
 
@@ -56,6 +65,40 @@ public abstract class BasicService<T extends java.io.Serializable, PK extends ja
 	}
 	public long countAll(Class<T> entityClass){
 		return basicDao.countAll(entityClass);
+	}
+	public Specification<T> get(String propertyName,String propertyValue){
+		return new Specification<T>(){
+
+			@Override
+			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				// TODO Auto-generated method stub
+				Predicate condition=cb.equal(root.get(propertyName).as(String.class), propertyValue);
+				query.where(condition);
+				return query.getRestriction();
+			}			
+		};
+	}
+
+	public Specification<T> likequery(String propertyName,String propertyValue){
+		return new Specification<T>(){
+			@Override
+			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				// TODO Auto-generated method stub
+				Predicate condition=cb.like(root.get(propertyName).as(String.class),"%"+propertyValue+"%");
+				query.where(condition);
+				return query.getRestriction();
+			}			
+		};		
+	}
+	public Specification<T> relatedQuery(){	
+		return new Specification<T>(){
+			@Override
+			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				// TODO Auto-generated method stub	
+				//SetJoin<T,T> depJion=root.join(root.getModel().getSet());
+				return null;
+			}					
+		};
 	}
 	
 }
