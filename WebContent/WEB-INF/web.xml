@@ -15,19 +15,17 @@
   		org.springframework.web.context.ContextLoaderListener
   	</listener-class>
   </listener>
-  <filter>
-    <filter-name>openEntityManagerInViewFilter</filter-name>
-    <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>openEntityManagerInViewFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <!-- 和spring security 的 session-management有关的监听器，用于监听当前的session -->
+   <listener>
+  	 <listener-class>
+  	 	org.springframework.security.web.session.HttpSessionEventPublisher
+  	 </listener-class>
+   </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml,classpath:ssgl-security.xml</param-value>
   </context-param>
-  <servlet>
+   <servlet>
     <servlet-name>testdatajpa</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
@@ -40,14 +38,14 @@
     <servlet-name>testdatajpa</servlet-name>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>CXFService</servlet-name>
-    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CXFService</servlet-name>
-    <url-pattern>/CXFWebService/*</url-pattern>
-  </servlet-mapping>
+   <filter>
+    <filter-name>openEntityManagerInViewFilter</filter-name>
+    <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>openEntityManagerInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <!-- spring security配置 -->
   <filter>
   	<filter-name>springSecurityFilterChain</filter-name>
@@ -57,4 +55,24 @@
   	<filter-name>springSecurityFilterChain</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- <filter>
+	<filter-name>openSessionInView</filter-name>
+	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>openSessionInView</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+ 
+  
+ 
+  <servlet>
+    <servlet-name>CXFService</servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CXFService</servlet-name>
+    <url-pattern>/CXFWebService/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

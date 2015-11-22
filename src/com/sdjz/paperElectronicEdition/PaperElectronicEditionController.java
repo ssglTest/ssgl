@@ -21,7 +21,7 @@ import com.sdjz.service.PaperElectronicEditionService;
 import com.sdjz.service.SecretaryService;
 
 @Controller
-@RequestMapping("userContro/paperElectronicEdition")
+@RequestMapping("paperElectronicEdition")
 public class PaperElectronicEditionController {
 
 	@Autowired

@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link type="text/css" href="../../bootstrap/bootstrap.min.css"
+<link type="text/css" href="<%=basePath %>bootstrap/bootstrap.min.css"
 	rel="stylesheet" />
 <script type="text/javascript"
-	src="../../bootstrap/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
+	src="<%=basePath %>bootstrap/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="panel panel-primary">
@@ -22,8 +27,8 @@
 					enctype="multipart/form-data" role="form" class="form-inline">
 					<!-- 把标签和控件放在一个带有 class .form-group 的 <div> 中。这是获取最佳间距所必需的 -->
 					<div class="form-group">
-						<label for="importStudentFromExcel">上传文件</label> <input type="file"
-							id="importStudentFromExcel" class="form-control"
+						<label for="importStudentFromExcel">上传文件</label> <input
+							type="file" id="importStudentFromExcel" class="form-control"
 							name="importStudentFromExcel" /> <label class="label label-info">${info}</label>
 						<p class="help-block">请选择需要上传的老师名单</p>
 						<button class="btn btn-default" type="submit">上传</button>

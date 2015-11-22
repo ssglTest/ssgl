@@ -34,6 +34,7 @@ public class DefaultUserDetailsService implements UserDetailsService {
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		// 获取对象
 		com.sdjz.domain.User user = userService.findByUserName(username);
@@ -41,9 +42,14 @@ public class DefaultUserDetailsService implements UserDetailsService {
 			throw new AccessControlException("用户不存在");
 		
 		// 获取当前用户对应的所有的角色名字
+		try{
 		for (UserRole userRole : user.getUserRoles()) {
 			String roleName = userRole.getRole().getRoleName();
+			System.out.println("user roleName======"+roleName);
 			authorities.add(new SimpleGrantedAuthority(roleName));
+		}
+		} catch(Exception e){
+			e.printStackTrace();
 		}
 		boolean enabled = true;
 		boolean accountNonExpired = true;

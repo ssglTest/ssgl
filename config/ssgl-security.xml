@@ -11,8 +11,7 @@
 
 	<!-- 扫描类包，应用spring注解配置 -->
 	<context:component-scan base-package="com.sdjz.security" />
-
-	<!-- 配置不过滤的资源（静态资源及登录相关） -->
+	<!-- 配置不过滤的资源（静态资源及登录相关）设置请求路径所需的安全性为空 -->
 	<http pattern="/**/*.css" security="none"></http>
 	<http pattern="/**/*.jpg" security="none"></http>
 	<http pattern="/**/*.jpeg" security="none"></http>
@@ -24,7 +23,7 @@
 	<http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
 
 		<!-- 单用户登陆 -->
-		<session-management>
+		<session-management invalid-session-url="/reLogin.html">
 			<concurrency-control max-sessions="1"
 				error-if-maximum-exceeded="true" />
 		</session-management>
@@ -32,25 +31,26 @@
 		<!-- 尝试访问没有权限的页面时跳转的页面 -->
 		<access-denied-handler error-page="/403.jsp" />
 
+		<!-- 将自定义的Filter添加到FilterChain中 -->
 		<custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER" />
 
 		<custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
-
-		<!-- 检测失效的sessionId,session超时时，定位到另外一个URL -->
-		<!-- <session-management invalid-session-url="/reLogin.html" /> -->
 	</http>
-
-	<!-- 未登录的切入点 -->
+	
+	<!-- 未登录的切入点  authenticationEntryPoint 引导用户进行登录-->
 	<beans:bean id="authenticationProcessingFilterEntryPoint"
 		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-		<beans:property name="loginFormUrl" value="/login.html"></beans:property>
+		<beans:property name="loginFormUrl" value="/login.jsp"></beans:property>
 	</beans:bean>
 
 	<!-- 登录验证器 -->
 	<beans:bean id="loginFilter"
 		class="com.sdjz.security.login.MyUsernamePasswordAuthenticationFilter">
 		<!-- 登录地址 -->
-		<beans:property name="filterProcessesUrl" value="/login.html"></beans:property>
+		<beans:property name="filterProcessesUrl" value="/login.action"></beans:property>
+		<!-- 表单提交默认的用户名密码为： 	j_username   j_password  这里修改默认的参数名 -->
+		<beans:property name="usernameParameter" value="username"></beans:property>
+		<beans:property name="passwordParameter" value="password"></beans:property>
 		<!-- 验证成功后的处理 -->
 		<beans:property name="authenticationSuccessHandler"
 			ref="loginLogAuthenticationSuccessHandler"></beans:property>
@@ -65,7 +65,6 @@
 		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
 		<beans:property name="defaultTargetUrl" value="/index.html"></beans:property>
 	</beans:bean>
-
 	<!-- 登录失败的操作 -->
 	<beans:bean id="simpleUrlAuthenticationFailureHandler"
 		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">

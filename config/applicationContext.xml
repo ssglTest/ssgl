@@ -25,7 +25,7 @@
 			<value>root</value>
 		</property>
 		<property name="password">
-			<value>1234</value>
+			<value>totoro</value>
 		</property>
 	</bean>
 

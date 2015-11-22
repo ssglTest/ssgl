@@ -14,7 +14,6 @@ import com.sdjz.help.CommonHelp;
 import com.sdjz.service.SecretaryService;
 
 @Controller
-@RequestMapping("userContro")
 public class SecretaryInfoController {
 	@Autowired
 	SecretaryService secretaryService;

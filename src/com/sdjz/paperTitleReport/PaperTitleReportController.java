@@ -22,7 +22,7 @@ import com.sdjz.service.PaperTitleReportService;
 import com.sdjz.service.SecretaryService;
 
 @Controller
-@RequestMapping("userContro/paperTitleReport")
+@RequestMapping("paperTitleReport")
 public class PaperTitleReportController {
 
 	@Autowired

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("userContro/tutor")
+@RequestMapping("tutor")
 public class TutorControllerTest {
 
 	@RequestMapping("/myStudent.html")

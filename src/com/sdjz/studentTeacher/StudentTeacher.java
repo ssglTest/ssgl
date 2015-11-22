@@ -12,7 +12,7 @@ import com.sdjz.help.CommonHelp;
 import com.sdjz.service.StudentService;
 
 @Controller
-@RequestMapping("userContro/studentTeacher")
+@RequestMapping("studentTeacher")
 public class StudentTeacher {
 
 	@Autowired

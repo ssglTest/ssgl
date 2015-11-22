@@ -29,7 +29,7 @@ import com.sdjz.service.SecretaryService;
  *
  */
 @Controller
-@RequestMapping("userContro/midtermCheck")
+@RequestMapping("midtermCheck")
 public class MidtermCheckController {
 
 	@Autowired

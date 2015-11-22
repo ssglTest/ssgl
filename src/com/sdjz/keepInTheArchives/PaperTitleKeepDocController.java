@@ -11,7 +11,7 @@ import com.sdjz.domain.Student;
 import com.sdjz.service.StudentService;
 
 @Controller
-@RequestMapping("userContro/paperTitleKeepDoc")
+@RequestMapping("paperTitleKeepDoc")
 public class PaperTitleKeepDocController {
 
 	@Autowired

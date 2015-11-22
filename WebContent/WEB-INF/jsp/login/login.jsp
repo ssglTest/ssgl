@@ -53,18 +53,18 @@
 		</div>
 		<div class="col-md-6">
 			<div class="div-b">
-				<form class="form-signin" action="userContro/index.html"
+				<form class="form-signin" action="login.action"
 					method="POST">
-					<h1 style="font-family: '楷体'">硕士管理系统</h1>
+					<h1 style="font-family: '楷体'">硕士管理系统${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}</h1>
 					<font size="3" color="red">${info}</font>
 					<div class="form-group">
-						<label for="inputEmail">username</label> <input type="text"
-							id="inputEmail" name="username" class="form-control"
+						<label for="username">username</label> <input type="text"
+							id="username" name="username" class="form-control"
 							placeholder="请输入你的用户名" required autofocus>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword">password</label> <input type="password"
-							id="inputPassword" name="password" class="form-control"
+						<label for="password">password</label> <input type="password"
+							id="password" name="password" class="form-control"
 							placeholder="请输入你的密码" required>
 					</div>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>

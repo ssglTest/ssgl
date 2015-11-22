@@ -24,7 +24,7 @@ import com.sdjz.service.PaperTitleApplyService;
 import com.sdjz.service.SecretaryService;
 
 @Controller
-@RequestMapping("userContro/paperTitleApply")
+@RequestMapping("paperTitleApply")
 public class PaperTitleApplyController{
 
 	@Autowired

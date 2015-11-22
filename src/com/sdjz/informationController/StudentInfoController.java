@@ -14,7 +14,6 @@ import com.sdjz.help.CommonHelp;
 import com.sdjz.service.StudentService;
 
 @Controller
-@RequestMapping("userContro")
 public class StudentInfoController {
 	@Autowired
 	StudentService studentService;

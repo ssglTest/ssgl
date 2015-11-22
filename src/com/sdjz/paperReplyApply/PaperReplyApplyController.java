@@ -23,7 +23,7 @@ import com.sdjz.service.PaperReplyApplyService;
 import com.sdjz.service.SecretaryService;
 
 @Controller
-@RequestMapping("userContro/paperReplyApply")
+@RequestMapping("paperReplyApply")
 public class PaperReplyApplyController {
 
 	@Autowired

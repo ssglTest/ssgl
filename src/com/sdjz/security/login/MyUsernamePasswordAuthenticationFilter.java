@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +18,7 @@ import com.sdjz.help.CommonHelp;
 import com.sdjz.service.UserService;
 
 public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
+	
 	@Autowired
 	private UserService userService;
 
@@ -27,25 +29,28 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
 			throw new AuthenticationServiceException("authentication method not supported : " + request.getMethod());
 		}
 
+		System.out.println("test-----");
+		
 		// 获取session
 		HttpSession httpSession = request.getSession();
 		// 获取用户信息
-		String username = (String) request.getAttribute("username");
-		String password = (String) request.getAttribute("password");
-
+		String username = (String) request.getParameter("username");
+		String password = (String) request.getParameter("password");
 		// 去除多余的空格
 		username = username.trim();
 		// 根据输入的username得到当前的user
 		User storedUser = userService.findByUserName(username);
 		if (storedUser == null)
 			throw new AuthenticationServiceException("用户名不存在");
-		if (storedUser.getPassword().equals(CommonHelp.makeMD5(password))) {
+		if (storedUser.getPassword().equals(password)) {
 			httpSession.setAttribute("user", storedUser);
+			System.out.println("======  密码相同   ======");
 		} else {
+			System.out.println("用户名或密码错误");
 			throw new AuthenticationServiceException("用户名或密码错误");
 		}
 		UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username,
-				CommonHelp.makeMD5(password));
+				password);
 		setDetails(request, authRequest);
 		return this.getAuthenticationManager().authenticate(authRequest);
 	}

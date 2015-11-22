@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" href="../bootstrap/bootstrap.min.css"
+<!-- <link type="text/css" href="../bootstrap/bootstrap.min.css"
 	rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'
 	rel='stylesheet' type='text/css'>
-<link href="styles/font-awesome.min.css" rel="stylesheet" />
+<link href="styles/font-awesome.min.css" rel="stylesheet" /> -->
+<link type="text/css" href="<%=basePath%>bootstrap/bootstrap.min.css"
+	rel="stylesheet" />
 <script>
 	$(function() {
 		$(".btn").click(function() {
@@ -25,15 +32,15 @@
 
 </head>
 <body style="background: #EEE9E9">
-	<script type="text/javascript" src="../bootstrap/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="../Unslider/unslider.min.js"></script>
-	<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="<%=basePath %>bootstrap/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="<%=basePath %>bootstrap/bootstrap.min.js"></script>
 	<div class="container">
 		<div class="jumbotron" style="background: #337ab7">
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
-					<img alt="山东建筑大学图标" src="../img/logo_login.png" width="100"
+					<img alt="山东建筑大学图标" src="<%=basePath %>img/logo_login.png" width="100"
 						height="100">
 				</div>
 				<div class="col-md-10">
@@ -68,12 +75,12 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordion"
-										href="#collapseOne">
+										href="#collapseOne${parent.id}">
 										<button class="btn btn-primary btn-block">${parent.description}</button>
 									</a>
 								</h4>
 							</div>
-							<div id="collapseOne" class="panel-collapse collapse in">
+							<div id="collapseOne${parent.id}" class="panel-collapse collapse">
 								<div class="panel-body">
 									<c:forEach items="${childResourceList}" var="child">
 										<c:if test="${child.parent==parent }">

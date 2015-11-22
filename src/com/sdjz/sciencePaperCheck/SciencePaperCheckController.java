@@ -24,7 +24,7 @@ import com.sdjz.service.StudentService;
 import com.sdjz.service.TutorService;
 
 @Controller
-@RequestMapping("userContro/sciencePaperCheck")
+@RequestMapping("sciencePaperCheck")
 public class SciencePaperCheckController {
 
 	@Autowired

@@ -25,7 +25,7 @@ import com.sdjz.service.StudentService;
 
 @Controller
 // paperTitleReplyTime/paperTitleReplyTimeList
-@RequestMapping("userContro/paperTitleReply")
+@RequestMapping("paperTitleReply")
 public class PaperTitleReplyController {
 
 	@Autowired
