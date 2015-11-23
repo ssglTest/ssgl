@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="<%=basePath %>bootstrap/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="<%=basePath %>bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="jumbotron" style="background: #337ab7">
+		<div class="jumbotron" style="background: #DCDCDC">
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
@@ -45,10 +45,11 @@
 				</div>
 				<div class="col-md-10">
 					<h2 style="font-family: '楷体'">
-						<font color="white">硕士管理系统</font>
+						<font>硕士管理系统</font>
 					</h2>
 					<p>
-						<font color="white">山东建筑大学非全日制硕士生管理系统</font>
+						<font >山东建筑大学非全日制硕士生管理系统</font>
+						
 					</p>
 				</div>
 			</div>

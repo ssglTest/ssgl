@@ -3,6 +3,7 @@ package com.sdjz.help;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -83,6 +85,25 @@ public class CommonHelp {
 		Integer month = Integer.valueOf(calendar.get(Calendar.MONTH));
 		return month;
 	}
+	
+	// 返回一个含有message的JSON数据,其message为status
+		static public void buildSimpleJson(HttpServletResponse response,
+				String message) {
+			String result = "{\"status\":\"" + message + "\"}";
+			PrintWriter out = null;
+			response.setContentType("application/json");
+			try {
+				out = response.getWriter();
+				out.write(result);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// 返回一个含有status：""的JSON数据
+		static public void buildSimpleJson(HttpServletResponse response) {
+			CommonHelp.buildSimpleJson(response, "");
+		}
 
 	/*
 	 * 得到日期

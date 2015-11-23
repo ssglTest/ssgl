@@ -3,6 +3,7 @@ package com.sdjz.midtermCheck;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,19 +143,20 @@ public class MidtermCheckController {
 	 * @param midtermCheckId
 	 * @return
 	 */
-	@RequestMapping("/midtermCheckApproved.html")
-	public String midtermCheckApproved(HttpSession httpSession, ModelMap modelMap, Integer midtermCheckId) {
+	@RequestMapping(value = "/midtermCheckApproved.html",method=RequestMethod.POST)
+	public void midtermCheckApproved(HttpSession httpSession, ModelMap modelMap, Integer midtermCheckId,HttpServletResponse response) {
 		MidtermCheck midtermCheck = midtermCheckService.findById(midtermCheckId);
 		midtermCheck.setApprove("approved");
 		String date = CommonHelp.getCurrentDate();
 		midtermCheck.setAuditDate(date);
 		midtermCheckService.update(midtermCheck);
 		midtermCheckService.save(midtermCheck);
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		/*Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
 		List<MidtermCheck> midtermCheckList = secretary.getSchool().getMidtermChecks();
 		modelMap.put("midtermCheckList", midtermCheckList);
-		return "midtermCheck/midtermCheckList";
+		return "midtermCheck/midtermCheckList";*/
+		CommonHelp.buildSimpleJson(response);
 	}
 
 	/**
