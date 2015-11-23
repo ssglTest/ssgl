@@ -15,6 +15,49 @@
 <script type="text/javascript"
 	src="<%=basePath %>bootstrap/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function approved(paperTitleReportId){
+		var confirmed = window.confirm("确认通过？");
+		if(confirmed==true){
+			$.ajax({
+				url:"approvedPaperTitleReport.html",
+				data:{"paperTitleReportId":paperTitleReportId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核成功");
+					$(".paperTitleReportaudit"+paperTitleReportId).html("<span class='label label-success'>通过</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+	
+	function notApproved(paperTitleReportId){
+		var confirmed = window.confirm("确认不通过？");
+		if(confirmed==true){
+			$.ajax({
+				url:"notApprovedPaperTitleReport.html",
+				data:{"paperTitleReportId":paperTitleReportId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核成功");
+					$(".paperTitleReportaudit"+paperTitleReportId).html("<span class='label label-warning'>未通过</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="panel panel-primary">
@@ -46,11 +89,11 @@
 						<h2><span class="label label-default">未有学生上传，请耐心等待。</span></h2>
 					</c:if>
 					<c:forEach items="${paperTitleReportList}" var="paperTitleReport">
-						<tr>
-							<td>${paperTitleReport.student.no}</td>
-							<td>${paperTitleReport.student.name}</td>
-							<td>${paperTitleReport.updateDate}</td>
-							<td><c:if test="${empty paperTitleReport.approve}">
+						<tr class="paperTitleReport${paperTitleReport.id }">
+							<td class="paperTitleReportno${paperTitleReport.id }">${paperTitleReport.student.no}</td>
+							<td class="paperTitleReportname${paperTitleReport.id }">${paperTitleReport.student.name}</td>
+							<td class="paperTitleReportupdateDate${paperTitleReport.id }">${paperTitleReport.updateDate}</td>
+							<td class="paperTitleReportaudit${paperTitleReport.id }"><c:if test="${empty paperTitleReport.approve}">
 									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${paperTitleReport.approve=='approved'}">
 									<span class="label label-success">通过</span>
@@ -65,14 +108,17 @@
 										审核<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a
+										<li><%-- <a
 											href="approvedPaperTitleReport.html?paperTitleReportId=${paperTitleReport.id}"><h3>
 													<span class="label label-success">通过</span>
-												</h3></a></li>
-										<li><a
+												</h3></a> --%>
+												<a class="btn btn-success" onclick = "approved(${paperTitleReport.id})">通过</a></li>
+										<li><%-- <a
 											href="notApprovedPaperTitleReport.html?paperTitleReportId=${paperTitleReport.id}"><h3>
 													<span class="label label-danger">不通过</span>
-												</h3></a></li>
+												</h3></a> --%>
+												<a class="btn btn-warning" onclick="notApproved(${paperTitleReport.id})">不通过</a>
+												</li>
 									</ul>
 								</div>
 							</td>
