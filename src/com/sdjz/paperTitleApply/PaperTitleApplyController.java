@@ -137,8 +137,8 @@ public class PaperTitleApplyController{
 	 *            从jsp页面传过来的论文选题申请表的id
 	 * @return
 	 */
-	@RequestMapping("/approvedPaperTitleApply.html")
-	public String approvedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId) {
+	@RequestMapping(value="/approvedPaperTitleApply.html",method=RequestMethod.POST)
+	public void approvedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId,HttpServletResponse response) {
 		System.out.println("已跳转到这个controller=============================");
 		// 通过id找到当前的论文选题申请表
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
@@ -155,11 +155,13 @@ public class PaperTitleApplyController{
 		 * modelMap.put("paperTitleApplyList", paperTitleApplyList);
 		 */
 		// return "paperTitleApply/paperTitleApplyList";
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		/*Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
 		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
-		return "paperTitleApply/paperTitleApplyList";
+		return "paperTitleApply/paperTitleApplyList";*/
+		CommonHelp.buildSimpleJson(response);
+		
 	}
 
 	/**
@@ -169,8 +171,8 @@ public class PaperTitleApplyController{
 	 * @param paperTitleApplyId
 	 * @return
 	 */
-	@RequestMapping("/notApprovedPaperTitleApply.html")
-	public String notApprovedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId) {
+	@RequestMapping(value="/notApprovedPaperTitleApply.html",method=RequestMethod.POST)
+	public void notApprovedPaperTitleApply(HttpSession httpSession,ModelMap modelMap, Integer paperTitleApplyId,HttpServletResponse response) {
 		PaperTitleApply paperTitleApply = paperTitleApplyService.findById(paperTitleApplyId);
 		paperTitleApply.setApprove("notApproved");
 		// 获取当前时间
@@ -180,11 +182,12 @@ public class PaperTitleApplyController{
 		paperTitleApplyService.update(paperTitleApply);
 		paperTitleApplyService.save(paperTitleApply);
 		// 列出所有的选题申请表，重新刷新，这会影响性能！
-		Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
+		/*Secretary secretary = (Secretary) CommonHelp.getCurrentActor(httpSession);
 		secretary = secretaryService.findByNo(secretary.getNo());
 		List<PaperTitleApply> paperTitleApplyList = secretary.getSchool().getPaperTitleApplies();
 		modelMap.put("paperTitleApplyList", paperTitleApplyList);
-		return "paperTitleApply/paperTitleApplyList";
+		return "paperTitleApply/paperTitleApplyList";*/
+		CommonHelp.buildSimpleJson(response);
 	}
 	
 	@RequestMapping("/getApproved.html")

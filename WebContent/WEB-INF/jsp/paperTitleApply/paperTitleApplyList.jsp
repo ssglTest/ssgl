@@ -19,28 +19,44 @@
 
 <script type="text/javascript" language="javascript">
 	function approved(paperTitleApplyId){
-		window.confirm("确认通过?",{
-			okCall:function(){
-				$.ajax({
-					url:"approvedPaperTitleApply.html",
-					data:{"paperTitleApplyId":paperTitleApplyId},
-					dataType:'json',
-					type:'POST',
-					success:function(data){
-						window.correct("审核成功！");
-						return true;
-					},
-					error:function(msg){
-						window.error("网络故障，请检查后重新审核");
-						return false;
-					}
-				});
-			}
-		});
+		var confirmed=window.confirm("确认通过？");
+		if(confirmed==true){
+			$.ajax({
+				url:"approvedPaperTitleApply.html",
+				data:{"paperTitleApplyId":paperTitleApplyId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核成功");
+					$(".paperTitleApplyaudit"+paperTitleApplyId).html("<span class='label label-success'>通过</span>");
+					return true;
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
 	}
-	
-	function test(){
-		window.confirm("这是一个测试 ")
+	function notApproved(paperTitleApplyId){
+		var confirmed=window.confirm("确认不通过？");
+		if(confirmed==true){
+			$.ajax({
+				url:"notApprovedPaperTitleApply.html",
+				data:{"paperTitleApplyId":paperTitleApplyId},
+				dataType:'json',
+				type:'POST',
+				success:function(data){
+					alert("审核成功");
+					$(".paperTitleApplyaudit"+paperTitleApplyId).html("<span class='label label-warning'>未通过</span>");
+				},
+				error:function(data){
+					alert("网络故障，请检查后重新审核");
+					return false;
+				}
+			});
+		}
+		
 	}
 </script>
 </head>
@@ -80,11 +96,11 @@
 						</h1>
 					</c:if>
 					<c:forEach items="${paperTitleApplyList}" var="paperTitleApply">
-						<tr>
-							<td>${paperTitleApply.student.no}</td>
-							<td>${paperTitleApply.student.name}</td>
-							<td>${paperTitleApply.title}</td>
-							<td>
+						<tr class="paperTitleApply${paperTitleApply.id }">
+							<td class="paperTitleApplyno${paperTitleApply.id})">${paperTitleApply.student.no}</td>
+							<td class="paperTitleApplyname${paperTitleApply.id }">${paperTitleApply.student.name}</td>
+							<td class="paperTitleApplytitle${paperTitleApply.id }">${paperTitleApply.title}</td>
+							<td class="paperTitleApplyaudit${paperTitleApply.id }">
 								<!-- 判断是否审核 --> <c:if test="${empty paperTitleApply.approve }">
 									<span class="label label-info">未审核</span>
 								</c:if> <c:if test="${not empty paperTitleApply.approve }">
@@ -110,13 +126,13 @@
 											<%-- <a
 											href="approvedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}"><h3>
 													<span class="label label-success">通过</span>
-												</h3></a> --%> <a class="btn btn-success"
-											onclick="approved(${paperTitleApply.id})"
-											id="approvedPaperTitleApply">通过</a>
+												</h3></a> --%> 
+											<a class="btn btn-success" onclick="approved(${paperTitleApply.id})">通过</a>
 										</li>
-										<li><a class="btn btn-warning"
+										<li><%-- <a class="btn btn-warning"
 											href="notApprovedPaperTitleApply.html?paperTitleApplyId=${paperTitleApply.id}">
-												不通过 </a></li>
+												不通过 </a></li> --%>
+											<a class="btn btn-warning" onclick="notApproved(${paperTitleApply.id})">不通过</a>
 									</ul>
 								</div>
 							</td>
