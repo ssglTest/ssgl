@@ -31,6 +31,13 @@ public class LoginController {
 	public String login() {
 		return "login/login";
 	}
+	
+	@RequestMapping("/logout.html")
+	public String logout(ModelMap modelMap,HttpSession httpSession){
+		httpSession.invalidate();
+		modelMap.put("info", "请重新登录");
+		return "login/login";
+	}
 
 	@RequestMapping("/reLogin.html")
 	public String reLogin(ModelMap modelMap) {
