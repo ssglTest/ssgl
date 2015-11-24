@@ -4,8 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +19,8 @@ import com.sdjz.service.UserService;
 
 public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	
+	private static final Logger logger = Logger.getLogger(MyUsernamePasswordAuthenticationFilter.class);
+	
 	@Autowired
 	private UserService userService;
 
@@ -29,8 +30,10 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
 		if (!request.getMethod().equals("POST")) {
 			throw new AuthenticationServiceException("authentication method not supported : " + request.getMethod());
 		}
-
-		System.out.println("test-----");
+		
+		if(logger.isDebugEnabled()){
+			logger.debug("执行test方法");
+		}
 		
 		// 获取session
 		HttpSession httpSession = request.getSession();
@@ -52,9 +55,8 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
 			throw new AuthenticationServiceException("用户名不存在");
 		if (CommonHelp.makeMD5(storedUser.getPassword()).equals(CommonHelp.makeMD5(password))) {
 			httpSession.setAttribute("user", storedUser);
-			System.out.println("======  密码相同   ======");
 		} else {
-			System.out.println("用户名或密码错误");
+			
 			throw new AuthenticationServiceException("用户名或密码错误");
 		}
 		UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username,

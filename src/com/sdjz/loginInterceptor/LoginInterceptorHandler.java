@@ -2,15 +2,14 @@ package com.sdjz.loginInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sdjz.domain.User;
-
 public class LoginInterceptorHandler implements HandlerInterceptor{
 
+	private static final Logger logger = Logger.getLogger(LoginInterceptorHandler.class);
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
@@ -31,9 +30,11 @@ public class LoginInterceptorHandler implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		String url = request.getRequestURI();
-		System.err.println("请求的URL:  "+url);
+		if(logger.isDebugEnabled()){
+			logger.debug("请求的URL:" + url);
+		}
 		return true;
 		/*System.out.println(url);
 		System.out.println(url.indexOf("login"));*/
