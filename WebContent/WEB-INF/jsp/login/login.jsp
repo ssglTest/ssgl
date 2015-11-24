@@ -15,7 +15,34 @@
 	src="<%=basePath%>bootstrap/jquery-1.11.3.min.js"></script>
 <script type="text/javascript"
 	src="<%=basePath%>bootstrap/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+		$(document).ready(function(){
+			$("#submit").click(function(){
+				var checkCode=$.trim($("#veritionCode").val());
+				var info = $("#info");
+				if(checkCode==''){
+					info.html("验证码不能为空");
+					$("#veritionCode").focus();
+					return false;
+				}else{
+					$(this).submit();
+				}
+			});
+		});
+	</script>
+<!-- 验证码 -->
+<script type="text/javascript">
+		$("#checkImage").click(function(){
+			changCode();
+		});
+		
+		function changCode(){
+			var checkImage = $("#checkImage");
+			checkImage.hide();
+			checkImage.prop("src", "<%=basePath%>kaptcha/getKaptchaImage.html?id="+ Math.random()).fadeIn();
+		event.cancelBubble = true;
+	}
+</script>
 <title>登录界面</title>
 <style>
 .div-a {
@@ -28,7 +55,7 @@
 	width: 300px;
 	height: 350px;
 	padding: 5px;
-	margin-top: 150px;
+	margin-top: 120px;
 	margin-left: 800px;
 }
 
@@ -53,10 +80,9 @@
 		</div>
 		<div class="col-md-6">
 			<div class="div-b">
-				<form class="form-signin" action="login.action"
-					method="POST">
-					<h1 style="font-family: '楷体'">硕士管理系统${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}</h1>
-					<font size="3" color="red">${info}</font>
+				<form class="form-signin" action="login.action" method="POST">
+					<h1 style="font-family: '楷体'">硕士管理系统</h1>
+					<font id="info" size="3" color="red">${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}&nbsp;${info}</font>
 					<div class="form-group">
 						<label for="username">username</label> <input type="text"
 							id="username" name="username" class="form-control"
@@ -67,7 +93,27 @@
 							id="password" name="password" class="form-control"
 							placeholder="请输入你的密码" required>
 					</div>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+					<div class="form-group">
+						<div class="row">
+						<div class="col-md-5"><p>
+								验证码：<span><input style="width:45px" type="text" name="verifitcaionCode"
+									id="veritionCode" maxlength="4" autocomplete="off" /></span>
+									
+							</p></div>
+						<div class="col-md-7"><p style="margin-left: 6px">
+								<span id="checkImgSpan"> <img style="width:70px;height:30px;" alt="验证码"
+									src="<%=basePath%>kaptcha/getKaptchaImage.html" id="checkImage" />
+									<a style="width:70px;" class="btn btn-default" onclick="changCode()">换一张？</a>
+								</span>
+							</p></div>
+							
+							
+						</div>
+
+					</div>
+					<button id="submit" class="btn btn-lg btn-primary btn-block"
+						type="submit">登录</button>
+					<button class="btn btn-lg btn-info btn-block" type="reset">重置</button>
 				</form>
 			</div>
 		</div>

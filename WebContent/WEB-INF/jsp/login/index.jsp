@@ -32,33 +32,35 @@
 
 </head>
 <body style="background: #EEE9E9">
-	
-	<script type="text/javascript" src="<%=basePath %>bootstrap/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="<%=basePath %>bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="<%=basePath%>bootstrap/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript"
+		src="<%=basePath%>bootstrap/bootstrap.min.js"></script>
 	<div class="container">
-		<div class="jumbotron" style="background: #DCDCDC">
+		<div class="jumbotron" style="background: #4682B4">
 			<!-- RGB颜色参考http://tool.oschina.net/commons?type=3 -->
 			<div class="row">
 				<div class="col-md-2">
-					<img alt="山东建筑大学图标" src="<%=basePath %>img/logo_login.png" width="100"
-						height="100">
+					<img alt="山东建筑大学图标" src="<%=basePath%>img/logo_login.png"
+						width="100" height="100">
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-7">
 					<h2 style="font-family: '楷体'">
 						<font>硕士管理系统</font>
 					</h2>
 					<p>
-						<font >山东建筑大学非全日制硕士生管理系统</font>
-						
+						<font>山东建筑大学非全日制硕士生管理系统</font>
+
 					</p>
+				</div>
+				<div class="col-md-offset-6">
+					<h3>
+						<span class="lable lable-info">当前用户：</span>${username}</h3>
 				</div>
 			</div>
 			<div align="right">
 				<div class="row">
-					<div class="col-md-11">
-						<h3>
-							<span class="lable lable-default">当前用户：</span>${username}</h3>
-					</div>
+					<div class="col-md-11"></div>
 					<div class="col-md-1">
 						<a href="logout.html"><button class="btn btn-default">退出登录</button></a>
 					</div>

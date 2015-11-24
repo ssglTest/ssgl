@@ -18,6 +18,8 @@
 	<http pattern="/**/*.gif" security="none"></http>
 	<http pattern="/**/*.png" security="none"></http>
 	<http pattern="/js/*.js" security="none"></http>
+	<!-- 不过滤验证码 -->
+	<http pattern="/kaptcha/getKaptchaImage.html" security="none"></http>
 	<!-- <http pattern="/kaptcha/getKaptchaImage.html" security="none" /> --><!-- 不过滤验证码 -->
 
 	<http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
@@ -75,7 +77,8 @@
 	<!-- Spring Security 提供的用户登录验证 -->
 	<authentication-manager alias="authenticationManager">
 		<!--userDetailServiceImpl 获取登录的用户、用户权限 -->
-		<authentication-provider user-service-ref="userDetailServiceImpl" />
+		<authentication-provider user-service-ref="userDetailServiceImpl">
+		</authentication-provider>
 	</authentication-manager>
 
 	<!-- 获取登录的用户、用户权限 -->
