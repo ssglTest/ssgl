@@ -33,5 +33,9 @@ public class MajorServiceTest {
 		majorService.save(major1);
 	
 	}
+	/*@Test
+	public void find(){
+		List<Major> major=majorService.find(Map<"id",>)
+	}*/
 
 }
